@@ -1,1 +1,1 @@
-    generateDS -o esdl_sup.py -s esdl_sub.py --no-namespace-defs --root-element="EnergySystem" --export="write etree" esdlXML.xsd
+generateDS -o esdl_sup.py -s esdl_sub.py --root-element="EnergySystem" --export="write etree" esdlXML.xsd

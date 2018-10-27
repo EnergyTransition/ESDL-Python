@@ -2,13 +2,12 @@
 # -*- coding: utf-8 -*-
 
 #
-# Generated Sat Oct 13 18:04:04 2018 by generateDS.py version 2.29.24.
+# Generated Sat Oct 27 22:25:21 2018 by generateDS.py version 2.30.1.
 # Python 3.7.0 (v3.7.0:1bf9cc5093, Jun 27 2018, 04:59:51) [MSC v.1914 64 bit (AMD64)]
 #
 # Command line options:
 #   ('-o', 'esdl_sup.py')
 #   ('-s', 'esdl_sub.py')
-#   ('--no-namespace-defs', '')
 #   ('--root-element', 'EnergySystem')
 #   ('--export', 'write etree')
 #
@@ -16,7 +15,7 @@
 #   esdlXML.xsd
 #
 # Command line:
-#   C:\Users\matthijssenef\AppData\Local\Programs\Python\Python37\Scripts\generateDS -o "esdl_sup.py" -s "esdl_sub.py" --no-namespace-defs --root-element="EnergySystem" --export="write etree" esdlXML.xsd
+#   C:/Users/matthijssenef/AppData/Local/Programs/Python/Python37/Scripts/generateDS.py -o "esdl_sup.py" -s "esdl_sub.py" --root-element="EnergySystem" --export="write etree" esdlXML.xsd
 #
 # Current working directory (os.getcwd()):
 #   model
@@ -400,7 +399,7 @@ except ImportError as exp:
             return None
         @classmethod
         def gds_reverse_node_mapping(cls, mapping):
-            return dict(((v, k) for k, v in mapping.iteritems()))
+            return dict(((v, k) for k, v in mapping.items()))
         @staticmethod
         def gds_encode(instring):
             if sys.version_info.major == 2:
@@ -772,6 +771,14 @@ class AreaTypeEnum(object):
     PARCEL='PARCEL'
 
 
+class BiomassHeaterTypeEnum(object):
+    UNDEFINED='UNDEFINED'
+    FULLY_AUTOMATD='FULLY_AUTOMATD'
+    SEMI_AUTOMATED='SEMI_AUTOMATED'
+    PELLET_FIRED='PELLET_FIRED'
+    CHP='CHP'
+
+
 class BuildingTypeEnum(object):
     UNDEFINED='UNDEFINED'
     RESIDENTIAL='RESIDENTIAL'
@@ -811,6 +818,12 @@ class ConsTypeEnum(object):
     FINAL='FINAL'
 
 
+class CoolingDeviceType(object):
+    UNDEFINED='UNDEFINED'
+    FLOOR_COOLING='FLOOR_COOLING'
+    AIR_CONDITIONING='AIR_CONDITIONING'
+
+
 class CostUnitEnum(object):
     UNDEFINED='UNDEFINED'
     MONEY_IN_EUR='MONEY_IN_EUR'
@@ -843,6 +856,12 @@ class EnergyLabelEnum(object):
     LABEL_APP='LABEL_APP'
     LABEL_APPP='LABEL_APPP'
     LABEL_APPPP='LABEL_APPPP'
+
+
+class GasConversionTypeEnum(object):
+    UNDEFINED='UNDEFINED'
+    SMR='SMR'
+    ATR='ATR'
 
 
 class GasHeaterTypeEnum(object):
@@ -894,6 +913,15 @@ class HeatDemandTypeEnum(object):
     OTHER='OTHER'
 
 
+class HeatRadiationDeviceTypeEnum(object):
+    UNDEFINED='UNDEFINED'
+    HT_RADIATOR='HT_RADIATOR'
+    LT_RADIATOR='LT_RADIATOR'
+    FLOOR_HEATING='FLOOR_HEATING'
+    WALL_HEATING='WALL_HEATING'
+    INFRARED_PANEL='INFRARED_PANEL'
+
+
 class HousingTypeEnum(object):
     UNDEFINED='UNDEFINED'
     OWNER_OCCUPIED_PROPERTY='OWNER_OCCUPIED_PROPERTY'
@@ -933,6 +961,16 @@ class MultiplierEnum(object):
     MICRO='MICRO'
     NANO='NANO'
     PICO='PICO'
+
+
+class PVInstallationTypeEnum(object):
+    UNDEFINED='UNDEFINED'
+    ROOFTOP_PV='ROOFTOP_PV'
+    BUILDING_INTEGRATED_PV='BUILDING_INTEGRATED_PV'
+    WINDOW='WINDOW'
+    ROAD='ROAD'
+    FIELD='FIELD'
+    WATER='WATER'
 
 
 class PhysicalQuantityEnum(object):
@@ -1029,12 +1067,29 @@ class RoofTypeEnum(object):
     COMBINATION='COMBINATION'
 
 
+class RoomHeaterTypeEnum(object):
+    UNDEFINED='UNDEFINED'
+    GAS_STOVE='GAS_STOVE'
+    WOOD_STOVE='WOOD_STOVE'
+    ELECTRIC='ELECTRIC'
+    INFRARED_PANEL='INFRARED_PANEL'
+
+
 class SectorEnum(object):
     UNDEFINED='UNDEFINED'
     GEBOUWDE_OMGEVING='GEBOUWDE_OMGEVING'
     ZAKELIJKE_DIENSTVERLENING='ZAKELIJKE_DIENSTVERLENING'
     INDUSTRIE='INDUSTRIE'
     AGRO_TUINBOUW='AGRO_TUINBOUW'
+
+
+class SolarCollectorTypeEnum(object):
+    UNDEFINED='UNDEFINED'
+    ROOFTOP='ROOFTOP'
+    BUILDING_INTEGRATED_SC='BUILDING_INTEGRATED_SC'
+    ROAD='ROAD'
+    FIELD='FIELD'
+    WATER='WATER'
 
 
 class SourceTypeEnum(object):
@@ -1065,6 +1120,14 @@ class TimeUnit(object):
     YEAR='YEAR'
 
 
+class UTESTypeEnum(object):
+    UNDEFINED='UNDEFINED'
+    HEAT_OPEN='HEAT_OPEN'
+    HEAT_CLOSED='HEAT_CLOSED'
+    COLD_OPEN='COLD_OPEN'
+    COLD_CLOSED='COLD_CLOSED'
+
+
 class UnitEnum(object):
     NONE='NONE'
     JOULE='JOULE'
@@ -1091,6 +1154,8 @@ class UnitEnum(object):
     CUBIC_METRE='CUBIC_METRE'
     LITRE='LITRE'
     WATTSECOND='WATTSECOND'
+    ARE='ARE'
+    HECTARE='HECTARE'
 
 
 class VehicleTypeEnum(object):
@@ -1125,15 +1190,33 @@ class VentilationTypeEnum(object):
     BALANCED_WITH_HEATRECUPERATION='BALANCED_WITH_HEATRECUPERATION'
 
 
+class WaterToPowerTypeEnum(object):
+    UNDEFINED='UNDEFINED'
+    HYDRO_POWER='HYDRO_POWER'
+    WAVE_POWER='WAVE_POWER'
+    TIDAL_POWER='TIDAL_POWER'
+    OSMOTIC_POWER='OSMOTIC_POWER'
+
+
+class WindTurbineTypeEnum(object):
+    UNDEFINED='UNDEFINED'
+    WIND_ON_LAND='WIND_ON_LAND'
+    WIND_AT_SEA='WIND_AT_SEA'
+    WIND_ON_COAST='WIND_ON_COAST'
+    WIND_ON_BUILDING='WIND_ON_BUILDING'
+
+
 class EnergySystem(GeneratedsSuper):
     """This is the entry class to describe an EnergySystem in ESDL"""
     subclass = None
     superclass = None
-    def __init__(self, name=None, description=None, geographicalScope=None, sector=None, measures=None, instance=None, potentials=None, energySystemInformation=None, parties=None, services=None):
+    def __init__(self, name=None, description=None, geographicalScope=None, id=None, sector=None, measures=None, instance=None, potentials=None, energySystemInformation=None, parties=None, services=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         self.name = _cast(None, name)
         self.description = _cast(None, description)
         self.geographicalScope = _cast(None, geographicalScope)
+        self.id = _cast(None, id)
         if sector is None:
             self.sector = []
         else:
@@ -1158,32 +1241,66 @@ class EnergySystem(GeneratedsSuper):
         else:
             return EnergySystem(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_sector(self): return self.sector
-    def set_sector(self, sector): self.sector = sector
-    def add_sector(self, value): self.sector.append(value)
-    def insert_sector_at(self, index, value): self.sector.insert(index, value)
-    def replace_sector_at(self, index, value): self.sector[index] = value
-    def get_measures(self): return self.measures
-    def set_measures(self, measures): self.measures = measures
-    def get_instance(self): return self.instance
-    def set_instance(self, instance): self.instance = instance
-    def add_instance(self, value): self.instance.append(value)
-    def insert_instance_at(self, index, value): self.instance.insert(index, value)
-    def replace_instance_at(self, index, value): self.instance[index] = value
-    def get_potentials(self): return self.potentials
-    def set_potentials(self, potentials): self.potentials = potentials
-    def get_energySystemInformation(self): return self.energySystemInformation
-    def set_energySystemInformation(self, energySystemInformation): self.energySystemInformation = energySystemInformation
-    def get_parties(self): return self.parties
-    def set_parties(self, parties): self.parties = parties
-    def get_services(self): return self.services
-    def set_services(self, services): self.services = services
-    def get_name(self): return self.name
-    def set_name(self, name): self.name = name
-    def get_description(self): return self.description
-    def set_description(self, description): self.description = description
-    def get_geographicalScope(self): return self.geographicalScope
-    def set_geographicalScope(self, geographicalScope): self.geographicalScope = geographicalScope
+    def get_sector(self):
+        return self.sector
+    def set_sector(self, sector):
+        self.sector = sector
+    def add_sector(self, value):
+        self.sector.append(value)
+    def add_sector(self, value):
+        self.sector.append(value)
+    def insert_sector_at(self, index, value):
+        self.sector.insert(index, value)
+    def replace_sector_at(self, index, value):
+        self.sector[index] = value
+    def get_measures(self):
+        return self.measures
+    def set_measures(self, measures):
+        self.measures = measures
+    def get_instance(self):
+        return self.instance
+    def set_instance(self, instance):
+        self.instance = instance
+    def add_instance(self, value):
+        self.instance.append(value)
+    def add_instance(self, value):
+        self.instance.append(value)
+    def insert_instance_at(self, index, value):
+        self.instance.insert(index, value)
+    def replace_instance_at(self, index, value):
+        self.instance[index] = value
+    def get_potentials(self):
+        return self.potentials
+    def set_potentials(self, potentials):
+        self.potentials = potentials
+    def get_energySystemInformation(self):
+        return self.energySystemInformation
+    def set_energySystemInformation(self, energySystemInformation):
+        self.energySystemInformation = energySystemInformation
+    def get_parties(self):
+        return self.parties
+    def set_parties(self, parties):
+        self.parties = parties
+    def get_services(self):
+        return self.services
+    def set_services(self, services):
+        self.services = services
+    def get_name(self):
+        return self.name
+    def set_name(self, name):
+        self.name = name
+    def get_description(self):
+        return self.description
+    def set_description(self, description):
+        self.description = description
+    def get_geographicalScope(self):
+        return self.geographicalScope
+    def set_geographicalScope(self, geographicalScope):
+        self.geographicalScope = geographicalScope
+    def get_id(self):
+        return self.id
+    def set_id(self, id):
+        self.id = id
     def validate_SectorEnum(self, value):
         # Validate type SectorEnum, a restriction on xsd:NCName.
         if value is not None and Validate_simpletypes_:
@@ -1209,7 +1326,7 @@ class EnergySystem(GeneratedsSuper):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='EnergySystem', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='EnergySystem', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('EnergySystem')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -1240,6 +1357,9 @@ class EnergySystem(GeneratedsSuper):
         if self.geographicalScope is not None and 'geographicalScope' not in already_processed:
             already_processed.add('geographicalScope')
             outfile.write(' geographicalScope=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.geographicalScope), input_name='geographicalScope')), ))
+        if self.id is not None and 'id' not in already_processed:
+            already_processed.add('id')
+            outfile.write(' id=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.id), input_name='id')), ))
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='EnergySystem', fromsubclass_=False, pretty_print=True):
         if pretty_print:
             eol_ = '\n'
@@ -1261,15 +1381,17 @@ class EnergySystem(GeneratedsSuper):
             self.services.export(outfile, level, namespaceprefix_, name_='services', pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='EnergySystem', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         if self.name is not None:
             element.set('name', self.gds_format_string(self.name))
         if self.description is not None:
             element.set('description', self.gds_format_string(self.description))
         if self.geographicalScope is not None:
             element.set('geographicalScope', self.gds_format_string(self.geographicalScope))
+        if self.id is not None:
+            element.set('id', self.gds_format_string(self.id))
         for sector_ in self.sector:
             sector_.to_etree(element, name_='sector', mapping_=mapping_)
         if self.measures is not None:
@@ -1290,7 +1412,7 @@ class EnergySystem(GeneratedsSuper):
             services_ = self.services
             services_.to_etree(element, name_='services', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -1312,6 +1434,10 @@ class EnergySystem(GeneratedsSuper):
         if value is not None and 'geographicalScope' not in already_processed:
             already_processed.add('geographicalScope')
             self.geographicalScope = value
+        value = find_attr_value_('id', node)
+        if value is not None and 'id' not in already_processed:
+            already_processed.add('id')
+            self.id = value
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         if nodeName_ == 'sector':
             obj_ = None
@@ -1320,32 +1446,32 @@ class EnergySystem(GeneratedsSuper):
             # validate type SectorEnum
             self.validate_SectorEnum(self.sector[-1])
         elif nodeName_ == 'measures':
-            obj_ = Measures.factory()
+            obj_ = Measures.factory(parent_object_=self)
             obj_.build(child_)
             self.measures = obj_
             obj_.original_tagname_ = 'measures'
         elif nodeName_ == 'instance':
-            obj_ = Instance.factory()
+            obj_ = Instance.factory(parent_object_=self)
             obj_.build(child_)
             self.instance.append(obj_)
             obj_.original_tagname_ = 'instance'
         elif nodeName_ == 'potentials':
-            obj_ = Potentials.factory()
+            obj_ = Potentials.factory(parent_object_=self)
             obj_.build(child_)
             self.potentials = obj_
             obj_.original_tagname_ = 'potentials'
         elif nodeName_ == 'energySystemInformation':
-            obj_ = EnergySystemInformation.factory()
+            obj_ = EnergySystemInformation.factory(parent_object_=self)
             obj_.build(child_)
             self.energySystemInformation = obj_
             obj_.original_tagname_ = 'energySystemInformation'
         elif nodeName_ == 'parties':
-            obj_ = Parties.factory()
+            obj_ = Parties.factory(parent_object_=self)
             obj_.build(child_)
             self.parties = obj_
             obj_.original_tagname_ = 'parties'
         elif nodeName_ == 'services':
-            obj_ = Services.factory()
+            obj_ = Services.factory(parent_object_=self)
             obj_.build(child_)
             self.services = obj_
             obj_.original_tagname_ = 'services'
@@ -1355,17 +1481,18 @@ class EnergySystem(GeneratedsSuper):
 class Area(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, id=None, name=None, scope='UNDEFINED', type_=None, geometryReference=None, buildingDensity=None, potentials=None, containingArea=None, isOwnedBy=None, location=None, contour=None, socialProperties=None, economicProperties=None, asset=None, area=None, mobilityProperties=None, kpiList=None):
+    def __init__(self, id=None, name=None, scope='UNDEFINED', type_=None, geometryReference=None, buildingDensity=None, containingArea=None, isOwnedBy=None, potential=None, location=None, contour=None, socialProperties=None, economicProperties=None, asset=None, area=None, mobilityProperties=None, KPIs=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         self.id = _cast(None, id)
         self.name = _cast(None, name)
         self.scope = _cast(None, scope)
         self.type_ = _cast(None, type_)
         self.geometryReference = _cast(None, geometryReference)
         self.buildingDensity = _cast(float, buildingDensity)
-        self.potentials = _cast(None, potentials)
         self.containingArea = _cast(None, containingArea)
         self.isOwnedBy = _cast(None, isOwnedBy)
+        self.potential = _cast(None, potential)
         self.location = location
         self.contour = contour
         self.socialProperties = socialProperties
@@ -1379,7 +1506,7 @@ class Area(GeneratedsSuper):
         else:
             self.area = area
         self.mobilityProperties = mobilityProperties
-        self.kpiList = kpiList
+        self.KPIs = KPIs
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -1391,46 +1518,92 @@ class Area(GeneratedsSuper):
         else:
             return Area(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_location(self): return self.location
-    def set_location(self, location): self.location = location
-    def get_contour(self): return self.contour
-    def set_contour(self, contour): self.contour = contour
-    def get_socialProperties(self): return self.socialProperties
-    def set_socialProperties(self, socialProperties): self.socialProperties = socialProperties
-    def get_economicProperties(self): return self.economicProperties
-    def set_economicProperties(self, economicProperties): self.economicProperties = economicProperties
-    def get_asset(self): return self.asset
-    def set_asset(self, asset): self.asset = asset
-    def add_asset(self, value): self.asset.append(value)
-    def insert_asset_at(self, index, value): self.asset.insert(index, value)
-    def replace_asset_at(self, index, value): self.asset[index] = value
-    def get_area(self): return self.area
-    def set_area(self, area): self.area = area
-    def add_area(self, value): self.area.append(value)
-    def insert_area_at(self, index, value): self.area.insert(index, value)
-    def replace_area_at(self, index, value): self.area[index] = value
-    def get_mobilityProperties(self): return self.mobilityProperties
-    def set_mobilityProperties(self, mobilityProperties): self.mobilityProperties = mobilityProperties
-    def get_kpiList(self): return self.kpiList
-    def set_kpiList(self, kpiList): self.kpiList = kpiList
-    def get_id(self): return self.id
-    def set_id(self, id): self.id = id
-    def get_name(self): return self.name
-    def set_name(self, name): self.name = name
-    def get_scope(self): return self.scope
-    def set_scope(self, scope): self.scope = scope
-    def get_type(self): return self.type_
-    def set_type(self, type_): self.type_ = type_
-    def get_geometryReference(self): return self.geometryReference
-    def set_geometryReference(self, geometryReference): self.geometryReference = geometryReference
-    def get_buildingDensity(self): return self.buildingDensity
-    def set_buildingDensity(self, buildingDensity): self.buildingDensity = buildingDensity
-    def get_potentials(self): return self.potentials
-    def set_potentials(self, potentials): self.potentials = potentials
-    def get_containingArea(self): return self.containingArea
-    def set_containingArea(self, containingArea): self.containingArea = containingArea
-    def get_isOwnedBy(self): return self.isOwnedBy
-    def set_isOwnedBy(self, isOwnedBy): self.isOwnedBy = isOwnedBy
+    def get_location(self):
+        return self.location
+    def set_location(self, location):
+        self.location = location
+    def get_contour(self):
+        return self.contour
+    def set_contour(self, contour):
+        self.contour = contour
+    def get_socialProperties(self):
+        return self.socialProperties
+    def set_socialProperties(self, socialProperties):
+        self.socialProperties = socialProperties
+    def get_economicProperties(self):
+        return self.economicProperties
+    def set_economicProperties(self, economicProperties):
+        self.economicProperties = economicProperties
+    def get_asset(self):
+        return self.asset
+    def set_asset(self, asset):
+        self.asset = asset
+    def add_asset(self, value):
+        self.asset.append(value)
+    def add_asset_with_type(self, value):
+        self.asset.append(value)
+        value.original_tagname_ = 'asset'
+        value.extensiontype_ = value.__class__.__name__
+    def insert_asset_at(self, index, value):
+        self.asset.insert(index, value)
+    def replace_asset_at(self, index, value):
+        self.asset[index] = value
+    def get_area(self):
+        return self.area
+    def set_area(self, area):
+        self.area = area
+    def add_area(self, value):
+        self.area.append(value)
+    def add_area(self, value):
+        self.area.append(value)
+    def insert_area_at(self, index, value):
+        self.area.insert(index, value)
+    def replace_area_at(self, index, value):
+        self.area[index] = value
+    def get_mobilityProperties(self):
+        return self.mobilityProperties
+    def set_mobilityProperties(self, mobilityProperties):
+        self.mobilityProperties = mobilityProperties
+    def get_KPIs(self):
+        return self.KPIs
+    def set_KPIs(self, KPIs):
+        self.KPIs = KPIs
+    def get_id(self):
+        return self.id
+    def set_id(self, id):
+        self.id = id
+    def get_name(self):
+        return self.name
+    def set_name(self, name):
+        self.name = name
+    def get_scope(self):
+        return self.scope
+    def set_scope(self, scope):
+        self.scope = scope
+    def get_type(self):
+        return self.type_
+    def set_type(self, type_):
+        self.type_ = type_
+    def get_geometryReference(self):
+        return self.geometryReference
+    def set_geometryReference(self, geometryReference):
+        self.geometryReference = geometryReference
+    def get_buildingDensity(self):
+        return self.buildingDensity
+    def set_buildingDensity(self, buildingDensity):
+        self.buildingDensity = buildingDensity
+    def get_containingArea(self):
+        return self.containingArea
+    def set_containingArea(self, containingArea):
+        self.containingArea = containingArea
+    def get_isOwnedBy(self):
+        return self.isOwnedBy
+    def set_isOwnedBy(self, isOwnedBy):
+        self.isOwnedBy = isOwnedBy
+    def get_potential(self):
+        return self.potential
+    def set_potential(self, potential):
+        self.potential = potential
     def hasContent_(self):
         if (
             self.location is not None or
@@ -1440,12 +1613,12 @@ class Area(GeneratedsSuper):
             self.asset or
             self.area or
             self.mobilityProperties is not None or
-            self.kpiList is not None
+            self.KPIs is not None
         ):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Area', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Area', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('Area')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -1485,15 +1658,15 @@ class Area(GeneratedsSuper):
         if self.buildingDensity is not None and 'buildingDensity' not in already_processed:
             already_processed.add('buildingDensity')
             outfile.write(' buildingDensity="%s"' % self.gds_format_double(self.buildingDensity, input_name='buildingDensity'))
-        if self.potentials is not None and 'potentials' not in already_processed:
-            already_processed.add('potentials')
-            outfile.write(' potentials=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.potentials), input_name='potentials')), ))
         if self.containingArea is not None and 'containingArea' not in already_processed:
             already_processed.add('containingArea')
             outfile.write(' containingArea=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.containingArea), input_name='containingArea')), ))
         if self.isOwnedBy is not None and 'isOwnedBy' not in already_processed:
             already_processed.add('isOwnedBy')
             outfile.write(' isOwnedBy=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.isOwnedBy), input_name='isOwnedBy')), ))
+        if self.potential is not None and 'potential' not in already_processed:
+            already_processed.add('potential')
+            outfile.write(' potential=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.potential), input_name='potential')), ))
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='Area', fromsubclass_=False, pretty_print=True):
         if pretty_print:
             eol_ = '\n'
@@ -1513,13 +1686,13 @@ class Area(GeneratedsSuper):
             area_.export(outfile, level, namespaceprefix_, name_='area', pretty_print=pretty_print)
         if self.mobilityProperties is not None:
             self.mobilityProperties.export(outfile, level, namespaceprefix_, name_='mobilityProperties', pretty_print=pretty_print)
-        if self.kpiList is not None:
-            self.kpiList.export(outfile, level, namespaceprefix_, name_='kpiList', pretty_print=pretty_print)
+        if self.KPIs is not None:
+            self.KPIs.export(outfile, level, namespaceprefix_, name_='KPIs', pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='Area', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         if self.id is not None:
             element.set('id', self.gds_format_string(self.id))
         if self.name is not None:
@@ -1532,12 +1705,12 @@ class Area(GeneratedsSuper):
             element.set('geometryReference', self.gds_format_string(self.geometryReference))
         if self.buildingDensity is not None:
             element.set('buildingDensity', self.gds_format_double(self.buildingDensity))
-        if self.potentials is not None:
-            element.set('potentials', self.gds_format_string(self.potentials))
         if self.containingArea is not None:
             element.set('containingArea', self.gds_format_string(self.containingArea))
         if self.isOwnedBy is not None:
             element.set('isOwnedBy', self.gds_format_string(self.isOwnedBy))
+        if self.potential is not None:
+            element.set('potential', self.gds_format_string(self.potential))
         if self.location is not None:
             location_ = self.location
             location_.to_etree(element, name_='location', mapping_=mapping_)
@@ -1557,11 +1730,11 @@ class Area(GeneratedsSuper):
         if self.mobilityProperties is not None:
             mobilityProperties_ = self.mobilityProperties
             mobilityProperties_.to_etree(element, name_='mobilityProperties', mapping_=mapping_)
-        if self.kpiList is not None:
-            kpiList_ = self.kpiList
-            kpiList_.to_etree(element, name_='kpiList', mapping_=mapping_)
+        if self.KPIs is not None:
+            KPIs_ = self.KPIs
+            KPIs_.to_etree(element, name_='KPIs', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -1598,10 +1771,6 @@ class Area(GeneratedsSuper):
                 self.buildingDensity = float(value)
             except ValueError as exp:
                 raise ValueError('Bad float/double attribute (buildingDensity): %s' % exp)
-        value = find_attr_value_('potentials', node)
-        if value is not None and 'potentials' not in already_processed:
-            already_processed.add('potentials')
-            self.potentials = value
         value = find_attr_value_('containingArea', node)
         if value is not None and 'containingArea' not in already_processed:
             already_processed.add('containingArea')
@@ -1610,24 +1779,28 @@ class Area(GeneratedsSuper):
         if value is not None and 'isOwnedBy' not in already_processed:
             already_processed.add('isOwnedBy')
             self.isOwnedBy = value
+        value = find_attr_value_('potential', node)
+        if value is not None and 'potential' not in already_processed:
+            already_processed.add('potential')
+            self.potential = value
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         if nodeName_ == 'location':
-            obj_ = Point.factory()
+            obj_ = Point.factory(parent_object_=self)
             obj_.build(child_)
             self.location = obj_
             obj_.original_tagname_ = 'location'
         elif nodeName_ == 'contour':
-            obj_ = Polygon.factory()
+            obj_ = Polygon.factory(parent_object_=self)
             obj_.build(child_)
             self.contour = obj_
             obj_.original_tagname_ = 'contour'
         elif nodeName_ == 'socialProperties':
-            obj_ = SocialProperties.factory()
+            obj_ = SocialProperties.factory(parent_object_=self)
             obj_.build(child_)
             self.socialProperties = obj_
             obj_.original_tagname_ = 'socialProperties'
         elif nodeName_ == 'economicProperties':
-            obj_ = EconomicProperties.factory()
+            obj_ = EconomicProperties.factory(parent_object_=self)
             obj_.build(child_)
             self.economicProperties = obj_
             obj_.original_tagname_ = 'economicProperties'
@@ -1651,30 +1824,32 @@ class Area(GeneratedsSuper):
             self.asset.append(obj_)
             obj_.original_tagname_ = 'asset'
         elif nodeName_ == 'area':
-            obj_ = Area.factory()
+            obj_ = Area.factory(parent_object_=self)
             obj_.build(child_)
             self.area.append(obj_)
             obj_.original_tagname_ = 'area'
         elif nodeName_ == 'mobilityProperties':
-            obj_ = MobilityProperties.factory()
+            obj_ = MobilityProperties.factory(parent_object_=self)
             obj_.build(child_)
             self.mobilityProperties = obj_
             obj_.original_tagname_ = 'mobilityProperties'
-        elif nodeName_ == 'kpiList':
-            obj_ = KPIList.factory()
+        elif nodeName_ == 'KPIs':
+            obj_ = KPIs.factory(parent_object_=self)
             obj_.build(child_)
-            self.kpiList = obj_
-            obj_.original_tagname_ = 'kpiList'
+            self.KPIs = obj_
+            obj_.original_tagname_ = 'KPIs'
 # end class Area
 
 
 class Port(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, id=None, maxPower=None, energyasset=None, carrier=None, profile=None, extensiontype_=None):
+    def __init__(self, id=None, maxPower=None, simultaneousPower=None, energyasset=None, carrier=None, profile=None, extensiontype_=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         self.id = _cast(None, id)
         self.maxPower = _cast(float, maxPower)
+        self.simultaneousPower = _cast(float, simultaneousPower)
         self.energyasset = _cast(None, energyasset)
         self.carrier = _cast(None, carrier)
         self.profile = profile
@@ -1690,16 +1865,30 @@ class Port(GeneratedsSuper):
         else:
             return Port(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_profile(self): return self.profile
-    def set_profile(self, profile): self.profile = profile
-    def get_id(self): return self.id
-    def set_id(self, id): self.id = id
-    def get_maxPower(self): return self.maxPower
-    def set_maxPower(self, maxPower): self.maxPower = maxPower
-    def get_energyasset(self): return self.energyasset
-    def set_energyasset(self, energyasset): self.energyasset = energyasset
-    def get_carrier(self): return self.carrier
-    def set_carrier(self, carrier): self.carrier = carrier
+    def get_profile(self):
+        return self.profile
+    def set_profile(self, profile):
+        self.profile = profile
+    def get_id(self):
+        return self.id
+    def set_id(self, id):
+        self.id = id
+    def get_maxPower(self):
+        return self.maxPower
+    def set_maxPower(self, maxPower):
+        self.maxPower = maxPower
+    def get_simultaneousPower(self):
+        return self.simultaneousPower
+    def set_simultaneousPower(self, simultaneousPower):
+        self.simultaneousPower = simultaneousPower
+    def get_energyasset(self):
+        return self.energyasset
+    def set_energyasset(self, energyasset):
+        self.energyasset = energyasset
+    def get_carrier(self):
+        return self.carrier
+    def set_carrier(self, carrier):
+        self.carrier = carrier
     def get_extensiontype_(self): return self.extensiontype_
     def set_extensiontype_(self, extensiontype_): self.extensiontype_ = extensiontype_
     def hasContent_(self):
@@ -1709,7 +1898,7 @@ class Port(GeneratedsSuper):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Port', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Port', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('Port')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -1737,6 +1926,9 @@ class Port(GeneratedsSuper):
         if self.maxPower is not None and 'maxPower' not in already_processed:
             already_processed.add('maxPower')
             outfile.write(' maxPower="%s"' % self.gds_format_double(self.maxPower, input_name='maxPower'))
+        if self.simultaneousPower is not None and 'simultaneousPower' not in already_processed:
+            already_processed.add('simultaneousPower')
+            outfile.write(' simultaneousPower="%s"' % self.gds_format_double(self.simultaneousPower, input_name='simultaneousPower'))
         if self.energyasset is not None and 'energyasset' not in already_processed:
             already_processed.add('energyasset')
             outfile.write(' energyasset=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.energyasset), input_name='energyasset')), ))
@@ -1746,7 +1938,7 @@ class Port(GeneratedsSuper):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s"' % self.extensiontype_)
+            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='Port', fromsubclass_=False, pretty_print=True):
         if pretty_print:
             eol_ = '\n'
@@ -1756,15 +1948,17 @@ class Port(GeneratedsSuper):
             self.profile.export(outfile, level, namespaceprefix_, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='Port', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         if self.extensiontype_ is not None:
             element.set('{http://www.w3.org/2001/XMLSchema-instance}type', self.extensiontype_)
         if self.id is not None:
             element.set('id', self.gds_format_string(self.id))
         if self.maxPower is not None:
             element.set('maxPower', self.gds_format_double(self.maxPower))
+        if self.simultaneousPower is not None:
+            element.set('simultaneousPower', self.gds_format_double(self.simultaneousPower))
         if self.energyasset is not None:
             element.set('energyasset', self.gds_format_string(self.energyasset))
         if self.carrier is not None:
@@ -1773,7 +1967,7 @@ class Port(GeneratedsSuper):
             profile_ = self.profile
             profile_.to_etree(element, name_='profile', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -1794,6 +1988,13 @@ class Port(GeneratedsSuper):
                 self.maxPower = float(value)
             except ValueError as exp:
                 raise ValueError('Bad float/double attribute (maxPower): %s' % exp)
+        value = find_attr_value_('simultaneousPower', node)
+        if value is not None and 'simultaneousPower' not in already_processed:
+            already_processed.add('simultaneousPower')
+            try:
+                self.simultaneousPower = float(value)
+            except ValueError as exp:
+                raise ValueError('Bad float/double attribute (simultaneousPower): %s' % exp)
         value = find_attr_value_('energyasset', node)
         if value is not None and 'energyasset' not in already_processed:
             already_processed.add('energyasset')
@@ -1832,9 +2033,10 @@ class Port(GeneratedsSuper):
 class InPort(Port):
     subclass = None
     superclass = Port
-    def __init__(self, id=None, maxPower=None, energyasset=None, carrier=None, profile=None, connectedTo=None):
+    def __init__(self, id=None, maxPower=None, simultaneousPower=None, energyasset=None, carrier=None, profile=None, connectedTo=None, **kwargs_):
         self.original_tagname_ = None
-        super(InPort, self).__init__(id, maxPower, energyasset, carrier, profile, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(InPort, self).__init__(id, maxPower, simultaneousPower, energyasset, carrier, profile,  **kwargs_)
         self.connectedTo = _cast(None, connectedTo)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -1847,8 +2049,10 @@ class InPort(Port):
         else:
             return InPort(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_connectedTo(self): return self.connectedTo
-    def set_connectedTo(self, connectedTo): self.connectedTo = connectedTo
+    def get_connectedTo(self):
+        return self.connectedTo
+    def set_connectedTo(self, connectedTo):
+        self.connectedTo = connectedTo
     def hasContent_(self):
         if (
             super(InPort, self).hasContent_()
@@ -1856,7 +2060,7 @@ class InPort(Port):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='InPort', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='InPort', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('InPort')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -1889,7 +2093,7 @@ class InPort(Port):
         if self.connectedTo is not None:
             element.set('connectedTo', self.gds_format_string(self.connectedTo))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -1913,9 +2117,10 @@ class InPort(Port):
 class OutPort(Port):
     subclass = None
     superclass = Port
-    def __init__(self, id=None, maxPower=None, energyasset=None, carrier=None, profile=None, connectedTo=None):
+    def __init__(self, id=None, maxPower=None, simultaneousPower=None, energyasset=None, carrier=None, profile=None, connectedTo=None, **kwargs_):
         self.original_tagname_ = None
-        super(OutPort, self).__init__(id, maxPower, energyasset, carrier, profile, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(OutPort, self).__init__(id, maxPower, simultaneousPower, energyasset, carrier, profile,  **kwargs_)
         self.connectedTo = _cast(None, connectedTo)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -1928,8 +2133,10 @@ class OutPort(Port):
         else:
             return OutPort(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_connectedTo(self): return self.connectedTo
-    def set_connectedTo(self, connectedTo): self.connectedTo = connectedTo
+    def get_connectedTo(self):
+        return self.connectedTo
+    def set_connectedTo(self, connectedTo):
+        self.connectedTo = connectedTo
     def hasContent_(self):
         if (
             super(OutPort, self).hasContent_()
@@ -1937,7 +2144,7 @@ class OutPort(Port):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='OutPort', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='OutPort', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('OutPort')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -1970,7 +2177,7 @@ class OutPort(Port):
         if self.connectedTo is not None:
             element.set('connectedTo', self.gds_format_string(self.connectedTo))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -1994,8 +2201,9 @@ class OutPort(Port):
 class EconomicProperties(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, averageIncome=None, averageWOZvalue=None, percentageOwnerOccupiedProperties=None, percentageHousingAssociation=None, percentagePrivateRental=None):
+    def __init__(self, averageIncome=None, averageWOZvalue=None, percentageOwnerOccupiedProperties=None, percentageHousingAssociation=None, percentagePrivateRental=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         self.averageIncome = _cast(float, averageIncome)
         self.averageWOZvalue = _cast(float, averageWOZvalue)
         self.percentageOwnerOccupiedProperties = _cast(float, percentageOwnerOccupiedProperties)
@@ -2012,16 +2220,26 @@ class EconomicProperties(GeneratedsSuper):
         else:
             return EconomicProperties(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_averageIncome(self): return self.averageIncome
-    def set_averageIncome(self, averageIncome): self.averageIncome = averageIncome
-    def get_averageWOZvalue(self): return self.averageWOZvalue
-    def set_averageWOZvalue(self, averageWOZvalue): self.averageWOZvalue = averageWOZvalue
-    def get_percentageOwnerOccupiedProperties(self): return self.percentageOwnerOccupiedProperties
-    def set_percentageOwnerOccupiedProperties(self, percentageOwnerOccupiedProperties): self.percentageOwnerOccupiedProperties = percentageOwnerOccupiedProperties
-    def get_percentageHousingAssociation(self): return self.percentageHousingAssociation
-    def set_percentageHousingAssociation(self, percentageHousingAssociation): self.percentageHousingAssociation = percentageHousingAssociation
-    def get_percentagePrivateRental(self): return self.percentagePrivateRental
-    def set_percentagePrivateRental(self, percentagePrivateRental): self.percentagePrivateRental = percentagePrivateRental
+    def get_averageIncome(self):
+        return self.averageIncome
+    def set_averageIncome(self, averageIncome):
+        self.averageIncome = averageIncome
+    def get_averageWOZvalue(self):
+        return self.averageWOZvalue
+    def set_averageWOZvalue(self, averageWOZvalue):
+        self.averageWOZvalue = averageWOZvalue
+    def get_percentageOwnerOccupiedProperties(self):
+        return self.percentageOwnerOccupiedProperties
+    def set_percentageOwnerOccupiedProperties(self, percentageOwnerOccupiedProperties):
+        self.percentageOwnerOccupiedProperties = percentageOwnerOccupiedProperties
+    def get_percentageHousingAssociation(self):
+        return self.percentageHousingAssociation
+    def set_percentageHousingAssociation(self, percentageHousingAssociation):
+        self.percentageHousingAssociation = percentageHousingAssociation
+    def get_percentagePrivateRental(self):
+        return self.percentagePrivateRental
+    def set_percentagePrivateRental(self, percentagePrivateRental):
+        self.percentagePrivateRental = percentagePrivateRental
     def hasContent_(self):
         if (
 
@@ -2029,7 +2247,7 @@ class EconomicProperties(GeneratedsSuper):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='EconomicProperties', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='EconomicProperties', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('EconomicProperties')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -2069,9 +2287,9 @@ class EconomicProperties(GeneratedsSuper):
         pass
     def to_etree(self, parent_element=None, name_='EconomicProperties', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         if self.averageIncome is not None:
             element.set('averageIncome', self.gds_format_double(self.averageIncome))
         if self.averageWOZvalue is not None:
@@ -2083,7 +2301,7 @@ class EconomicProperties(GeneratedsSuper):
         if self.percentagePrivateRental is not None:
             element.set('percentagePrivateRental', self.gds_format_double(self.percentagePrivateRental))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -2136,8 +2354,9 @@ class EconomicProperties(GeneratedsSuper):
 class SocialProperties(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, socialCohesion=None, populationDensity=None, numberOfInhabitants=None):
+    def __init__(self, socialCohesion=None, populationDensity=None, numberOfInhabitants=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         self.socialCohesion = _cast(float, socialCohesion)
         self.populationDensity = _cast(int, populationDensity)
         self.numberOfInhabitants = _cast(int, numberOfInhabitants)
@@ -2152,12 +2371,18 @@ class SocialProperties(GeneratedsSuper):
         else:
             return SocialProperties(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_socialCohesion(self): return self.socialCohesion
-    def set_socialCohesion(self, socialCohesion): self.socialCohesion = socialCohesion
-    def get_populationDensity(self): return self.populationDensity
-    def set_populationDensity(self, populationDensity): self.populationDensity = populationDensity
-    def get_numberOfInhabitants(self): return self.numberOfInhabitants
-    def set_numberOfInhabitants(self, numberOfInhabitants): self.numberOfInhabitants = numberOfInhabitants
+    def get_socialCohesion(self):
+        return self.socialCohesion
+    def set_socialCohesion(self, socialCohesion):
+        self.socialCohesion = socialCohesion
+    def get_populationDensity(self):
+        return self.populationDensity
+    def set_populationDensity(self, populationDensity):
+        self.populationDensity = populationDensity
+    def get_numberOfInhabitants(self):
+        return self.numberOfInhabitants
+    def set_numberOfInhabitants(self, numberOfInhabitants):
+        self.numberOfInhabitants = numberOfInhabitants
     def hasContent_(self):
         if (
 
@@ -2165,7 +2390,7 @@ class SocialProperties(GeneratedsSuper):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='SocialProperties', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='SocialProperties', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('SocialProperties')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -2199,9 +2424,9 @@ class SocialProperties(GeneratedsSuper):
         pass
     def to_etree(self, parent_element=None, name_='SocialProperties', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         if self.socialCohesion is not None:
             element.set('socialCohesion', self.gds_format_double(self.socialCohesion))
         if self.populationDensity is not None:
@@ -2209,7 +2434,7 @@ class SocialProperties(GeneratedsSuper):
         if self.numberOfInhabitants is not None:
             element.set('numberOfInhabitants', self.gds_format_integer(self.numberOfInhabitants))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -2250,14 +2475,16 @@ class Item(GeneratedsSuper):
     the original data"""
     subclass = None
     superclass = None
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, extensiontype_=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, extensiontype_=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         self.id = _cast(None, id)
         self.name = _cast(None, name)
         self.shortName = _cast(None, shortName)
         self.description = _cast(None, description)
         self.originalIdInSource = _cast(None, originalIdInSource)
         self.isOwnedBy = _cast(None, isOwnedBy)
+        self.sector = _cast(None, sector)
         self.dataSource = dataSource
         self.extensiontype_ = extensiontype_
     def factory(*args_, **kwargs_):
@@ -2271,20 +2498,38 @@ class Item(GeneratedsSuper):
         else:
             return Item(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_dataSource(self): return self.dataSource
-    def set_dataSource(self, dataSource): self.dataSource = dataSource
-    def get_id(self): return self.id
-    def set_id(self, id): self.id = id
-    def get_name(self): return self.name
-    def set_name(self, name): self.name = name
-    def get_shortName(self): return self.shortName
-    def set_shortName(self, shortName): self.shortName = shortName
-    def get_description(self): return self.description
-    def set_description(self, description): self.description = description
-    def get_originalIdInSource(self): return self.originalIdInSource
-    def set_originalIdInSource(self, originalIdInSource): self.originalIdInSource = originalIdInSource
-    def get_isOwnedBy(self): return self.isOwnedBy
-    def set_isOwnedBy(self, isOwnedBy): self.isOwnedBy = isOwnedBy
+    def get_dataSource(self):
+        return self.dataSource
+    def set_dataSource(self, dataSource):
+        self.dataSource = dataSource
+    def get_id(self):
+        return self.id
+    def set_id(self, id):
+        self.id = id
+    def get_name(self):
+        return self.name
+    def set_name(self, name):
+        self.name = name
+    def get_shortName(self):
+        return self.shortName
+    def set_shortName(self, shortName):
+        self.shortName = shortName
+    def get_description(self):
+        return self.description
+    def set_description(self, description):
+        self.description = description
+    def get_originalIdInSource(self):
+        return self.originalIdInSource
+    def set_originalIdInSource(self, originalIdInSource):
+        self.originalIdInSource = originalIdInSource
+    def get_isOwnedBy(self):
+        return self.isOwnedBy
+    def set_isOwnedBy(self, isOwnedBy):
+        self.isOwnedBy = isOwnedBy
+    def get_sector(self):
+        return self.sector
+    def set_sector(self, sector):
+        self.sector = sector
     def get_extensiontype_(self): return self.extensiontype_
     def set_extensiontype_(self, extensiontype_): self.extensiontype_ = extensiontype_
     def hasContent_(self):
@@ -2294,7 +2539,7 @@ class Item(GeneratedsSuper):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Item', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Item', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('Item')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -2334,10 +2579,13 @@ class Item(GeneratedsSuper):
         if self.isOwnedBy is not None and 'isOwnedBy' not in already_processed:
             already_processed.add('isOwnedBy')
             outfile.write(' isOwnedBy=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.isOwnedBy), input_name='isOwnedBy')), ))
+        if self.sector is not None and 'sector' not in already_processed:
+            already_processed.add('sector')
+            outfile.write(' sector=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.sector), input_name='sector')), ))
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s"' % self.extensiontype_)
+            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='Item', fromsubclass_=False, pretty_print=True):
         if pretty_print:
             eol_ = '\n'
@@ -2347,9 +2595,9 @@ class Item(GeneratedsSuper):
             self.dataSource.export(outfile, level, namespaceprefix_, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='Item', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         if self.extensiontype_ is not None:
             element.set('{http://www.w3.org/2001/XMLSchema-instance}type', self.extensiontype_)
         if self.id is not None:
@@ -2364,11 +2612,13 @@ class Item(GeneratedsSuper):
             element.set('originalIdInSource', self.gds_format_string(self.originalIdInSource))
         if self.isOwnedBy is not None:
             element.set('isOwnedBy', self.gds_format_string(self.isOwnedBy))
+        if self.sector is not None:
+            element.set('sector', self.gds_format_string(self.sector))
         if self.dataSource is not None:
             dataSource_ = self.dataSource
             dataSource_.to_etree(element, name_='dataSource', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -2402,6 +2652,10 @@ class Item(GeneratedsSuper):
         if value is not None and 'isOwnedBy' not in already_processed:
             already_processed.add('isOwnedBy')
             self.isOwnedBy = value
+        value = find_attr_value_('sector', node)
+        if value is not None and 'sector' not in already_processed:
+            already_processed.add('sector')
+            self.sector = value
         value = find_attr_value_('xsi:type', node)
         if value is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
@@ -2432,12 +2686,17 @@ class Item(GeneratedsSuper):
 class Measures(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, asset=None):
+    def __init__(self, asset=None, measuresCollection=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         if asset is None:
             self.asset = []
         else:
             self.asset = asset
+        if measuresCollection is None:
+            self.measuresCollection = []
+        else:
+            self.measuresCollection = measuresCollection
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -2449,19 +2708,41 @@ class Measures(GeneratedsSuper):
         else:
             return Measures(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_asset(self): return self.asset
-    def set_asset(self, asset): self.asset = asset
-    def add_asset(self, value): self.asset.append(value)
-    def insert_asset_at(self, index, value): self.asset.insert(index, value)
-    def replace_asset_at(self, index, value): self.asset[index] = value
+    def get_asset(self):
+        return self.asset
+    def set_asset(self, asset):
+        self.asset = asset
+    def add_asset(self, value):
+        self.asset.append(value)
+    def add_asset_with_type(self, value):
+        self.asset.append(value)
+        value.original_tagname_ = 'asset'
+        value.extensiontype_ = value.__class__.__name__
+    def insert_asset_at(self, index, value):
+        self.asset.insert(index, value)
+    def replace_asset_at(self, index, value):
+        self.asset[index] = value
+    def get_measuresCollection(self):
+        return self.measuresCollection
+    def set_measuresCollection(self, measuresCollection):
+        self.measuresCollection = measuresCollection
+    def add_measuresCollection(self, value):
+        self.measuresCollection.append(value)
+    def add_measuresCollection(self, value):
+        self.measuresCollection.append(value)
+    def insert_measuresCollection_at(self, index, value):
+        self.measuresCollection.insert(index, value)
+    def replace_measuresCollection_at(self, index, value):
+        self.measuresCollection[index] = value
     def hasContent_(self):
         if (
-            self.asset
+            self.asset or
+            self.measuresCollection
         ):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Measures', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Measures', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('Measures')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -2491,15 +2772,19 @@ class Measures(GeneratedsSuper):
             eol_ = ''
         for asset_ in self.asset:
             asset_.export(outfile, level, namespaceprefix_, pretty_print=pretty_print)
+        for measuresCollection_ in self.measuresCollection:
+            measuresCollection_.export(outfile, level, namespaceprefix_, name_='measuresCollection', pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='Measures', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         for asset_ in self.asset:
             asset_.to_etree(element, name_='asset', mapping_=mapping_)
+        for measuresCollection_ in self.measuresCollection:
+            measuresCollection_.to_etree(element, name_='measuresCollection', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -2530,21 +2815,27 @@ class Measures(GeneratedsSuper):
                     'Class not implemented for <asset> element')
             self.asset.append(obj_)
             obj_.original_tagname_ = 'asset'
+        elif nodeName_ == 'measuresCollection':
+            obj_ = MeasuresCollection.factory(parent_object_=self)
+            obj_.build(child_)
+            self.measuresCollection.append(obj_)
+            obj_.original_tagname_ = 'measuresCollection'
 # end class Measures
 
 
 class Instance(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, id=None, name=None, description=None, detailLevel='UNDEFINED', aggrType=None, date=None, area=None):
+    def __init__(self, id=None, name=None, description=None, detailLevel='UNDEFINED', aggrType=None, area=None, date=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         self.id = _cast(None, id)
         self.name = _cast(None, name)
         self.description = _cast(None, description)
         self.detailLevel = _cast(None, detailLevel)
         self.aggrType = _cast(None, aggrType)
-        self.date = _cast(None, date)
         self.area = area
+        self.date = date
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -2556,28 +2847,43 @@ class Instance(GeneratedsSuper):
         else:
             return Instance(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_area(self): return self.area
-    def set_area(self, area): self.area = area
-    def get_id(self): return self.id
-    def set_id(self, id): self.id = id
-    def get_name(self): return self.name
-    def set_name(self, name): self.name = name
-    def get_description(self): return self.description
-    def set_description(self, description): self.description = description
-    def get_detailLevel(self): return self.detailLevel
-    def set_detailLevel(self, detailLevel): self.detailLevel = detailLevel
-    def get_aggrType(self): return self.aggrType
-    def set_aggrType(self, aggrType): self.aggrType = aggrType
-    def get_date(self): return self.date
-    def set_date(self, date): self.date = date
+    def get_area(self):
+        return self.area
+    def set_area(self, area):
+        self.area = area
+    def get_date(self):
+        return self.date
+    def set_date(self, date):
+        self.date = date
+    def get_id(self):
+        return self.id
+    def set_id(self, id):
+        self.id = id
+    def get_name(self):
+        return self.name
+    def set_name(self, name):
+        self.name = name
+    def get_description(self):
+        return self.description
+    def set_description(self, description):
+        self.description = description
+    def get_detailLevel(self):
+        return self.detailLevel
+    def set_detailLevel(self, detailLevel):
+        self.detailLevel = detailLevel
+    def get_aggrType(self):
+        return self.aggrType
+    def set_aggrType(self, aggrType):
+        self.aggrType = aggrType
     def hasContent_(self):
         if (
-            self.area is not None
+            self.area is not None or
+            self.date is not None
         ):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Instance', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Instance', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('Instance')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -2614,9 +2920,6 @@ class Instance(GeneratedsSuper):
         if self.aggrType is not None and 'aggrType' not in already_processed:
             already_processed.add('aggrType')
             outfile.write(' aggrType=%s' % (quote_attrib(self.aggrType), ))
-        if self.date is not None and 'date' not in already_processed:
-            already_processed.add('date')
-            outfile.write(' date=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.date), input_name='date')), ))
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='Instance', fromsubclass_=False, pretty_print=True):
         if pretty_print:
             eol_ = '\n'
@@ -2624,11 +2927,13 @@ class Instance(GeneratedsSuper):
             eol_ = ''
         if self.area is not None:
             self.area.export(outfile, level, namespaceprefix_, name_='area', pretty_print=pretty_print)
+        if self.date is not None:
+            self.date.export(outfile, level, namespaceprefix_, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='Instance', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         if self.id is not None:
             element.set('id', self.gds_format_string(self.id))
         if self.name is not None:
@@ -2639,13 +2944,14 @@ class Instance(GeneratedsSuper):
             element.set('detailLevel', self.detailLevel)
         if self.aggrType is not None:
             element.set('aggrType', self.aggrType)
-        if self.date is not None:
-            element.set('date', self.gds_format_string(self.date))
         if self.area is not None:
             area_ = self.area
             area_.to_etree(element, name_='area', mapping_=mapping_)
+        if self.date is not None:
+            date_ = self.date
+            date_.to_etree(element, name_='date', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -2675,25 +2981,41 @@ class Instance(GeneratedsSuper):
         if value is not None and 'aggrType' not in already_processed:
             already_processed.add('aggrType')
             self.aggrType = value
-        value = find_attr_value_('date', node)
-        if value is not None and 'date' not in already_processed:
-            already_processed.add('date')
-            self.date = value
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         if nodeName_ == 'area':
-            obj_ = Area.factory()
+            obj_ = Area.factory(parent_object_=self)
             obj_.build(child_)
             self.area = obj_
             obj_.original_tagname_ = 'area'
+        elif nodeName_ == 'date':
+            type_name_ = child_.attrib.get(
+                '{http://www.w3.org/2001/XMLSchema-instance}type')
+            if type_name_ is None:
+                type_name_ = child_.attrib.get('type')
+            if type_name_ is not None:
+                type_names_ = type_name_.split(':')
+                if len(type_names_) == 1:
+                    type_name_ = type_names_[0]
+                else:
+                    type_name_ = type_names_[1]
+                class_ = globals()[type_name_]
+                obj_ = class_.factory()
+                obj_.build(child_)
+            else:
+                raise NotImplementedError(
+                    'Class not implemented for <date> element')
+            self.date = obj_
+            obj_.original_tagname_ = 'date'
 # end class Instance
 
 
 class Service(Item):
     subclass = None
     superclass = Item
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, extensiontype_=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, extensiontype_=None, **kwargs_):
         self.original_tagname_ = None
-        super(Service, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, extensiontype_, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(Service, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, extensiontype_,  **kwargs_)
         self.extensiontype_ = extensiontype_
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -2715,7 +3037,7 @@ class Service(Item):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Service', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Service', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('Service')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -2741,7 +3063,7 @@ class Service(Item):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s"' % self.extensiontype_)
+            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='Service', fromsubclass_=False, pretty_print=True):
         super(Service, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='Service', mapping_=None):
@@ -2749,7 +3071,7 @@ class Service(Item):
         if self.extensiontype_ is not None:
             element.set('{http://www.w3.org/2001/XMLSchema-instance}type', self.extensiontype_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -2773,14 +3095,15 @@ class Service(Item):
 class Potential(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, id=None, name=None, areas=None, asset=None, geometry=None, dataSource=None, extensiontype_=None):
+    def __init__(self, id=None, name=None, geometryReference=None, geometry=None, dataSource=None, quantityAndUnit=None, extensiontype_=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         self.id = _cast(None, id)
         self.name = _cast(None, name)
-        self.areas = _cast(None, areas)
-        self.asset = _cast(None, asset)
+        self.geometryReference = _cast(None, geometryReference)
         self.geometry = geometry
         self.dataSource = dataSource
+        self.quantityAndUnit = quantityAndUnit
         self.extensiontype_ = extensiontype_
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -2793,29 +3116,42 @@ class Potential(GeneratedsSuper):
         else:
             return Potential(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_geometry(self): return self.geometry
-    def set_geometry(self, geometry): self.geometry = geometry
-    def get_dataSource(self): return self.dataSource
-    def set_dataSource(self, dataSource): self.dataSource = dataSource
-    def get_id(self): return self.id
-    def set_id(self, id): self.id = id
-    def get_name(self): return self.name
-    def set_name(self, name): self.name = name
-    def get_areas(self): return self.areas
-    def set_areas(self, areas): self.areas = areas
-    def get_asset(self): return self.asset
-    def set_asset(self, asset): self.asset = asset
+    def get_geometry(self):
+        return self.geometry
+    def set_geometry(self, geometry):
+        self.geometry = geometry
+    def get_dataSource(self):
+        return self.dataSource
+    def set_dataSource(self, dataSource):
+        self.dataSource = dataSource
+    def get_quantityAndUnit(self):
+        return self.quantityAndUnit
+    def set_quantityAndUnit(self, quantityAndUnit):
+        self.quantityAndUnit = quantityAndUnit
+    def get_id(self):
+        return self.id
+    def set_id(self, id):
+        self.id = id
+    def get_name(self):
+        return self.name
+    def set_name(self, name):
+        self.name = name
+    def get_geometryReference(self):
+        return self.geometryReference
+    def set_geometryReference(self, geometryReference):
+        self.geometryReference = geometryReference
     def get_extensiontype_(self): return self.extensiontype_
     def set_extensiontype_(self, extensiontype_): self.extensiontype_ = extensiontype_
     def hasContent_(self):
         if (
             self.geometry is not None or
-            self.dataSource is not None
+            self.dataSource is not None or
+            self.quantityAndUnit is not None
         ):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Potential', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Potential', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('Potential')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -2843,16 +3179,13 @@ class Potential(GeneratedsSuper):
         if self.name is not None and 'name' not in already_processed:
             already_processed.add('name')
             outfile.write(' name=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.name), input_name='name')), ))
-        if self.areas is not None and 'areas' not in already_processed:
-            already_processed.add('areas')
-            outfile.write(' areas=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.areas), input_name='areas')), ))
-        if self.asset is not None and 'asset' not in already_processed:
-            already_processed.add('asset')
-            outfile.write(' asset=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.asset), input_name='asset')), ))
+        if self.geometryReference is not None and 'geometryReference' not in already_processed:
+            already_processed.add('geometryReference')
+            outfile.write(' geometryReference=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.geometryReference), input_name='geometryReference')), ))
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s"' % self.extensiontype_)
+            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='Potential', fromsubclass_=False, pretty_print=True):
         if pretty_print:
             eol_ = '\n'
@@ -2862,29 +3195,32 @@ class Potential(GeneratedsSuper):
             self.geometry.export(outfile, level, namespaceprefix_, pretty_print=pretty_print)
         if self.dataSource is not None:
             self.dataSource.export(outfile, level, namespaceprefix_, pretty_print=pretty_print)
+        if self.quantityAndUnit is not None:
+            self.quantityAndUnit.export(outfile, level, namespaceprefix_, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='Potential', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         if self.extensiontype_ is not None:
             element.set('{http://www.w3.org/2001/XMLSchema-instance}type', self.extensiontype_)
         if self.id is not None:
             element.set('id', self.gds_format_string(self.id))
         if self.name is not None:
             element.set('name', self.gds_format_string(self.name))
-        if self.areas is not None:
-            element.set('areas', self.gds_format_string(self.areas))
-        if self.asset is not None:
-            element.set('asset', self.gds_format_string(self.asset))
+        if self.geometryReference is not None:
+            element.set('geometryReference', self.gds_format_string(self.geometryReference))
         if self.geometry is not None:
             geometry_ = self.geometry
             geometry_.to_etree(element, name_='geometry', mapping_=mapping_)
         if self.dataSource is not None:
             dataSource_ = self.dataSource
             dataSource_.to_etree(element, name_='dataSource', mapping_=mapping_)
+        if self.quantityAndUnit is not None:
+            quantityAndUnit_ = self.quantityAndUnit
+            quantityAndUnit_.to_etree(element, name_='quantityAndUnit', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -2902,14 +3238,10 @@ class Potential(GeneratedsSuper):
         if value is not None and 'name' not in already_processed:
             already_processed.add('name')
             self.name = value
-        value = find_attr_value_('areas', node)
-        if value is not None and 'areas' not in already_processed:
-            already_processed.add('areas')
-            self.areas = value
-        value = find_attr_value_('asset', node)
-        if value is not None and 'asset' not in already_processed:
-            already_processed.add('asset')
-            self.asset = value
+        value = find_attr_value_('geometryReference', node)
+        if value is not None and 'geometryReference' not in already_processed:
+            already_processed.add('geometryReference')
+            self.geometryReference = value
         value = find_attr_value_('xsi:type', node)
         if value is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
@@ -2953,117 +3285,38 @@ class Potential(GeneratedsSuper):
                     'Class not implemented for <dataSource> element')
             self.dataSource = obj_
             obj_.original_tagname_ = 'dataSource'
+        elif nodeName_ == 'quantityAndUnit':
+            type_name_ = child_.attrib.get(
+                '{http://www.w3.org/2001/XMLSchema-instance}type')
+            if type_name_ is None:
+                type_name_ = child_.attrib.get('type')
+            if type_name_ is not None:
+                type_names_ = type_name_.split(':')
+                if len(type_names_) == 1:
+                    type_name_ = type_names_[0]
+                else:
+                    type_name_ = type_names_[1]
+                class_ = globals()[type_name_]
+                obj_ = class_.factory()
+                obj_.build(child_)
+            else:
+                raise NotImplementedError(
+                    'Class not implemented for <quantityAndUnit> element')
+            self.quantityAndUnit = obj_
+            obj_.original_tagname_ = 'quantityAndUnit'
 # end class Potential
-
-
-class WindPotential(Potential):
-    subclass = None
-    superclass = Potential
-    def __init__(self, id=None, name=None, areas=None, asset=None, geometry=None, dataSource=None, windspeed=None, height=None):
-        self.original_tagname_ = None
-        super(WindPotential, self).__init__(id, name, areas, asset, geometry, dataSource, )
-        self.windspeed = _cast(int, windspeed)
-        self.height = _cast(int, height)
-    def factory(*args_, **kwargs_):
-        if CurrentSubclassModule_ is not None:
-            subclass = getSubclassFromModule_(
-                CurrentSubclassModule_, WindPotential)
-            if subclass is not None:
-                return subclass(*args_, **kwargs_)
-        if WindPotential.subclass:
-            return WindPotential.subclass(*args_, **kwargs_)
-        else:
-            return WindPotential(*args_, **kwargs_)
-    factory = staticmethod(factory)
-    def get_windspeed(self): return self.windspeed
-    def set_windspeed(self, windspeed): self.windspeed = windspeed
-    def get_height(self): return self.height
-    def set_height(self, height): self.height = height
-    def hasContent_(self):
-        if (
-            super(WindPotential, self).hasContent_()
-        ):
-            return True
-        else:
-            return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='WindPotential', namespacedef_='', pretty_print=True):
-        imported_ns_def_ = GenerateDSNamespaceDefs_.get('WindPotential')
-        if imported_ns_def_ is not None:
-            namespacedef_ = imported_ns_def_
-        if pretty_print:
-            eol_ = '\n'
-        else:
-            eol_ = ''
-        if self.original_tagname_ is not None:
-            name_ = self.original_tagname_
-        showIndent(outfile, level, pretty_print)
-        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
-        already_processed = set()
-        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='WindPotential')
-        if self.hasContent_():
-            outfile.write('>%s' % (eol_, ))
-            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='WindPotential', pretty_print=pretty_print)
-            showIndent(outfile, level, pretty_print)
-            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
-        else:
-            outfile.write('/>%s' % (eol_, ))
-    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='WindPotential'):
-        super(WindPotential, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='WindPotential')
-        if self.windspeed is not None and 'windspeed' not in already_processed:
-            already_processed.add('windspeed')
-            outfile.write(' windspeed="%s"' % self.gds_format_integer(self.windspeed, input_name='windspeed'))
-        if self.height is not None and 'height' not in already_processed:
-            already_processed.add('height')
-            outfile.write(' height="%s"' % self.gds_format_integer(self.height, input_name='height'))
-    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='WindPotential', fromsubclass_=False, pretty_print=True):
-        super(WindPotential, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
-    def to_etree(self, parent_element=None, name_='WindPotential', mapping_=None):
-        element = super(WindPotential, self).to_etree(parent_element, name_, mapping_)
-        if self.windspeed is not None:
-            element.set('windspeed', self.gds_format_integer(self.windspeed))
-        if self.height is not None:
-            element.set('height', self.gds_format_integer(self.height))
-        if mapping_ is not None:
-            mapping_[self] = element
-        return element
-    def build(self, node):
-        already_processed = set()
-        self.buildAttributes(node, node.attrib, already_processed)
-        for child in node:
-            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
-            self.buildChildren(child, node, nodeName_)
-        return self
-    def buildAttributes(self, node, attrs, already_processed):
-        value = find_attr_value_('windspeed', node)
-        if value is not None and 'windspeed' not in already_processed:
-            already_processed.add('windspeed')
-            try:
-                self.windspeed = int(value)
-            except ValueError as exp:
-                raise_parse_error(node, 'Bad integer attribute: %s' % exp)
-        value = find_attr_value_('height', node)
-        if value is not None and 'height' not in already_processed:
-            already_processed.add('height')
-            try:
-                self.height = int(value)
-            except ValueError as exp:
-                raise_parse_error(node, 'Bad integer attribute: %s' % exp)
-        super(WindPotential, self).buildAttributes(node, attrs, already_processed)
-    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
-        super(WindPotential, self).buildChildren(child_, node, nodeName_, True)
-        pass
-# end class WindPotential
 
 
 class Potentials(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, potential=None):
+    def __init__(self, potentials=None, **kwargs_):
         self.original_tagname_ = None
-        if potential is None:
-            self.potential = []
+        self.parent_object_ = kwargs_.get('parent_object_')
+        if potentials is None:
+            self.potentials = []
         else:
-            self.potential = potential
+            self.potentials = potentials
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -3075,19 +3328,28 @@ class Potentials(GeneratedsSuper):
         else:
             return Potentials(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_potential(self): return self.potential
-    def set_potential(self, potential): self.potential = potential
-    def add_potential(self, value): self.potential.append(value)
-    def insert_potential_at(self, index, value): self.potential.insert(index, value)
-    def replace_potential_at(self, index, value): self.potential[index] = value
+    def get_potentials(self):
+        return self.potentials
+    def set_potentials(self, potentials):
+        self.potentials = potentials
+    def add_potentials(self, value):
+        self.potentials.append(value)
+    def add_potentials_with_type(self, value):
+        self.potentials.append(value)
+        value.original_tagname_ = 'potentials'
+        value.extensiontype_ = value.__class__.__name__
+    def insert_potentials_at(self, index, value):
+        self.potentials.insert(index, value)
+    def replace_potentials_at(self, index, value):
+        self.potentials[index] = value
     def hasContent_(self):
         if (
-            self.potential
+            self.potentials
         ):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Potentials', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Potentials', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('Potentials')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -3115,17 +3377,17 @@ class Potentials(GeneratedsSuper):
             eol_ = '\n'
         else:
             eol_ = ''
-        for potential_ in self.potential:
-            potential_.export(outfile, level, namespaceprefix_, pretty_print=pretty_print)
+        for potentials_ in self.potentials:
+            potentials_.export(outfile, level, namespaceprefix_, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='Potentials', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
-        for potential_ in self.potential:
-            potential_.to_etree(element, name_='potential', mapping_=mapping_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
+        for potentials_ in self.potentials:
+            potentials_.to_etree(element, name_='potentials', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -3137,7 +3399,7 @@ class Potentials(GeneratedsSuper):
     def buildAttributes(self, node, attrs, already_processed):
         pass
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
-        if nodeName_ == 'potential':
+        if nodeName_ == 'potentials':
             type_name_ = child_.attrib.get(
                 '{http://www.w3.org/2001/XMLSchema-instance}type')
             if type_name_ is None:
@@ -3153,17 +3415,18 @@ class Potentials(GeneratedsSuper):
                 obj_.build(child_)
             else:
                 raise NotImplementedError(
-                    'Class not implemented for <potential> element')
-            self.potential.append(obj_)
-            obj_.original_tagname_ = 'potential'
+                    'Class not implemented for <potentials> element')
+            self.potentials.append(obj_)
+            obj_.original_tagname_ = 'potentials'
 # end class Potentials
 
 
 class Carriers(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, carrier=None, dataSource=None):
+    def __init__(self, carrier=None, dataSource=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         if carrier is None:
             self.carrier = []
         else:
@@ -3180,13 +3443,24 @@ class Carriers(GeneratedsSuper):
         else:
             return Carriers(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_carrier(self): return self.carrier
-    def set_carrier(self, carrier): self.carrier = carrier
-    def add_carrier(self, value): self.carrier.append(value)
-    def insert_carrier_at(self, index, value): self.carrier.insert(index, value)
-    def replace_carrier_at(self, index, value): self.carrier[index] = value
-    def get_dataSource(self): return self.dataSource
-    def set_dataSource(self, dataSource): self.dataSource = dataSource
+    def get_carrier(self):
+        return self.carrier
+    def set_carrier(self, carrier):
+        self.carrier = carrier
+    def add_carrier(self, value):
+        self.carrier.append(value)
+    def add_carrier_with_type(self, value):
+        self.carrier.append(value)
+        value.original_tagname_ = 'carrier'
+        value.extensiontype_ = value.__class__.__name__
+    def insert_carrier_at(self, index, value):
+        self.carrier.insert(index, value)
+    def replace_carrier_at(self, index, value):
+        self.carrier[index] = value
+    def get_dataSource(self):
+        return self.dataSource
+    def set_dataSource(self, dataSource):
+        self.dataSource = dataSource
     def hasContent_(self):
         if (
             self.carrier or
@@ -3195,7 +3469,7 @@ class Carriers(GeneratedsSuper):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Carriers', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Carriers', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('Carriers')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -3229,16 +3503,16 @@ class Carriers(GeneratedsSuper):
             self.dataSource.export(outfile, level, namespaceprefix_, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='Carriers', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         for carrier_ in self.carrier:
             carrier_.to_etree(element, name_='carrier', mapping_=mapping_)
         if self.dataSource is not None:
             dataSource_ = self.dataSource
             dataSource_.to_etree(element, name_='dataSource', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -3294,13 +3568,15 @@ class Carriers(GeneratedsSuper):
 class EnergySystemInformation(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, carriers=None, profiles=None, dataSources=None, mobilityFuelInformation=None, quantityAndUnitList=None):
+    def __init__(self, carriers=None, profiles=None, dataSources=None, mobilityFuelInformation=None, quantityAndUnits=None, sectors=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         self.carriers = carriers
         self.profiles = profiles
         self.dataSources = dataSources
         self.mobilityFuelInformation = mobilityFuelInformation
-        self.quantityAndUnitList = quantityAndUnitList
+        self.quantityAndUnits = quantityAndUnits
+        self.sectors = sectors
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -3312,28 +3588,43 @@ class EnergySystemInformation(GeneratedsSuper):
         else:
             return EnergySystemInformation(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_carriers(self): return self.carriers
-    def set_carriers(self, carriers): self.carriers = carriers
-    def get_profiles(self): return self.profiles
-    def set_profiles(self, profiles): self.profiles = profiles
-    def get_dataSources(self): return self.dataSources
-    def set_dataSources(self, dataSources): self.dataSources = dataSources
-    def get_mobilityFuelInformation(self): return self.mobilityFuelInformation
-    def set_mobilityFuelInformation(self, mobilityFuelInformation): self.mobilityFuelInformation = mobilityFuelInformation
-    def get_quantityAndUnitList(self): return self.quantityAndUnitList
-    def set_quantityAndUnitList(self, quantityAndUnitList): self.quantityAndUnitList = quantityAndUnitList
+    def get_carriers(self):
+        return self.carriers
+    def set_carriers(self, carriers):
+        self.carriers = carriers
+    def get_profiles(self):
+        return self.profiles
+    def set_profiles(self, profiles):
+        self.profiles = profiles
+    def get_dataSources(self):
+        return self.dataSources
+    def set_dataSources(self, dataSources):
+        self.dataSources = dataSources
+    def get_mobilityFuelInformation(self):
+        return self.mobilityFuelInformation
+    def set_mobilityFuelInformation(self, mobilityFuelInformation):
+        self.mobilityFuelInformation = mobilityFuelInformation
+    def get_quantityAndUnits(self):
+        return self.quantityAndUnits
+    def set_quantityAndUnits(self, quantityAndUnits):
+        self.quantityAndUnits = quantityAndUnits
+    def get_sectors(self):
+        return self.sectors
+    def set_sectors(self, sectors):
+        self.sectors = sectors
     def hasContent_(self):
         if (
             self.carriers is not None or
             self.profiles is not None or
             self.dataSources is not None or
             self.mobilityFuelInformation is not None or
-            self.quantityAndUnitList is not None
+            self.quantityAndUnits is not None or
+            self.sectors is not None
         ):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='EnergySystemInformation', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='EnergySystemInformation', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('EnergySystemInformation')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -3369,13 +3660,15 @@ class EnergySystemInformation(GeneratedsSuper):
             self.dataSources.export(outfile, level, namespaceprefix_, name_='dataSources', pretty_print=pretty_print)
         if self.mobilityFuelInformation is not None:
             self.mobilityFuelInformation.export(outfile, level, namespaceprefix_, name_='mobilityFuelInformation', pretty_print=pretty_print)
-        if self.quantityAndUnitList is not None:
-            self.quantityAndUnitList.export(outfile, level, namespaceprefix_, name_='quantityAndUnitList', pretty_print=pretty_print)
+        if self.quantityAndUnits is not None:
+            self.quantityAndUnits.export(outfile, level, namespaceprefix_, name_='quantityAndUnits', pretty_print=pretty_print)
+        if self.sectors is not None:
+            self.sectors.export(outfile, level, namespaceprefix_, name_='sectors', pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='EnergySystemInformation', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         if self.carriers is not None:
             carriers_ = self.carriers
             carriers_.to_etree(element, name_='carriers', mapping_=mapping_)
@@ -3388,11 +3681,14 @@ class EnergySystemInformation(GeneratedsSuper):
         if self.mobilityFuelInformation is not None:
             mobilityFuelInformation_ = self.mobilityFuelInformation
             mobilityFuelInformation_.to_etree(element, name_='mobilityFuelInformation', mapping_=mapping_)
-        if self.quantityAndUnitList is not None:
-            quantityAndUnitList_ = self.quantityAndUnitList
-            quantityAndUnitList_.to_etree(element, name_='quantityAndUnitList', mapping_=mapping_)
+        if self.quantityAndUnits is not None:
+            quantityAndUnits_ = self.quantityAndUnits
+            quantityAndUnits_.to_etree(element, name_='quantityAndUnits', mapping_=mapping_)
+        if self.sectors is not None:
+            sectors_ = self.sectors
+            sectors_.to_etree(element, name_='sectors', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -3405,30 +3701,35 @@ class EnergySystemInformation(GeneratedsSuper):
         pass
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         if nodeName_ == 'carriers':
-            obj_ = Carriers.factory()
+            obj_ = Carriers.factory(parent_object_=self)
             obj_.build(child_)
             self.carriers = obj_
             obj_.original_tagname_ = 'carriers'
         elif nodeName_ == 'profiles':
-            obj_ = Profiles.factory()
+            obj_ = Profiles.factory(parent_object_=self)
             obj_.build(child_)
             self.profiles = obj_
             obj_.original_tagname_ = 'profiles'
         elif nodeName_ == 'dataSources':
-            obj_ = DataSources.factory()
+            obj_ = DataSources.factory(parent_object_=self)
             obj_.build(child_)
             self.dataSources = obj_
             obj_.original_tagname_ = 'dataSources'
         elif nodeName_ == 'mobilityFuelInformation':
-            obj_ = MobilityFuelInformation.factory()
+            obj_ = MobilityFuelInformation.factory(parent_object_=self)
             obj_.build(child_)
             self.mobilityFuelInformation = obj_
             obj_.original_tagname_ = 'mobilityFuelInformation'
-        elif nodeName_ == 'quantityAndUnitList':
-            obj_ = QuantityAndUnitList.factory()
+        elif nodeName_ == 'quantityAndUnits':
+            obj_ = QuantityAndUnits.factory(parent_object_=self)
             obj_.build(child_)
-            self.quantityAndUnitList = obj_
-            obj_.original_tagname_ = 'quantityAndUnitList'
+            self.quantityAndUnits = obj_
+            obj_.original_tagname_ = 'quantityAndUnits'
+        elif nodeName_ == 'sectors':
+            obj_ = Sectors.factory(parent_object_=self)
+            obj_.build(child_)
+            self.sectors = obj_
+            obj_.original_tagname_ = 'sectors'
 # end class EnergySystemInformation
 
 
@@ -3440,8 +3741,9 @@ class GenericProfile(GeneratedsSuper):
     Energy Information System or a timeseries database)"""
     subclass = None
     superclass = None
-    def __init__(self, name=None, profileType='UNDEFINED', id=None, dataSource=None, profileQuantityAndUnit=None, extensiontype_=None):
+    def __init__(self, name=None, profileType='UNDEFINED', id=None, dataSource=None, profileQuantityAndUnit=None, extensiontype_=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         self.name = _cast(None, name)
         self.profileType = _cast(None, profileType)
         self.id = _cast(None, id)
@@ -3459,16 +3761,26 @@ class GenericProfile(GeneratedsSuper):
         else:
             return GenericProfile(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_dataSource(self): return self.dataSource
-    def set_dataSource(self, dataSource): self.dataSource = dataSource
-    def get_profileQuantityAndUnit(self): return self.profileQuantityAndUnit
-    def set_profileQuantityAndUnit(self, profileQuantityAndUnit): self.profileQuantityAndUnit = profileQuantityAndUnit
-    def get_name(self): return self.name
-    def set_name(self, name): self.name = name
-    def get_profileType(self): return self.profileType
-    def set_profileType(self, profileType): self.profileType = profileType
-    def get_id(self): return self.id
-    def set_id(self, id): self.id = id
+    def get_dataSource(self):
+        return self.dataSource
+    def set_dataSource(self, dataSource):
+        self.dataSource = dataSource
+    def get_profileQuantityAndUnit(self):
+        return self.profileQuantityAndUnit
+    def set_profileQuantityAndUnit(self, profileQuantityAndUnit):
+        self.profileQuantityAndUnit = profileQuantityAndUnit
+    def get_name(self):
+        return self.name
+    def set_name(self, name):
+        self.name = name
+    def get_profileType(self):
+        return self.profileType
+    def set_profileType(self, profileType):
+        self.profileType = profileType
+    def get_id(self):
+        return self.id
+    def set_id(self, id):
+        self.id = id
     def get_extensiontype_(self): return self.extensiontype_
     def set_extensiontype_(self, extensiontype_): self.extensiontype_ = extensiontype_
     def hasContent_(self):
@@ -3479,7 +3791,7 @@ class GenericProfile(GeneratedsSuper):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='GenericProfile', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='GenericProfile', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('GenericProfile')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -3513,7 +3825,7 @@ class GenericProfile(GeneratedsSuper):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s"' % self.extensiontype_)
+            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='GenericProfile', fromsubclass_=False, pretty_print=True):
         if pretty_print:
             eol_ = '\n'
@@ -3525,9 +3837,9 @@ class GenericProfile(GeneratedsSuper):
             self.profileQuantityAndUnit.export(outfile, level, namespaceprefix_, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='GenericProfile', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         if self.extensiontype_ is not None:
             element.set('{http://www.w3.org/2001/XMLSchema-instance}type', self.extensiontype_)
         if self.name is not None:
@@ -3543,7 +3855,7 @@ class GenericProfile(GeneratedsSuper):
             profileQuantityAndUnit_ = self.profileQuantityAndUnit
             profileQuantityAndUnit_.to_etree(element, name_='profileQuantityAndUnit', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -3617,9 +3929,10 @@ class StaticProfile(GenericProfile):
     profile"""
     subclass = None
     superclass = GenericProfile
-    def __init__(self, name=None, profileType='UNDEFINED', id=None, dataSource=None, profileQuantityAndUnit=None, extensiontype_=None):
+    def __init__(self, name=None, profileType='UNDEFINED', id=None, dataSource=None, profileQuantityAndUnit=None, extensiontype_=None, **kwargs_):
         self.original_tagname_ = None
-        super(StaticProfile, self).__init__(name, profileType, id, dataSource, profileQuantityAndUnit, extensiontype_, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(StaticProfile, self).__init__(name, profileType, id, dataSource, profileQuantityAndUnit, extensiontype_,  **kwargs_)
         self.extensiontype_ = extensiontype_
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -3641,7 +3954,7 @@ class StaticProfile(GenericProfile):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='StaticProfile', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='StaticProfile', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('StaticProfile')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -3667,7 +3980,7 @@ class StaticProfile(GenericProfile):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s"' % self.extensiontype_)
+            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='StaticProfile', fromsubclass_=False, pretty_print=True):
         super(StaticProfile, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='StaticProfile', mapping_=None):
@@ -3675,7 +3988,7 @@ class StaticProfile(GenericProfile):
         if self.extensiontype_ is not None:
             element.set('{http://www.w3.org/2001/XMLSchema-instance}type', self.extensiontype_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -3703,9 +4016,10 @@ class DateTimeProfile(StaticProfile):
     valid for all time after the to-date."""
     subclass = None
     superclass = StaticProfile
-    def __init__(self, name=None, profileType='UNDEFINED', id=None, dataSource=None, profileQuantityAndUnit=None, element=None):
+    def __init__(self, name=None, profileType='UNDEFINED', id=None, dataSource=None, profileQuantityAndUnit=None, element=None, **kwargs_):
         self.original_tagname_ = None
-        super(DateTimeProfile, self).__init__(name, profileType, id, dataSource, profileQuantityAndUnit, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(DateTimeProfile, self).__init__(name, profileType, id, dataSource, profileQuantityAndUnit,  **kwargs_)
         if element is None:
             self.element = []
         else:
@@ -3721,11 +4035,18 @@ class DateTimeProfile(StaticProfile):
         else:
             return DateTimeProfile(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_element(self): return self.element
-    def set_element(self, element): self.element = element
-    def add_element(self, value): self.element.append(value)
-    def insert_element_at(self, index, value): self.element.insert(index, value)
-    def replace_element_at(self, index, value): self.element[index] = value
+    def get_element(self):
+        return self.element
+    def set_element(self, element):
+        self.element = element
+    def add_element(self, value):
+        self.element.append(value)
+    def add_element(self, value):
+        self.element.append(value)
+    def insert_element_at(self, index, value):
+        self.element.insert(index, value)
+    def replace_element_at(self, index, value):
+        self.element[index] = value
     def hasContent_(self):
         if (
             self.element or
@@ -3734,7 +4055,7 @@ class DateTimeProfile(StaticProfile):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='DateTimeProfile', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='DateTimeProfile', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('DateTimeProfile')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -3770,7 +4091,7 @@ class DateTimeProfile(StaticProfile):
         for element_ in self.element:
             element_.to_etree(element, name_='element', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -3783,7 +4104,7 @@ class DateTimeProfile(StaticProfile):
         super(DateTimeProfile, self).buildAttributes(node, attrs, already_processed)
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         if nodeName_ == 'element':
-            obj_ = ProfileElement.factory()
+            obj_ = ProfileElement.factory(parent_object_=self)
             obj_.build(child_)
             self.element.append(obj_)
             obj_.original_tagname_ = 'element'
@@ -3804,8 +4125,9 @@ class ProfileElement(GeneratedsSuper):
     ENERGY_IN_PJincluding the value itselfexclusive the value itself"""
     subclass = None
     superclass = None
-    def __init__(self, from_=None, to=None, value=None):
+    def __init__(self, from_=None, to=None, value=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         self.from_ = _cast(None, from_)
         self.to = _cast(None, to)
         self.value = _cast(float, value)
@@ -3820,12 +4142,18 @@ class ProfileElement(GeneratedsSuper):
         else:
             return ProfileElement(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_from(self): return self.from_
-    def set_from(self, from_): self.from_ = from_
-    def get_to(self): return self.to
-    def set_to(self, to): self.to = to
-    def get_value(self): return self.value
-    def set_value(self, value): self.value = value
+    def get_from(self):
+        return self.from_
+    def set_from(self, from_):
+        self.from_ = from_
+    def get_to(self):
+        return self.to
+    def set_to(self, to):
+        self.to = to
+    def get_value(self):
+        return self.value
+    def set_value(self, value):
+        self.value = value
     def hasContent_(self):
         if (
 
@@ -3833,7 +4161,7 @@ class ProfileElement(GeneratedsSuper):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='ProfileElement', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='ProfileElement', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('ProfileElement')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -3867,9 +4195,9 @@ class ProfileElement(GeneratedsSuper):
         pass
     def to_etree(self, parent_element=None, name_='ProfileElement', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         if self.from_ is not None:
             element.set('from', self.gds_format_string(self.from_))
         if self.to is not None:
@@ -3877,7 +4205,7 @@ class ProfileElement(GeneratedsSuper):
         if self.value is not None:
             element.set('value', self.gds_format_double(self.value))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -3918,9 +4246,10 @@ class ExternalProfile(GenericProfile):
     is '1'."""
     subclass = None
     superclass = GenericProfile
-    def __init__(self, name=None, profileType='UNDEFINED', id=None, dataSource=None, profileQuantityAndUnit=None, multiplier=1.0, extensiontype_=None):
+    def __init__(self, name=None, profileType='UNDEFINED', id=None, dataSource=None, profileQuantityAndUnit=None, multiplier=1.0, extensiontype_=None, **kwargs_):
         self.original_tagname_ = None
-        super(ExternalProfile, self).__init__(name, profileType, id, dataSource, profileQuantityAndUnit, extensiontype_, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(ExternalProfile, self).__init__(name, profileType, id, dataSource, profileQuantityAndUnit, extensiontype_,  **kwargs_)
         self.multiplier = _cast(float, multiplier)
         self.extensiontype_ = extensiontype_
     def factory(*args_, **kwargs_):
@@ -3934,8 +4263,10 @@ class ExternalProfile(GenericProfile):
         else:
             return ExternalProfile(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_multiplier(self): return self.multiplier
-    def set_multiplier(self, multiplier): self.multiplier = multiplier
+    def get_multiplier(self):
+        return self.multiplier
+    def set_multiplier(self, multiplier):
+        self.multiplier = multiplier
     def get_extensiontype_(self): return self.extensiontype_
     def set_extensiontype_(self, extensiontype_): self.extensiontype_ = extensiontype_
     def hasContent_(self):
@@ -3945,7 +4276,7 @@ class ExternalProfile(GenericProfile):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='ExternalProfile', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='ExternalProfile', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('ExternalProfile')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -3974,7 +4305,7 @@ class ExternalProfile(GenericProfile):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s"' % self.extensiontype_)
+            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='ExternalProfile', fromsubclass_=False, pretty_print=True):
         super(ExternalProfile, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='ExternalProfile', mapping_=None):
@@ -3984,7 +4315,7 @@ class ExternalProfile(GenericProfile):
         if self.multiplier is not None:
             element.set('multiplier', self.gds_format_double(self.multiplier))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -4020,9 +4351,10 @@ class SingleValue(StaticProfile):
     ignored and it will always return this value."""
     subclass = None
     superclass = StaticProfile
-    def __init__(self, name=None, profileType='UNDEFINED', id=None, dataSource=None, profileQuantityAndUnit=None, value=None):
+    def __init__(self, name=None, profileType='UNDEFINED', id=None, dataSource=None, profileQuantityAndUnit=None, value=None, **kwargs_):
         self.original_tagname_ = None
-        super(SingleValue, self).__init__(name, profileType, id, dataSource, profileQuantityAndUnit, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(SingleValue, self).__init__(name, profileType, id, dataSource, profileQuantityAndUnit,  **kwargs_)
         self.value = _cast(float, value)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -4035,8 +4367,10 @@ class SingleValue(StaticProfile):
         else:
             return SingleValue(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_value(self): return self.value
-    def set_value(self, value): self.value = value
+    def get_value(self):
+        return self.value
+    def set_value(self, value):
+        self.value = value
     def hasContent_(self):
         if (
             super(SingleValue, self).hasContent_()
@@ -4044,7 +4378,7 @@ class SingleValue(StaticProfile):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='SingleValue', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='SingleValue', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('SingleValue')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -4077,7 +4411,7 @@ class SingleValue(StaticProfile):
         if self.value is not None:
             element.set('value', self.gds_format_double(self.value))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -4104,8 +4438,9 @@ class SingleValue(StaticProfile):
 class GenericDistribution(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, name=None, extensiontype_=None):
+    def __init__(self, name=None, extensiontype_=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         self.name = _cast(None, name)
         self.extensiontype_ = extensiontype_
     def factory(*args_, **kwargs_):
@@ -4119,8 +4454,10 @@ class GenericDistribution(GeneratedsSuper):
         else:
             return GenericDistribution(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_name(self): return self.name
-    def set_name(self, name): self.name = name
+    def get_name(self):
+        return self.name
+    def set_name(self, name):
+        self.name = name
     def get_extensiontype_(self): return self.extensiontype_
     def set_extensiontype_(self, extensiontype_): self.extensiontype_ = extensiontype_
     def hasContent_(self):
@@ -4130,7 +4467,7 @@ class GenericDistribution(GeneratedsSuper):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='GenericDistribution', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='GenericDistribution', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('GenericDistribution')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -4157,20 +4494,20 @@ class GenericDistribution(GeneratedsSuper):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s"' % self.extensiontype_)
+            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='GenericDistribution', fromsubclass_=False, pretty_print=True):
         pass
     def to_etree(self, parent_element=None, name_='GenericDistribution', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         if self.extensiontype_ is not None:
             element.set('{http://www.w3.org/2001/XMLSchema-instance}type', self.extensiontype_)
         if self.name is not None:
             element.set('name', self.gds_format_string(self.name))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -4196,8 +4533,9 @@ class GenericDistribution(GeneratedsSuper):
 class Percentile(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, percentile=None, value=None):
+    def __init__(self, percentile=None, value=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         self.percentile = _cast(int, percentile)
         self.value = _cast(float, value)
     def factory(*args_, **kwargs_):
@@ -4211,10 +4549,14 @@ class Percentile(GeneratedsSuper):
         else:
             return Percentile(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_percentile(self): return self.percentile
-    def set_percentile(self, percentile): self.percentile = percentile
-    def get_value(self): return self.value
-    def set_value(self, value): self.value = value
+    def get_percentile(self):
+        return self.percentile
+    def set_percentile(self, percentile):
+        self.percentile = percentile
+    def get_value(self):
+        return self.value
+    def set_value(self, value):
+        self.value = value
     def hasContent_(self):
         if (
 
@@ -4222,7 +4564,7 @@ class Percentile(GeneratedsSuper):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Percentile', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Percentile', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('Percentile')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -4253,15 +4595,15 @@ class Percentile(GeneratedsSuper):
         pass
     def to_etree(self, parent_element=None, name_='Percentile', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         if self.percentile is not None:
             element.set('percentile', self.gds_format_integer(self.percentile))
         if self.value is not None:
             element.set('value', self.gds_format_double(self.value))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -4293,9 +4635,10 @@ class Percentile(GeneratedsSuper):
 class PercentileDistribution(GenericDistribution):
     subclass = None
     superclass = GenericDistribution
-    def __init__(self, name=None, percentile=None):
+    def __init__(self, name=None, percentile=None, **kwargs_):
         self.original_tagname_ = None
-        super(PercentileDistribution, self).__init__(name, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(PercentileDistribution, self).__init__(name,  **kwargs_)
         if percentile is None:
             self.percentile = []
         else:
@@ -4311,11 +4654,18 @@ class PercentileDistribution(GenericDistribution):
         else:
             return PercentileDistribution(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_percentile(self): return self.percentile
-    def set_percentile(self, percentile): self.percentile = percentile
-    def add_percentile(self, value): self.percentile.append(value)
-    def insert_percentile_at(self, index, value): self.percentile.insert(index, value)
-    def replace_percentile_at(self, index, value): self.percentile[index] = value
+    def get_percentile(self):
+        return self.percentile
+    def set_percentile(self, percentile):
+        self.percentile = percentile
+    def add_percentile(self, value):
+        self.percentile.append(value)
+    def add_percentile(self, value):
+        self.percentile.append(value)
+    def insert_percentile_at(self, index, value):
+        self.percentile.insert(index, value)
+    def replace_percentile_at(self, index, value):
+        self.percentile[index] = value
     def hasContent_(self):
         if (
             self.percentile or
@@ -4324,7 +4674,7 @@ class PercentileDistribution(GenericDistribution):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='PercentileDistribution', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='PercentileDistribution', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('PercentileDistribution')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -4360,7 +4710,7 @@ class PercentileDistribution(GenericDistribution):
         for percentile_ in self.percentile:
             percentile_.to_etree(element, name_='percentile', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -4373,7 +4723,7 @@ class PercentileDistribution(GenericDistribution):
         super(PercentileDistribution, self).buildAttributes(node, attrs, already_processed)
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         if nodeName_ == 'percentile':
-            obj_ = Percentile.factory()
+            obj_ = Percentile.factory(parent_object_=self)
             obj_.build(child_)
             self.percentile.append(obj_)
             obj_.original_tagname_ = 'percentile'
@@ -4384,8 +4734,9 @@ class PercentileDistribution(GenericDistribution):
 class CostInformation(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, investmentCosts=None, installationCosts=None, O_and_MCosts=None):
+    def __init__(self, investmentCosts=None, installationCosts=None, O_and_MCosts=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         self.investmentCosts = investmentCosts
         self.installationCosts = installationCosts
         self.O_and_MCosts = O_and_MCosts
@@ -4400,12 +4751,18 @@ class CostInformation(GeneratedsSuper):
         else:
             return CostInformation(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_investmentCosts(self): return self.investmentCosts
-    def set_investmentCosts(self, investmentCosts): self.investmentCosts = investmentCosts
-    def get_installationCosts(self): return self.installationCosts
-    def set_installationCosts(self, installationCosts): self.installationCosts = installationCosts
-    def get_O_and_MCosts(self): return self.O_and_MCosts
-    def set_O_and_MCosts(self, O_and_MCosts): self.O_and_MCosts = O_and_MCosts
+    def get_investmentCosts(self):
+        return self.investmentCosts
+    def set_investmentCosts(self, investmentCosts):
+        self.investmentCosts = investmentCosts
+    def get_installationCosts(self):
+        return self.installationCosts
+    def set_installationCosts(self, installationCosts):
+        self.installationCosts = installationCosts
+    def get_O_and_MCosts(self):
+        return self.O_and_MCosts
+    def set_O_and_MCosts(self, O_and_MCosts):
+        self.O_and_MCosts = O_and_MCosts
     def hasContent_(self):
         if (
             self.investmentCosts is not None or
@@ -4415,7 +4772,7 @@ class CostInformation(GeneratedsSuper):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='CostInformation', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='CostInformation', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('CostInformation')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -4451,9 +4808,9 @@ class CostInformation(GeneratedsSuper):
             self.O_and_MCosts.export(outfile, level, namespaceprefix_, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='CostInformation', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         if self.investmentCosts is not None:
             investmentCosts_ = self.investmentCosts
             investmentCosts_.to_etree(element, name_='investmentCosts', mapping_=mapping_)
@@ -4464,7 +4821,7 @@ class CostInformation(GeneratedsSuper):
             O_and_MCosts_ = self.O_and_MCosts
             O_and_MCosts_.to_etree(element, name_='O_and_MCosts', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -4539,9 +4896,10 @@ class CostInformation(GeneratedsSuper):
 class LabelDistribution(GenericDistribution):
     subclass = None
     superclass = GenericDistribution
-    def __init__(self, name=None, extensiontype_=None):
+    def __init__(self, name=None, extensiontype_=None, **kwargs_):
         self.original_tagname_ = None
-        super(LabelDistribution, self).__init__(name, extensiontype_, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(LabelDistribution, self).__init__(name, extensiontype_,  **kwargs_)
         self.extensiontype_ = extensiontype_
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -4563,7 +4921,7 @@ class LabelDistribution(GenericDistribution):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='LabelDistribution', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='LabelDistribution', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('LabelDistribution')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -4588,7 +4946,7 @@ class LabelDistribution(GenericDistribution):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s"' % self.extensiontype_)
+            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='LabelDistribution', fromsubclass_=False, pretty_print=True):
         super(LabelDistribution, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
         pass
@@ -4597,7 +4955,7 @@ class LabelDistribution(GenericDistribution):
         if self.extensiontype_ is not None:
             element.set('{http://www.w3.org/2001/XMLSchema-instance}type', self.extensiontype_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -4621,9 +4979,10 @@ class LabelDistribution(GenericDistribution):
 class StringLabelDistribution(LabelDistribution):
     subclass = None
     superclass = LabelDistribution
-    def __init__(self, name=None, stringPerc=None):
+    def __init__(self, name=None, stringPerc=None, **kwargs_):
         self.original_tagname_ = None
-        super(StringLabelDistribution, self).__init__(name, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(StringLabelDistribution, self).__init__(name,  **kwargs_)
         if stringPerc is None:
             self.stringPerc = []
         else:
@@ -4639,11 +4998,18 @@ class StringLabelDistribution(LabelDistribution):
         else:
             return StringLabelDistribution(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_stringPerc(self): return self.stringPerc
-    def set_stringPerc(self, stringPerc): self.stringPerc = stringPerc
-    def add_stringPerc(self, value): self.stringPerc.append(value)
-    def insert_stringPerc_at(self, index, value): self.stringPerc.insert(index, value)
-    def replace_stringPerc_at(self, index, value): self.stringPerc[index] = value
+    def get_stringPerc(self):
+        return self.stringPerc
+    def set_stringPerc(self, stringPerc):
+        self.stringPerc = stringPerc
+    def add_stringPerc(self, value):
+        self.stringPerc.append(value)
+    def add_stringPerc(self, value):
+        self.stringPerc.append(value)
+    def insert_stringPerc_at(self, index, value):
+        self.stringPerc.insert(index, value)
+    def replace_stringPerc_at(self, index, value):
+        self.stringPerc[index] = value
     def hasContent_(self):
         if (
             self.stringPerc or
@@ -4652,7 +5018,7 @@ class StringLabelDistribution(LabelDistribution):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='StringLabelDistribution', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='StringLabelDistribution', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('StringLabelDistribution')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -4688,7 +5054,7 @@ class StringLabelDistribution(LabelDistribution):
         for stringPerc_ in self.stringPerc:
             stringPerc_.to_etree(element, name_='stringPerc', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -4701,7 +5067,7 @@ class StringLabelDistribution(LabelDistribution):
         super(StringLabelDistribution, self).buildAttributes(node, attrs, already_processed)
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         if nodeName_ == 'stringPerc':
-            obj_ = StringPerc.factory()
+            obj_ = StringPerc.factory(parent_object_=self)
             obj_.build(child_)
             self.stringPerc.append(obj_)
             obj_.original_tagname_ = 'stringPerc'
@@ -4712,9 +5078,10 @@ class StringLabelDistribution(LabelDistribution):
 class EnergyLabelDistribution(LabelDistribution):
     subclass = None
     superclass = LabelDistribution
-    def __init__(self, name=None, labelPerc=None):
+    def __init__(self, name=None, labelPerc=None, **kwargs_):
         self.original_tagname_ = None
-        super(EnergyLabelDistribution, self).__init__(name, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(EnergyLabelDistribution, self).__init__(name,  **kwargs_)
         if labelPerc is None:
             self.labelPerc = []
         else:
@@ -4730,11 +5097,18 @@ class EnergyLabelDistribution(LabelDistribution):
         else:
             return EnergyLabelDistribution(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_labelPerc(self): return self.labelPerc
-    def set_labelPerc(self, labelPerc): self.labelPerc = labelPerc
-    def add_labelPerc(self, value): self.labelPerc.append(value)
-    def insert_labelPerc_at(self, index, value): self.labelPerc.insert(index, value)
-    def replace_labelPerc_at(self, index, value): self.labelPerc[index] = value
+    def get_labelPerc(self):
+        return self.labelPerc
+    def set_labelPerc(self, labelPerc):
+        self.labelPerc = labelPerc
+    def add_labelPerc(self, value):
+        self.labelPerc.append(value)
+    def add_labelPerc(self, value):
+        self.labelPerc.append(value)
+    def insert_labelPerc_at(self, index, value):
+        self.labelPerc.insert(index, value)
+    def replace_labelPerc_at(self, index, value):
+        self.labelPerc[index] = value
     def hasContent_(self):
         if (
             self.labelPerc or
@@ -4743,7 +5117,7 @@ class EnergyLabelDistribution(LabelDistribution):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='EnergyLabelDistribution', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='EnergyLabelDistribution', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('EnergyLabelDistribution')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -4779,7 +5153,7 @@ class EnergyLabelDistribution(LabelDistribution):
         for labelPerc_ in self.labelPerc:
             labelPerc_.to_etree(element, name_='labelPerc', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -4792,7 +5166,7 @@ class EnergyLabelDistribution(LabelDistribution):
         super(EnergyLabelDistribution, self).buildAttributes(node, attrs, already_processed)
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         if nodeName_ == 'labelPerc':
-            obj_ = EnergyLabelPerc.factory()
+            obj_ = EnergyLabelPerc.factory(parent_object_=self)
             obj_.build(child_)
             self.labelPerc.append(obj_)
             obj_.original_tagname_ = 'labelPerc'
@@ -4803,8 +5177,9 @@ class EnergyLabelDistribution(LabelDistribution):
 class StringPerc(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, label=None, percentage=None):
+    def __init__(self, label=None, percentage=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         self.label = _cast(None, label)
         self.percentage = _cast(float, percentage)
     def factory(*args_, **kwargs_):
@@ -4818,10 +5193,14 @@ class StringPerc(GeneratedsSuper):
         else:
             return StringPerc(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_label(self): return self.label
-    def set_label(self, label): self.label = label
-    def get_percentage(self): return self.percentage
-    def set_percentage(self, percentage): self.percentage = percentage
+    def get_label(self):
+        return self.label
+    def set_label(self, label):
+        self.label = label
+    def get_percentage(self):
+        return self.percentage
+    def set_percentage(self, percentage):
+        self.percentage = percentage
     def hasContent_(self):
         if (
 
@@ -4829,7 +5208,7 @@ class StringPerc(GeneratedsSuper):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='StringPerc', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='StringPerc', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('StringPerc')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -4860,15 +5239,15 @@ class StringPerc(GeneratedsSuper):
         pass
     def to_etree(self, parent_element=None, name_='StringPerc', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         if self.label is not None:
             element.set('label', self.gds_format_string(self.label))
         if self.percentage is not None:
             element.set('percentage', self.gds_format_double(self.percentage))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -4897,8 +5276,9 @@ class StringPerc(GeneratedsSuper):
 class EnergyLabelPerc(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, energyLabel=None, percentage=None):
+    def __init__(self, energyLabel=None, percentage=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         self.energyLabel = _cast(None, energyLabel)
         self.percentage = _cast(float, percentage)
     def factory(*args_, **kwargs_):
@@ -4912,10 +5292,14 @@ class EnergyLabelPerc(GeneratedsSuper):
         else:
             return EnergyLabelPerc(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_energyLabel(self): return self.energyLabel
-    def set_energyLabel(self, energyLabel): self.energyLabel = energyLabel
-    def get_percentage(self): return self.percentage
-    def set_percentage(self, percentage): self.percentage = percentage
+    def get_energyLabel(self):
+        return self.energyLabel
+    def set_energyLabel(self, energyLabel):
+        self.energyLabel = energyLabel
+    def get_percentage(self):
+        return self.percentage
+    def set_percentage(self, percentage):
+        self.percentage = percentage
     def hasContent_(self):
         if (
 
@@ -4923,7 +5307,7 @@ class EnergyLabelPerc(GeneratedsSuper):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='EnergyLabelPerc', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='EnergyLabelPerc', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('EnergyLabelPerc')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -4954,15 +5338,15 @@ class EnergyLabelPerc(GeneratedsSuper):
         pass
     def to_etree(self, parent_element=None, name_='EnergyLabelPerc', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         if self.energyLabel is not None:
             element.set('energyLabel', self.energyLabel)
         if self.percentage is not None:
             element.set('percentage', self.gds_format_double(self.percentage))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -4991,9 +5375,10 @@ class EnergyLabelPerc(GeneratedsSuper):
 class FromToDistribution(LabelDistribution):
     subclass = None
     superclass = LabelDistribution
-    def __init__(self, name=None, fromToPerc=None):
+    def __init__(self, name=None, fromToPerc=None, **kwargs_):
         self.original_tagname_ = None
-        super(FromToDistribution, self).__init__(name, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(FromToDistribution, self).__init__(name,  **kwargs_)
         if fromToPerc is None:
             self.fromToPerc = []
         else:
@@ -5009,11 +5394,18 @@ class FromToDistribution(LabelDistribution):
         else:
             return FromToDistribution(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_fromToPerc(self): return self.fromToPerc
-    def set_fromToPerc(self, fromToPerc): self.fromToPerc = fromToPerc
-    def add_fromToPerc(self, value): self.fromToPerc.append(value)
-    def insert_fromToPerc_at(self, index, value): self.fromToPerc.insert(index, value)
-    def replace_fromToPerc_at(self, index, value): self.fromToPerc[index] = value
+    def get_fromToPerc(self):
+        return self.fromToPerc
+    def set_fromToPerc(self, fromToPerc):
+        self.fromToPerc = fromToPerc
+    def add_fromToPerc(self, value):
+        self.fromToPerc.append(value)
+    def add_fromToPerc(self, value):
+        self.fromToPerc.append(value)
+    def insert_fromToPerc_at(self, index, value):
+        self.fromToPerc.insert(index, value)
+    def replace_fromToPerc_at(self, index, value):
+        self.fromToPerc[index] = value
     def hasContent_(self):
         if (
             self.fromToPerc or
@@ -5022,7 +5414,7 @@ class FromToDistribution(LabelDistribution):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='FromToDistribution', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='FromToDistribution', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('FromToDistribution')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -5058,7 +5450,7 @@ class FromToDistribution(LabelDistribution):
         for fromToPerc_ in self.fromToPerc:
             fromToPerc_.to_etree(element, name_='fromToPerc', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -5071,7 +5463,7 @@ class FromToDistribution(LabelDistribution):
         super(FromToDistribution, self).buildAttributes(node, attrs, already_processed)
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         if nodeName_ == 'fromToPerc':
-            obj_ = FromToPerc.factory()
+            obj_ = FromToPerc.factory(parent_object_=self)
             obj_.build(child_)
             self.fromToPerc.append(obj_)
             obj_.original_tagname_ = 'fromToPerc'
@@ -5082,8 +5474,9 @@ class FromToDistribution(LabelDistribution):
 class FromToPerc(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, from_=None, to=None, percentage=None):
+    def __init__(self, from_=None, to=None, percentage=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         self.from_ = _cast(float, from_)
         self.to = _cast(float, to)
         self.percentage = _cast(float, percentage)
@@ -5098,12 +5491,18 @@ class FromToPerc(GeneratedsSuper):
         else:
             return FromToPerc(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_from(self): return self.from_
-    def set_from(self, from_): self.from_ = from_
-    def get_to(self): return self.to
-    def set_to(self, to): self.to = to
-    def get_percentage(self): return self.percentage
-    def set_percentage(self, percentage): self.percentage = percentage
+    def get_from(self):
+        return self.from_
+    def set_from(self, from_):
+        self.from_ = from_
+    def get_to(self):
+        return self.to
+    def set_to(self, to):
+        self.to = to
+    def get_percentage(self):
+        return self.percentage
+    def set_percentage(self, percentage):
+        self.percentage = percentage
     def hasContent_(self):
         if (
 
@@ -5111,7 +5510,7 @@ class FromToPerc(GeneratedsSuper):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='FromToPerc', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='FromToPerc', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('FromToPerc')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -5145,9 +5544,9 @@ class FromToPerc(GeneratedsSuper):
         pass
     def to_etree(self, parent_element=None, name_='FromToPerc', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         if self.from_ is not None:
             element.set('from', self.gds_format_double(self.from_))
         if self.to is not None:
@@ -5155,7 +5554,7 @@ class FromToPerc(GeneratedsSuper):
         if self.percentage is not None:
             element.set('percentage', self.gds_format_double(self.percentage))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -5194,8 +5593,9 @@ class FromToPerc(GeneratedsSuper):
 class PItemStat(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, value=None, sigma=None):
+    def __init__(self, value=None, sigma=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         self.value = _cast(float, value)
         self.sigma = _cast(float, sigma)
     def factory(*args_, **kwargs_):
@@ -5209,10 +5609,14 @@ class PItemStat(GeneratedsSuper):
         else:
             return PItemStat(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_value(self): return self.value
-    def set_value(self, value): self.value = value
-    def get_sigma(self): return self.sigma
-    def set_sigma(self, sigma): self.sigma = sigma
+    def get_value(self):
+        return self.value
+    def set_value(self, value):
+        self.value = value
+    def get_sigma(self):
+        return self.sigma
+    def set_sigma(self, sigma):
+        self.sigma = sigma
     def hasContent_(self):
         if (
 
@@ -5220,7 +5624,7 @@ class PItemStat(GeneratedsSuper):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='PItemStat', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='PItemStat', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('PItemStat')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -5251,15 +5655,15 @@ class PItemStat(GeneratedsSuper):
         pass
     def to_etree(self, parent_element=None, name_='PItemStat', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         if self.value is not None:
             element.set('value', self.gds_format_double(self.value))
         if self.sigma is not None:
             element.set('sigma', self.gds_format_double(self.sigma))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -5291,8 +5695,9 @@ class PItemStat(GeneratedsSuper):
 class AbstractVariance(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, extensiontype_=None):
+    def __init__(self, extensiontype_=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         self.extensiontype_ = extensiontype_
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -5314,7 +5719,7 @@ class AbstractVariance(GeneratedsSuper):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='AbstractVariance', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='AbstractVariance', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('AbstractVariance')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -5338,19 +5743,19 @@ class AbstractVariance(GeneratedsSuper):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s"' % self.extensiontype_)
+            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
         pass
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='AbstractVariance', fromsubclass_=False, pretty_print=True):
         pass
     def to_etree(self, parent_element=None, name_='AbstractVariance', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         if self.extensiontype_ is not None:
             element.set('{http://www.w3.org/2001/XMLSchema-instance}type', self.extensiontype_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -5372,9 +5777,10 @@ class AbstractVariance(GeneratedsSuper):
 class SymetricVariance(AbstractVariance):
     subclass = None
     superclass = AbstractVariance
-    def __init__(self, sigma=None):
+    def __init__(self, sigma=None, **kwargs_):
         self.original_tagname_ = None
-        super(SymetricVariance, self).__init__()
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(SymetricVariance, self).__init__( **kwargs_)
         self.sigma = _cast(float, sigma)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -5387,8 +5793,10 @@ class SymetricVariance(AbstractVariance):
         else:
             return SymetricVariance(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_sigma(self): return self.sigma
-    def set_sigma(self, sigma): self.sigma = sigma
+    def get_sigma(self):
+        return self.sigma
+    def set_sigma(self, sigma):
+        self.sigma = sigma
     def hasContent_(self):
         if (
             super(SymetricVariance, self).hasContent_()
@@ -5396,7 +5804,7 @@ class SymetricVariance(AbstractVariance):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='SymetricVariance', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='SymetricVariance', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('SymetricVariance')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -5429,7 +5837,7 @@ class SymetricVariance(AbstractVariance):
         if self.sigma is not None:
             element.set('sigma', self.gds_format_double(self.sigma))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -5456,9 +5864,10 @@ class SymetricVariance(AbstractVariance):
 class AssymetricVariance(AbstractVariance):
     subclass = None
     superclass = AbstractVariance
-    def __init__(self, sigmaMin=None, sigmaPlus=None):
+    def __init__(self, sigmaMin=None, sigmaPlus=None, **kwargs_):
         self.original_tagname_ = None
-        super(AssymetricVariance, self).__init__()
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(AssymetricVariance, self).__init__( **kwargs_)
         self.sigmaMin = _cast(float, sigmaMin)
         self.sigmaPlus = _cast(float, sigmaPlus)
     def factory(*args_, **kwargs_):
@@ -5472,10 +5881,14 @@ class AssymetricVariance(AbstractVariance):
         else:
             return AssymetricVariance(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_sigmaMin(self): return self.sigmaMin
-    def set_sigmaMin(self, sigmaMin): self.sigmaMin = sigmaMin
-    def get_sigmaPlus(self): return self.sigmaPlus
-    def set_sigmaPlus(self, sigmaPlus): self.sigmaPlus = sigmaPlus
+    def get_sigmaMin(self):
+        return self.sigmaMin
+    def set_sigmaMin(self, sigmaMin):
+        self.sigmaMin = sigmaMin
+    def get_sigmaPlus(self):
+        return self.sigmaPlus
+    def set_sigmaPlus(self, sigmaPlus):
+        self.sigmaPlus = sigmaPlus
     def hasContent_(self):
         if (
             super(AssymetricVariance, self).hasContent_()
@@ -5483,7 +5896,7 @@ class AssymetricVariance(AbstractVariance):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='AssymetricVariance', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='AssymetricVariance', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('AssymetricVariance')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -5521,7 +5934,7 @@ class AssymetricVariance(AbstractVariance):
         if self.sigmaPlus is not None:
             element.set('sigmaPlus', self.gds_format_double(self.sigmaPlus))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -5555,9 +5968,10 @@ class AssymetricVariance(AbstractVariance):
 class DoubleAssymetricVariance(AbstractVariance):
     subclass = None
     superclass = AbstractVariance
-    def __init__(self, plus34perc=None, plus48perc=None, min34perc=None, min48perc=None):
+    def __init__(self, plus34perc=None, plus48perc=None, min34perc=None, min48perc=None, **kwargs_):
         self.original_tagname_ = None
-        super(DoubleAssymetricVariance, self).__init__()
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(DoubleAssymetricVariance, self).__init__( **kwargs_)
         self.plus34perc = _cast(float, plus34perc)
         self.plus48perc = _cast(float, plus48perc)
         self.min34perc = _cast(float, min34perc)
@@ -5573,14 +5987,22 @@ class DoubleAssymetricVariance(AbstractVariance):
         else:
             return DoubleAssymetricVariance(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_plus34perc(self): return self.plus34perc
-    def set_plus34perc(self, plus34perc): self.plus34perc = plus34perc
-    def get_plus48perc(self): return self.plus48perc
-    def set_plus48perc(self, plus48perc): self.plus48perc = plus48perc
-    def get_min34perc(self): return self.min34perc
-    def set_min34perc(self, min34perc): self.min34perc = min34perc
-    def get_min48perc(self): return self.min48perc
-    def set_min48perc(self, min48perc): self.min48perc = min48perc
+    def get_plus34perc(self):
+        return self.plus34perc
+    def set_plus34perc(self, plus34perc):
+        self.plus34perc = plus34perc
+    def get_plus48perc(self):
+        return self.plus48perc
+    def set_plus48perc(self, plus48perc):
+        self.plus48perc = plus48perc
+    def get_min34perc(self):
+        return self.min34perc
+    def set_min34perc(self, min34perc):
+        self.min34perc = min34perc
+    def get_min48perc(self):
+        return self.min48perc
+    def set_min48perc(self, min48perc):
+        self.min48perc = min48perc
     def hasContent_(self):
         if (
             super(DoubleAssymetricVariance, self).hasContent_()
@@ -5588,7 +6010,7 @@ class DoubleAssymetricVariance(AbstractVariance):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='DoubleAssymetricVariance', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='DoubleAssymetricVariance', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('DoubleAssymetricVariance')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -5636,7 +6058,7 @@ class DoubleAssymetricVariance(AbstractVariance):
         if self.min48perc is not None:
             element.set('min48perc', self.gds_format_double(self.min48perc))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -5684,13 +6106,15 @@ class DoubleAssymetricVariance(AbstractVariance):
 class Party(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, id=None, name=None, shortName=None, owns=None, ownsArea=None):
+    def __init__(self, id=None, name=None, shortName=None, owns=None, ownsArea=None, sector=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         self.id = _cast(None, id)
         self.name = _cast(None, name)
         self.shortName = _cast(None, shortName)
         self.owns = _cast(None, owns)
         self.ownsArea = _cast(None, ownsArea)
+        self.sector = _cast(None, sector)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -5702,16 +6126,30 @@ class Party(GeneratedsSuper):
         else:
             return Party(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_id(self): return self.id
-    def set_id(self, id): self.id = id
-    def get_name(self): return self.name
-    def set_name(self, name): self.name = name
-    def get_shortName(self): return self.shortName
-    def set_shortName(self, shortName): self.shortName = shortName
-    def get_owns(self): return self.owns
-    def set_owns(self, owns): self.owns = owns
-    def get_ownsArea(self): return self.ownsArea
-    def set_ownsArea(self, ownsArea): self.ownsArea = ownsArea
+    def get_id(self):
+        return self.id
+    def set_id(self, id):
+        self.id = id
+    def get_name(self):
+        return self.name
+    def set_name(self, name):
+        self.name = name
+    def get_shortName(self):
+        return self.shortName
+    def set_shortName(self, shortName):
+        self.shortName = shortName
+    def get_owns(self):
+        return self.owns
+    def set_owns(self, owns):
+        self.owns = owns
+    def get_ownsArea(self):
+        return self.ownsArea
+    def set_ownsArea(self, ownsArea):
+        self.ownsArea = ownsArea
+    def get_sector(self):
+        return self.sector
+    def set_sector(self, sector):
+        self.sector = sector
     def hasContent_(self):
         if (
 
@@ -5719,7 +6157,7 @@ class Party(GeneratedsSuper):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Party', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Party', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('Party')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -5755,13 +6193,16 @@ class Party(GeneratedsSuper):
         if self.ownsArea is not None and 'ownsArea' not in already_processed:
             already_processed.add('ownsArea')
             outfile.write(' ownsArea=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.ownsArea), input_name='ownsArea')), ))
+        if self.sector is not None and 'sector' not in already_processed:
+            already_processed.add('sector')
+            outfile.write(' sector=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.sector), input_name='sector')), ))
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='Party', fromsubclass_=False, pretty_print=True):
         pass
     def to_etree(self, parent_element=None, name_='Party', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         if self.id is not None:
             element.set('id', self.gds_format_string(self.id))
         if self.name is not None:
@@ -5772,8 +6213,10 @@ class Party(GeneratedsSuper):
             element.set('owns', self.gds_format_string(self.owns))
         if self.ownsArea is not None:
             element.set('ownsArea', self.gds_format_string(self.ownsArea))
+        if self.sector is not None:
+            element.set('sector', self.gds_format_string(self.sector))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -5803,6 +6246,10 @@ class Party(GeneratedsSuper):
         if value is not None and 'ownsArea' not in already_processed:
             already_processed.add('ownsArea')
             self.ownsArea = value
+        value = find_attr_value_('sector', node)
+        if value is not None and 'sector' not in already_processed:
+            already_processed.add('sector')
+            self.sector = value
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         pass
 # end class Party
@@ -5813,9 +6260,10 @@ class URIProfile(ExternalProfile):
     URI (e.g. a URI to a profile in Energy Information System (EIS))"""
     subclass = None
     superclass = ExternalProfile
-    def __init__(self, name=None, profileType='UNDEFINED', id=None, dataSource=None, profileQuantityAndUnit=None, multiplier=1.0, URI=None):
+    def __init__(self, name=None, profileType='UNDEFINED', id=None, dataSource=None, profileQuantityAndUnit=None, multiplier=1.0, URI=None, **kwargs_):
         self.original_tagname_ = None
-        super(URIProfile, self).__init__(name, profileType, id, dataSource, profileQuantityAndUnit, multiplier, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(URIProfile, self).__init__(name, profileType, id, dataSource, profileQuantityAndUnit, multiplier,  **kwargs_)
         self.URI = _cast(None, URI)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -5828,8 +6276,10 @@ class URIProfile(ExternalProfile):
         else:
             return URIProfile(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_URI(self): return self.URI
-    def set_URI(self, URI): self.URI = URI
+    def get_URI(self):
+        return self.URI
+    def set_URI(self, URI):
+        self.URI = URI
     def hasContent_(self):
         if (
             super(URIProfile, self).hasContent_()
@@ -5837,7 +6287,7 @@ class URIProfile(ExternalProfile):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='URIProfile', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='URIProfile', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('URIProfile')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -5870,7 +6320,7 @@ class URIProfile(ExternalProfile):
         if self.URI is not None:
             element.set('URI', self.gds_format_string(self.URI))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -5896,9 +6346,10 @@ class DatabaseProfile(ExternalProfile):
     in the WHERE-clause of a query"""
     subclass = None
     superclass = ExternalProfile
-    def __init__(self, name=None, profileType='UNDEFINED', id=None, dataSource=None, profileQuantityAndUnit=None, multiplier=1.0, host=None, port=None, database=None, filters=None, extensiontype_=None):
+    def __init__(self, name=None, profileType='UNDEFINED', id=None, dataSource=None, profileQuantityAndUnit=None, multiplier=1.0, host=None, port=None, database=None, filters=None, extensiontype_=None, **kwargs_):
         self.original_tagname_ = None
-        super(DatabaseProfile, self).__init__(name, profileType, id, dataSource, profileQuantityAndUnit, multiplier, extensiontype_, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(DatabaseProfile, self).__init__(name, profileType, id, dataSource, profileQuantityAndUnit, multiplier, extensiontype_,  **kwargs_)
         self.host = _cast(None, host)
         self.port = _cast(int, port)
         self.database = _cast(None, database)
@@ -5915,14 +6366,22 @@ class DatabaseProfile(ExternalProfile):
         else:
             return DatabaseProfile(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_host(self): return self.host
-    def set_host(self, host): self.host = host
-    def get_port(self): return self.port
-    def set_port(self, port): self.port = port
-    def get_database(self): return self.database
-    def set_database(self, database): self.database = database
-    def get_filters(self): return self.filters
-    def set_filters(self, filters): self.filters = filters
+    def get_host(self):
+        return self.host
+    def set_host(self, host):
+        self.host = host
+    def get_port(self):
+        return self.port
+    def set_port(self, port):
+        self.port = port
+    def get_database(self):
+        return self.database
+    def set_database(self, database):
+        self.database = database
+    def get_filters(self):
+        return self.filters
+    def set_filters(self, filters):
+        self.filters = filters
     def get_extensiontype_(self): return self.extensiontype_
     def set_extensiontype_(self, extensiontype_): self.extensiontype_ = extensiontype_
     def hasContent_(self):
@@ -5932,7 +6391,7 @@ class DatabaseProfile(ExternalProfile):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='DatabaseProfile', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='DatabaseProfile', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('DatabaseProfile')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -5970,7 +6429,7 @@ class DatabaseProfile(ExternalProfile):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s"' % self.extensiontype_)
+            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='DatabaseProfile', fromsubclass_=False, pretty_print=True):
         super(DatabaseProfile, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='DatabaseProfile', mapping_=None):
@@ -5986,7 +6445,7 @@ class DatabaseProfile(ExternalProfile):
         if self.filters is not None:
             element.set('filters', self.gds_format_string(self.filters))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -6031,9 +6490,10 @@ class InfluxDBProfile(DatabaseProfile):
     InfluxDB timeseries query"""
     subclass = None
     superclass = DatabaseProfile
-    def __init__(self, name=None, profileType='UNDEFINED', id=None, dataSource=None, profileQuantityAndUnit=None, multiplier=1.0, host=None, port=None, database=None, filters=None, measurement=None, field=None):
+    def __init__(self, name=None, profileType='UNDEFINED', id=None, dataSource=None, profileQuantityAndUnit=None, multiplier=1.0, host=None, port=None, database=None, filters=None, measurement=None, field=None, **kwargs_):
         self.original_tagname_ = None
-        super(InfluxDBProfile, self).__init__(name, profileType, id, dataSource, profileQuantityAndUnit, multiplier, host, port, database, filters, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(InfluxDBProfile, self).__init__(name, profileType, id, dataSource, profileQuantityAndUnit, multiplier, host, port, database, filters,  **kwargs_)
         self.measurement = _cast(None, measurement)
         self.field = _cast(None, field)
     def factory(*args_, **kwargs_):
@@ -6047,10 +6507,14 @@ class InfluxDBProfile(DatabaseProfile):
         else:
             return InfluxDBProfile(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_measurement(self): return self.measurement
-    def set_measurement(self, measurement): self.measurement = measurement
-    def get_field(self): return self.field
-    def set_field(self, field): self.field = field
+    def get_measurement(self):
+        return self.measurement
+    def set_measurement(self, measurement):
+        self.measurement = measurement
+    def get_field(self):
+        return self.field
+    def set_field(self, field):
+        self.field = field
     def hasContent_(self):
         if (
             super(InfluxDBProfile, self).hasContent_()
@@ -6058,7 +6522,7 @@ class InfluxDBProfile(DatabaseProfile):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='InfluxDBProfile', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='InfluxDBProfile', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('InfluxDBProfile')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -6096,7 +6560,7 @@ class InfluxDBProfile(DatabaseProfile):
         if self.field is not None:
             element.set('field', self.gds_format_string(self.field))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -6124,8 +6588,9 @@ class InfluxDBProfile(DatabaseProfile):
 class Geometry(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, extensiontype_=None):
+    def __init__(self, extensiontype_=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         self.extensiontype_ = extensiontype_
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -6147,7 +6612,7 @@ class Geometry(GeneratedsSuper):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Geometry', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Geometry', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('Geometry')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -6171,19 +6636,19 @@ class Geometry(GeneratedsSuper):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s"' % self.extensiontype_)
+            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
         pass
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='Geometry', fromsubclass_=False, pretty_print=True):
         pass
     def to_etree(self, parent_element=None, name_='Geometry', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         if self.extensiontype_ is not None:
             element.set('{http://www.w3.org/2001/XMLSchema-instance}type', self.extensiontype_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -6205,8 +6670,9 @@ class Geometry(GeneratedsSuper):
 class Carrier(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, name=None, id=None, cost=None, dataSource=None, extensiontype_=None):
+    def __init__(self, name=None, id=None, cost=None, dataSource=None, extensiontype_=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         self.name = _cast(None, name)
         self.id = _cast(None, id)
         self.cost = cost
@@ -6223,14 +6689,22 @@ class Carrier(GeneratedsSuper):
         else:
             return Carrier(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_cost(self): return self.cost
-    def set_cost(self, cost): self.cost = cost
-    def get_dataSource(self): return self.dataSource
-    def set_dataSource(self, dataSource): self.dataSource = dataSource
-    def get_name(self): return self.name
-    def set_name(self, name): self.name = name
-    def get_id(self): return self.id
-    def set_id(self, id): self.id = id
+    def get_cost(self):
+        return self.cost
+    def set_cost(self, cost):
+        self.cost = cost
+    def get_dataSource(self):
+        return self.dataSource
+    def set_dataSource(self, dataSource):
+        self.dataSource = dataSource
+    def get_name(self):
+        return self.name
+    def set_name(self, name):
+        self.name = name
+    def get_id(self):
+        return self.id
+    def set_id(self, id):
+        self.id = id
     def get_extensiontype_(self): return self.extensiontype_
     def set_extensiontype_(self, extensiontype_): self.extensiontype_ = extensiontype_
     def hasContent_(self):
@@ -6241,7 +6715,7 @@ class Carrier(GeneratedsSuper):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Carrier', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Carrier', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('Carrier')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -6272,7 +6746,7 @@ class Carrier(GeneratedsSuper):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s"' % self.extensiontype_)
+            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='Carrier', fromsubclass_=False, pretty_print=True):
         if pretty_print:
             eol_ = '\n'
@@ -6284,9 +6758,9 @@ class Carrier(GeneratedsSuper):
             self.dataSource.export(outfile, level, namespaceprefix_, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='Carrier', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         if self.extensiontype_ is not None:
             element.set('{http://www.w3.org/2001/XMLSchema-instance}type', self.extensiontype_)
         if self.name is not None:
@@ -6300,7 +6774,7 @@ class Carrier(GeneratedsSuper):
             dataSource_ = self.dataSource
             dataSource_.to_etree(element, name_='dataSource', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -6367,9 +6841,10 @@ class Carrier(GeneratedsSuper):
 class Range(StaticProfile):
     subclass = None
     superclass = StaticProfile
-    def __init__(self, name=None, profileType='UNDEFINED', id=None, dataSource=None, profileQuantityAndUnit=None, minValue=None, maxValue=None):
+    def __init__(self, name=None, profileType='UNDEFINED', id=None, dataSource=None, profileQuantityAndUnit=None, minValue=None, maxValue=None, **kwargs_):
         self.original_tagname_ = None
-        super(Range, self).__init__(name, profileType, id, dataSource, profileQuantityAndUnit, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(Range, self).__init__(name, profileType, id, dataSource, profileQuantityAndUnit,  **kwargs_)
         self.minValue = _cast(float, minValue)
         self.maxValue = _cast(float, maxValue)
     def factory(*args_, **kwargs_):
@@ -6383,10 +6858,14 @@ class Range(StaticProfile):
         else:
             return Range(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_minValue(self): return self.minValue
-    def set_minValue(self, minValue): self.minValue = minValue
-    def get_maxValue(self): return self.maxValue
-    def set_maxValue(self, maxValue): self.maxValue = maxValue
+    def get_minValue(self):
+        return self.minValue
+    def set_minValue(self, minValue):
+        self.minValue = minValue
+    def get_maxValue(self):
+        return self.maxValue
+    def set_maxValue(self, maxValue):
+        self.maxValue = maxValue
     def hasContent_(self):
         if (
             super(Range, self).hasContent_()
@@ -6394,7 +6873,7 @@ class Range(StaticProfile):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Range', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Range', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('Range')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -6432,7 +6911,7 @@ class Range(StaticProfile):
         if self.maxValue is not None:
             element.set('maxValue', self.gds_format_double(self.maxValue))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -6463,95 +6942,12 @@ class Range(StaticProfile):
 # end class Range
 
 
-class SolarFieldPotential(Potential):
-    subclass = None
-    superclass = Potential
-    def __init__(self, id=None, name=None, areas=None, asset=None, geometry=None, dataSource=None, solarIrradiance=None):
-        self.original_tagname_ = None
-        super(SolarFieldPotential, self).__init__(id, name, areas, asset, geometry, dataSource, )
-        self.solarIrradiance = _cast(float, solarIrradiance)
-    def factory(*args_, **kwargs_):
-        if CurrentSubclassModule_ is not None:
-            subclass = getSubclassFromModule_(
-                CurrentSubclassModule_, SolarFieldPotential)
-            if subclass is not None:
-                return subclass(*args_, **kwargs_)
-        if SolarFieldPotential.subclass:
-            return SolarFieldPotential.subclass(*args_, **kwargs_)
-        else:
-            return SolarFieldPotential(*args_, **kwargs_)
-    factory = staticmethod(factory)
-    def get_solarIrradiance(self): return self.solarIrradiance
-    def set_solarIrradiance(self, solarIrradiance): self.solarIrradiance = solarIrradiance
-    def hasContent_(self):
-        if (
-            super(SolarFieldPotential, self).hasContent_()
-        ):
-            return True
-        else:
-            return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='SolarFieldPotential', namespacedef_='', pretty_print=True):
-        imported_ns_def_ = GenerateDSNamespaceDefs_.get('SolarFieldPotential')
-        if imported_ns_def_ is not None:
-            namespacedef_ = imported_ns_def_
-        if pretty_print:
-            eol_ = '\n'
-        else:
-            eol_ = ''
-        if self.original_tagname_ is not None:
-            name_ = self.original_tagname_
-        showIndent(outfile, level, pretty_print)
-        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
-        already_processed = set()
-        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='SolarFieldPotential')
-        if self.hasContent_():
-            outfile.write('>%s' % (eol_, ))
-            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='SolarFieldPotential', pretty_print=pretty_print)
-            showIndent(outfile, level, pretty_print)
-            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
-        else:
-            outfile.write('/>%s' % (eol_, ))
-    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='SolarFieldPotential'):
-        super(SolarFieldPotential, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='SolarFieldPotential')
-        if self.solarIrradiance is not None and 'solarIrradiance' not in already_processed:
-            already_processed.add('solarIrradiance')
-            outfile.write(' solarIrradiance="%s"' % self.gds_format_double(self.solarIrradiance, input_name='solarIrradiance'))
-    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='SolarFieldPotential', fromsubclass_=False, pretty_print=True):
-        super(SolarFieldPotential, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
-    def to_etree(self, parent_element=None, name_='SolarFieldPotential', mapping_=None):
-        element = super(SolarFieldPotential, self).to_etree(parent_element, name_, mapping_)
-        if self.solarIrradiance is not None:
-            element.set('solarIrradiance', self.gds_format_double(self.solarIrradiance))
-        if mapping_ is not None:
-            mapping_[self] = element
-        return element
-    def build(self, node):
-        already_processed = set()
-        self.buildAttributes(node, node.attrib, already_processed)
-        for child in node:
-            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
-            self.buildChildren(child, node, nodeName_)
-        return self
-    def buildAttributes(self, node, attrs, already_processed):
-        value = find_attr_value_('solarIrradiance', node)
-        if value is not None and 'solarIrradiance' not in already_processed:
-            already_processed.add('solarIrradiance')
-            try:
-                self.solarIrradiance = float(value)
-            except ValueError as exp:
-                raise ValueError('Bad float/double attribute (solarIrradiance): %s' % exp)
-        super(SolarFieldPotential, self).buildAttributes(node, attrs, already_processed)
-    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
-        super(SolarFieldPotential, self).buildChildren(child_, node, nodeName_, True)
-        pass
-# end class SolarFieldPotential
-
-
 class Duration(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, value=None, durationUnit='SECOND'):
+    def __init__(self, value=None, durationUnit='SECOND', **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         self.value = _cast(int, value)
         self.durationUnit = _cast(None, durationUnit)
     def factory(*args_, **kwargs_):
@@ -6565,10 +6961,14 @@ class Duration(GeneratedsSuper):
         else:
             return Duration(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_value(self): return self.value
-    def set_value(self, value): self.value = value
-    def get_durationUnit(self): return self.durationUnit
-    def set_durationUnit(self, durationUnit): self.durationUnit = durationUnit
+    def get_value(self):
+        return self.value
+    def set_value(self, value):
+        self.value = value
+    def get_durationUnit(self):
+        return self.durationUnit
+    def set_durationUnit(self, durationUnit):
+        self.durationUnit = durationUnit
     def hasContent_(self):
         if (
 
@@ -6576,7 +6976,7 @@ class Duration(GeneratedsSuper):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Duration', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Duration', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('Duration')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -6607,15 +7007,15 @@ class Duration(GeneratedsSuper):
         pass
     def to_etree(self, parent_element=None, name_='Duration', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         if self.value is not None:
             element.set('value', self.gds_format_integer(self.value))
         if self.durationUnit is not None:
             element.set('durationUnit', self.durationUnit)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -6644,9 +7044,10 @@ class Duration(GeneratedsSuper):
 class ProfileReference(StaticProfile):
     subclass = None
     superclass = StaticProfile
-    def __init__(self, name=None, profileType='UNDEFINED', id=None, dataSource=None, profileQuantityAndUnit=None, multiplier=1, reference=None):
+    def __init__(self, name=None, profileType='UNDEFINED', id=None, dataSource=None, profileQuantityAndUnit=None, multiplier=1, reference=None, **kwargs_):
         self.original_tagname_ = None
-        super(ProfileReference, self).__init__(name, profileType, id, dataSource, profileQuantityAndUnit, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(ProfileReference, self).__init__(name, profileType, id, dataSource, profileQuantityAndUnit,  **kwargs_)
         self.multiplier = _cast(float, multiplier)
         self.reference = _cast(None, reference)
     def factory(*args_, **kwargs_):
@@ -6660,10 +7061,14 @@ class ProfileReference(StaticProfile):
         else:
             return ProfileReference(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_multiplier(self): return self.multiplier
-    def set_multiplier(self, multiplier): self.multiplier = multiplier
-    def get_reference(self): return self.reference
-    def set_reference(self, reference): self.reference = reference
+    def get_multiplier(self):
+        return self.multiplier
+    def set_multiplier(self, multiplier):
+        self.multiplier = multiplier
+    def get_reference(self):
+        return self.reference
+    def set_reference(self, reference):
+        self.reference = reference
     def hasContent_(self):
         if (
             super(ProfileReference, self).hasContent_()
@@ -6671,7 +7076,7 @@ class ProfileReference(StaticProfile):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='ProfileReference', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='ProfileReference', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('ProfileReference')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -6709,7 +7114,7 @@ class ProfileReference(StaticProfile):
         if self.reference is not None:
             element.set('reference', self.gds_format_string(self.reference))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -6740,8 +7145,9 @@ class ProfileReference(StaticProfile):
 class Profiles(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, profile=None):
+    def __init__(self, profile=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         if profile is None:
             self.profile = []
         else:
@@ -6757,11 +7163,20 @@ class Profiles(GeneratedsSuper):
         else:
             return Profiles(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_profile(self): return self.profile
-    def set_profile(self, profile): self.profile = profile
-    def add_profile(self, value): self.profile.append(value)
-    def insert_profile_at(self, index, value): self.profile.insert(index, value)
-    def replace_profile_at(self, index, value): self.profile[index] = value
+    def get_profile(self):
+        return self.profile
+    def set_profile(self, profile):
+        self.profile = profile
+    def add_profile(self, value):
+        self.profile.append(value)
+    def add_profile_with_type(self, value):
+        self.profile.append(value)
+        value.original_tagname_ = 'profile'
+        value.extensiontype_ = value.__class__.__name__
+    def insert_profile_at(self, index, value):
+        self.profile.insert(index, value)
+    def replace_profile_at(self, index, value):
+        self.profile[index] = value
     def hasContent_(self):
         if (
             self.profile
@@ -6769,7 +7184,7 @@ class Profiles(GeneratedsSuper):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Profiles', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Profiles', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('Profiles')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -6801,13 +7216,13 @@ class Profiles(GeneratedsSuper):
             profile_.export(outfile, level, namespaceprefix_, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='Profiles', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         for profile_ in self.profile:
             profile_.to_etree(element, name_='profile', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -6844,8 +7259,9 @@ class Profiles(GeneratedsSuper):
 class Parties(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, party=None):
+    def __init__(self, party=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         if party is None:
             self.party = []
         else:
@@ -6861,11 +7277,18 @@ class Parties(GeneratedsSuper):
         else:
             return Parties(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_party(self): return self.party
-    def set_party(self, party): self.party = party
-    def add_party(self, value): self.party.append(value)
-    def insert_party_at(self, index, value): self.party.insert(index, value)
-    def replace_party_at(self, index, value): self.party[index] = value
+    def get_party(self):
+        return self.party
+    def set_party(self, party):
+        self.party = party
+    def add_party(self, value):
+        self.party.append(value)
+    def add_party(self, value):
+        self.party.append(value)
+    def insert_party_at(self, index, value):
+        self.party.insert(index, value)
+    def replace_party_at(self, index, value):
+        self.party[index] = value
     def hasContent_(self):
         if (
             self.party
@@ -6873,7 +7296,7 @@ class Parties(GeneratedsSuper):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Parties', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Parties', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('Parties')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -6905,13 +7328,13 @@ class Parties(GeneratedsSuper):
             party_.export(outfile, level, namespaceprefix_, name_='party', pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='Parties', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         for party_ in self.party:
             party_.to_etree(element, name_='party', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -6924,7 +7347,7 @@ class Parties(GeneratedsSuper):
         pass
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         if nodeName_ == 'party':
-            obj_ = Party.factory()
+            obj_ = Party.factory(parent_object_=self)
             obj_.build(child_)
             self.party.append(obj_)
             obj_.original_tagname_ = 'party'
@@ -6934,8 +7357,9 @@ class Parties(GeneratedsSuper):
 class DataSources(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, dataSource=None):
+    def __init__(self, dataSource=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         if dataSource is None:
             self.dataSource = []
         else:
@@ -6951,11 +7375,18 @@ class DataSources(GeneratedsSuper):
         else:
             return DataSources(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_dataSource(self): return self.dataSource
-    def set_dataSource(self, dataSource): self.dataSource = dataSource
-    def add_dataSource(self, value): self.dataSource.append(value)
-    def insert_dataSource_at(self, index, value): self.dataSource.insert(index, value)
-    def replace_dataSource_at(self, index, value): self.dataSource[index] = value
+    def get_dataSource(self):
+        return self.dataSource
+    def set_dataSource(self, dataSource):
+        self.dataSource = dataSource
+    def add_dataSource(self, value):
+        self.dataSource.append(value)
+    def add_dataSource(self, value):
+        self.dataSource.append(value)
+    def insert_dataSource_at(self, index, value):
+        self.dataSource.insert(index, value)
+    def replace_dataSource_at(self, index, value):
+        self.dataSource[index] = value
     def hasContent_(self):
         if (
             self.dataSource
@@ -6963,7 +7394,7 @@ class DataSources(GeneratedsSuper):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='DataSources', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='DataSources', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('DataSources')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -6995,13 +7426,13 @@ class DataSources(GeneratedsSuper):
             dataSource_.export(outfile, level, namespaceprefix_, name_='dataSource', pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='DataSources', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         for dataSource_ in self.dataSource:
             dataSource_.to_etree(element, name_='dataSource', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -7014,102 +7445,19 @@ class DataSources(GeneratedsSuper):
         pass
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         if nodeName_ == 'dataSource':
-            obj_ = DataSource.factory()
+            obj_ = DataSource.factory(parent_object_=self)
             obj_.build(child_)
             self.dataSource.append(obj_)
             obj_.original_tagname_ = 'dataSource'
 # end class DataSources
 
 
-class ResidualHeatSourcePotential(Potential):
-    subclass = None
-    superclass = Potential
-    def __init__(self, id=None, name=None, areas=None, asset=None, geometry=None, dataSource=None, power=None):
-        self.original_tagname_ = None
-        super(ResidualHeatSourcePotential, self).__init__(id, name, areas, asset, geometry, dataSource, )
-        self.power = _cast(float, power)
-    def factory(*args_, **kwargs_):
-        if CurrentSubclassModule_ is not None:
-            subclass = getSubclassFromModule_(
-                CurrentSubclassModule_, ResidualHeatSourcePotential)
-            if subclass is not None:
-                return subclass(*args_, **kwargs_)
-        if ResidualHeatSourcePotential.subclass:
-            return ResidualHeatSourcePotential.subclass(*args_, **kwargs_)
-        else:
-            return ResidualHeatSourcePotential(*args_, **kwargs_)
-    factory = staticmethod(factory)
-    def get_power(self): return self.power
-    def set_power(self, power): self.power = power
-    def hasContent_(self):
-        if (
-            super(ResidualHeatSourcePotential, self).hasContent_()
-        ):
-            return True
-        else:
-            return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='ResidualHeatSourcePotential', namespacedef_='', pretty_print=True):
-        imported_ns_def_ = GenerateDSNamespaceDefs_.get('ResidualHeatSourcePotential')
-        if imported_ns_def_ is not None:
-            namespacedef_ = imported_ns_def_
-        if pretty_print:
-            eol_ = '\n'
-        else:
-            eol_ = ''
-        if self.original_tagname_ is not None:
-            name_ = self.original_tagname_
-        showIndent(outfile, level, pretty_print)
-        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
-        already_processed = set()
-        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='ResidualHeatSourcePotential')
-        if self.hasContent_():
-            outfile.write('>%s' % (eol_, ))
-            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='ResidualHeatSourcePotential', pretty_print=pretty_print)
-            showIndent(outfile, level, pretty_print)
-            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
-        else:
-            outfile.write('/>%s' % (eol_, ))
-    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='ResidualHeatSourcePotential'):
-        super(ResidualHeatSourcePotential, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='ResidualHeatSourcePotential')
-        if self.power is not None and 'power' not in already_processed:
-            already_processed.add('power')
-            outfile.write(' power="%s"' % self.gds_format_double(self.power, input_name='power'))
-    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='ResidualHeatSourcePotential', fromsubclass_=False, pretty_print=True):
-        super(ResidualHeatSourcePotential, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
-    def to_etree(self, parent_element=None, name_='ResidualHeatSourcePotential', mapping_=None):
-        element = super(ResidualHeatSourcePotential, self).to_etree(parent_element, name_, mapping_)
-        if self.power is not None:
-            element.set('power', self.gds_format_double(self.power))
-        if mapping_ is not None:
-            mapping_[self] = element
-        return element
-    def build(self, node):
-        already_processed = set()
-        self.buildAttributes(node, node.attrib, already_processed)
-        for child in node:
-            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
-            self.buildChildren(child, node, nodeName_)
-        return self
-    def buildAttributes(self, node, attrs, already_processed):
-        value = find_attr_value_('power', node)
-        if value is not None and 'power' not in already_processed:
-            already_processed.add('power')
-            try:
-                self.power = float(value)
-            except ValueError as exp:
-                raise ValueError('Bad float/double attribute (power): %s' % exp)
-        super(ResidualHeatSourcePotential, self).buildAttributes(node, attrs, already_processed)
-    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
-        super(ResidualHeatSourcePotential, self).buildChildren(child_, node, nodeName_, True)
-        pass
-# end class ResidualHeatSourcePotential
-
-
 class SubPolygon(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, point=None):
+    def __init__(self, point=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         if point is None:
             self.point = []
         else:
@@ -7125,11 +7473,18 @@ class SubPolygon(GeneratedsSuper):
         else:
             return SubPolygon(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_point(self): return self.point
-    def set_point(self, point): self.point = point
-    def add_point(self, value): self.point.append(value)
-    def insert_point_at(self, index, value): self.point.insert(index, value)
-    def replace_point_at(self, index, value): self.point[index] = value
+    def get_point(self):
+        return self.point
+    def set_point(self, point):
+        self.point = point
+    def add_point(self, value):
+        self.point.append(value)
+    def add_point(self, value):
+        self.point.append(value)
+    def insert_point_at(self, index, value):
+        self.point.insert(index, value)
+    def replace_point_at(self, index, value):
+        self.point[index] = value
     def hasContent_(self):
         if (
             self.point
@@ -7137,7 +7492,7 @@ class SubPolygon(GeneratedsSuper):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='SubPolygon', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='SubPolygon', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('SubPolygon')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -7169,13 +7524,13 @@ class SubPolygon(GeneratedsSuper):
             point_.export(outfile, level, namespaceprefix_, name_='point', pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='SubPolygon', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         for point_ in self.point:
             point_.to_etree(element, name_='point', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -7188,7 +7543,7 @@ class SubPolygon(GeneratedsSuper):
         pass
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         if nodeName_ == 'point':
-            obj_ = Point.factory()
+            obj_ = Point.factory(parent_object_=self)
             obj_.build(child_)
             self.point.append(obj_)
             obj_.original_tagname_ = 'point'
@@ -7198,9 +7553,10 @@ class SubPolygon(GeneratedsSuper):
 class MultiPolygon(Geometry):
     subclass = None
     superclass = Geometry
-    def __init__(self, polygon=None):
+    def __init__(self, polygon=None, **kwargs_):
         self.original_tagname_ = None
-        super(MultiPolygon, self).__init__()
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(MultiPolygon, self).__init__( **kwargs_)
         if polygon is None:
             self.polygon = []
         else:
@@ -7216,11 +7572,18 @@ class MultiPolygon(Geometry):
         else:
             return MultiPolygon(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_polygon(self): return self.polygon
-    def set_polygon(self, polygon): self.polygon = polygon
-    def add_polygon(self, value): self.polygon.append(value)
-    def insert_polygon_at(self, index, value): self.polygon.insert(index, value)
-    def replace_polygon_at(self, index, value): self.polygon[index] = value
+    def get_polygon(self):
+        return self.polygon
+    def set_polygon(self, polygon):
+        self.polygon = polygon
+    def add_polygon(self, value):
+        self.polygon.append(value)
+    def add_polygon(self, value):
+        self.polygon.append(value)
+    def insert_polygon_at(self, index, value):
+        self.polygon.insert(index, value)
+    def replace_polygon_at(self, index, value):
+        self.polygon[index] = value
     def hasContent_(self):
         if (
             self.polygon or
@@ -7229,7 +7592,7 @@ class MultiPolygon(Geometry):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='MultiPolygon', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='MultiPolygon', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('MultiPolygon')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -7265,7 +7628,7 @@ class MultiPolygon(Geometry):
         for polygon_ in self.polygon:
             polygon_.to_etree(element, name_='polygon', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -7278,7 +7641,7 @@ class MultiPolygon(Geometry):
         super(MultiPolygon, self).buildAttributes(node, attrs, already_processed)
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         if nodeName_ == 'polygon':
-            obj_ = Polygon.factory()
+            obj_ = Polygon.factory(parent_object_=self)
             obj_.build(child_)
             self.polygon.append(obj_)
             obj_.original_tagname_ = 'polygon'
@@ -7289,8 +7652,9 @@ class MultiPolygon(Geometry):
 class MobilityFuelInformation(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, vehicleFuelEfficiency=None, dataSource=None):
+    def __init__(self, vehicleFuelEfficiency=None, dataSource=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         if vehicleFuelEfficiency is None:
             self.vehicleFuelEfficiency = []
         else:
@@ -7307,13 +7671,22 @@ class MobilityFuelInformation(GeneratedsSuper):
         else:
             return MobilityFuelInformation(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_vehicleFuelEfficiency(self): return self.vehicleFuelEfficiency
-    def set_vehicleFuelEfficiency(self, vehicleFuelEfficiency): self.vehicleFuelEfficiency = vehicleFuelEfficiency
-    def add_vehicleFuelEfficiency(self, value): self.vehicleFuelEfficiency.append(value)
-    def insert_vehicleFuelEfficiency_at(self, index, value): self.vehicleFuelEfficiency.insert(index, value)
-    def replace_vehicleFuelEfficiency_at(self, index, value): self.vehicleFuelEfficiency[index] = value
-    def get_dataSource(self): return self.dataSource
-    def set_dataSource(self, dataSource): self.dataSource = dataSource
+    def get_vehicleFuelEfficiency(self):
+        return self.vehicleFuelEfficiency
+    def set_vehicleFuelEfficiency(self, vehicleFuelEfficiency):
+        self.vehicleFuelEfficiency = vehicleFuelEfficiency
+    def add_vehicleFuelEfficiency(self, value):
+        self.vehicleFuelEfficiency.append(value)
+    def add_vehicleFuelEfficiency(self, value):
+        self.vehicleFuelEfficiency.append(value)
+    def insert_vehicleFuelEfficiency_at(self, index, value):
+        self.vehicleFuelEfficiency.insert(index, value)
+    def replace_vehicleFuelEfficiency_at(self, index, value):
+        self.vehicleFuelEfficiency[index] = value
+    def get_dataSource(self):
+        return self.dataSource
+    def set_dataSource(self, dataSource):
+        self.dataSource = dataSource
     def hasContent_(self):
         if (
             self.vehicleFuelEfficiency or
@@ -7322,7 +7695,7 @@ class MobilityFuelInformation(GeneratedsSuper):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='MobilityFuelInformation', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='MobilityFuelInformation', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('MobilityFuelInformation')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -7356,16 +7729,16 @@ class MobilityFuelInformation(GeneratedsSuper):
             self.dataSource.export(outfile, level, namespaceprefix_, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='MobilityFuelInformation', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         for vehicleFuelEfficiency_ in self.vehicleFuelEfficiency:
             vehicleFuelEfficiency_.to_etree(element, name_='vehicleFuelEfficiency', mapping_=mapping_)
         if self.dataSource is not None:
             dataSource_ = self.dataSource
             dataSource_.to_etree(element, name_='dataSource', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -7378,7 +7751,7 @@ class MobilityFuelInformation(GeneratedsSuper):
         pass
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         if nodeName_ == 'vehicleFuelEfficiency':
-            obj_ = VehicleFuelEfficiency.factory()
+            obj_ = VehicleFuelEfficiency.factory(parent_object_=self)
             obj_.build(child_)
             self.vehicleFuelEfficiency.append(obj_)
             obj_.original_tagname_ = 'vehicleFuelEfficiency'
@@ -7407,8 +7780,9 @@ class MobilityFuelInformation(GeneratedsSuper):
 class VehicleFuelEfficiency(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, vehicleType=None, fuel=None, efficiency=None):
+    def __init__(self, vehicleType=None, fuel=None, efficiency=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         self.vehicleType = _cast(None, vehicleType)
         self.fuel = _cast(None, fuel)
         self.efficiency = _cast(float, efficiency)
@@ -7423,12 +7797,18 @@ class VehicleFuelEfficiency(GeneratedsSuper):
         else:
             return VehicleFuelEfficiency(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_vehicleType(self): return self.vehicleType
-    def set_vehicleType(self, vehicleType): self.vehicleType = vehicleType
-    def get_fuel(self): return self.fuel
-    def set_fuel(self, fuel): self.fuel = fuel
-    def get_efficiency(self): return self.efficiency
-    def set_efficiency(self, efficiency): self.efficiency = efficiency
+    def get_vehicleType(self):
+        return self.vehicleType
+    def set_vehicleType(self, vehicleType):
+        self.vehicleType = vehicleType
+    def get_fuel(self):
+        return self.fuel
+    def set_fuel(self, fuel):
+        self.fuel = fuel
+    def get_efficiency(self):
+        return self.efficiency
+    def set_efficiency(self, efficiency):
+        self.efficiency = efficiency
     def hasContent_(self):
         if (
 
@@ -7436,7 +7816,7 @@ class VehicleFuelEfficiency(GeneratedsSuper):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='VehicleFuelEfficiency', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='VehicleFuelEfficiency', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('VehicleFuelEfficiency')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -7470,9 +7850,9 @@ class VehicleFuelEfficiency(GeneratedsSuper):
         pass
     def to_etree(self, parent_element=None, name_='VehicleFuelEfficiency', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         if self.vehicleType is not None:
             element.set('vehicleType', self.vehicleType)
         if self.fuel is not None:
@@ -7480,7 +7860,7 @@ class VehicleFuelEfficiency(GeneratedsSuper):
         if self.efficiency is not None:
             element.set('efficiency', self.gds_format_double(self.efficiency))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -7513,8 +7893,9 @@ class VehicleFuelEfficiency(GeneratedsSuper):
 class MobilityProperties(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, numberOfVehicles=None):
+    def __init__(self, numberOfVehicles=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         self.numberOfVehicles = numberOfVehicles
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -7527,8 +7908,10 @@ class MobilityProperties(GeneratedsSuper):
         else:
             return MobilityProperties(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_numberOfVehicles(self): return self.numberOfVehicles
-    def set_numberOfVehicles(self, numberOfVehicles): self.numberOfVehicles = numberOfVehicles
+    def get_numberOfVehicles(self):
+        return self.numberOfVehicles
+    def set_numberOfVehicles(self, numberOfVehicles):
+        self.numberOfVehicles = numberOfVehicles
     def hasContent_(self):
         if (
             self.numberOfVehicles is not None
@@ -7536,7 +7919,7 @@ class MobilityProperties(GeneratedsSuper):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='MobilityProperties', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='MobilityProperties', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('MobilityProperties')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -7568,14 +7951,14 @@ class MobilityProperties(GeneratedsSuper):
             self.numberOfVehicles.export(outfile, level, namespaceprefix_, name_='numberOfVehicles', pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='MobilityProperties', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         if self.numberOfVehicles is not None:
             numberOfVehicles_ = self.numberOfVehicles
             numberOfVehicles_.to_etree(element, name_='numberOfVehicles', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -7588,7 +7971,7 @@ class MobilityProperties(GeneratedsSuper):
         pass
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         if nodeName_ == 'numberOfVehicles':
-            obj_ = NumberOfVehicles.factory()
+            obj_ = NumberOfVehicles.factory(parent_object_=self)
             obj_.build(child_)
             self.numberOfVehicles = obj_
             obj_.original_tagname_ = 'numberOfVehicles'
@@ -7598,8 +7981,9 @@ class MobilityProperties(GeneratedsSuper):
 class NumberOfVehicles(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, vehicleCount=None):
+    def __init__(self, vehicleCount=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         if vehicleCount is None:
             self.vehicleCount = []
         else:
@@ -7615,11 +7999,18 @@ class NumberOfVehicles(GeneratedsSuper):
         else:
             return NumberOfVehicles(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_vehicleCount(self): return self.vehicleCount
-    def set_vehicleCount(self, vehicleCount): self.vehicleCount = vehicleCount
-    def add_vehicleCount(self, value): self.vehicleCount.append(value)
-    def insert_vehicleCount_at(self, index, value): self.vehicleCount.insert(index, value)
-    def replace_vehicleCount_at(self, index, value): self.vehicleCount[index] = value
+    def get_vehicleCount(self):
+        return self.vehicleCount
+    def set_vehicleCount(self, vehicleCount):
+        self.vehicleCount = vehicleCount
+    def add_vehicleCount(self, value):
+        self.vehicleCount.append(value)
+    def add_vehicleCount(self, value):
+        self.vehicleCount.append(value)
+    def insert_vehicleCount_at(self, index, value):
+        self.vehicleCount.insert(index, value)
+    def replace_vehicleCount_at(self, index, value):
+        self.vehicleCount[index] = value
     def hasContent_(self):
         if (
             self.vehicleCount
@@ -7627,7 +8018,7 @@ class NumberOfVehicles(GeneratedsSuper):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='NumberOfVehicles', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='NumberOfVehicles', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('NumberOfVehicles')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -7659,13 +8050,13 @@ class NumberOfVehicles(GeneratedsSuper):
             vehicleCount_.export(outfile, level, namespaceprefix_, name_='vehicleCount', pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='NumberOfVehicles', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         for vehicleCount_ in self.vehicleCount:
             vehicleCount_.to_etree(element, name_='vehicleCount', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -7678,7 +8069,7 @@ class NumberOfVehicles(GeneratedsSuper):
         pass
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         if nodeName_ == 'vehicleCount':
-            obj_ = VehicleCount.factory()
+            obj_ = VehicleCount.factory(parent_object_=self)
             obj_.build(child_)
             self.vehicleCount.append(obj_)
             obj_.original_tagname_ = 'vehicleCount'
@@ -7688,8 +8079,9 @@ class NumberOfVehicles(GeneratedsSuper):
 class VehicleCount(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, type_=None, count=None):
+    def __init__(self, type_=None, count=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         self.type_ = _cast(None, type_)
         self.count = _cast(int, count)
     def factory(*args_, **kwargs_):
@@ -7703,10 +8095,14 @@ class VehicleCount(GeneratedsSuper):
         else:
             return VehicleCount(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_type(self): return self.type_
-    def set_type(self, type_): self.type_ = type_
-    def get_count(self): return self.count
-    def set_count(self, count): self.count = count
+    def get_type(self):
+        return self.type_
+    def set_type(self, type_):
+        self.type_ = type_
+    def get_count(self):
+        return self.count
+    def set_count(self, count):
+        self.count = count
     def hasContent_(self):
         if (
 
@@ -7714,7 +8110,7 @@ class VehicleCount(GeneratedsSuper):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='VehicleCount', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='VehicleCount', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('VehicleCount')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -7745,15 +8141,15 @@ class VehicleCount(GeneratedsSuper):
         pass
     def to_etree(self, parent_element=None, name_='VehicleCount', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         if self.type_ is not None:
             element.set('type', self.type_)
         if self.count is not None:
             element.set('count', self.gds_format_integer(self.count))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -7782,8 +8178,9 @@ class VehicleCount(GeneratedsSuper):
 class Services(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, service=None):
+    def __init__(self, service=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         if service is None:
             self.service = []
         else:
@@ -7799,11 +8196,20 @@ class Services(GeneratedsSuper):
         else:
             return Services(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_service(self): return self.service
-    def set_service(self, service): self.service = service
-    def add_service(self, value): self.service.append(value)
-    def insert_service_at(self, index, value): self.service.insert(index, value)
-    def replace_service_at(self, index, value): self.service[index] = value
+    def get_service(self):
+        return self.service
+    def set_service(self, service):
+        self.service = service
+    def add_service(self, value):
+        self.service.append(value)
+    def add_service_with_type(self, value):
+        self.service.append(value)
+        value.original_tagname_ = 'service'
+        value.extensiontype_ = value.__class__.__name__
+    def insert_service_at(self, index, value):
+        self.service.insert(index, value)
+    def replace_service_at(self, index, value):
+        self.service[index] = value
     def hasContent_(self):
         if (
             self.service
@@ -7811,7 +8217,7 @@ class Services(GeneratedsSuper):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Services', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Services', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('Services')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -7843,13 +8249,13 @@ class Services(GeneratedsSuper):
             service_.export(outfile, level, namespaceprefix_, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='Services', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         for service_ in self.service:
             service_.to_etree(element, name_='service', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -7886,8 +8292,9 @@ class Services(GeneratedsSuper):
 class AbstractDataSource(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, extensiontype_=None):
+    def __init__(self, extensiontype_=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         self.extensiontype_ = extensiontype_
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -7909,7 +8316,7 @@ class AbstractDataSource(GeneratedsSuper):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='AbstractDataSource', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='AbstractDataSource', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('AbstractDataSource')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -7933,19 +8340,19 @@ class AbstractDataSource(GeneratedsSuper):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s"' % self.extensiontype_)
+            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
         pass
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='AbstractDataSource', fromsubclass_=False, pretty_print=True):
         pass
     def to_etree(self, parent_element=None, name_='AbstractDataSource', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         if self.extensiontype_ is not None:
             element.set('{http://www.w3.org/2001/XMLSchema-instance}type', self.extensiontype_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -7967,9 +8374,10 @@ class AbstractDataSource(GeneratedsSuper):
 class DataSourceReference(AbstractDataSource):
     subclass = None
     superclass = AbstractDataSource
-    def __init__(self, reference=None):
+    def __init__(self, reference=None, **kwargs_):
         self.original_tagname_ = None
-        super(DataSourceReference, self).__init__()
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(DataSourceReference, self).__init__( **kwargs_)
         self.reference = _cast(None, reference)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -7982,8 +8390,10 @@ class DataSourceReference(AbstractDataSource):
         else:
             return DataSourceReference(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_reference(self): return self.reference
-    def set_reference(self, reference): self.reference = reference
+    def get_reference(self):
+        return self.reference
+    def set_reference(self, reference):
+        self.reference = reference
     def hasContent_(self):
         if (
             super(DataSourceReference, self).hasContent_()
@@ -7991,7 +8401,7 @@ class DataSourceReference(AbstractDataSource):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='DataSourceReference', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='DataSourceReference', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('DataSourceReference')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -8024,7 +8434,7 @@ class DataSourceReference(AbstractDataSource):
         if self.reference is not None:
             element.set('reference', self.gds_format_string(self.reference))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -8045,11 +8455,12 @@ class DataSourceReference(AbstractDataSource):
 # end class DataSourceReference
 
 
-class KPIList(GeneratedsSuper):
+class KPIs(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, description=None, kpi=None):
+    def __init__(self, description=None, kpi=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         self.description = _cast(None, description)
         if kpi is None:
             self.kpi = []
@@ -8058,21 +8469,30 @@ class KPIList(GeneratedsSuper):
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
-                CurrentSubclassModule_, KPIList)
+                CurrentSubclassModule_, KPIs)
             if subclass is not None:
                 return subclass(*args_, **kwargs_)
-        if KPIList.subclass:
-            return KPIList.subclass(*args_, **kwargs_)
+        if KPIs.subclass:
+            return KPIs.subclass(*args_, **kwargs_)
         else:
-            return KPIList(*args_, **kwargs_)
+            return KPIs(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_kpi(self): return self.kpi
-    def set_kpi(self, kpi): self.kpi = kpi
-    def add_kpi(self, value): self.kpi.append(value)
-    def insert_kpi_at(self, index, value): self.kpi.insert(index, value)
-    def replace_kpi_at(self, index, value): self.kpi[index] = value
-    def get_description(self): return self.description
-    def set_description(self, description): self.description = description
+    def get_kpi(self):
+        return self.kpi
+    def set_kpi(self, kpi):
+        self.kpi = kpi
+    def add_kpi(self, value):
+        self.kpi.append(value)
+    def add_kpi(self, value):
+        self.kpi.append(value)
+    def insert_kpi_at(self, index, value):
+        self.kpi.insert(index, value)
+    def replace_kpi_at(self, index, value):
+        self.kpi[index] = value
+    def get_description(self):
+        return self.description
+    def set_description(self, description):
+        self.description = description
     def hasContent_(self):
         if (
             self.kpi
@@ -8080,8 +8500,8 @@ class KPIList(GeneratedsSuper):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='KPIList', namespacedef_='', pretty_print=True):
-        imported_ns_def_ = GenerateDSNamespaceDefs_.get('KPIList')
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='KPIs', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('KPIs')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
         if pretty_print:
@@ -8093,36 +8513,36 @@ class KPIList(GeneratedsSuper):
         showIndent(outfile, level, pretty_print)
         outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
         already_processed = set()
-        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='KPIList')
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='KPIs')
         if self.hasContent_():
             outfile.write('>%s' % (eol_, ))
-            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='KPIList', pretty_print=pretty_print)
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='KPIs', pretty_print=pretty_print)
             showIndent(outfile, level, pretty_print)
             outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
         else:
             outfile.write('/>%s' % (eol_, ))
-    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='KPIList'):
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='KPIs'):
         if self.description is not None and 'description' not in already_processed:
             already_processed.add('description')
             outfile.write(' description=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.description), input_name='description')), ))
-    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='KPIList', fromsubclass_=False, pretty_print=True):
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='KPIs', fromsubclass_=False, pretty_print=True):
         if pretty_print:
             eol_ = '\n'
         else:
             eol_ = ''
         for kpi_ in self.kpi:
             kpi_.export(outfile, level, namespaceprefix_, name_='kpi', pretty_print=pretty_print)
-    def to_etree(self, parent_element=None, name_='KPIList', mapping_=None):
+    def to_etree(self, parent_element=None, name_='KPIs', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         if self.description is not None:
             element.set('description', self.gds_format_string(self.description))
         for kpi_ in self.kpi:
             kpi_.to_etree(element, name_='kpi', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -8138,18 +8558,19 @@ class KPIList(GeneratedsSuper):
             self.description = value
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         if nodeName_ == 'kpi':
-            obj_ = KPI.factory()
+            obj_ = KPI.factory(parent_object_=self)
             obj_.build(child_)
             self.kpi.append(obj_)
             obj_.original_tagname_ = 'kpi'
-# end class KPIList
+# end class KPIs
 
 
 class KPI(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, name=None, value=None, quantityAndUnit=None):
+    def __init__(self, name=None, value=None, quantityAndUnit=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         self.name = _cast(None, name)
         self.value = _cast(float, value)
         self.quantityAndUnit = quantityAndUnit
@@ -8164,12 +8585,18 @@ class KPI(GeneratedsSuper):
         else:
             return KPI(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_quantityAndUnit(self): return self.quantityAndUnit
-    def set_quantityAndUnit(self, quantityAndUnit): self.quantityAndUnit = quantityAndUnit
-    def get_name(self): return self.name
-    def set_name(self, name): self.name = name
-    def get_value(self): return self.value
-    def set_value(self, value): self.value = value
+    def get_quantityAndUnit(self):
+        return self.quantityAndUnit
+    def set_quantityAndUnit(self, quantityAndUnit):
+        self.quantityAndUnit = quantityAndUnit
+    def get_name(self):
+        return self.name
+    def set_name(self, name):
+        self.name = name
+    def get_value(self):
+        return self.value
+    def set_value(self, value):
+        self.value = value
     def hasContent_(self):
         if (
             self.quantityAndUnit is not None
@@ -8177,7 +8604,7 @@ class KPI(GeneratedsSuper):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='KPI', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='KPI', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('KPI')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -8214,9 +8641,9 @@ class KPI(GeneratedsSuper):
             self.quantityAndUnit.export(outfile, level, namespaceprefix_, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='KPI', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         if self.name is not None:
             element.set('name', self.gds_format_string(self.name))
         if self.value is not None:
@@ -8225,7 +8652,7 @@ class KPI(GeneratedsSuper):
             quantityAndUnit_ = self.quantityAndUnit
             quantityAndUnit_.to_etree(element, name_='quantityAndUnit', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -8269,11 +8696,12 @@ class KPI(GeneratedsSuper):
 # end class KPI
 
 
-class QuantityAndUnitList(GeneratedsSuper):
+class QuantityAndUnits(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, quantityAndUnit=None):
+    def __init__(self, quantityAndUnit=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         if quantityAndUnit is None:
             self.quantityAndUnit = []
         else:
@@ -8281,19 +8709,26 @@ class QuantityAndUnitList(GeneratedsSuper):
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
-                CurrentSubclassModule_, QuantityAndUnitList)
+                CurrentSubclassModule_, QuantityAndUnits)
             if subclass is not None:
                 return subclass(*args_, **kwargs_)
-        if QuantityAndUnitList.subclass:
-            return QuantityAndUnitList.subclass(*args_, **kwargs_)
+        if QuantityAndUnits.subclass:
+            return QuantityAndUnits.subclass(*args_, **kwargs_)
         else:
-            return QuantityAndUnitList(*args_, **kwargs_)
+            return QuantityAndUnits(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_quantityAndUnit(self): return self.quantityAndUnit
-    def set_quantityAndUnit(self, quantityAndUnit): self.quantityAndUnit = quantityAndUnit
-    def add_quantityAndUnit(self, value): self.quantityAndUnit.append(value)
-    def insert_quantityAndUnit_at(self, index, value): self.quantityAndUnit.insert(index, value)
-    def replace_quantityAndUnit_at(self, index, value): self.quantityAndUnit[index] = value
+    def get_quantityAndUnit(self):
+        return self.quantityAndUnit
+    def set_quantityAndUnit(self, quantityAndUnit):
+        self.quantityAndUnit = quantityAndUnit
+    def add_quantityAndUnit(self, value):
+        self.quantityAndUnit.append(value)
+    def add_quantityAndUnit(self, value):
+        self.quantityAndUnit.append(value)
+    def insert_quantityAndUnit_at(self, index, value):
+        self.quantityAndUnit.insert(index, value)
+    def replace_quantityAndUnit_at(self, index, value):
+        self.quantityAndUnit[index] = value
     def hasContent_(self):
         if (
             self.quantityAndUnit
@@ -8301,8 +8736,8 @@ class QuantityAndUnitList(GeneratedsSuper):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='QuantityAndUnitList', namespacedef_='', pretty_print=True):
-        imported_ns_def_ = GenerateDSNamespaceDefs_.get('QuantityAndUnitList')
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='QuantityAndUnits', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('QuantityAndUnits')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
         if pretty_print:
@@ -8314,32 +8749,32 @@ class QuantityAndUnitList(GeneratedsSuper):
         showIndent(outfile, level, pretty_print)
         outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
         already_processed = set()
-        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='QuantityAndUnitList')
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='QuantityAndUnits')
         if self.hasContent_():
             outfile.write('>%s' % (eol_, ))
-            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='QuantityAndUnitList', pretty_print=pretty_print)
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='QuantityAndUnits', pretty_print=pretty_print)
             showIndent(outfile, level, pretty_print)
             outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
         else:
             outfile.write('/>%s' % (eol_, ))
-    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='QuantityAndUnitList'):
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='QuantityAndUnits'):
         pass
-    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='QuantityAndUnitList', fromsubclass_=False, pretty_print=True):
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='QuantityAndUnits', fromsubclass_=False, pretty_print=True):
         if pretty_print:
             eol_ = '\n'
         else:
             eol_ = ''
         for quantityAndUnit_ in self.quantityAndUnit:
             quantityAndUnit_.export(outfile, level, namespaceprefix_, name_='quantityAndUnit', pretty_print=pretty_print)
-    def to_etree(self, parent_element=None, name_='QuantityAndUnitList', mapping_=None):
+    def to_etree(self, parent_element=None, name_='QuantityAndUnits', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         for quantityAndUnit_ in self.quantityAndUnit:
             quantityAndUnit_.to_etree(element, name_='quantityAndUnit', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -8352,18 +8787,19 @@ class QuantityAndUnitList(GeneratedsSuper):
         pass
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         if nodeName_ == 'quantityAndUnit':
-            obj_ = QuantityAndUnitType.factory()
+            obj_ = QuantityAndUnitType.factory(parent_object_=self)
             obj_.build(child_)
             self.quantityAndUnit.append(obj_)
             obj_.original_tagname_ = 'quantityAndUnit'
-# end class QuantityAndUnitList
+# end class QuantityAndUnits
 
 
 class AbstractQuantityAndUnit(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, extensiontype_=None):
+    def __init__(self, extensiontype_=None, **kwargs_):
         self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
         self.extensiontype_ = extensiontype_
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -8385,7 +8821,7 @@ class AbstractQuantityAndUnit(GeneratedsSuper):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='AbstractQuantityAndUnit', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='AbstractQuantityAndUnit', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('AbstractQuantityAndUnit')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -8409,19 +8845,19 @@ class AbstractQuantityAndUnit(GeneratedsSuper):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s"' % self.extensiontype_)
+            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
         pass
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='AbstractQuantityAndUnit', fromsubclass_=False, pretty_print=True):
         pass
     def to_etree(self, parent_element=None, name_='AbstractQuantityAndUnit', mapping_=None):
         if parent_element is None:
-            element = etree_.Element('{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
         else:
-            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl/180901}' + name_)
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
         if self.extensiontype_ is not None:
             element.set('{http://www.w3.org/2001/XMLSchema-instance}type', self.extensiontype_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -8443,9 +8879,10 @@ class AbstractQuantityAndUnit(GeneratedsSuper):
 class QuantityAndUnitReference(AbstractQuantityAndUnit):
     subclass = None
     superclass = AbstractQuantityAndUnit
-    def __init__(self, reference=None):
+    def __init__(self, reference=None, **kwargs_):
         self.original_tagname_ = None
-        super(QuantityAndUnitReference, self).__init__()
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(QuantityAndUnitReference, self).__init__( **kwargs_)
         self.reference = _cast(None, reference)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -8458,8 +8895,10 @@ class QuantityAndUnitReference(AbstractQuantityAndUnit):
         else:
             return QuantityAndUnitReference(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_reference(self): return self.reference
-    def set_reference(self, reference): self.reference = reference
+    def get_reference(self):
+        return self.reference
+    def set_reference(self, reference):
+        self.reference = reference
     def hasContent_(self):
         if (
             super(QuantityAndUnitReference, self).hasContent_()
@@ -8467,7 +8906,7 @@ class QuantityAndUnitReference(AbstractQuantityAndUnit):
             return True
         else:
             return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='QuantityAndUnitReference', namespacedef_='', pretty_print=True):
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='QuantityAndUnitReference', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
         imported_ns_def_ = GenerateDSNamespaceDefs_.get('QuantityAndUnitReference')
         if imported_ns_def_ is not None:
             namespacedef_ = imported_ns_def_
@@ -8500,7 +8939,7 @@ class QuantityAndUnitReference(AbstractQuantityAndUnit):
         if self.reference is not None:
             element.set('reference', self.gds_format_string(self.reference))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -8521,12 +8960,2891 @@ class QuantityAndUnitReference(AbstractQuantityAndUnit):
 # end class QuantityAndUnitReference
 
 
+class Parameters(GeneratedsSuper):
+    subclass = None
+    superclass = None
+    def __init__(self, name=None, abstractquantityandunit=None, extensiontype_=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        self.name = _cast(None, name)
+        if abstractquantityandunit is None:
+            self.abstractquantityandunit = []
+        else:
+            self.abstractquantityandunit = abstractquantityandunit
+        self.extensiontype_ = extensiontype_
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, Parameters)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if Parameters.subclass:
+            return Parameters.subclass(*args_, **kwargs_)
+        else:
+            return Parameters(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_abstractquantityandunit(self):
+        return self.abstractquantityandunit
+    def set_abstractquantityandunit(self, abstractquantityandunit):
+        self.abstractquantityandunit = abstractquantityandunit
+    def add_abstractquantityandunit(self, value):
+        self.abstractquantityandunit.append(value)
+    def add_abstractquantityandunit_with_type(self, value):
+        self.abstractquantityandunit.append(value)
+        value.original_tagname_ = 'abstractquantityandunit'
+        value.extensiontype_ = value.__class__.__name__
+    def insert_abstractquantityandunit_at(self, index, value):
+        self.abstractquantityandunit.insert(index, value)
+    def replace_abstractquantityandunit_at(self, index, value):
+        self.abstractquantityandunit[index] = value
+    def get_name(self):
+        return self.name
+    def set_name(self, name):
+        self.name = name
+    def get_extensiontype_(self): return self.extensiontype_
+    def set_extensiontype_(self, extensiontype_): self.extensiontype_ = extensiontype_
+    def hasContent_(self):
+        if (
+            self.abstractquantityandunit
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Parameters', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('Parameters')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='Parameters')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='Parameters', pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='Parameters'):
+        if self.name is not None and 'name' not in already_processed:
+            already_processed.add('name')
+            outfile.write(' name=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.name), input_name='name')), ))
+        if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
+            already_processed.add('xsi:type')
+            outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
+            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='Parameters', fromsubclass_=False, pretty_print=True):
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        for abstractquantityandunit_ in self.abstractquantityandunit:
+            abstractquantityandunit_.export(outfile, level, namespaceprefix_, pretty_print=pretty_print)
+    def to_etree(self, parent_element=None, name_='Parameters', mapping_=None):
+        if parent_element is None:
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
+        else:
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
+        if self.extensiontype_ is not None:
+            element.set('{http://www.w3.org/2001/XMLSchema-instance}type', self.extensiontype_)
+        if self.name is not None:
+            element.set('name', self.gds_format_string(self.name))
+        for abstractquantityandunit_ in self.abstractquantityandunit:
+            abstractquantityandunit_.to_etree(element, name_='abstractquantityandunit', mapping_=mapping_)
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('name', node)
+        if value is not None and 'name' not in already_processed:
+            already_processed.add('name')
+            self.name = value
+        value = find_attr_value_('xsi:type', node)
+        if value is not None and 'xsi:type' not in already_processed:
+            already_processed.add('xsi:type')
+            self.extensiontype_ = value
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        if nodeName_ == 'abstractquantityandunit':
+            type_name_ = child_.attrib.get(
+                '{http://www.w3.org/2001/XMLSchema-instance}type')
+            if type_name_ is None:
+                type_name_ = child_.attrib.get('type')
+            if type_name_ is not None:
+                type_names_ = type_name_.split(':')
+                if len(type_names_) == 1:
+                    type_name_ = type_names_[0]
+                else:
+                    type_name_ = type_names_[1]
+                class_ = globals()[type_name_]
+                obj_ = class_.factory()
+                obj_.build(child_)
+            else:
+                raise NotImplementedError(
+                    'Class not implemented for <abstractquantityandunit> element')
+            self.abstractquantityandunit.append(obj_)
+            obj_.original_tagname_ = 'abstractquantityandunit'
+# end class Parameters
+
+
+class StringParameter(Parameters):
+    subclass = None
+    superclass = Parameters
+    def __init__(self, name=None, abstractquantityandunit=None, value=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(StringParameter, self).__init__(name, abstractquantityandunit,  **kwargs_)
+        self.value = _cast(None, value)
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, StringParameter)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if StringParameter.subclass:
+            return StringParameter.subclass(*args_, **kwargs_)
+        else:
+            return StringParameter(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_value(self):
+        return self.value
+    def set_value(self, value):
+        self.value = value
+    def hasContent_(self):
+        if (
+            super(StringParameter, self).hasContent_()
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='StringParameter', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('StringParameter')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='StringParameter')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='StringParameter', pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='StringParameter'):
+        super(StringParameter, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='StringParameter')
+        if self.value is not None and 'value' not in already_processed:
+            already_processed.add('value')
+            outfile.write(' value=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.value), input_name='value')), ))
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='StringParameter', fromsubclass_=False, pretty_print=True):
+        super(StringParameter, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+    def to_etree(self, parent_element=None, name_='StringParameter', mapping_=None):
+        element = super(StringParameter, self).to_etree(parent_element, name_, mapping_)
+        if self.value is not None:
+            element.set('value', self.gds_format_string(self.value))
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('value', node)
+        if value is not None and 'value' not in already_processed:
+            already_processed.add('value')
+            self.value = value
+        super(StringParameter, self).buildAttributes(node, attrs, already_processed)
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        super(StringParameter, self).buildChildren(child_, node, nodeName_, True)
+        pass
+# end class StringParameter
+
+
+class DoubleParameter(Parameters):
+    subclass = None
+    superclass = Parameters
+    def __init__(self, name=None, abstractquantityandunit=None, value=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(DoubleParameter, self).__init__(name, abstractquantityandunit,  **kwargs_)
+        self.value = _cast(float, value)
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, DoubleParameter)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if DoubleParameter.subclass:
+            return DoubleParameter.subclass(*args_, **kwargs_)
+        else:
+            return DoubleParameter(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_value(self):
+        return self.value
+    def set_value(self, value):
+        self.value = value
+    def hasContent_(self):
+        if (
+            super(DoubleParameter, self).hasContent_()
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='DoubleParameter', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('DoubleParameter')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='DoubleParameter')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='DoubleParameter', pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='DoubleParameter'):
+        super(DoubleParameter, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='DoubleParameter')
+        if self.value is not None and 'value' not in already_processed:
+            already_processed.add('value')
+            outfile.write(' value="%s"' % self.gds_format_double(self.value, input_name='value'))
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='DoubleParameter', fromsubclass_=False, pretty_print=True):
+        super(DoubleParameter, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+    def to_etree(self, parent_element=None, name_='DoubleParameter', mapping_=None):
+        element = super(DoubleParameter, self).to_etree(parent_element, name_, mapping_)
+        if self.value is not None:
+            element.set('value', self.gds_format_double(self.value))
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('value', node)
+        if value is not None and 'value' not in already_processed:
+            already_processed.add('value')
+            try:
+                self.value = float(value)
+            except ValueError as exp:
+                raise ValueError('Bad float/double attribute (value): %s' % exp)
+        super(DoubleParameter, self).buildAttributes(node, attrs, already_processed)
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        super(DoubleParameter, self).buildChildren(child_, node, nodeName_, True)
+        pass
+# end class DoubleParameter
+
+
+class IntegerParameter(Parameters):
+    subclass = None
+    superclass = Parameters
+    def __init__(self, name=None, abstractquantityandunit=None, value=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(IntegerParameter, self).__init__(name, abstractquantityandunit,  **kwargs_)
+        self.value = _cast(int, value)
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, IntegerParameter)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if IntegerParameter.subclass:
+            return IntegerParameter.subclass(*args_, **kwargs_)
+        else:
+            return IntegerParameter(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_value(self):
+        return self.value
+    def set_value(self, value):
+        self.value = value
+    def hasContent_(self):
+        if (
+            super(IntegerParameter, self).hasContent_()
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='IntegerParameter', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('IntegerParameter')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='IntegerParameter')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='IntegerParameter', pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='IntegerParameter'):
+        super(IntegerParameter, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='IntegerParameter')
+        if self.value is not None and 'value' not in already_processed:
+            already_processed.add('value')
+            outfile.write(' value="%s"' % self.gds_format_integer(self.value, input_name='value'))
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='IntegerParameter', fromsubclass_=False, pretty_print=True):
+        super(IntegerParameter, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+    def to_etree(self, parent_element=None, name_='IntegerParameter', mapping_=None):
+        element = super(IntegerParameter, self).to_etree(parent_element, name_, mapping_)
+        if self.value is not None:
+            element.set('value', self.gds_format_integer(self.value))
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('value', node)
+        if value is not None and 'value' not in already_processed:
+            already_processed.add('value')
+            try:
+                self.value = int(value)
+            except ValueError as exp:
+                raise_parse_error(node, 'Bad integer attribute: %s' % exp)
+        super(IntegerParameter, self).buildAttributes(node, attrs, already_processed)
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        super(IntegerParameter, self).buildChildren(child_, node, nodeName_, True)
+        pass
+# end class IntegerParameter
+
+
+class BooleanParameter(Parameters):
+    subclass = None
+    superclass = Parameters
+    def __init__(self, name=None, abstractquantityandunit=None, value=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(BooleanParameter, self).__init__(name, abstractquantityandunit,  **kwargs_)
+        self.value = _cast(bool, value)
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, BooleanParameter)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if BooleanParameter.subclass:
+            return BooleanParameter.subclass(*args_, **kwargs_)
+        else:
+            return BooleanParameter(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_value(self):
+        return self.value
+    def set_value(self, value):
+        self.value = value
+    def hasContent_(self):
+        if (
+            super(BooleanParameter, self).hasContent_()
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='BooleanParameter', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('BooleanParameter')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='BooleanParameter')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='BooleanParameter', pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='BooleanParameter'):
+        super(BooleanParameter, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='BooleanParameter')
+        if self.value is not None and 'value' not in already_processed:
+            already_processed.add('value')
+            outfile.write(' value="%s"' % self.gds_format_boolean(self.value, input_name='value'))
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='BooleanParameter', fromsubclass_=False, pretty_print=True):
+        super(BooleanParameter, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+    def to_etree(self, parent_element=None, name_='BooleanParameter', mapping_=None):
+        element = super(BooleanParameter, self).to_etree(parent_element, name_, mapping_)
+        if self.value is not None:
+            element.set('value', self.gds_format_boolean(self.value))
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('value', node)
+        if value is not None and 'value' not in already_processed:
+            already_processed.add('value')
+            if value in ('true', '1'):
+                self.value = True
+            elif value in ('false', '0'):
+                self.value = False
+            else:
+                raise_parse_error(node, 'Bad boolean attribute')
+        super(BooleanParameter, self).buildAttributes(node, attrs, already_processed)
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        super(BooleanParameter, self).buildChildren(child_, node, nodeName_, True)
+        pass
+# end class BooleanParameter
+
+
+class MeasuresCollection(GeneratedsSuper):
+    subclass = None
+    superclass = None
+    def __init__(self, id=None, name=None, description=None, asset=None, costInformation=None, dataSource=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        self.id = _cast(None, id)
+        self.name = _cast(None, name)
+        self.description = _cast(None, description)
+        if asset is None:
+            self.asset = []
+        else:
+            self.asset = asset
+        self.costInformation = costInformation
+        self.dataSource = dataSource
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, MeasuresCollection)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if MeasuresCollection.subclass:
+            return MeasuresCollection.subclass(*args_, **kwargs_)
+        else:
+            return MeasuresCollection(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_asset(self):
+        return self.asset
+    def set_asset(self, asset):
+        self.asset = asset
+    def add_asset(self, value):
+        self.asset.append(value)
+    def add_asset_with_type(self, value):
+        self.asset.append(value)
+        value.original_tagname_ = 'asset'
+        value.extensiontype_ = value.__class__.__name__
+    def insert_asset_at(self, index, value):
+        self.asset.insert(index, value)
+    def replace_asset_at(self, index, value):
+        self.asset[index] = value
+    def get_costInformation(self):
+        return self.costInformation
+    def set_costInformation(self, costInformation):
+        self.costInformation = costInformation
+    def get_dataSource(self):
+        return self.dataSource
+    def set_dataSource(self, dataSource):
+        self.dataSource = dataSource
+    def get_id(self):
+        return self.id
+    def set_id(self, id):
+        self.id = id
+    def get_name(self):
+        return self.name
+    def set_name(self, name):
+        self.name = name
+    def get_description(self):
+        return self.description
+    def set_description(self, description):
+        self.description = description
+    def hasContent_(self):
+        if (
+            self.asset or
+            self.costInformation is not None or
+            self.dataSource is not None
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='MeasuresCollection', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('MeasuresCollection')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='MeasuresCollection')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='MeasuresCollection', pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='MeasuresCollection'):
+        if self.id is not None and 'id' not in already_processed:
+            already_processed.add('id')
+            outfile.write(' id=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.id), input_name='id')), ))
+        if self.name is not None and 'name' not in already_processed:
+            already_processed.add('name')
+            outfile.write(' name=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.name), input_name='name')), ))
+        if self.description is not None and 'description' not in already_processed:
+            already_processed.add('description')
+            outfile.write(' description=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.description), input_name='description')), ))
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='MeasuresCollection', fromsubclass_=False, pretty_print=True):
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        for asset_ in self.asset:
+            asset_.export(outfile, level, namespaceprefix_, pretty_print=pretty_print)
+        if self.costInformation is not None:
+            self.costInformation.export(outfile, level, namespaceprefix_, name_='costInformation', pretty_print=pretty_print)
+        if self.dataSource is not None:
+            self.dataSource.export(outfile, level, namespaceprefix_, pretty_print=pretty_print)
+    def to_etree(self, parent_element=None, name_='MeasuresCollection', mapping_=None):
+        if parent_element is None:
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
+        else:
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
+        if self.id is not None:
+            element.set('id', self.gds_format_string(self.id))
+        if self.name is not None:
+            element.set('name', self.gds_format_string(self.name))
+        if self.description is not None:
+            element.set('description', self.gds_format_string(self.description))
+        for asset_ in self.asset:
+            asset_.to_etree(element, name_='asset', mapping_=mapping_)
+        if self.costInformation is not None:
+            costInformation_ = self.costInformation
+            costInformation_.to_etree(element, name_='costInformation', mapping_=mapping_)
+        if self.dataSource is not None:
+            dataSource_ = self.dataSource
+            dataSource_.to_etree(element, name_='dataSource', mapping_=mapping_)
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('id', node)
+        if value is not None and 'id' not in already_processed:
+            already_processed.add('id')
+            self.id = value
+        value = find_attr_value_('name', node)
+        if value is not None and 'name' not in already_processed:
+            already_processed.add('name')
+            self.name = value
+        value = find_attr_value_('description', node)
+        if value is not None and 'description' not in already_processed:
+            already_processed.add('description')
+            self.description = value
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        if nodeName_ == 'asset':
+            type_name_ = child_.attrib.get(
+                '{http://www.w3.org/2001/XMLSchema-instance}type')
+            if type_name_ is None:
+                type_name_ = child_.attrib.get('type')
+            if type_name_ is not None:
+                type_names_ = type_name_.split(':')
+                if len(type_names_) == 1:
+                    type_name_ = type_names_[0]
+                else:
+                    type_name_ = type_names_[1]
+                class_ = globals()[type_name_]
+                obj_ = class_.factory()
+                obj_.build(child_)
+            else:
+                raise NotImplementedError(
+                    'Class not implemented for <asset> element')
+            self.asset.append(obj_)
+            obj_.original_tagname_ = 'asset'
+        elif nodeName_ == 'costInformation':
+            obj_ = CostInformation.factory(parent_object_=self)
+            obj_.build(child_)
+            self.costInformation = obj_
+            obj_.original_tagname_ = 'costInformation'
+        elif nodeName_ == 'dataSource':
+            type_name_ = child_.attrib.get(
+                '{http://www.w3.org/2001/XMLSchema-instance}type')
+            if type_name_ is None:
+                type_name_ = child_.attrib.get('type')
+            if type_name_ is not None:
+                type_names_ = type_name_.split(':')
+                if len(type_names_) == 1:
+                    type_name_ = type_names_[0]
+                else:
+                    type_name_ = type_names_[1]
+                class_ = globals()[type_name_]
+                obj_ = class_.factory()
+                obj_.build(child_)
+            else:
+                raise NotImplementedError(
+                    'Class not implemented for <dataSource> element')
+            self.dataSource = obj_
+            obj_.original_tagname_ = 'dataSource'
+# end class MeasuresCollection
+
+
+class PotentialsType(GeneratedsSuper):
+    subclass = None
+    superclass = None
+    def __init__(self, id=None, name=None, description=None, dataSource=None, quantityAndUnit=None, extensiontype_=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        self.id = _cast(None, id)
+        self.name = _cast(None, name)
+        self.description = _cast(None, description)
+        self.dataSource = dataSource
+        self.quantityAndUnit = quantityAndUnit
+        self.extensiontype_ = extensiontype_
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, PotentialsType)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if PotentialsType.subclass:
+            return PotentialsType.subclass(*args_, **kwargs_)
+        else:
+            return PotentialsType(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_dataSource(self):
+        return self.dataSource
+    def set_dataSource(self, dataSource):
+        self.dataSource = dataSource
+    def get_quantityAndUnit(self):
+        return self.quantityAndUnit
+    def set_quantityAndUnit(self, quantityAndUnit):
+        self.quantityAndUnit = quantityAndUnit
+    def get_id(self):
+        return self.id
+    def set_id(self, id):
+        self.id = id
+    def get_name(self):
+        return self.name
+    def set_name(self, name):
+        self.name = name
+    def get_description(self):
+        return self.description
+    def set_description(self, description):
+        self.description = description
+    def get_extensiontype_(self): return self.extensiontype_
+    def set_extensiontype_(self, extensiontype_): self.extensiontype_ = extensiontype_
+    def hasContent_(self):
+        if (
+            self.dataSource is not None or
+            self.quantityAndUnit is not None
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='PotentialsType', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('PotentialsType')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='PotentialsType')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='PotentialsType', pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='PotentialsType'):
+        if self.id is not None and 'id' not in already_processed:
+            already_processed.add('id')
+            outfile.write(' id=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.id), input_name='id')), ))
+        if self.name is not None and 'name' not in already_processed:
+            already_processed.add('name')
+            outfile.write(' name=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.name), input_name='name')), ))
+        if self.description is not None and 'description' not in already_processed:
+            already_processed.add('description')
+            outfile.write(' description=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.description), input_name='description')), ))
+        if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
+            already_processed.add('xsi:type')
+            outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
+            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='PotentialsType', fromsubclass_=False, pretty_print=True):
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.dataSource is not None:
+            self.dataSource.export(outfile, level, namespaceprefix_, pretty_print=pretty_print)
+        if self.quantityAndUnit is not None:
+            self.quantityAndUnit.export(outfile, level, namespaceprefix_, pretty_print=pretty_print)
+    def to_etree(self, parent_element=None, name_='PotentialsType', mapping_=None):
+        if parent_element is None:
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
+        else:
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
+        if self.extensiontype_ is not None:
+            element.set('{http://www.w3.org/2001/XMLSchema-instance}type', self.extensiontype_)
+        if self.id is not None:
+            element.set('id', self.gds_format_string(self.id))
+        if self.name is not None:
+            element.set('name', self.gds_format_string(self.name))
+        if self.description is not None:
+            element.set('description', self.gds_format_string(self.description))
+        if self.dataSource is not None:
+            dataSource_ = self.dataSource
+            dataSource_.to_etree(element, name_='dataSource', mapping_=mapping_)
+        if self.quantityAndUnit is not None:
+            quantityAndUnit_ = self.quantityAndUnit
+            quantityAndUnit_.to_etree(element, name_='quantityAndUnit', mapping_=mapping_)
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('id', node)
+        if value is not None and 'id' not in already_processed:
+            already_processed.add('id')
+            self.id = value
+        value = find_attr_value_('name', node)
+        if value is not None and 'name' not in already_processed:
+            already_processed.add('name')
+            self.name = value
+        value = find_attr_value_('description', node)
+        if value is not None and 'description' not in already_processed:
+            already_processed.add('description')
+            self.description = value
+        value = find_attr_value_('xsi:type', node)
+        if value is not None and 'xsi:type' not in already_processed:
+            already_processed.add('xsi:type')
+            self.extensiontype_ = value
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        if nodeName_ == 'dataSource':
+            type_name_ = child_.attrib.get(
+                '{http://www.w3.org/2001/XMLSchema-instance}type')
+            if type_name_ is None:
+                type_name_ = child_.attrib.get('type')
+            if type_name_ is not None:
+                type_names_ = type_name_.split(':')
+                if len(type_names_) == 1:
+                    type_name_ = type_names_[0]
+                else:
+                    type_name_ = type_names_[1]
+                class_ = globals()[type_name_]
+                obj_ = class_.factory()
+                obj_.build(child_)
+            else:
+                raise NotImplementedError(
+                    'Class not implemented for <dataSource> element')
+            self.dataSource = obj_
+            obj_.original_tagname_ = 'dataSource'
+        elif nodeName_ == 'quantityAndUnit':
+            type_name_ = child_.attrib.get(
+                '{http://www.w3.org/2001/XMLSchema-instance}type')
+            if type_name_ is None:
+                type_name_ = child_.attrib.get('type')
+            if type_name_ is not None:
+                type_names_ = type_name_.split(':')
+                if len(type_names_) == 1:
+                    type_name_ = type_names_[0]
+                else:
+                    type_name_ = type_names_[1]
+                class_ = globals()[type_name_]
+                obj_ = class_.factory()
+                obj_.build(child_)
+            else:
+                raise NotImplementedError(
+                    'Class not implemented for <quantityAndUnit> element')
+            self.quantityAndUnit = obj_
+            obj_.original_tagname_ = 'quantityAndUnit'
+# end class PotentialsType
+
+
+class SolarFieldPotentials(PotentialsType):
+    subclass = None
+    superclass = PotentialsType
+    def __init__(self, id=None, name=None, description=None, dataSource=None, quantityAndUnit=None, potential=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(SolarFieldPotentials, self).__init__(id, name, description, dataSource, quantityAndUnit,  **kwargs_)
+        if potential is None:
+            self.potential = []
+        else:
+            self.potential = potential
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, SolarFieldPotentials)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if SolarFieldPotentials.subclass:
+            return SolarFieldPotentials.subclass(*args_, **kwargs_)
+        else:
+            return SolarFieldPotentials(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_potential(self):
+        return self.potential
+    def set_potential(self, potential):
+        self.potential = potential
+    def add_potential(self, value):
+        self.potential.append(value)
+    def add_potential(self, value):
+        self.potential.append(value)
+    def insert_potential_at(self, index, value):
+        self.potential.insert(index, value)
+    def replace_potential_at(self, index, value):
+        self.potential[index] = value
+    def hasContent_(self):
+        if (
+            self.potential or
+            super(SolarFieldPotentials, self).hasContent_()
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='SolarFieldPotentials', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('SolarFieldPotentials')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='SolarFieldPotentials')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='SolarFieldPotentials', pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='SolarFieldPotentials'):
+        super(SolarFieldPotentials, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='SolarFieldPotentials')
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='SolarFieldPotentials', fromsubclass_=False, pretty_print=True):
+        super(SolarFieldPotentials, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        for potential_ in self.potential:
+            potential_.export(outfile, level, namespaceprefix_, name_='potential', pretty_print=pretty_print)
+    def to_etree(self, parent_element=None, name_='SolarFieldPotentials', mapping_=None):
+        element = super(SolarFieldPotentials, self).to_etree(parent_element, name_, mapping_)
+        for potential_ in self.potential:
+            potential_.to_etree(element, name_='potential', mapping_=mapping_)
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        super(SolarFieldPotentials, self).buildAttributes(node, attrs, already_processed)
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        if nodeName_ == 'potential':
+            obj_ = SolarFieldPotential.factory(parent_object_=self)
+            obj_.build(child_)
+            self.potential.append(obj_)
+            obj_.original_tagname_ = 'potential'
+        super(SolarFieldPotentials, self).buildChildren(child_, node, nodeName_, True)
+# end class SolarFieldPotentials
+
+
+class WindPotentials(PotentialsType):
+    subclass = None
+    superclass = PotentialsType
+    def __init__(self, id=None, name=None, description=None, dataSource=None, quantityAndUnit=None, potential=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(WindPotentials, self).__init__(id, name, description, dataSource, quantityAndUnit,  **kwargs_)
+        if potential is None:
+            self.potential = []
+        else:
+            self.potential = potential
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, WindPotentials)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if WindPotentials.subclass:
+            return WindPotentials.subclass(*args_, **kwargs_)
+        else:
+            return WindPotentials(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_potential(self):
+        return self.potential
+    def set_potential(self, potential):
+        self.potential = potential
+    def add_potential(self, value):
+        self.potential.append(value)
+    def add_potential(self, value):
+        self.potential.append(value)
+    def insert_potential_at(self, index, value):
+        self.potential.insert(index, value)
+    def replace_potential_at(self, index, value):
+        self.potential[index] = value
+    def hasContent_(self):
+        if (
+            self.potential or
+            super(WindPotentials, self).hasContent_()
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='WindPotentials', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('WindPotentials')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='WindPotentials')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='WindPotentials', pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='WindPotentials'):
+        super(WindPotentials, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='WindPotentials')
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='WindPotentials', fromsubclass_=False, pretty_print=True):
+        super(WindPotentials, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        for potential_ in self.potential:
+            potential_.export(outfile, level, namespaceprefix_, name_='potential', pretty_print=pretty_print)
+    def to_etree(self, parent_element=None, name_='WindPotentials', mapping_=None):
+        element = super(WindPotentials, self).to_etree(parent_element, name_, mapping_)
+        for potential_ in self.potential:
+            potential_.to_etree(element, name_='potential', mapping_=mapping_)
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        super(WindPotentials, self).buildAttributes(node, attrs, already_processed)
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        if nodeName_ == 'potential':
+            obj_ = WindPotential.factory(parent_object_=self)
+            obj_.build(child_)
+            self.potential.append(obj_)
+            obj_.original_tagname_ = 'potential'
+        super(WindPotentials, self).buildChildren(child_, node, nodeName_, True)
+# end class WindPotentials
+
+
+class GeothermalPotentials(PotentialsType):
+    subclass = None
+    superclass = PotentialsType
+    def __init__(self, id=None, name=None, description=None, dataSource=None, quantityAndUnit=None, potential=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(GeothermalPotentials, self).__init__(id, name, description, dataSource, quantityAndUnit,  **kwargs_)
+        if potential is None:
+            self.potential = []
+        else:
+            self.potential = potential
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, GeothermalPotentials)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if GeothermalPotentials.subclass:
+            return GeothermalPotentials.subclass(*args_, **kwargs_)
+        else:
+            return GeothermalPotentials(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_potential(self):
+        return self.potential
+    def set_potential(self, potential):
+        self.potential = potential
+    def add_potential(self, value):
+        self.potential.append(value)
+    def add_potential_with_type(self, value):
+        self.potential.append(value)
+        value.original_tagname_ = 'potential'
+        value.extensiontype_ = value.__class__.__name__
+    def insert_potential_at(self, index, value):
+        self.potential.insert(index, value)
+    def replace_potential_at(self, index, value):
+        self.potential[index] = value
+    def hasContent_(self):
+        if (
+            self.potential or
+            super(GeothermalPotentials, self).hasContent_()
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='GeothermalPotentials', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('GeothermalPotentials')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='GeothermalPotentials')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='GeothermalPotentials', pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='GeothermalPotentials'):
+        super(GeothermalPotentials, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='GeothermalPotentials')
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='GeothermalPotentials', fromsubclass_=False, pretty_print=True):
+        super(GeothermalPotentials, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        for potential_ in self.potential:
+            potential_.export(outfile, level, namespaceprefix_, pretty_print=pretty_print)
+    def to_etree(self, parent_element=None, name_='GeothermalPotentials', mapping_=None):
+        element = super(GeothermalPotentials, self).to_etree(parent_element, name_, mapping_)
+        for potential_ in self.potential:
+            potential_.to_etree(element, name_='potential', mapping_=mapping_)
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        super(GeothermalPotentials, self).buildAttributes(node, attrs, already_processed)
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        if nodeName_ == 'potential':
+            type_name_ = child_.attrib.get(
+                '{http://www.w3.org/2001/XMLSchema-instance}type')
+            if type_name_ is None:
+                type_name_ = child_.attrib.get('type')
+            if type_name_ is not None:
+                type_names_ = type_name_.split(':')
+                if len(type_names_) == 1:
+                    type_name_ = type_names_[0]
+                else:
+                    type_name_ = type_names_[1]
+                class_ = globals()[type_name_]
+                obj_ = class_.factory()
+                obj_.build(child_)
+            else:
+                raise NotImplementedError(
+                    'Class not implemented for <potential> element')
+            self.potential.append(obj_)
+            obj_.original_tagname_ = 'potential'
+        super(GeothermalPotentials, self).buildChildren(child_, node, nodeName_, True)
+# end class GeothermalPotentials
+
+
+class LegalAreas(PotentialsType):
+    subclass = None
+    superclass = PotentialsType
+    def __init__(self, id=None, name=None, description=None, dataSource=None, quantityAndUnit=None, legalarea=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(LegalAreas, self).__init__(id, name, description, dataSource, quantityAndUnit,  **kwargs_)
+        if legalarea is None:
+            self.legalarea = []
+        else:
+            self.legalarea = legalarea
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, LegalAreas)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if LegalAreas.subclass:
+            return LegalAreas.subclass(*args_, **kwargs_)
+        else:
+            return LegalAreas(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_legalarea(self):
+        return self.legalarea
+    def set_legalarea(self, legalarea):
+        self.legalarea = legalarea
+    def add_legalarea(self, value):
+        self.legalarea.append(value)
+    def add_legalarea(self, value):
+        self.legalarea.append(value)
+    def insert_legalarea_at(self, index, value):
+        self.legalarea.insert(index, value)
+    def replace_legalarea_at(self, index, value):
+        self.legalarea[index] = value
+    def hasContent_(self):
+        if (
+            self.legalarea or
+            super(LegalAreas, self).hasContent_()
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='LegalAreas', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('LegalAreas')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='LegalAreas')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='LegalAreas', pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='LegalAreas'):
+        super(LegalAreas, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='LegalAreas')
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='LegalAreas', fromsubclass_=False, pretty_print=True):
+        super(LegalAreas, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        for legalarea_ in self.legalarea:
+            legalarea_.export(outfile, level, namespaceprefix_, name_='legalarea', pretty_print=pretty_print)
+    def to_etree(self, parent_element=None, name_='LegalAreas', mapping_=None):
+        element = super(LegalAreas, self).to_etree(parent_element, name_, mapping_)
+        for legalarea_ in self.legalarea:
+            legalarea_.to_etree(element, name_='legalarea', mapping_=mapping_)
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        super(LegalAreas, self).buildAttributes(node, attrs, already_processed)
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        if nodeName_ == 'legalarea':
+            obj_ = LegalArea.factory(parent_object_=self)
+            obj_.build(child_)
+            self.legalarea.append(obj_)
+            obj_.original_tagname_ = 'legalarea'
+        super(LegalAreas, self).buildChildren(child_, node, nodeName_, True)
+# end class LegalAreas
+
+
+class ResidualHeatSourcePotentials(PotentialsType):
+    subclass = None
+    superclass = PotentialsType
+    def __init__(self, id=None, name=None, description=None, dataSource=None, quantityAndUnit=None, potential=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(ResidualHeatSourcePotentials, self).__init__(id, name, description, dataSource, quantityAndUnit,  **kwargs_)
+        if potential is None:
+            self.potential = []
+        else:
+            self.potential = potential
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, ResidualHeatSourcePotentials)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if ResidualHeatSourcePotentials.subclass:
+            return ResidualHeatSourcePotentials.subclass(*args_, **kwargs_)
+        else:
+            return ResidualHeatSourcePotentials(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_potential(self):
+        return self.potential
+    def set_potential(self, potential):
+        self.potential = potential
+    def add_potential(self, value):
+        self.potential.append(value)
+    def add_potential(self, value):
+        self.potential.append(value)
+    def insert_potential_at(self, index, value):
+        self.potential.insert(index, value)
+    def replace_potential_at(self, index, value):
+        self.potential[index] = value
+    def hasContent_(self):
+        if (
+            self.potential or
+            super(ResidualHeatSourcePotentials, self).hasContent_()
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='ResidualHeatSourcePotentials', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('ResidualHeatSourcePotentials')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='ResidualHeatSourcePotentials')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='ResidualHeatSourcePotentials', pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='ResidualHeatSourcePotentials'):
+        super(ResidualHeatSourcePotentials, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='ResidualHeatSourcePotentials')
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='ResidualHeatSourcePotentials', fromsubclass_=False, pretty_print=True):
+        super(ResidualHeatSourcePotentials, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        for potential_ in self.potential:
+            potential_.export(outfile, level, namespaceprefix_, name_='potential', pretty_print=pretty_print)
+    def to_etree(self, parent_element=None, name_='ResidualHeatSourcePotentials', mapping_=None):
+        element = super(ResidualHeatSourcePotentials, self).to_etree(parent_element, name_, mapping_)
+        for potential_ in self.potential:
+            potential_.to_etree(element, name_='potential', mapping_=mapping_)
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        super(ResidualHeatSourcePotentials, self).buildAttributes(node, attrs, already_processed)
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        if nodeName_ == 'potential':
+            obj_ = ResidualHeatSourcePotential.factory(parent_object_=self)
+            obj_.build(child_)
+            self.potential.append(obj_)
+            obj_.original_tagname_ = 'potential'
+        super(ResidualHeatSourcePotentials, self).buildChildren(child_, node, nodeName_, True)
+# end class ResidualHeatSourcePotentials
+
+
+class AreaPotential(Potential):
+    subclass = None
+    superclass = Potential
+    def __init__(self, id=None, name=None, geometryReference=None, geometry=None, dataSource=None, quantityAndUnit=None, area=None, extensiontype_=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(AreaPotential, self).__init__(id, name, geometryReference, geometry, dataSource, quantityAndUnit, extensiontype_,  **kwargs_)
+        self.area = _cast(None, area)
+        self.extensiontype_ = extensiontype_
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, AreaPotential)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if AreaPotential.subclass:
+            return AreaPotential.subclass(*args_, **kwargs_)
+        else:
+            return AreaPotential(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_area(self):
+        return self.area
+    def set_area(self, area):
+        self.area = area
+    def get_extensiontype_(self): return self.extensiontype_
+    def set_extensiontype_(self, extensiontype_): self.extensiontype_ = extensiontype_
+    def hasContent_(self):
+        if (
+            super(AreaPotential, self).hasContent_()
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='AreaPotential', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('AreaPotential')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='AreaPotential')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='AreaPotential', pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='AreaPotential'):
+        super(AreaPotential, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='AreaPotential')
+        if self.area is not None and 'area' not in already_processed:
+            already_processed.add('area')
+            outfile.write(' area=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.area), input_name='area')), ))
+        if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
+            already_processed.add('xsi:type')
+            outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
+            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='AreaPotential', fromsubclass_=False, pretty_print=True):
+        super(AreaPotential, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+    def to_etree(self, parent_element=None, name_='AreaPotential', mapping_=None):
+        element = super(AreaPotential, self).to_etree(parent_element, name_, mapping_)
+        if self.extensiontype_ is not None:
+            element.set('{http://www.w3.org/2001/XMLSchema-instance}type', self.extensiontype_)
+        if self.area is not None:
+            element.set('area', self.gds_format_string(self.area))
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('area', node)
+        if value is not None and 'area' not in already_processed:
+            already_processed.add('area')
+            self.area = value
+        value = find_attr_value_('xsi:type', node)
+        if value is not None and 'xsi:type' not in already_processed:
+            already_processed.add('xsi:type')
+            self.extensiontype_ = value
+        super(AreaPotential, self).buildAttributes(node, attrs, already_processed)
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        super(AreaPotential, self).buildChildren(child_, node, nodeName_, True)
+        pass
+# end class AreaPotential
+
+
+class AssetPotential(Potential):
+    subclass = None
+    superclass = Potential
+    def __init__(self, id=None, name=None, geometryReference=None, geometry=None, dataSource=None, quantityAndUnit=None, asset=None, extensiontype_=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(AssetPotential, self).__init__(id, name, geometryReference, geometry, dataSource, quantityAndUnit, extensiontype_,  **kwargs_)
+        self.asset = _cast(None, asset)
+        self.extensiontype_ = extensiontype_
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, AssetPotential)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if AssetPotential.subclass:
+            return AssetPotential.subclass(*args_, **kwargs_)
+        else:
+            return AssetPotential(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_asset(self):
+        return self.asset
+    def set_asset(self, asset):
+        self.asset = asset
+    def get_extensiontype_(self): return self.extensiontype_
+    def set_extensiontype_(self, extensiontype_): self.extensiontype_ = extensiontype_
+    def hasContent_(self):
+        if (
+            super(AssetPotential, self).hasContent_()
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='AssetPotential', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('AssetPotential')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='AssetPotential')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='AssetPotential', pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='AssetPotential'):
+        super(AssetPotential, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='AssetPotential')
+        if self.asset is not None and 'asset' not in already_processed:
+            already_processed.add('asset')
+            outfile.write(' asset=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.asset), input_name='asset')), ))
+        if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
+            already_processed.add('xsi:type')
+            outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
+            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='AssetPotential', fromsubclass_=False, pretty_print=True):
+        super(AssetPotential, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+    def to_etree(self, parent_element=None, name_='AssetPotential', mapping_=None):
+        element = super(AssetPotential, self).to_etree(parent_element, name_, mapping_)
+        if self.extensiontype_ is not None:
+            element.set('{http://www.w3.org/2001/XMLSchema-instance}type', self.extensiontype_)
+        if self.asset is not None:
+            element.set('asset', self.gds_format_string(self.asset))
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('asset', node)
+        if value is not None and 'asset' not in already_processed:
+            already_processed.add('asset')
+            self.asset = value
+        value = find_attr_value_('xsi:type', node)
+        if value is not None and 'xsi:type' not in already_processed:
+            already_processed.add('xsi:type')
+            self.extensiontype_ = value
+        super(AssetPotential, self).buildAttributes(node, attrs, already_processed)
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        super(AssetPotential, self).buildChildren(child_, node, nodeName_, True)
+        pass
+# end class AssetPotential
+
+
+class Sectors(GeneratedsSuper):
+    subclass = None
+    superclass = None
+    def __init__(self, sector=None, dataSource=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        if sector is None:
+            self.sector = []
+        else:
+            self.sector = sector
+        self.dataSource = dataSource
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, Sectors)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if Sectors.subclass:
+            return Sectors.subclass(*args_, **kwargs_)
+        else:
+            return Sectors(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_sector(self):
+        return self.sector
+    def set_sector(self, sector):
+        self.sector = sector
+    def add_sector(self, value):
+        self.sector.append(value)
+    def add_sector(self, value):
+        self.sector.append(value)
+    def insert_sector_at(self, index, value):
+        self.sector.insert(index, value)
+    def replace_sector_at(self, index, value):
+        self.sector[index] = value
+    def get_dataSource(self):
+        return self.dataSource
+    def set_dataSource(self, dataSource):
+        self.dataSource = dataSource
+    def hasContent_(self):
+        if (
+            self.sector or
+            self.dataSource is not None
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Sectors', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('Sectors')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='Sectors')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='Sectors', pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='Sectors'):
+        pass
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='Sectors', fromsubclass_=False, pretty_print=True):
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        for sector_ in self.sector:
+            sector_.export(outfile, level, namespaceprefix_, name_='sector', pretty_print=pretty_print)
+        if self.dataSource is not None:
+            self.dataSource.export(outfile, level, namespaceprefix_, pretty_print=pretty_print)
+    def to_etree(self, parent_element=None, name_='Sectors', mapping_=None):
+        if parent_element is None:
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
+        else:
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
+        for sector_ in self.sector:
+            sector_.to_etree(element, name_='sector', mapping_=mapping_)
+        if self.dataSource is not None:
+            dataSource_ = self.dataSource
+            dataSource_.to_etree(element, name_='dataSource', mapping_=mapping_)
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        pass
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        if nodeName_ == 'sector':
+            obj_ = Sector.factory(parent_object_=self)
+            obj_.build(child_)
+            self.sector.append(obj_)
+            obj_.original_tagname_ = 'sector'
+        elif nodeName_ == 'dataSource':
+            type_name_ = child_.attrib.get(
+                '{http://www.w3.org/2001/XMLSchema-instance}type')
+            if type_name_ is None:
+                type_name_ = child_.attrib.get('type')
+            if type_name_ is not None:
+                type_names_ = type_name_.split(':')
+                if len(type_names_) == 1:
+                    type_name_ = type_names_[0]
+                else:
+                    type_name_ = type_names_[1]
+                class_ = globals()[type_name_]
+                obj_ = class_.factory()
+                obj_.build(child_)
+            else:
+                raise NotImplementedError(
+                    'Class not implemented for <dataSource> element')
+            self.dataSource = obj_
+            obj_.original_tagname_ = 'dataSource'
+# end class Sectors
+
+
+class Sector(GeneratedsSuper):
+    subclass = None
+    superclass = None
+    def __init__(self, id=None, name=None, description=None, code=None, dataSource=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        self.id = _cast(None, id)
+        self.name = _cast(None, name)
+        self.description = _cast(None, description)
+        self.code = _cast(None, code)
+        self.dataSource = dataSource
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, Sector)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if Sector.subclass:
+            return Sector.subclass(*args_, **kwargs_)
+        else:
+            return Sector(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_dataSource(self):
+        return self.dataSource
+    def set_dataSource(self, dataSource):
+        self.dataSource = dataSource
+    def get_id(self):
+        return self.id
+    def set_id(self, id):
+        self.id = id
+    def get_name(self):
+        return self.name
+    def set_name(self, name):
+        self.name = name
+    def get_description(self):
+        return self.description
+    def set_description(self, description):
+        self.description = description
+    def get_code(self):
+        return self.code
+    def set_code(self, code):
+        self.code = code
+    def hasContent_(self):
+        if (
+            self.dataSource is not None
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='Sector', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('Sector')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='Sector')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='Sector', pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='Sector'):
+        if self.id is not None and 'id' not in already_processed:
+            already_processed.add('id')
+            outfile.write(' id=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.id), input_name='id')), ))
+        if self.name is not None and 'name' not in already_processed:
+            already_processed.add('name')
+            outfile.write(' name=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.name), input_name='name')), ))
+        if self.description is not None and 'description' not in already_processed:
+            already_processed.add('description')
+            outfile.write(' description=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.description), input_name='description')), ))
+        if self.code is not None and 'code' not in already_processed:
+            already_processed.add('code')
+            outfile.write(' code=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.code), input_name='code')), ))
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='Sector', fromsubclass_=False, pretty_print=True):
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.dataSource is not None:
+            self.dataSource.export(outfile, level, namespaceprefix_, pretty_print=pretty_print)
+    def to_etree(self, parent_element=None, name_='Sector', mapping_=None):
+        if parent_element is None:
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
+        else:
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
+        if self.id is not None:
+            element.set('id', self.gds_format_string(self.id))
+        if self.name is not None:
+            element.set('name', self.gds_format_string(self.name))
+        if self.description is not None:
+            element.set('description', self.gds_format_string(self.description))
+        if self.code is not None:
+            element.set('code', self.gds_format_string(self.code))
+        if self.dataSource is not None:
+            dataSource_ = self.dataSource
+            dataSource_.to_etree(element, name_='dataSource', mapping_=mapping_)
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('id', node)
+        if value is not None and 'id' not in already_processed:
+            already_processed.add('id')
+            self.id = value
+        value = find_attr_value_('name', node)
+        if value is not None and 'name' not in already_processed:
+            already_processed.add('name')
+            self.name = value
+        value = find_attr_value_('description', node)
+        if value is not None and 'description' not in already_processed:
+            already_processed.add('description')
+            self.description = value
+        value = find_attr_value_('code', node)
+        if value is not None and 'code' not in already_processed:
+            already_processed.add('code')
+            self.code = value
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        if nodeName_ == 'dataSource':
+            type_name_ = child_.attrib.get(
+                '{http://www.w3.org/2001/XMLSchema-instance}type')
+            if type_name_ is None:
+                type_name_ = child_.attrib.get('type')
+            if type_name_ is not None:
+                type_names_ = type_name_.split(':')
+                if len(type_names_) == 1:
+                    type_name_ = type_names_[0]
+                else:
+                    type_name_ = type_names_[1]
+                class_ = globals()[type_name_]
+                obj_ = class_.factory()
+                obj_.build(child_)
+            else:
+                raise NotImplementedError(
+                    'Class not implemented for <dataSource> element')
+            self.dataSource = obj_
+            obj_.original_tagname_ = 'dataSource'
+# end class Sector
+
+
+class MultiLine(Geometry):
+    subclass = None
+    superclass = Geometry
+    def __init__(self, line=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(MultiLine, self).__init__( **kwargs_)
+        if line is None:
+            self.line = []
+        else:
+            self.line = line
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, MultiLine)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if MultiLine.subclass:
+            return MultiLine.subclass(*args_, **kwargs_)
+        else:
+            return MultiLine(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_line(self):
+        return self.line
+    def set_line(self, line):
+        self.line = line
+    def add_line(self, value):
+        self.line.append(value)
+    def add_line(self, value):
+        self.line.append(value)
+    def insert_line_at(self, index, value):
+        self.line.insert(index, value)
+    def replace_line_at(self, index, value):
+        self.line[index] = value
+    def hasContent_(self):
+        if (
+            self.line or
+            super(MultiLine, self).hasContent_()
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='MultiLine', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('MultiLine')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='MultiLine')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='MultiLine', pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='MultiLine'):
+        super(MultiLine, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='MultiLine')
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='MultiLine', fromsubclass_=False, pretty_print=True):
+        super(MultiLine, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        for line_ in self.line:
+            line_.export(outfile, level, namespaceprefix_, name_='line', pretty_print=pretty_print)
+    def to_etree(self, parent_element=None, name_='MultiLine', mapping_=None):
+        element = super(MultiLine, self).to_etree(parent_element, name_, mapping_)
+        for line_ in self.line:
+            line_.to_etree(element, name_='line', mapping_=mapping_)
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        super(MultiLine, self).buildAttributes(node, attrs, already_processed)
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        if nodeName_ == 'line':
+            obj_ = Line.factory(parent_object_=self)
+            obj_.build(child_)
+            self.line.append(obj_)
+            obj_.original_tagname_ = 'line'
+        super(MultiLine, self).buildChildren(child_, node, nodeName_, True)
+# end class MultiLine
+
+
+class AbstractGTPotential(AreaPotential):
+    subclass = None
+    superclass = AreaPotential
+    def __init__(self, id=None, name=None, geometryReference=None, geometry=None, dataSource=None, quantityAndUnit=None, area=None, extensiontype_=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(AbstractGTPotential, self).__init__(id, name, geometryReference, geometry, dataSource, quantityAndUnit, area, extensiontype_,  **kwargs_)
+        self.extensiontype_ = extensiontype_
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, AbstractGTPotential)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if AbstractGTPotential.subclass:
+            return AbstractGTPotential.subclass(*args_, **kwargs_)
+        else:
+            return AbstractGTPotential(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_extensiontype_(self): return self.extensiontype_
+    def set_extensiontype_(self, extensiontype_): self.extensiontype_ = extensiontype_
+    def hasContent_(self):
+        if (
+            super(AbstractGTPotential, self).hasContent_()
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='AbstractGTPotential', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('AbstractGTPotential')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='AbstractGTPotential')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='AbstractGTPotential', pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='AbstractGTPotential'):
+        super(AbstractGTPotential, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='AbstractGTPotential')
+        if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
+            already_processed.add('xsi:type')
+            outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
+            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='AbstractGTPotential', fromsubclass_=False, pretty_print=True):
+        super(AbstractGTPotential, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+    def to_etree(self, parent_element=None, name_='AbstractGTPotential', mapping_=None):
+        element = super(AbstractGTPotential, self).to_etree(parent_element, name_, mapping_)
+        if self.extensiontype_ is not None:
+            element.set('{http://www.w3.org/2001/XMLSchema-instance}type', self.extensiontype_)
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('xsi:type', node)
+        if value is not None and 'xsi:type' not in already_processed:
+            already_processed.add('xsi:type')
+            self.extensiontype_ = value
+        super(AbstractGTPotential, self).buildAttributes(node, attrs, already_processed)
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        super(AbstractGTPotential, self).buildChildren(child_, node, nodeName_, True)
+        pass
+# end class AbstractGTPotential
+
+
+class UTESPotentials(PotentialsType):
+    subclass = None
+    superclass = PotentialsType
+    def __init__(self, id=None, name=None, description=None, dataSource=None, quantityAndUnit=None, potential=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(UTESPotentials, self).__init__(id, name, description, dataSource, quantityAndUnit,  **kwargs_)
+        if potential is None:
+            self.potential = []
+        else:
+            self.potential = potential
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, UTESPotentials)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if UTESPotentials.subclass:
+            return UTESPotentials.subclass(*args_, **kwargs_)
+        else:
+            return UTESPotentials(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_potential(self):
+        return self.potential
+    def set_potential(self, potential):
+        self.potential = potential
+    def add_potential(self, value):
+        self.potential.append(value)
+    def add_potential(self, value):
+        self.potential.append(value)
+    def insert_potential_at(self, index, value):
+        self.potential.insert(index, value)
+    def replace_potential_at(self, index, value):
+        self.potential[index] = value
+    def hasContent_(self):
+        if (
+            self.potential or
+            super(UTESPotentials, self).hasContent_()
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='UTESPotentials', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('UTESPotentials')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='UTESPotentials')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='UTESPotentials', pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='UTESPotentials'):
+        super(UTESPotentials, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='UTESPotentials')
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='UTESPotentials', fromsubclass_=False, pretty_print=True):
+        super(UTESPotentials, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        for potential_ in self.potential:
+            potential_.export(outfile, level, namespaceprefix_, name_='potential', pretty_print=pretty_print)
+    def to_etree(self, parent_element=None, name_='UTESPotentials', mapping_=None):
+        element = super(UTESPotentials, self).to_etree(parent_element, name_, mapping_)
+        for potential_ in self.potential:
+            potential_.to_etree(element, name_='potential', mapping_=mapping_)
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        super(UTESPotentials, self).buildAttributes(node, attrs, already_processed)
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        if nodeName_ == 'potential':
+            obj_ = UTESPotential.factory(parent_object_=self)
+            obj_.build(child_)
+            self.potential.append(obj_)
+            obj_.original_tagname_ = 'potential'
+        super(UTESPotentials, self).buildChildren(child_, node, nodeName_, True)
+# end class UTESPotentials
+
+
+class UTESPotential(AreaPotential):
+    subclass = None
+    superclass = AreaPotential
+    def __init__(self, id=None, name=None, geometryReference=None, geometry=None, dataSource=None, quantityAndUnit=None, area=None, value=None, type_=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(UTESPotential, self).__init__(id, name, geometryReference, geometry, dataSource, quantityAndUnit, area,  **kwargs_)
+        self.value = _cast(float, value)
+        self.type_ = _cast(None, type_)
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, UTESPotential)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if UTESPotential.subclass:
+            return UTESPotential.subclass(*args_, **kwargs_)
+        else:
+            return UTESPotential(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_value(self):
+        return self.value
+    def set_value(self, value):
+        self.value = value
+    def get_type(self):
+        return self.type_
+    def set_type(self, type_):
+        self.type_ = type_
+    def hasContent_(self):
+        if (
+            super(UTESPotential, self).hasContent_()
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='UTESPotential', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('UTESPotential')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='UTESPotential')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='UTESPotential', pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='UTESPotential'):
+        super(UTESPotential, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='UTESPotential')
+        if self.value is not None and 'value' not in already_processed:
+            already_processed.add('value')
+            outfile.write(' value="%s"' % self.gds_format_double(self.value, input_name='value'))
+        if self.type_ is not None and 'type_' not in already_processed:
+            already_processed.add('type_')
+            outfile.write(' type=%s' % (quote_attrib(self.type_), ))
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='UTESPotential', fromsubclass_=False, pretty_print=True):
+        super(UTESPotential, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+    def to_etree(self, parent_element=None, name_='UTESPotential', mapping_=None):
+        element = super(UTESPotential, self).to_etree(parent_element, name_, mapping_)
+        if self.value is not None:
+            element.set('value', self.gds_format_double(self.value))
+        if self.type_ is not None:
+            element.set('type', self.type_)
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('value', node)
+        if value is not None and 'value' not in already_processed:
+            already_processed.add('value')
+            try:
+                self.value = float(value)
+            except ValueError as exp:
+                raise ValueError('Bad float/double attribute (value): %s' % exp)
+        value = find_attr_value_('type', node)
+        if value is not None and 'type' not in already_processed:
+            already_processed.add('type')
+            self.type_ = value
+        super(UTESPotential, self).buildAttributes(node, attrs, already_processed)
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        super(UTESPotential, self).buildChildren(child_, node, nodeName_, True)
+        pass
+# end class UTESPotential
+
+
+class AbstractInstanceDate(GeneratedsSuper):
+    subclass = None
+    superclass = None
+    def __init__(self, extensiontype_=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        self.extensiontype_ = extensiontype_
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, AbstractInstanceDate)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if AbstractInstanceDate.subclass:
+            return AbstractInstanceDate.subclass(*args_, **kwargs_)
+        else:
+            return AbstractInstanceDate(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_extensiontype_(self): return self.extensiontype_
+    def set_extensiontype_(self, extensiontype_): self.extensiontype_ = extensiontype_
+    def hasContent_(self):
+        if (
+
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='AbstractInstanceDate', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('AbstractInstanceDate')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='AbstractInstanceDate')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='AbstractInstanceDate', pretty_print=pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='AbstractInstanceDate'):
+        if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
+            already_processed.add('xsi:type')
+            outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
+            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+        pass
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='AbstractInstanceDate', fromsubclass_=False, pretty_print=True):
+        pass
+    def to_etree(self, parent_element=None, name_='AbstractInstanceDate', mapping_=None):
+        if parent_element is None:
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
+        else:
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
+        if self.extensiontype_ is not None:
+            element.set('{http://www.w3.org/2001/XMLSchema-instance}type', self.extensiontype_)
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('xsi:type', node)
+        if value is not None and 'xsi:type' not in already_processed:
+            already_processed.add('xsi:type')
+            self.extensiontype_ = value
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        pass
+# end class AbstractInstanceDate
+
+
+class InstanceDate(AbstractInstanceDate):
+    subclass = None
+    superclass = AbstractInstanceDate
+    def __init__(self, date=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(InstanceDate, self).__init__( **kwargs_)
+        self.date = _cast(None, date)
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, InstanceDate)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if InstanceDate.subclass:
+            return InstanceDate.subclass(*args_, **kwargs_)
+        else:
+            return InstanceDate(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_date(self):
+        return self.date
+    def set_date(self, date):
+        self.date = date
+    def hasContent_(self):
+        if (
+            super(InstanceDate, self).hasContent_()
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='InstanceDate', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('InstanceDate')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='InstanceDate')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='InstanceDate', pretty_print=pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='InstanceDate'):
+        super(InstanceDate, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='InstanceDate')
+        if self.date is not None and 'date' not in already_processed:
+            already_processed.add('date')
+            outfile.write(' date=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.date), input_name='date')), ))
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='InstanceDate', fromsubclass_=False, pretty_print=True):
+        super(InstanceDate, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+        pass
+    def to_etree(self, parent_element=None, name_='InstanceDate', mapping_=None):
+        element = super(InstanceDate, self).to_etree(parent_element, name_, mapping_)
+        if self.date is not None:
+            element.set('date', self.gds_format_string(self.date))
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('date', node)
+        if value is not None and 'date' not in already_processed:
+            already_processed.add('date')
+            self.date = value
+        super(InstanceDate, self).buildAttributes(node, attrs, already_processed)
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        super(InstanceDate, self).buildChildren(child_, node, nodeName_, True)
+        pass
+# end class InstanceDate
+
+
+class InstancePeriod(AbstractInstanceDate):
+    subclass = None
+    superclass = AbstractInstanceDate
+    def __init__(self, fromDate=None, toDate=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(InstancePeriod, self).__init__( **kwargs_)
+        self.fromDate = _cast(None, fromDate)
+        self.toDate = _cast(None, toDate)
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, InstancePeriod)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if InstancePeriod.subclass:
+            return InstancePeriod.subclass(*args_, **kwargs_)
+        else:
+            return InstancePeriod(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_fromDate(self):
+        return self.fromDate
+    def set_fromDate(self, fromDate):
+        self.fromDate = fromDate
+    def get_toDate(self):
+        return self.toDate
+    def set_toDate(self, toDate):
+        self.toDate = toDate
+    def hasContent_(self):
+        if (
+            super(InstancePeriod, self).hasContent_()
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='InstancePeriod', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('InstancePeriod')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='InstancePeriod')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='InstancePeriod', pretty_print=pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='InstancePeriod'):
+        super(InstancePeriod, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='InstancePeriod')
+        if self.fromDate is not None and 'fromDate' not in already_processed:
+            already_processed.add('fromDate')
+            outfile.write(' fromDate=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.fromDate), input_name='fromDate')), ))
+        if self.toDate is not None and 'toDate' not in already_processed:
+            already_processed.add('toDate')
+            outfile.write(' toDate=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.toDate), input_name='toDate')), ))
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='InstancePeriod', fromsubclass_=False, pretty_print=True):
+        super(InstancePeriod, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+        pass
+    def to_etree(self, parent_element=None, name_='InstancePeriod', mapping_=None):
+        element = super(InstancePeriod, self).to_etree(parent_element, name_, mapping_)
+        if self.fromDate is not None:
+            element.set('fromDate', self.gds_format_string(self.fromDate))
+        if self.toDate is not None:
+            element.set('toDate', self.gds_format_string(self.toDate))
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('fromDate', node)
+        if value is not None and 'fromDate' not in already_processed:
+            already_processed.add('fromDate')
+            self.fromDate = value
+        value = find_attr_value_('toDate', node)
+        if value is not None and 'toDate' not in already_processed:
+            already_processed.add('toDate')
+            self.toDate = value
+        super(InstancePeriod, self).buildAttributes(node, attrs, already_processed)
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        super(InstancePeriod, self).buildChildren(child_, node, nodeName_, True)
+        pass
+# end class InstancePeriod
+
+
+class RoomHeater(GeneratedsSuper):
+    subclass = None
+    superclass = None
+    def __init__(self, type_=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        self.type_ = _cast(None, type_)
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, RoomHeater)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if RoomHeater.subclass:
+            return RoomHeater.subclass(*args_, **kwargs_)
+        else:
+            return RoomHeater(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_type(self):
+        return self.type_
+    def set_type(self, type_):
+        self.type_ = type_
+    def hasContent_(self):
+        if (
+
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='RoomHeater', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('RoomHeater')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='RoomHeater')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='RoomHeater', pretty_print=pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='RoomHeater'):
+        if self.type_ is not None and 'type_' not in already_processed:
+            already_processed.add('type_')
+            outfile.write(' type=%s' % (quote_attrib(self.type_), ))
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='RoomHeater', fromsubclass_=False, pretty_print=True):
+        pass
+    def to_etree(self, parent_element=None, name_='RoomHeater', mapping_=None):
+        if parent_element is None:
+            element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
+        else:
+            element = etree_.SubElement(parent_element, '{http://www.tno.nl/esdl}' + name_)
+        if self.type_ is not None:
+            element.set('type', self.type_)
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('type', node)
+        if value is not None and 'type' not in already_processed:
+            already_processed.add('type')
+            self.type_ = value
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        pass
+# end class RoomHeater
+
+
+class BiomassPotentials(PotentialsType):
+    subclass = None
+    superclass = PotentialsType
+    def __init__(self, id=None, name=None, description=None, dataSource=None, quantityAndUnit=None, potential=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(BiomassPotentials, self).__init__(id, name, description, dataSource, quantityAndUnit,  **kwargs_)
+        if potential is None:
+            self.potential = []
+        else:
+            self.potential = potential
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, BiomassPotentials)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if BiomassPotentials.subclass:
+            return BiomassPotentials.subclass(*args_, **kwargs_)
+        else:
+            return BiomassPotentials(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_potential(self):
+        return self.potential
+    def set_potential(self, potential):
+        self.potential = potential
+    def add_potential(self, value):
+        self.potential.append(value)
+    def add_potential(self, value):
+        self.potential.append(value)
+    def insert_potential_at(self, index, value):
+        self.potential.insert(index, value)
+    def replace_potential_at(self, index, value):
+        self.potential[index] = value
+    def hasContent_(self):
+        if (
+            self.potential or
+            super(BiomassPotentials, self).hasContent_()
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='BiomassPotentials', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('BiomassPotentials')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='BiomassPotentials')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='BiomassPotentials', pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='BiomassPotentials'):
+        super(BiomassPotentials, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='BiomassPotentials')
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='BiomassPotentials', fromsubclass_=False, pretty_print=True):
+        super(BiomassPotentials, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        for potential_ in self.potential:
+            potential_.export(outfile, level, namespaceprefix_, name_='potential', pretty_print=pretty_print)
+    def to_etree(self, parent_element=None, name_='BiomassPotentials', mapping_=None):
+        element = super(BiomassPotentials, self).to_etree(parent_element, name_, mapping_)
+        for potential_ in self.potential:
+            potential_.to_etree(element, name_='potential', mapping_=mapping_)
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        super(BiomassPotentials, self).buildAttributes(node, attrs, already_processed)
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        if nodeName_ == 'potential':
+            obj_ = BiomassPotential.factory(parent_object_=self)
+            obj_.build(child_)
+            self.potential.append(obj_)
+            obj_.original_tagname_ = 'potential'
+        super(BiomassPotentials, self).buildChildren(child_, node, nodeName_, True)
+# end class BiomassPotentials
+
+
+class BiomassPotential(AreaPotential):
+    subclass = None
+    superclass = AreaPotential
+    def __init__(self, id=None, name=None, geometryReference=None, geometry=None, dataSource=None, quantityAndUnit=None, area=None, value=0.0, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(BiomassPotential, self).__init__(id, name, geometryReference, geometry, dataSource, quantityAndUnit, area,  **kwargs_)
+        self.value = _cast(float, value)
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, BiomassPotential)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if BiomassPotential.subclass:
+            return BiomassPotential.subclass(*args_, **kwargs_)
+        else:
+            return BiomassPotential(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_value(self):
+        return self.value
+    def set_value(self, value):
+        self.value = value
+    def hasContent_(self):
+        if (
+            super(BiomassPotential, self).hasContent_()
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='BiomassPotential', namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('BiomassPotential')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='BiomassPotential')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='BiomassPotential', pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='BiomassPotential'):
+        super(BiomassPotential, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='BiomassPotential')
+        if self.value != 0.0 and 'value' not in already_processed:
+            already_processed.add('value')
+            outfile.write(' value="%s"' % self.gds_format_double(self.value, input_name='value'))
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='BiomassPotential', fromsubclass_=False, pretty_print=True):
+        super(BiomassPotential, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+    def to_etree(self, parent_element=None, name_='BiomassPotential', mapping_=None):
+        element = super(BiomassPotential, self).to_etree(parent_element, name_, mapping_)
+        if self.value is not None:
+            element.set('value', self.gds_format_double(self.value))
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('value', node)
+        if value is not None and 'value' not in already_processed:
+            already_processed.add('value')
+            try:
+                self.value = float(value)
+            except ValueError as exp:
+                raise ValueError('Bad float/double attribute (value): %s' % exp)
+        super(BiomassPotential, self).buildAttributes(node, attrs, already_processed)
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        super(BiomassPotential, self).buildChildren(child_, node, nodeName_, True)
+        pass
+# end class BiomassPotential
+
+
+class GeothermalEnergyPotential(AbstractGTPotential):
+    subclass = None
+    superclass = AbstractGTPotential
+    def __init__(self, id=None, name=None, geometryReference=None, geometry=None, dataSource=None, quantityAndUnit=None, area=None, depth=None, value=0.0, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(GeothermalEnergyPotential, self).__init__(id, name, geometryReference, geometry, dataSource, quantityAndUnit, area,  **kwargs_)
+        self.depth = _cast(int, depth)
+        self.value = _cast(float, value)
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, GeothermalEnergyPotential)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if GeothermalEnergyPotential.subclass:
+            return GeothermalEnergyPotential.subclass(*args_, **kwargs_)
+        else:
+            return GeothermalEnergyPotential(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_depth(self):
+        return self.depth
+    def set_depth(self, depth):
+        self.depth = depth
+    def get_value(self):
+        return self.value
+    def set_value(self, value):
+        self.value = value
+    def hasContent_(self):
+        if (
+            super(GeothermalEnergyPotential, self).hasContent_()
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='GeothermalEnergyPotential', namespacedef_='', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('GeothermalEnergyPotential')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='GeothermalEnergyPotential')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='GeothermalEnergyPotential', pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='GeothermalEnergyPotential'):
+        super(GeothermalEnergyPotential, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='GeothermalEnergyPotential')
+        if self.depth is not None and 'depth' not in already_processed:
+            already_processed.add('depth')
+            outfile.write(' depth="%s"' % self.gds_format_integer(self.depth, input_name='depth'))
+        if self.value != 0.0 and 'value' not in already_processed:
+            already_processed.add('value')
+            outfile.write(' value="%s"' % self.gds_format_double(self.value, input_name='value'))
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='GeothermalEnergyPotential', fromsubclass_=False, pretty_print=True):
+        super(GeothermalEnergyPotential, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+    def to_etree(self, parent_element=None, name_='GeothermalEnergyPotential', mapping_=None):
+        element = super(GeothermalEnergyPotential, self).to_etree(parent_element, name_, mapping_)
+        if self.depth is not None:
+            element.set('depth', self.gds_format_integer(self.depth))
+        if self.value is not None:
+            element.set('value', self.gds_format_double(self.value))
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('depth', node)
+        if value is not None and 'depth' not in already_processed:
+            already_processed.add('depth')
+            try:
+                self.depth = int(value)
+            except ValueError as exp:
+                raise_parse_error(node, 'Bad integer attribute: %s' % exp)
+        value = find_attr_value_('value', node)
+        if value is not None and 'value' not in already_processed:
+            already_processed.add('value')
+            try:
+                self.value = float(value)
+            except ValueError as exp:
+                raise ValueError('Bad float/double attribute (value): %s' % exp)
+        super(GeothermalEnergyPotential, self).buildAttributes(node, attrs, already_processed)
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        super(GeothermalEnergyPotential, self).buildChildren(child_, node, nodeName_, True)
+        pass
+# end class GeothermalEnergyPotential
+
+
 class QuantityAndUnitType(AbstractQuantityAndUnit):
     subclass = None
     superclass = AbstractQuantityAndUnit
-    def __init__(self, physicalQuantity=None, multiplier=None, unit=None, perMultiplier=None, perUnit=None, description=None, perTimeUnit=None, id=None):
+    def __init__(self, physicalQuantity=None, multiplier=None, unit=None, perMultiplier=None, perUnit=None, description=None, perTimeUnit=None, id=None, **kwargs_):
         self.original_tagname_ = None
-        super(QuantityAndUnitType, self).__init__()
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(QuantityAndUnitType, self).__init__( **kwargs_)
         self.physicalQuantity = _cast(None, physicalQuantity)
         self.multiplier = _cast(None, multiplier)
         self.unit = _cast(None, unit)
@@ -8546,22 +11864,38 @@ class QuantityAndUnitType(AbstractQuantityAndUnit):
         else:
             return QuantityAndUnitType(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_physicalQuantity(self): return self.physicalQuantity
-    def set_physicalQuantity(self, physicalQuantity): self.physicalQuantity = physicalQuantity
-    def get_multiplier(self): return self.multiplier
-    def set_multiplier(self, multiplier): self.multiplier = multiplier
-    def get_unit(self): return self.unit
-    def set_unit(self, unit): self.unit = unit
-    def get_perMultiplier(self): return self.perMultiplier
-    def set_perMultiplier(self, perMultiplier): self.perMultiplier = perMultiplier
-    def get_perUnit(self): return self.perUnit
-    def set_perUnit(self, perUnit): self.perUnit = perUnit
-    def get_description(self): return self.description
-    def set_description(self, description): self.description = description
-    def get_perTimeUnit(self): return self.perTimeUnit
-    def set_perTimeUnit(self, perTimeUnit): self.perTimeUnit = perTimeUnit
-    def get_id(self): return self.id
-    def set_id(self, id): self.id = id
+    def get_physicalQuantity(self):
+        return self.physicalQuantity
+    def set_physicalQuantity(self, physicalQuantity):
+        self.physicalQuantity = physicalQuantity
+    def get_multiplier(self):
+        return self.multiplier
+    def set_multiplier(self, multiplier):
+        self.multiplier = multiplier
+    def get_unit(self):
+        return self.unit
+    def set_unit(self, unit):
+        self.unit = unit
+    def get_perMultiplier(self):
+        return self.perMultiplier
+    def set_perMultiplier(self, perMultiplier):
+        self.perMultiplier = perMultiplier
+    def get_perUnit(self):
+        return self.perUnit
+    def set_perUnit(self, perUnit):
+        self.perUnit = perUnit
+    def get_description(self):
+        return self.description
+    def set_description(self, description):
+        self.description = description
+    def get_perTimeUnit(self):
+        return self.perTimeUnit
+    def set_perTimeUnit(self, perTimeUnit):
+        self.perTimeUnit = perTimeUnit
+    def get_id(self):
+        return self.id
+    def set_id(self, id):
+        self.id = id
     def hasContent_(self):
         if (
             super(QuantityAndUnitType, self).hasContent_()
@@ -8637,7 +11971,7 @@ class QuantityAndUnitType(AbstractQuantityAndUnit):
         if self.id is not None:
             element.set('id', self.gds_format_string(self.id))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -8686,12 +12020,114 @@ class QuantityAndUnitType(AbstractQuantityAndUnit):
 # end class QuantityAndUnitType
 
 
+class ResidualHeatSourcePotential(AssetPotential):
+    subclass = None
+    superclass = AssetPotential
+    def __init__(self, id=None, name=None, geometryReference=None, geometry=None, dataSource=None, quantityAndUnit=None, asset=None, value=0.0, type_=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(ResidualHeatSourcePotential, self).__init__(id, name, geometryReference, geometry, dataSource, quantityAndUnit, asset,  **kwargs_)
+        self.value = _cast(float, value)
+        self.type_ = _cast(None, type_)
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, ResidualHeatSourcePotential)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if ResidualHeatSourcePotential.subclass:
+            return ResidualHeatSourcePotential.subclass(*args_, **kwargs_)
+        else:
+            return ResidualHeatSourcePotential(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_value(self):
+        return self.value
+    def set_value(self, value):
+        self.value = value
+    def get_type(self):
+        return self.type_
+    def set_type(self, type_):
+        self.type_ = type_
+    def hasContent_(self):
+        if (
+            super(ResidualHeatSourcePotential, self).hasContent_()
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='ResidualHeatSourcePotential', namespacedef_='', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('ResidualHeatSourcePotential')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='ResidualHeatSourcePotential')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='ResidualHeatSourcePotential', pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='ResidualHeatSourcePotential'):
+        super(ResidualHeatSourcePotential, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='ResidualHeatSourcePotential')
+        if self.value != 0.0 and 'value' not in already_processed:
+            already_processed.add('value')
+            outfile.write(' value="%s"' % self.gds_format_double(self.value, input_name='value'))
+        if self.type_ is not None and 'type_' not in already_processed:
+            already_processed.add('type_')
+            outfile.write(' type=%s' % (quote_attrib(self.type_), ))
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='ResidualHeatSourcePotential', fromsubclass_=False, pretty_print=True):
+        super(ResidualHeatSourcePotential, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+    def to_etree(self, parent_element=None, name_='ResidualHeatSourcePotential', mapping_=None):
+        element = super(ResidualHeatSourcePotential, self).to_etree(parent_element, name_, mapping_)
+        if self.value is not None:
+            element.set('value', self.gds_format_double(self.value))
+        if self.type_ is not None:
+            element.set('type', self.type_)
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('value', node)
+        if value is not None and 'value' not in already_processed:
+            already_processed.add('value')
+            try:
+                self.value = float(value)
+            except ValueError as exp:
+                raise ValueError('Bad float/double attribute (value): %s' % exp)
+        value = find_attr_value_('type', node)
+        if value is not None and 'type' not in already_processed:
+            already_processed.add('type')
+            self.type_ = value
+        super(ResidualHeatSourcePotential, self).buildAttributes(node, attrs, already_processed)
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        super(ResidualHeatSourcePotential, self).buildChildren(child_, node, nodeName_, True)
+        pass
+# end class ResidualHeatSourcePotential
+
+
 class DataSource(AbstractDataSource):
     subclass = None
     superclass = AbstractDataSource
-    def __init__(self, id=None, name=None, description=None, reference=None, attribution=None, releaseDate=None, version=None, licence=None):
+    def __init__(self, id=None, name=None, description=None, reference=None, attribution=None, releaseDate=None, version=None, licence=None, **kwargs_):
         self.original_tagname_ = None
-        super(DataSource, self).__init__()
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(DataSource, self).__init__( **kwargs_)
         self.id = _cast(None, id)
         self.name = _cast(None, name)
         self.description = _cast(None, description)
@@ -8711,22 +12147,38 @@ class DataSource(AbstractDataSource):
         else:
             return DataSource(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_id(self): return self.id
-    def set_id(self, id): self.id = id
-    def get_name(self): return self.name
-    def set_name(self, name): self.name = name
-    def get_description(self): return self.description
-    def set_description(self, description): self.description = description
-    def get_reference(self): return self.reference
-    def set_reference(self, reference): self.reference = reference
-    def get_attribution(self): return self.attribution
-    def set_attribution(self, attribution): self.attribution = attribution
-    def get_releaseDate(self): return self.releaseDate
-    def set_releaseDate(self, releaseDate): self.releaseDate = releaseDate
-    def get_version(self): return self.version
-    def set_version(self, version): self.version = version
-    def get_licence(self): return self.licence
-    def set_licence(self, licence): self.licence = licence
+    def get_id(self):
+        return self.id
+    def set_id(self, id):
+        self.id = id
+    def get_name(self):
+        return self.name
+    def set_name(self, name):
+        self.name = name
+    def get_description(self):
+        return self.description
+    def set_description(self, description):
+        self.description = description
+    def get_reference(self):
+        return self.reference
+    def set_reference(self, reference):
+        self.reference = reference
+    def get_attribution(self):
+        return self.attribution
+    def set_attribution(self, attribution):
+        self.attribution = attribution
+    def get_releaseDate(self):
+        return self.releaseDate
+    def set_releaseDate(self, releaseDate):
+        self.releaseDate = releaseDate
+    def get_version(self):
+        return self.version
+    def set_version(self, version):
+        self.version = version
+    def get_licence(self):
+        return self.licence
+    def set_licence(self, licence):
+        self.licence = licence
     def hasContent_(self):
         if (
             super(DataSource, self).hasContent_()
@@ -8802,7 +12254,7 @@ class DataSource(AbstractDataSource):
         if self.licence is not None:
             element.set('licence', self.gds_format_string(self.licence))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -8851,12 +12303,100 @@ class DataSource(AbstractDataSource):
 # end class DataSource
 
 
+class SolarFieldPotential(AreaPotential):
+    subclass = None
+    superclass = AreaPotential
+    def __init__(self, id=None, name=None, geometryReference=None, geometry=None, dataSource=None, quantityAndUnit=None, area=None, value=0.0, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(SolarFieldPotential, self).__init__(id, name, geometryReference, geometry, dataSource, quantityAndUnit, area,  **kwargs_)
+        self.value = _cast(float, value)
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, SolarFieldPotential)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if SolarFieldPotential.subclass:
+            return SolarFieldPotential.subclass(*args_, **kwargs_)
+        else:
+            return SolarFieldPotential(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_value(self):
+        return self.value
+    def set_value(self, value):
+        self.value = value
+    def hasContent_(self):
+        if (
+            super(SolarFieldPotential, self).hasContent_()
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='SolarFieldPotential', namespacedef_='', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('SolarFieldPotential')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='SolarFieldPotential')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='SolarFieldPotential', pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='SolarFieldPotential'):
+        super(SolarFieldPotential, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='SolarFieldPotential')
+        if self.value != 0.0 and 'value' not in already_processed:
+            already_processed.add('value')
+            outfile.write(' value="%s"' % self.gds_format_double(self.value, input_name='value'))
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='SolarFieldPotential', fromsubclass_=False, pretty_print=True):
+        super(SolarFieldPotential, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+    def to_etree(self, parent_element=None, name_='SolarFieldPotential', mapping_=None):
+        element = super(SolarFieldPotential, self).to_etree(parent_element, name_, mapping_)
+        if self.value is not None:
+            element.set('value', self.gds_format_double(self.value))
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('value', node)
+        if value is not None and 'value' not in already_processed:
+            already_processed.add('value')
+            try:
+                self.value = float(value)
+            except ValueError as exp:
+                raise ValueError('Bad float/double attribute (value): %s' % exp)
+        super(SolarFieldPotential, self).buildAttributes(node, attrs, already_processed)
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        super(SolarFieldPotential, self).buildChildren(child_, node, nodeName_, True)
+        pass
+# end class SolarFieldPotential
+
+
 class Commodity(Carrier):
     subclass = None
     superclass = Carrier
-    def __init__(self, name=None, id=None, cost=None, dataSource=None, extensiontype_=None):
+    def __init__(self, name=None, id=None, cost=None, dataSource=None, extensiontype_=None, **kwargs_):
         self.original_tagname_ = None
-        super(Commodity, self).__init__(name, id, cost, dataSource, extensiontype_, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(Commodity, self).__init__(name, id, cost, dataSource, extensiontype_,  **kwargs_)
         self.extensiontype_ = extensiontype_
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -8904,7 +12444,7 @@ class Commodity(Carrier):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s"' % self.extensiontype_)
+            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='Commodity', fromsubclass_=False, pretty_print=True):
         super(Commodity, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='Commodity', mapping_=None):
@@ -8912,7 +12452,7 @@ class Commodity(Carrier):
         if self.extensiontype_ is not None:
             element.set('{http://www.w3.org/2001/XMLSchema-instance}type', self.extensiontype_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -8936,9 +12476,10 @@ class Commodity(Carrier):
 class Line(Geometry):
     subclass = None
     superclass = Geometry
-    def __init__(self, point=None):
+    def __init__(self, point=None, **kwargs_):
         self.original_tagname_ = None
-        super(Line, self).__init__()
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(Line, self).__init__( **kwargs_)
         if point is None:
             self.point = []
         else:
@@ -8954,11 +12495,18 @@ class Line(Geometry):
         else:
             return Line(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_point(self): return self.point
-    def set_point(self, point): self.point = point
-    def add_point(self, value): self.point.append(value)
-    def insert_point_at(self, index, value): self.point.insert(index, value)
-    def replace_point_at(self, index, value): self.point[index] = value
+    def get_point(self):
+        return self.point
+    def set_point(self, point):
+        self.point = point
+    def add_point(self, value):
+        self.point.append(value)
+    def add_point(self, value):
+        self.point.append(value)
+    def insert_point_at(self, index, value):
+        self.point.insert(index, value)
+    def replace_point_at(self, index, value):
+        self.point[index] = value
     def hasContent_(self):
         if (
             self.point or
@@ -9003,7 +12551,7 @@ class Line(Geometry):
         for point_ in self.point:
             point_.to_etree(element, name_='point', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -9016,7 +12564,7 @@ class Line(Geometry):
         super(Line, self).buildAttributes(node, attrs, already_processed)
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         if nodeName_ == 'point':
-            obj_ = Point.factory()
+            obj_ = Point.factory(parent_object_=self)
             obj_.build(child_)
             self.point.append(obj_)
             obj_.original_tagname_ = 'point'
@@ -9027,9 +12575,10 @@ class Line(Geometry):
 class EnergyCarrier(Carrier):
     subclass = None
     superclass = Carrier
-    def __init__(self, name=None, id=None, cost=None, dataSource=None, energyContent=0.0, emission=0.0, energyCarrierType=None, stateOfMatter=None, energyContentUnit=None, emissionUnit=None):
+    def __init__(self, name=None, id=None, cost=None, dataSource=None, energyContent=0.0, emission=0.0, energyCarrierType=None, stateOfMatter=None, energyContentUnit=None, emissionUnit=None, **kwargs_):
         self.original_tagname_ = None
-        super(EnergyCarrier, self).__init__(name, id, cost, dataSource, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(EnergyCarrier, self).__init__(name, id, cost, dataSource,  **kwargs_)
         self.energyContent = _cast(float, energyContent)
         self.emission = _cast(float, emission)
         self.energyCarrierType = _cast(None, energyCarrierType)
@@ -9047,18 +12596,30 @@ class EnergyCarrier(Carrier):
         else:
             return EnergyCarrier(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_energyContentUnit(self): return self.energyContentUnit
-    def set_energyContentUnit(self, energyContentUnit): self.energyContentUnit = energyContentUnit
-    def get_emissionUnit(self): return self.emissionUnit
-    def set_emissionUnit(self, emissionUnit): self.emissionUnit = emissionUnit
-    def get_energyContent(self): return self.energyContent
-    def set_energyContent(self, energyContent): self.energyContent = energyContent
-    def get_emission(self): return self.emission
-    def set_emission(self, emission): self.emission = emission
-    def get_energyCarrierType(self): return self.energyCarrierType
-    def set_energyCarrierType(self, energyCarrierType): self.energyCarrierType = energyCarrierType
-    def get_stateOfMatter(self): return self.stateOfMatter
-    def set_stateOfMatter(self, stateOfMatter): self.stateOfMatter = stateOfMatter
+    def get_energyContentUnit(self):
+        return self.energyContentUnit
+    def set_energyContentUnit(self, energyContentUnit):
+        self.energyContentUnit = energyContentUnit
+    def get_emissionUnit(self):
+        return self.emissionUnit
+    def set_emissionUnit(self, emissionUnit):
+        self.emissionUnit = emissionUnit
+    def get_energyContent(self):
+        return self.energyContent
+    def set_energyContent(self, energyContent):
+        self.energyContent = energyContent
+    def get_emission(self):
+        return self.emission
+    def set_emission(self, emission):
+        self.emission = emission
+    def get_energyCarrierType(self):
+        return self.energyCarrierType
+    def set_energyCarrierType(self, energyCarrierType):
+        self.energyCarrierType = energyCarrierType
+    def get_stateOfMatter(self):
+        return self.stateOfMatter
+    def set_stateOfMatter(self, stateOfMatter):
+        self.stateOfMatter = stateOfMatter
     def hasContent_(self):
         if (
             self.energyContentUnit is not None or
@@ -9130,7 +12691,7 @@ class EnergyCarrier(Carrier):
             emissionUnit_ = self.emissionUnit
             emissionUnit_.to_etree(element, name_='emissionUnit', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -9206,12 +12767,117 @@ class EnergyCarrier(Carrier):
 # end class EnergyCarrier
 
 
+class WindPotential(AreaPotential):
+    subclass = None
+    superclass = AreaPotential
+    def __init__(self, id=None, name=None, geometryReference=None, geometry=None, dataSource=None, quantityAndUnit=None, area=None, value=None, height=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(WindPotential, self).__init__(id, name, geometryReference, geometry, dataSource, quantityAndUnit, area,  **kwargs_)
+        self.value = _cast(float, value)
+        self.height = _cast(int, height)
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, WindPotential)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if WindPotential.subclass:
+            return WindPotential.subclass(*args_, **kwargs_)
+        else:
+            return WindPotential(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_value(self):
+        return self.value
+    def set_value(self, value):
+        self.value = value
+    def get_height(self):
+        return self.height
+    def set_height(self, height):
+        self.height = height
+    def hasContent_(self):
+        if (
+            super(WindPotential, self).hasContent_()
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='WindPotential', namespacedef_='', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('WindPotential')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='WindPotential')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='WindPotential', pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='WindPotential'):
+        super(WindPotential, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='WindPotential')
+        if self.value is not None and 'value' not in already_processed:
+            already_processed.add('value')
+            outfile.write(' value="%s"' % self.gds_format_double(self.value, input_name='value'))
+        if self.height is not None and 'height' not in already_processed:
+            already_processed.add('height')
+            outfile.write(' height="%s"' % self.gds_format_integer(self.height, input_name='height'))
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='WindPotential', fromsubclass_=False, pretty_print=True):
+        super(WindPotential, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+    def to_etree(self, parent_element=None, name_='WindPotential', mapping_=None):
+        element = super(WindPotential, self).to_etree(parent_element, name_, mapping_)
+        if self.value is not None:
+            element.set('value', self.gds_format_double(self.value))
+        if self.height is not None:
+            element.set('height', self.gds_format_integer(self.height))
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('value', node)
+        if value is not None and 'value' not in already_processed:
+            already_processed.add('value')
+            try:
+                self.value = float(value)
+            except ValueError as exp:
+                raise ValueError('Bad float/double attribute (value): %s' % exp)
+        value = find_attr_value_('height', node)
+        if value is not None and 'height' not in already_processed:
+            already_processed.add('height')
+            try:
+                self.height = int(value)
+            except ValueError as exp:
+                raise_parse_error(node, 'Bad integer attribute: %s' % exp)
+        super(WindPotential, self).buildAttributes(node, attrs, already_processed)
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        super(WindPotential, self).buildChildren(child_, node, nodeName_, True)
+        pass
+# end class WindPotential
+
+
 class EnergyService(Service):
     subclass = None
     superclass = Service
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, extensiontype_=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, extensiontype_=None, **kwargs_):
         self.original_tagname_ = None
-        super(EnergyService, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, extensiontype_, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(EnergyService, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, extensiontype_,  **kwargs_)
         self.extensiontype_ = extensiontype_
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -9259,7 +12925,7 @@ class EnergyService(Service):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s"' % self.extensiontype_)
+            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='EnergyService', fromsubclass_=False, pretty_print=True):
         super(EnergyService, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='EnergyService', mapping_=None):
@@ -9267,7 +12933,7 @@ class EnergyService(Service):
         if self.extensiontype_ is not None:
             element.set('{http://www.w3.org/2001/XMLSchema-instance}type', self.extensiontype_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -9288,12 +12954,13 @@ class EnergyService(Service):
 # end class EnergyService
 
 
-class LegalArea(Potential):
+class LegalArea(AreaPotential):
     subclass = None
-    superclass = Potential
-    def __init__(self, id=None, name=None, areas=None, asset=None, geometry=None, dataSource=None, purpose=None):
+    superclass = AreaPotential
+    def __init__(self, id=None, name=None, geometryReference=None, geometry=None, dataSource=None, quantityAndUnit=None, area=None, purpose=None, **kwargs_):
         self.original_tagname_ = None
-        super(LegalArea, self).__init__(id, name, areas, asset, geometry, dataSource, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(LegalArea, self).__init__(id, name, geometryReference, geometry, dataSource, quantityAndUnit, area,  **kwargs_)
         self.purpose = _cast(None, purpose)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -9306,8 +12973,10 @@ class LegalArea(Potential):
         else:
             return LegalArea(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_purpose(self): return self.purpose
-    def set_purpose(self, purpose): self.purpose = purpose
+    def get_purpose(self):
+        return self.purpose
+    def set_purpose(self, purpose):
+        self.purpose = purpose
     def hasContent_(self):
         if (
             super(LegalArea, self).hasContent_()
@@ -9348,7 +13017,7 @@ class LegalArea(Potential):
         if self.purpose is not None:
             element.set('purpose', self.gds_format_string(self.purpose))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -9372,9 +13041,10 @@ class LegalArea(Potential):
 class Polygon(Geometry):
     subclass = None
     superclass = Geometry
-    def __init__(self, exterior=None, interior=None):
+    def __init__(self, exterior=None, interior=None, **kwargs_):
         self.original_tagname_ = None
-        super(Polygon, self).__init__()
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(Polygon, self).__init__( **kwargs_)
         self.exterior = exterior
         if interior is None:
             self.interior = []
@@ -9391,13 +13061,22 @@ class Polygon(Geometry):
         else:
             return Polygon(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_exterior(self): return self.exterior
-    def set_exterior(self, exterior): self.exterior = exterior
-    def get_interior(self): return self.interior
-    def set_interior(self, interior): self.interior = interior
-    def add_interior(self, value): self.interior.append(value)
-    def insert_interior_at(self, index, value): self.interior.insert(index, value)
-    def replace_interior_at(self, index, value): self.interior[index] = value
+    def get_exterior(self):
+        return self.exterior
+    def set_exterior(self, exterior):
+        self.exterior = exterior
+    def get_interior(self):
+        return self.interior
+    def set_interior(self, interior):
+        self.interior = interior
+    def add_interior(self, value):
+        self.interior.append(value)
+    def add_interior(self, value):
+        self.interior.append(value)
+    def insert_interior_at(self, index, value):
+        self.interior.insert(index, value)
+    def replace_interior_at(self, index, value):
+        self.interior[index] = value
     def hasContent_(self):
         if (
             self.exterior is not None or
@@ -9448,7 +13127,7 @@ class Polygon(Geometry):
         for interior_ in self.interior:
             interior_.to_etree(element, name_='interior', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -9461,12 +13140,12 @@ class Polygon(Geometry):
         super(Polygon, self).buildAttributes(node, attrs, already_processed)
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         if nodeName_ == 'exterior':
-            obj_ = SubPolygon.factory()
+            obj_ = SubPolygon.factory(parent_object_=self)
             obj_.build(child_)
             self.exterior = obj_
             obj_.original_tagname_ = 'exterior'
         elif nodeName_ == 'interior':
-            obj_ = SubPolygon.factory()
+            obj_ = SubPolygon.factory(parent_object_=self)
             obj_.build(child_)
             self.interior.append(obj_)
             obj_.original_tagname_ = 'interior'
@@ -9477,9 +13156,10 @@ class Polygon(Geometry):
 class Point(Geometry):
     subclass = None
     superclass = Geometry
-    def __init__(self, lat=None, lon=None):
+    def __init__(self, lat=None, lon=None, **kwargs_):
         self.original_tagname_ = None
-        super(Point, self).__init__()
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(Point, self).__init__( **kwargs_)
         self.lat = _cast(float, lat)
         self.lon = _cast(float, lon)
     def factory(*args_, **kwargs_):
@@ -9493,10 +13173,14 @@ class Point(Geometry):
         else:
             return Point(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_lat(self): return self.lat
-    def set_lat(self, lat): self.lat = lat
-    def get_lon(self): return self.lon
-    def set_lon(self, lon): self.lon = lon
+    def get_lat(self):
+        return self.lat
+    def set_lat(self, lat):
+        self.lat = lat
+    def get_lon(self):
+        return self.lon
+    def set_lon(self, lon):
+        self.lon = lon
     def hasContent_(self):
         if (
             super(Point, self).hasContent_()
@@ -9542,7 +13226,7 @@ class Point(Geometry):
         if self.lon is not None:
             element.set('lon', self.gds_format_double(self.lon))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -9573,12 +13257,13 @@ class Point(Geometry):
 # end class Point
 
 
-class GeothermalPotential(Potential):
+class GeothermalPotential(AbstractGTPotential):
     subclass = None
-    superclass = Potential
-    def __init__(self, id=None, name=None, areas=None, asset=None, geometry=None, dataSource=None, temperature=None, depth=None, potential=None, powerPerDoublet='UNKNOWN'):
+    superclass = AbstractGTPotential
+    def __init__(self, id=None, name=None, geometryReference=None, geometry=None, dataSource=None, quantityAndUnit=None, area=None, temperature=None, depth=None, potential=None, powerPerDoublet='UNKNOWN', **kwargs_):
         self.original_tagname_ = None
-        super(GeothermalPotential, self).__init__(id, name, areas, asset, geometry, dataSource, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(GeothermalPotential, self).__init__(id, name, geometryReference, geometry, dataSource, quantityAndUnit, area,  **kwargs_)
         self.temperature = _cast(int, temperature)
         self.depth = _cast(int, depth)
         self.potential = _cast(None, potential)
@@ -9594,14 +13279,22 @@ class GeothermalPotential(Potential):
         else:
             return GeothermalPotential(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_temperature(self): return self.temperature
-    def set_temperature(self, temperature): self.temperature = temperature
-    def get_depth(self): return self.depth
-    def set_depth(self, depth): self.depth = depth
-    def get_potential(self): return self.potential
-    def set_potential(self, potential): self.potential = potential
-    def get_powerPerDoublet(self): return self.powerPerDoublet
-    def set_powerPerDoublet(self, powerPerDoublet): self.powerPerDoublet = powerPerDoublet
+    def get_temperature(self):
+        return self.temperature
+    def set_temperature(self, temperature):
+        self.temperature = temperature
+    def get_depth(self):
+        return self.depth
+    def set_depth(self, depth):
+        self.depth = depth
+    def get_potential(self):
+        return self.potential
+    def set_potential(self, potential):
+        self.potential = potential
+    def get_powerPerDoublet(self):
+        return self.powerPerDoublet
+    def set_powerPerDoublet(self, powerPerDoublet):
+        self.powerPerDoublet = powerPerDoublet
     def hasContent_(self):
         if (
             super(GeothermalPotential, self).hasContent_()
@@ -9657,7 +13350,7 @@ class GeothermalPotential(Potential):
         if self.powerPerDoublet is not None:
             element.set('powerPerDoublet', self.powerPerDoublet)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -9699,9 +13392,10 @@ class GeothermalPotential(Potential):
 class Asset(Item):
     subclass = None
     superclass = Item
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, extensiontype_=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, extensiontype_=None, **kwargs_):
         self.original_tagname_ = None
-        super(Asset, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, extensiontype_, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(Asset, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, extensiontype_,  **kwargs_)
         self.surfaceArea = _cast(int, surfaceArea)
         self.commissioningDate = _cast(None, commissioningDate)
         self.decommissioningDate = _cast(None, decommissioningDate)
@@ -9723,24 +13417,42 @@ class Asset(Item):
         else:
             return Asset(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_geometry(self): return self.geometry
-    def set_geometry(self, geometry): self.geometry = geometry
-    def get_costInformation(self): return self.costInformation
-    def set_costInformation(self, costInformation): self.costInformation = costInformation
-    def get_surfaceArea(self): return self.surfaceArea
-    def set_surfaceArea(self, surfaceArea): self.surfaceArea = surfaceArea
-    def get_commissioningDate(self): return self.commissioningDate
-    def set_commissioningDate(self, commissioningDate): self.commissioningDate = commissioningDate
-    def get_decommissioningDate(self): return self.decommissioningDate
-    def set_decommissioningDate(self, decommissioningDate): self.decommissioningDate = decommissioningDate
-    def get_owner(self): return self.owner
-    def set_owner(self, owner): self.owner = owner
-    def get_technicalLifetime(self): return self.technicalLifetime
-    def set_technicalLifetime(self, technicalLifetime): self.technicalLifetime = technicalLifetime
-    def get_area(self): return self.area
-    def set_area(self, area): self.area = area
-    def get_containingBuilding(self): return self.containingBuilding
-    def set_containingBuilding(self, containingBuilding): self.containingBuilding = containingBuilding
+    def get_geometry(self):
+        return self.geometry
+    def set_geometry(self, geometry):
+        self.geometry = geometry
+    def get_costInformation(self):
+        return self.costInformation
+    def set_costInformation(self, costInformation):
+        self.costInformation = costInformation
+    def get_surfaceArea(self):
+        return self.surfaceArea
+    def set_surfaceArea(self, surfaceArea):
+        self.surfaceArea = surfaceArea
+    def get_commissioningDate(self):
+        return self.commissioningDate
+    def set_commissioningDate(self, commissioningDate):
+        self.commissioningDate = commissioningDate
+    def get_decommissioningDate(self):
+        return self.decommissioningDate
+    def set_decommissioningDate(self, decommissioningDate):
+        self.decommissioningDate = decommissioningDate
+    def get_owner(self):
+        return self.owner
+    def set_owner(self, owner):
+        self.owner = owner
+    def get_technicalLifetime(self):
+        return self.technicalLifetime
+    def set_technicalLifetime(self, technicalLifetime):
+        self.technicalLifetime = technicalLifetime
+    def get_area(self):
+        return self.area
+    def set_area(self, area):
+        self.area = area
+    def get_containingBuilding(self):
+        return self.containingBuilding
+    def set_containingBuilding(self, containingBuilding):
+        self.containingBuilding = containingBuilding
     def get_extensiontype_(self): return self.extensiontype_
     def set_extensiontype_(self, extensiontype_): self.extensiontype_ = extensiontype_
     def hasContent_(self):
@@ -9799,7 +13511,7 @@ class Asset(Item):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s"' % self.extensiontype_)
+            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='Asset', fromsubclass_=False, pretty_print=True):
         super(Asset, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
         if pretty_print:
@@ -9835,7 +13547,7 @@ class Asset(Item):
             costInformation_ = self.costInformation
             costInformation_.to_etree(element, name_='costInformation', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -9905,7 +13617,7 @@ class Asset(Item):
             self.geometry = obj_
             obj_.original_tagname_ = 'geometry'
         elif nodeName_ == 'costInformation':
-            obj_ = CostInformation.factory()
+            obj_ = CostInformation.factory(parent_object_=self)
             obj_.build(child_)
             self.costInformation = obj_
             obj_.original_tagname_ = 'costInformation'
@@ -9916,9 +13628,10 @@ class Asset(Item):
 class EnergyAsset(Asset):
     subclass = None
     superclass = Asset
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, extensiontype_=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, extensiontype_=None, **kwargs_):
         self.original_tagname_ = None
-        super(EnergyAsset, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, extensiontype_, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(EnergyAsset, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, extensiontype_,  **kwargs_)
         if port is None:
             self.port = []
         else:
@@ -9935,11 +13648,20 @@ class EnergyAsset(Asset):
         else:
             return EnergyAsset(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_port(self): return self.port
-    def set_port(self, port): self.port = port
-    def add_port(self, value): self.port.append(value)
-    def insert_port_at(self, index, value): self.port.insert(index, value)
-    def replace_port_at(self, index, value): self.port[index] = value
+    def get_port(self):
+        return self.port
+    def set_port(self, port):
+        self.port = port
+    def add_port(self, value):
+        self.port.append(value)
+    def add_port_with_type(self, value):
+        self.port.append(value)
+        value.original_tagname_ = 'port'
+        value.extensiontype_ = value.__class__.__name__
+    def insert_port_at(self, index, value):
+        self.port.insert(index, value)
+    def replace_port_at(self, index, value):
+        self.port[index] = value
     def get_extensiontype_(self): return self.extensiontype_
     def set_extensiontype_(self, extensiontype_): self.extensiontype_ = extensiontype_
     def hasContent_(self):
@@ -9976,7 +13698,7 @@ class EnergyAsset(Asset):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s"' % self.extensiontype_)
+            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='EnergyAsset', fromsubclass_=False, pretty_print=True):
         super(EnergyAsset, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
         if pretty_print:
@@ -9992,7 +13714,7 @@ class EnergyAsset(Asset):
         for port_ in self.port:
             port_.to_etree(element, name_='port', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -10031,12 +13753,157 @@ class EnergyAsset(Asset):
 # end class EnergyAsset
 
 
+class EnergyMarket(EnergyService):
+    subclass = None
+    superclass = EnergyService
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, asset=None, carrier=None, parameters=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(EnergyMarket, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource,  **kwargs_)
+        self.asset = _cast(None, asset)
+        self.carrier = _cast(None, carrier)
+        if parameters is None:
+            self.parameters = []
+        else:
+            self.parameters = parameters
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, EnergyMarket)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if EnergyMarket.subclass:
+            return EnergyMarket.subclass(*args_, **kwargs_)
+        else:
+            return EnergyMarket(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_parameters(self):
+        return self.parameters
+    def set_parameters(self, parameters):
+        self.parameters = parameters
+    def add_parameters(self, value):
+        self.parameters.append(value)
+    def add_parameters_with_type(self, value):
+        self.parameters.append(value)
+        value.original_tagname_ = 'parameters'
+        value.extensiontype_ = value.__class__.__name__
+    def insert_parameters_at(self, index, value):
+        self.parameters.insert(index, value)
+    def replace_parameters_at(self, index, value):
+        self.parameters[index] = value
+    def get_asset(self):
+        return self.asset
+    def set_asset(self, asset):
+        self.asset = asset
+    def get_carrier(self):
+        return self.carrier
+    def set_carrier(self, carrier):
+        self.carrier = carrier
+    def hasContent_(self):
+        if (
+            self.parameters or
+            super(EnergyMarket, self).hasContent_()
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='EnergyMarket', namespacedef_='', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('EnergyMarket')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='EnergyMarket')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='EnergyMarket', pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='EnergyMarket'):
+        super(EnergyMarket, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='EnergyMarket')
+        if self.asset is not None and 'asset' not in already_processed:
+            already_processed.add('asset')
+            outfile.write(' asset=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.asset), input_name='asset')), ))
+        if self.carrier is not None and 'carrier' not in already_processed:
+            already_processed.add('carrier')
+            outfile.write(' carrier=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.carrier), input_name='carrier')), ))
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='EnergyMarket', fromsubclass_=False, pretty_print=True):
+        super(EnergyMarket, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        for parameters_ in self.parameters:
+            parameters_.export(outfile, level, namespaceprefix_, pretty_print=pretty_print)
+    def to_etree(self, parent_element=None, name_='EnergyMarket', mapping_=None):
+        element = super(EnergyMarket, self).to_etree(parent_element, name_, mapping_)
+        if self.asset is not None:
+            element.set('asset', self.gds_format_string(self.asset))
+        if self.carrier is not None:
+            element.set('carrier', self.gds_format_string(self.carrier))
+        for parameters_ in self.parameters:
+            parameters_.to_etree(element, name_='parameters', mapping_=mapping_)
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('asset', node)
+        if value is not None and 'asset' not in already_processed:
+            already_processed.add('asset')
+            self.asset = value
+        value = find_attr_value_('carrier', node)
+        if value is not None and 'carrier' not in already_processed:
+            already_processed.add('carrier')
+            self.carrier = value
+        super(EnergyMarket, self).buildAttributes(node, attrs, already_processed)
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        if nodeName_ == 'parameters':
+            type_name_ = child_.attrib.get(
+                '{http://www.w3.org/2001/XMLSchema-instance}type')
+            if type_name_ is None:
+                type_name_ = child_.attrib.get('type')
+            if type_name_ is not None:
+                type_names_ = type_name_.split(':')
+                if len(type_names_) == 1:
+                    type_name_ = type_names_[0]
+                else:
+                    type_name_ = type_names_[1]
+                class_ = globals()[type_name_]
+                obj_ = class_.factory()
+                obj_.build(child_)
+            else:
+                raise NotImplementedError(
+                    'Class not implemented for <parameters> element')
+            self.parameters.append(obj_)
+            obj_.original_tagname_ = 'parameters'
+        super(EnergyMarket, self).buildChildren(child_, node, nodeName_, True)
+# end class EnergyMarket
+
+
 class ControlStrategy(EnergyService):
     subclass = None
     superclass = EnergyService
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, extensiontype_=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, energyAsset=None, extensiontype_=None, **kwargs_):
         self.original_tagname_ = None
-        super(ControlStrategy, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, extensiontype_, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(ControlStrategy, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, extensiontype_,  **kwargs_)
+        self.energyAsset = _cast(None, energyAsset)
         self.extensiontype_ = extensiontype_
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -10049,6 +13916,10 @@ class ControlStrategy(EnergyService):
         else:
             return ControlStrategy(*args_, **kwargs_)
     factory = staticmethod(factory)
+    def get_energyAsset(self):
+        return self.energyAsset
+    def set_energyAsset(self, energyAsset):
+        self.energyAsset = energyAsset
     def get_extensiontype_(self): return self.extensiontype_
     def set_extensiontype_(self, extensiontype_): self.extensiontype_ = extensiontype_
     def hasContent_(self):
@@ -10081,18 +13952,23 @@ class ControlStrategy(EnergyService):
             outfile.write('/>%s' % (eol_, ))
     def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='ControlStrategy'):
         super(ControlStrategy, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='ControlStrategy')
+        if self.energyAsset is not None and 'energyAsset' not in already_processed:
+            already_processed.add('energyAsset')
+            outfile.write(' energyAsset=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.energyAsset), input_name='energyAsset')), ))
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s"' % self.extensiontype_)
+            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='ControlStrategy', fromsubclass_=False, pretty_print=True):
         super(ControlStrategy, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='ControlStrategy', mapping_=None):
         element = super(ControlStrategy, self).to_etree(parent_element, name_, mapping_)
         if self.extensiontype_ is not None:
             element.set('{http://www.w3.org/2001/XMLSchema-instance}type', self.extensiontype_)
+        if self.energyAsset is not None:
+            element.set('energyAsset', self.gds_format_string(self.energyAsset))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -10102,6 +13978,10 @@ class ControlStrategy(EnergyService):
             self.buildChildren(child, node, nodeName_)
         return self
     def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('energyAsset', node)
+        if value is not None and 'energyAsset' not in already_processed:
+            already_processed.add('energyAsset')
+            self.energyAsset = value
         value = find_attr_value_('xsi:type', node)
         if value is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
@@ -10116,9 +13996,10 @@ class ControlStrategy(EnergyService):
 class EnergyCommodity(Commodity):
     subclass = None
     superclass = Commodity
-    def __init__(self, name=None, id=None, cost=None, dataSource=None):
+    def __init__(self, name=None, id=None, cost=None, dataSource=None, **kwargs_):
         self.original_tagname_ = None
-        super(EnergyCommodity, self).__init__(name, id, cost, dataSource, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(EnergyCommodity, self).__init__(name, id, cost, dataSource,  **kwargs_)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -10165,7 +14046,7 @@ class EnergyCommodity(Commodity):
     def to_etree(self, parent_element=None, name_='EnergyCommodity', mapping_=None):
         element = super(EnergyCommodity, self).to_etree(parent_element, name_, mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -10185,9 +14066,10 @@ class EnergyCommodity(Commodity):
 class ElectricityCommodity(Commodity):
     subclass = None
     superclass = Commodity
-    def __init__(self, name=None, id=None, cost=None, dataSource=None, voltage=None):
+    def __init__(self, name=None, id=None, cost=None, dataSource=None, voltage=None, **kwargs_):
         self.original_tagname_ = None
-        super(ElectricityCommodity, self).__init__(name, id, cost, dataSource, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(ElectricityCommodity, self).__init__(name, id, cost, dataSource,  **kwargs_)
         self.voltage = _cast(float, voltage)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -10200,8 +14082,10 @@ class ElectricityCommodity(Commodity):
         else:
             return ElectricityCommodity(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_voltage(self): return self.voltage
-    def set_voltage(self, voltage): self.voltage = voltage
+    def get_voltage(self):
+        return self.voltage
+    def set_voltage(self, voltage):
+        self.voltage = voltage
     def hasContent_(self):
         if (
             super(ElectricityCommodity, self).hasContent_()
@@ -10242,7 +14126,7 @@ class ElectricityCommodity(Commodity):
         if self.voltage is not None:
             element.set('voltage', self.gds_format_double(self.voltage))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -10269,9 +14153,10 @@ class ElectricityCommodity(Commodity):
 class HeatCommodity(Commodity):
     subclass = None
     superclass = Commodity
-    def __init__(self, name=None, id=None, cost=None, dataSource=None, temperature=None):
+    def __init__(self, name=None, id=None, cost=None, dataSource=None, temperature=None, **kwargs_):
         self.original_tagname_ = None
-        super(HeatCommodity, self).__init__(name, id, cost, dataSource, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(HeatCommodity, self).__init__(name, id, cost, dataSource,  **kwargs_)
         self.temperature = _cast(float, temperature)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -10284,8 +14169,10 @@ class HeatCommodity(Commodity):
         else:
             return HeatCommodity(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_temperature(self): return self.temperature
-    def set_temperature(self, temperature): self.temperature = temperature
+    def get_temperature(self):
+        return self.temperature
+    def set_temperature(self, temperature):
+        self.temperature = temperature
     def hasContent_(self):
         if (
             super(HeatCommodity, self).hasContent_()
@@ -10326,7 +14213,7 @@ class HeatCommodity(Commodity):
         if self.temperature is not None:
             element.set('temperature', self.gds_format_double(self.temperature))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -10353,9 +14240,10 @@ class HeatCommodity(Commodity):
 class GasCommodity(Commodity):
     subclass = None
     superclass = Commodity
-    def __init__(self, name=None, id=None, cost=None, dataSource=None, pressure=None):
+    def __init__(self, name=None, id=None, cost=None, dataSource=None, pressure=None, **kwargs_):
         self.original_tagname_ = None
-        super(GasCommodity, self).__init__(name, id, cost, dataSource, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(GasCommodity, self).__init__(name, id, cost, dataSource,  **kwargs_)
         self.pressure = _cast(float, pressure)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -10368,8 +14256,10 @@ class GasCommodity(Commodity):
         else:
             return GasCommodity(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_pressure(self): return self.pressure
-    def set_pressure(self, pressure): self.pressure = pressure
+    def get_pressure(self):
+        return self.pressure
+    def set_pressure(self, pressure):
+        self.pressure = pressure
     def hasContent_(self):
         if (
             super(GasCommodity, self).hasContent_()
@@ -10410,7 +14300,7 @@ class GasCommodity(Commodity):
         if self.pressure is not None:
             element.set('pressure', self.gds_format_double(self.pressure))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -10437,9 +14327,10 @@ class GasCommodity(Commodity):
 class AggregatorService(EnergyService):
     subclass = None
     superclass = EnergyService
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, **kwargs_):
         self.original_tagname_ = None
-        super(AggregatorService, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(AggregatorService, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource,  **kwargs_)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -10486,7 +14377,7 @@ class AggregatorService(EnergyService):
     def to_etree(self, parent_element=None, name_='AggregatorService', mapping_=None):
         element = super(AggregatorService, self).to_etree(parent_element, name_, mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -10506,9 +14397,10 @@ class AggregatorService(EnergyService):
 class AbstractBuilding(Asset):
     subclass = None
     superclass = Asset
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, energyLabel=None, energyIndex=None, asset=None, extensiontype_=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, energyLabel=None, energyIndex=None, asset=None, extensiontype_=None, **kwargs_):
         self.original_tagname_ = None
-        super(AbstractBuilding, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, extensiontype_, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(AbstractBuilding, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, extensiontype_,  **kwargs_)
         self.energyLabel = _cast(None, energyLabel)
         self.energyIndex = _cast(float, energyIndex)
         if asset is None:
@@ -10527,15 +14419,28 @@ class AbstractBuilding(Asset):
         else:
             return AbstractBuilding(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_asset(self): return self.asset
-    def set_asset(self, asset): self.asset = asset
-    def add_asset(self, value): self.asset.append(value)
-    def insert_asset_at(self, index, value): self.asset.insert(index, value)
-    def replace_asset_at(self, index, value): self.asset[index] = value
-    def get_energyLabel(self): return self.energyLabel
-    def set_energyLabel(self, energyLabel): self.energyLabel = energyLabel
-    def get_energyIndex(self): return self.energyIndex
-    def set_energyIndex(self, energyIndex): self.energyIndex = energyIndex
+    def get_asset(self):
+        return self.asset
+    def set_asset(self, asset):
+        self.asset = asset
+    def add_asset(self, value):
+        self.asset.append(value)
+    def add_asset_with_type(self, value):
+        self.asset.append(value)
+        value.original_tagname_ = 'asset'
+        value.extensiontype_ = value.__class__.__name__
+    def insert_asset_at(self, index, value):
+        self.asset.insert(index, value)
+    def replace_asset_at(self, index, value):
+        self.asset[index] = value
+    def get_energyLabel(self):
+        return self.energyLabel
+    def set_energyLabel(self, energyLabel):
+        self.energyLabel = energyLabel
+    def get_energyIndex(self):
+        return self.energyIndex
+    def set_energyIndex(self, energyIndex):
+        self.energyIndex = energyIndex
     def get_extensiontype_(self): return self.extensiontype_
     def set_extensiontype_(self, extensiontype_): self.extensiontype_ = extensiontype_
     def hasContent_(self):
@@ -10578,7 +14483,7 @@ class AbstractBuilding(Asset):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s"' % self.extensiontype_)
+            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='AbstractBuilding', fromsubclass_=False, pretty_print=True):
         super(AbstractBuilding, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
         if pretty_print:
@@ -10598,7 +14503,7 @@ class AbstractBuilding(Asset):
         for asset_ in self.asset:
             asset_.to_etree(element, name_='asset', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -10651,9 +14556,10 @@ class AbstractBuilding(Asset):
 class DemandResponseService(EnergyService):
     subclass = None
     superclass = EnergyService
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, **kwargs_):
         self.original_tagname_ = None
-        super(DemandResponseService, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(DemandResponseService, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource,  **kwargs_)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -10700,7 +14606,7 @@ class DemandResponseService(EnergyService):
     def to_etree(self, parent_element=None, name_='DemandResponseService', mapping_=None):
         element = super(DemandResponseService, self).to_etree(parent_element, name_, mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -10720,9 +14626,10 @@ class DemandResponseService(EnergyService):
 class Insulation(Asset):
     subclass = None
     superclass = Asset
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, thermalInsulation=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, thermalInsulation=None, **kwargs_):
         self.original_tagname_ = None
-        super(Insulation, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(Insulation, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation,  **kwargs_)
         self.thermalInsulation = _cast(float, thermalInsulation)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -10735,8 +14642,10 @@ class Insulation(Asset):
         else:
             return Insulation(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_thermalInsulation(self): return self.thermalInsulation
-    def set_thermalInsulation(self, thermalInsulation): self.thermalInsulation = thermalInsulation
+    def get_thermalInsulation(self):
+        return self.thermalInsulation
+    def set_thermalInsulation(self, thermalInsulation):
+        self.thermalInsulation = thermalInsulation
     def hasContent_(self):
         if (
             super(Insulation, self).hasContent_()
@@ -10777,7 +14686,7 @@ class Insulation(Asset):
         if self.thermalInsulation is not None:
             element.set('thermalInsulation', self.gds_format_double(self.thermalInsulation))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -10804,9 +14713,10 @@ class Insulation(Asset):
 class Building(AbstractBuilding):
     subclass = None
     superclass = AbstractBuilding
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, energyLabel=None, energyIndex=None, asset=None, buildingYear=None, residentialBuildingType=None, floorArea=None, numberOfFloors=None, slantedRoofArea=None, flatRoofArea=None, roofType=None, wallArea=None, windowArea=None, perimeter=None, height=None, rcFloor=None, rcWall=None, rcRoof=None, uWindow=None, orientation=None, glasType=None, ventilationType=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, energyLabel=None, energyIndex=None, asset=None, buildingYear=None, residentialBuildingType=None, floorArea=None, numberOfFloors=None, slantedRoofArea=None, flatRoofArea=None, roofType=None, wallArea=None, windowArea=None, perimeter=None, height=None, rcFloor=None, rcWall=None, rcRoof=None, uWindow=None, orientation=None, glasType=None, ventilationType=None, **kwargs_):
         self.original_tagname_ = None
-        super(Building, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, energyLabel, energyIndex, asset, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(Building, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, energyLabel, energyIndex, asset,  **kwargs_)
         self.buildingYear = _cast(int, buildingYear)
         self.residentialBuildingType = _cast(None, residentialBuildingType)
         self.floorArea = _cast(float, floorArea)
@@ -10836,42 +14746,78 @@ class Building(AbstractBuilding):
         else:
             return Building(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_buildingYear(self): return self.buildingYear
-    def set_buildingYear(self, buildingYear): self.buildingYear = buildingYear
-    def get_residentialBuildingType(self): return self.residentialBuildingType
-    def set_residentialBuildingType(self, residentialBuildingType): self.residentialBuildingType = residentialBuildingType
-    def get_floorArea(self): return self.floorArea
-    def set_floorArea(self, floorArea): self.floorArea = floorArea
-    def get_numberOfFloors(self): return self.numberOfFloors
-    def set_numberOfFloors(self, numberOfFloors): self.numberOfFloors = numberOfFloors
-    def get_slantedRoofArea(self): return self.slantedRoofArea
-    def set_slantedRoofArea(self, slantedRoofArea): self.slantedRoofArea = slantedRoofArea
-    def get_flatRoofArea(self): return self.flatRoofArea
-    def set_flatRoofArea(self, flatRoofArea): self.flatRoofArea = flatRoofArea
-    def get_roofType(self): return self.roofType
-    def set_roofType(self, roofType): self.roofType = roofType
-    def get_wallArea(self): return self.wallArea
-    def set_wallArea(self, wallArea): self.wallArea = wallArea
-    def get_windowArea(self): return self.windowArea
-    def set_windowArea(self, windowArea): self.windowArea = windowArea
-    def get_perimeter(self): return self.perimeter
-    def set_perimeter(self, perimeter): self.perimeter = perimeter
-    def get_height(self): return self.height
-    def set_height(self, height): self.height = height
-    def get_rcFloor(self): return self.rcFloor
-    def set_rcFloor(self, rcFloor): self.rcFloor = rcFloor
-    def get_rcWall(self): return self.rcWall
-    def set_rcWall(self, rcWall): self.rcWall = rcWall
-    def get_rcRoof(self): return self.rcRoof
-    def set_rcRoof(self, rcRoof): self.rcRoof = rcRoof
-    def get_uWindow(self): return self.uWindow
-    def set_uWindow(self, uWindow): self.uWindow = uWindow
-    def get_orientation(self): return self.orientation
-    def set_orientation(self, orientation): self.orientation = orientation
-    def get_glasType(self): return self.glasType
-    def set_glasType(self, glasType): self.glasType = glasType
-    def get_ventilationType(self): return self.ventilationType
-    def set_ventilationType(self, ventilationType): self.ventilationType = ventilationType
+    def get_buildingYear(self):
+        return self.buildingYear
+    def set_buildingYear(self, buildingYear):
+        self.buildingYear = buildingYear
+    def get_residentialBuildingType(self):
+        return self.residentialBuildingType
+    def set_residentialBuildingType(self, residentialBuildingType):
+        self.residentialBuildingType = residentialBuildingType
+    def get_floorArea(self):
+        return self.floorArea
+    def set_floorArea(self, floorArea):
+        self.floorArea = floorArea
+    def get_numberOfFloors(self):
+        return self.numberOfFloors
+    def set_numberOfFloors(self, numberOfFloors):
+        self.numberOfFloors = numberOfFloors
+    def get_slantedRoofArea(self):
+        return self.slantedRoofArea
+    def set_slantedRoofArea(self, slantedRoofArea):
+        self.slantedRoofArea = slantedRoofArea
+    def get_flatRoofArea(self):
+        return self.flatRoofArea
+    def set_flatRoofArea(self, flatRoofArea):
+        self.flatRoofArea = flatRoofArea
+    def get_roofType(self):
+        return self.roofType
+    def set_roofType(self, roofType):
+        self.roofType = roofType
+    def get_wallArea(self):
+        return self.wallArea
+    def set_wallArea(self, wallArea):
+        self.wallArea = wallArea
+    def get_windowArea(self):
+        return self.windowArea
+    def set_windowArea(self, windowArea):
+        self.windowArea = windowArea
+    def get_perimeter(self):
+        return self.perimeter
+    def set_perimeter(self, perimeter):
+        self.perimeter = perimeter
+    def get_height(self):
+        return self.height
+    def set_height(self, height):
+        self.height = height
+    def get_rcFloor(self):
+        return self.rcFloor
+    def set_rcFloor(self, rcFloor):
+        self.rcFloor = rcFloor
+    def get_rcWall(self):
+        return self.rcWall
+    def set_rcWall(self, rcWall):
+        self.rcWall = rcWall
+    def get_rcRoof(self):
+        return self.rcRoof
+    def set_rcRoof(self, rcRoof):
+        self.rcRoof = rcRoof
+    def get_uWindow(self):
+        return self.uWindow
+    def set_uWindow(self, uWindow):
+        self.uWindow = uWindow
+    def get_orientation(self):
+        return self.orientation
+    def set_orientation(self, orientation):
+        self.orientation = orientation
+    def get_glasType(self):
+        return self.glasType
+    def set_glasType(self, glasType):
+        self.glasType = glasType
+    def get_ventilationType(self):
+        return self.ventilationType
+    def set_ventilationType(self, ventilationType):
+        self.ventilationType = ventilationType
     def hasContent_(self):
         if (
             super(Building, self).hasContent_()
@@ -10997,7 +14943,7 @@ class Building(AbstractBuilding):
         if self.ventilationType is not None:
             element.set('ventilationType', self.ventilationType)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -11131,9 +15077,10 @@ class Building(AbstractBuilding):
 class BuildingUnit(AbstractBuilding):
     subclass = None
     superclass = AbstractBuilding
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, energyLabel=None, energyIndex=None, asset=None, type_=None, housingType=None, numberOfInhabitants=None, inhabitantsType=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, energyLabel=None, energyIndex=None, asset=None, type_=None, housingType=None, numberOfInhabitants=None, inhabitantsType=None, **kwargs_):
         self.original_tagname_ = None
-        super(BuildingUnit, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, energyLabel, energyIndex, asset, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(BuildingUnit, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, energyLabel, energyIndex, asset,  **kwargs_)
         self.type_ = _cast(None, type_)
         self.housingType = _cast(None, housingType)
         self.numberOfInhabitants = _cast(int, numberOfInhabitants)
@@ -11149,14 +15096,22 @@ class BuildingUnit(AbstractBuilding):
         else:
             return BuildingUnit(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_type(self): return self.type_
-    def set_type(self, type_): self.type_ = type_
-    def get_housingType(self): return self.housingType
-    def set_housingType(self, housingType): self.housingType = housingType
-    def get_numberOfInhabitants(self): return self.numberOfInhabitants
-    def set_numberOfInhabitants(self, numberOfInhabitants): self.numberOfInhabitants = numberOfInhabitants
-    def get_inhabitantsType(self): return self.inhabitantsType
-    def set_inhabitantsType(self, inhabitantsType): self.inhabitantsType = inhabitantsType
+    def get_type(self):
+        return self.type_
+    def set_type(self, type_):
+        self.type_ = type_
+    def get_housingType(self):
+        return self.housingType
+    def set_housingType(self, housingType):
+        self.housingType = housingType
+    def get_numberOfInhabitants(self):
+        return self.numberOfInhabitants
+    def set_numberOfInhabitants(self, numberOfInhabitants):
+        self.numberOfInhabitants = numberOfInhabitants
+    def get_inhabitantsType(self):
+        return self.inhabitantsType
+    def set_inhabitantsType(self, inhabitantsType):
+        self.inhabitantsType = inhabitantsType
     def hasContent_(self):
         if (
             super(BuildingUnit, self).hasContent_()
@@ -11212,7 +15167,7 @@ class BuildingUnit(AbstractBuilding):
         if self.inhabitantsType is not None:
             element.set('inhabitantsType', self.inhabitantsType)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -11251,9 +15206,10 @@ class BuildingUnit(AbstractBuilding):
 class Transport(EnergyAsset):
     subclass = None
     superclass = EnergyAsset
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, extensiontype_=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, extensiontype_=None, **kwargs_):
         self.original_tagname_ = None
-        super(Transport, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, extensiontype_, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(Transport, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, extensiontype_,  **kwargs_)
         self.capacity = _cast(float, capacity)
         self.extensiontype_ = extensiontype_
     def factory(*args_, **kwargs_):
@@ -11267,8 +15223,10 @@ class Transport(EnergyAsset):
         else:
             return Transport(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_capacity(self): return self.capacity
-    def set_capacity(self, capacity): self.capacity = capacity
+    def get_capacity(self):
+        return self.capacity
+    def set_capacity(self, capacity):
+        self.capacity = capacity
     def get_extensiontype_(self): return self.extensiontype_
     def set_extensiontype_(self, extensiontype_): self.extensiontype_ = extensiontype_
     def hasContent_(self):
@@ -11307,7 +15265,7 @@ class Transport(EnergyAsset):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s"' % self.extensiontype_)
+            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='Transport', fromsubclass_=False, pretty_print=True):
         super(Transport, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='Transport', mapping_=None):
@@ -11317,7 +15275,7 @@ class Transport(EnergyAsset):
         if self.capacity is not None:
             element.set('capacity', self.gds_format_double(self.capacity))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -11349,9 +15307,10 @@ class Conversion(EnergyAsset):
     """Conversion Capability"""
     subclass = None
     superclass = EnergyAsset
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, efficiency=None, operationalHours=None, fullLoadHours=None, power=None, extensiontype_=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, efficiency=None, operationalHours=None, fullLoadHours=None, power=None, extensiontype_=None, **kwargs_):
         self.original_tagname_ = None
-        super(Conversion, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, extensiontype_, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(Conversion, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, extensiontype_,  **kwargs_)
         self.efficiency = _cast(float, efficiency)
         self.operationalHours = _cast(int, operationalHours)
         self.fullLoadHours = _cast(int, fullLoadHours)
@@ -11368,14 +15327,22 @@ class Conversion(EnergyAsset):
         else:
             return Conversion(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_efficiency(self): return self.efficiency
-    def set_efficiency(self, efficiency): self.efficiency = efficiency
-    def get_operationalHours(self): return self.operationalHours
-    def set_operationalHours(self, operationalHours): self.operationalHours = operationalHours
-    def get_fullLoadHours(self): return self.fullLoadHours
-    def set_fullLoadHours(self, fullLoadHours): self.fullLoadHours = fullLoadHours
-    def get_power(self): return self.power
-    def set_power(self, power): self.power = power
+    def get_efficiency(self):
+        return self.efficiency
+    def set_efficiency(self, efficiency):
+        self.efficiency = efficiency
+    def get_operationalHours(self):
+        return self.operationalHours
+    def set_operationalHours(self, operationalHours):
+        self.operationalHours = operationalHours
+    def get_fullLoadHours(self):
+        return self.fullLoadHours
+    def set_fullLoadHours(self, fullLoadHours):
+        self.fullLoadHours = fullLoadHours
+    def get_power(self):
+        return self.power
+    def set_power(self, power):
+        self.power = power
     def get_extensiontype_(self): return self.extensiontype_
     def set_extensiontype_(self, extensiontype_): self.extensiontype_ = extensiontype_
     def hasContent_(self):
@@ -11423,7 +15390,7 @@ class Conversion(EnergyAsset):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s"' % self.extensiontype_)
+            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='Conversion', fromsubclass_=False, pretty_print=True):
         super(Conversion, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='Conversion', mapping_=None):
@@ -11439,7 +15406,7 @@ class Conversion(EnergyAsset):
         if self.power is not None:
             element.set('power', self.gds_format_double(self.power))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -11491,11 +15458,17 @@ class Conversion(EnergyAsset):
 class Storage(EnergyAsset):
     subclass = None
     superclass = EnergyAsset
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, efficiency=None, profile=None, extensiontype_=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, chargeEfficiency=0.0, dischargeEfficiency=0.0, selfDischargeRate=0.0, fillLevel=None, maxChargeRate=0.0, maxDischargeRate=0.0, profile=None, extensiontype_=None, **kwargs_):
         self.original_tagname_ = None
-        super(Storage, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, extensiontype_, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(Storage, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, extensiontype_,  **kwargs_)
         self.capacity = _cast(float, capacity)
-        self.efficiency = _cast(float, efficiency)
+        self.chargeEfficiency = _cast(float, chargeEfficiency)
+        self.dischargeEfficiency = _cast(float, dischargeEfficiency)
+        self.selfDischargeRate = _cast(float, selfDischargeRate)
+        self.fillLevel = _cast(float, fillLevel)
+        self.maxChargeRate = _cast(float, maxChargeRate)
+        self.maxDischargeRate = _cast(float, maxDischargeRate)
         self.profile = profile
         self.extensiontype_ = extensiontype_
     def factory(*args_, **kwargs_):
@@ -11509,12 +15482,38 @@ class Storage(EnergyAsset):
         else:
             return Storage(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_profile(self): return self.profile
-    def set_profile(self, profile): self.profile = profile
-    def get_capacity(self): return self.capacity
-    def set_capacity(self, capacity): self.capacity = capacity
-    def get_efficiency(self): return self.efficiency
-    def set_efficiency(self, efficiency): self.efficiency = efficiency
+    def get_profile(self):
+        return self.profile
+    def set_profile(self, profile):
+        self.profile = profile
+    def get_capacity(self):
+        return self.capacity
+    def set_capacity(self, capacity):
+        self.capacity = capacity
+    def get_chargeEfficiency(self):
+        return self.chargeEfficiency
+    def set_chargeEfficiency(self, chargeEfficiency):
+        self.chargeEfficiency = chargeEfficiency
+    def get_dischargeEfficiency(self):
+        return self.dischargeEfficiency
+    def set_dischargeEfficiency(self, dischargeEfficiency):
+        self.dischargeEfficiency = dischargeEfficiency
+    def get_selfDischargeRate(self):
+        return self.selfDischargeRate
+    def set_selfDischargeRate(self, selfDischargeRate):
+        self.selfDischargeRate = selfDischargeRate
+    def get_fillLevel(self):
+        return self.fillLevel
+    def set_fillLevel(self, fillLevel):
+        self.fillLevel = fillLevel
+    def get_maxChargeRate(self):
+        return self.maxChargeRate
+    def set_maxChargeRate(self, maxChargeRate):
+        self.maxChargeRate = maxChargeRate
+    def get_maxDischargeRate(self):
+        return self.maxDischargeRate
+    def set_maxDischargeRate(self, maxDischargeRate):
+        self.maxDischargeRate = maxDischargeRate
     def get_extensiontype_(self): return self.extensiontype_
     def set_extensiontype_(self, extensiontype_): self.extensiontype_ = extensiontype_
     def hasContent_(self):
@@ -11551,13 +15550,28 @@ class Storage(EnergyAsset):
         if self.capacity is not None and 'capacity' not in already_processed:
             already_processed.add('capacity')
             outfile.write(' capacity="%s"' % self.gds_format_double(self.capacity, input_name='capacity'))
-        if self.efficiency is not None and 'efficiency' not in already_processed:
-            already_processed.add('efficiency')
-            outfile.write(' efficiency="%s"' % self.gds_format_double(self.efficiency, input_name='efficiency'))
+        if self.chargeEfficiency != 0.0 and 'chargeEfficiency' not in already_processed:
+            already_processed.add('chargeEfficiency')
+            outfile.write(' chargeEfficiency="%s"' % self.gds_format_double(self.chargeEfficiency, input_name='chargeEfficiency'))
+        if self.dischargeEfficiency != 0.0 and 'dischargeEfficiency' not in already_processed:
+            already_processed.add('dischargeEfficiency')
+            outfile.write(' dischargeEfficiency="%s"' % self.gds_format_double(self.dischargeEfficiency, input_name='dischargeEfficiency'))
+        if self.selfDischargeRate != 0.0 and 'selfDischargeRate' not in already_processed:
+            already_processed.add('selfDischargeRate')
+            outfile.write(' selfDischargeRate="%s"' % self.gds_format_double(self.selfDischargeRate, input_name='selfDischargeRate'))
+        if self.fillLevel is not None and 'fillLevel' not in already_processed:
+            already_processed.add('fillLevel')
+            outfile.write(' fillLevel="%s"' % self.gds_format_double(self.fillLevel, input_name='fillLevel'))
+        if self.maxChargeRate != 0.0 and 'maxChargeRate' not in already_processed:
+            already_processed.add('maxChargeRate')
+            outfile.write(' maxChargeRate="%s"' % self.gds_format_double(self.maxChargeRate, input_name='maxChargeRate'))
+        if self.maxDischargeRate != 0.0 and 'maxDischargeRate' not in already_processed:
+            already_processed.add('maxDischargeRate')
+            outfile.write(' maxDischargeRate="%s"' % self.gds_format_double(self.maxDischargeRate, input_name='maxDischargeRate'))
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s"' % self.extensiontype_)
+            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='Storage', fromsubclass_=False, pretty_print=True):
         super(Storage, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
         if pretty_print:
@@ -11572,13 +15586,23 @@ class Storage(EnergyAsset):
             element.set('{http://www.w3.org/2001/XMLSchema-instance}type', self.extensiontype_)
         if self.capacity is not None:
             element.set('capacity', self.gds_format_double(self.capacity))
-        if self.efficiency is not None:
-            element.set('efficiency', self.gds_format_double(self.efficiency))
+        if self.chargeEfficiency is not None:
+            element.set('chargeEfficiency', self.gds_format_double(self.chargeEfficiency))
+        if self.dischargeEfficiency is not None:
+            element.set('dischargeEfficiency', self.gds_format_double(self.dischargeEfficiency))
+        if self.selfDischargeRate is not None:
+            element.set('selfDischargeRate', self.gds_format_double(self.selfDischargeRate))
+        if self.fillLevel is not None:
+            element.set('fillLevel', self.gds_format_double(self.fillLevel))
+        if self.maxChargeRate is not None:
+            element.set('maxChargeRate', self.gds_format_double(self.maxChargeRate))
+        if self.maxDischargeRate is not None:
+            element.set('maxDischargeRate', self.gds_format_double(self.maxDischargeRate))
         if self.profile is not None:
             profile_ = self.profile
             profile_.to_etree(element, name_='profile', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -11595,13 +15619,48 @@ class Storage(EnergyAsset):
                 self.capacity = float(value)
             except ValueError as exp:
                 raise ValueError('Bad float/double attribute (capacity): %s' % exp)
-        value = find_attr_value_('efficiency', node)
-        if value is not None and 'efficiency' not in already_processed:
-            already_processed.add('efficiency')
+        value = find_attr_value_('chargeEfficiency', node)
+        if value is not None and 'chargeEfficiency' not in already_processed:
+            already_processed.add('chargeEfficiency')
             try:
-                self.efficiency = float(value)
+                self.chargeEfficiency = float(value)
             except ValueError as exp:
-                raise ValueError('Bad float/double attribute (efficiency): %s' % exp)
+                raise ValueError('Bad float/double attribute (chargeEfficiency): %s' % exp)
+        value = find_attr_value_('dischargeEfficiency', node)
+        if value is not None and 'dischargeEfficiency' not in already_processed:
+            already_processed.add('dischargeEfficiency')
+            try:
+                self.dischargeEfficiency = float(value)
+            except ValueError as exp:
+                raise ValueError('Bad float/double attribute (dischargeEfficiency): %s' % exp)
+        value = find_attr_value_('selfDischargeRate', node)
+        if value is not None and 'selfDischargeRate' not in already_processed:
+            already_processed.add('selfDischargeRate')
+            try:
+                self.selfDischargeRate = float(value)
+            except ValueError as exp:
+                raise ValueError('Bad float/double attribute (selfDischargeRate): %s' % exp)
+        value = find_attr_value_('fillLevel', node)
+        if value is not None and 'fillLevel' not in already_processed:
+            already_processed.add('fillLevel')
+            try:
+                self.fillLevel = float(value)
+            except ValueError as exp:
+                raise ValueError('Bad float/double attribute (fillLevel): %s' % exp)
+        value = find_attr_value_('maxChargeRate', node)
+        if value is not None and 'maxChargeRate' not in already_processed:
+            already_processed.add('maxChargeRate')
+            try:
+                self.maxChargeRate = float(value)
+            except ValueError as exp:
+                raise ValueError('Bad float/double attribute (maxChargeRate): %s' % exp)
+        value = find_attr_value_('maxDischargeRate', node)
+        if value is not None and 'maxDischargeRate' not in already_processed:
+            already_processed.add('maxDischargeRate')
+            try:
+                self.maxDischargeRate = float(value)
+            except ValueError as exp:
+                raise ValueError('Bad float/double attribute (maxDischargeRate): %s' % exp)
         value = find_attr_value_('xsi:type', node)
         if value is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
@@ -11634,9 +15693,10 @@ class Storage(EnergyAsset):
 class Consumer(EnergyAsset):
     subclass = None
     superclass = EnergyAsset
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, consType='PRIMARY', extensiontype_=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, consType='PRIMARY', extensiontype_=None, **kwargs_):
         self.original_tagname_ = None
-        super(Consumer, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, extensiontype_, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(Consumer, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, extensiontype_,  **kwargs_)
         self.consType = _cast(None, consType)
         self.extensiontype_ = extensiontype_
     def factory(*args_, **kwargs_):
@@ -11650,8 +15710,10 @@ class Consumer(EnergyAsset):
         else:
             return Consumer(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_consType(self): return self.consType
-    def set_consType(self, consType): self.consType = consType
+    def get_consType(self):
+        return self.consType
+    def set_consType(self, consType):
+        self.consType = consType
     def get_extensiontype_(self): return self.extensiontype_
     def set_extensiontype_(self, extensiontype_): self.extensiontype_ = extensiontype_
     def hasContent_(self):
@@ -11690,7 +15752,7 @@ class Consumer(EnergyAsset):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s"' % self.extensiontype_)
+            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='Consumer', fromsubclass_=False, pretty_print=True):
         super(Consumer, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='Consumer', mapping_=None):
@@ -11700,7 +15762,7 @@ class Consumer(EnergyAsset):
         if self.consType is not None:
             element.set('consType', self.consType)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -11728,12 +15790,14 @@ class Consumer(EnergyAsset):
 class Producer(EnergyAsset):
     subclass = None
     superclass = EnergyAsset
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, prodType='RENEWABLE', operationalHours=None, fullLoadHours=None, extensiontype_=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, prodType='RENEWABLE', operationalHours=None, fullLoadHours=None, power=None, extensiontype_=None, **kwargs_):
         self.original_tagname_ = None
-        super(Producer, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, extensiontype_, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(Producer, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, extensiontype_,  **kwargs_)
         self.prodType = _cast(None, prodType)
         self.operationalHours = _cast(int, operationalHours)
         self.fullLoadHours = _cast(int, fullLoadHours)
+        self.power = _cast(float, power)
         self.extensiontype_ = extensiontype_
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -11746,12 +15810,22 @@ class Producer(EnergyAsset):
         else:
             return Producer(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_prodType(self): return self.prodType
-    def set_prodType(self, prodType): self.prodType = prodType
-    def get_operationalHours(self): return self.operationalHours
-    def set_operationalHours(self, operationalHours): self.operationalHours = operationalHours
-    def get_fullLoadHours(self): return self.fullLoadHours
-    def set_fullLoadHours(self, fullLoadHours): self.fullLoadHours = fullLoadHours
+    def get_prodType(self):
+        return self.prodType
+    def set_prodType(self, prodType):
+        self.prodType = prodType
+    def get_operationalHours(self):
+        return self.operationalHours
+    def set_operationalHours(self, operationalHours):
+        self.operationalHours = operationalHours
+    def get_fullLoadHours(self):
+        return self.fullLoadHours
+    def set_fullLoadHours(self, fullLoadHours):
+        self.fullLoadHours = fullLoadHours
+    def get_power(self):
+        return self.power
+    def set_power(self, power):
+        self.power = power
     def get_extensiontype_(self): return self.extensiontype_
     def set_extensiontype_(self, extensiontype_): self.extensiontype_ = extensiontype_
     def hasContent_(self):
@@ -11793,10 +15867,13 @@ class Producer(EnergyAsset):
         if self.fullLoadHours is not None and 'fullLoadHours' not in already_processed:
             already_processed.add('fullLoadHours')
             outfile.write(' fullLoadHours="%s"' % self.gds_format_integer(self.fullLoadHours, input_name='fullLoadHours'))
+        if self.power is not None and 'power' not in already_processed:
+            already_processed.add('power')
+            outfile.write(' power="%s"' % self.gds_format_double(self.power, input_name='power'))
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s"' % self.extensiontype_)
+            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='Producer', fromsubclass_=False, pretty_print=True):
         super(Producer, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='Producer', mapping_=None):
@@ -11809,8 +15886,10 @@ class Producer(EnergyAsset):
             element.set('operationalHours', self.gds_format_integer(self.operationalHours))
         if self.fullLoadHours is not None:
             element.set('fullLoadHours', self.gds_format_integer(self.fullLoadHours))
+        if self.power is not None:
+            element.set('power', self.gds_format_double(self.power))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -11838,6 +15917,13 @@ class Producer(EnergyAsset):
                 self.fullLoadHours = int(value)
             except ValueError as exp:
                 raise_parse_error(node, 'Bad integer attribute: %s' % exp)
+        value = find_attr_value_('power', node)
+        if value is not None and 'power' not in already_processed:
+            already_processed.add('power')
+            try:
+                self.power = float(value)
+            except ValueError as exp:
+                raise ValueError('Bad float/double attribute (power): %s' % exp)
         value = find_attr_value_('xsi:type', node)
         if value is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
@@ -11849,12 +15935,911 @@ class Producer(EnergyAsset):
 # end class Producer
 
 
+class BiomassHeater(Conversion):
+    subclass = None
+    superclass = Conversion
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, efficiency=None, operationalHours=None, fullLoadHours=None, power=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(BiomassHeater, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, efficiency, operationalHours, fullLoadHours, power,  **kwargs_)
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, BiomassHeater)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if BiomassHeater.subclass:
+            return BiomassHeater.subclass(*args_, **kwargs_)
+        else:
+            return BiomassHeater(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def hasContent_(self):
+        if (
+            super(BiomassHeater, self).hasContent_()
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='BiomassHeater', namespacedef_='', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('BiomassHeater')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='BiomassHeater')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='BiomassHeater', pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='BiomassHeater'):
+        super(BiomassHeater, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='BiomassHeater')
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='BiomassHeater', fromsubclass_=False, pretty_print=True):
+        super(BiomassHeater, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+    def to_etree(self, parent_element=None, name_='BiomassHeater', mapping_=None):
+        element = super(BiomassHeater, self).to_etree(parent_element, name_, mapping_)
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        super(BiomassHeater, self).buildAttributes(node, attrs, already_processed)
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        super(BiomassHeater, self).buildChildren(child_, node, nodeName_, True)
+        pass
+# end class BiomassHeater
+
+
+class AbstractConnection(Transport):
+    subclass = None
+    superclass = Transport
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, extensiontype_=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(AbstractConnection, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity, extensiontype_,  **kwargs_)
+        self.extensiontype_ = extensiontype_
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, AbstractConnection)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if AbstractConnection.subclass:
+            return AbstractConnection.subclass(*args_, **kwargs_)
+        else:
+            return AbstractConnection(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_extensiontype_(self): return self.extensiontype_
+    def set_extensiontype_(self, extensiontype_): self.extensiontype_ = extensiontype_
+    def hasContent_(self):
+        if (
+            super(AbstractConnection, self).hasContent_()
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='AbstractConnection', namespacedef_='', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('AbstractConnection')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='AbstractConnection')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='AbstractConnection', pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='AbstractConnection'):
+        super(AbstractConnection, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='AbstractConnection')
+        if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
+            already_processed.add('xsi:type')
+            outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
+            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='AbstractConnection', fromsubclass_=False, pretty_print=True):
+        super(AbstractConnection, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+    def to_etree(self, parent_element=None, name_='AbstractConnection', mapping_=None):
+        element = super(AbstractConnection, self).to_etree(parent_element, name_, mapping_)
+        if self.extensiontype_ is not None:
+            element.set('{http://www.w3.org/2001/XMLSchema-instance}type', self.extensiontype_)
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('xsi:type', node)
+        if value is not None and 'xsi:type' not in already_processed:
+            already_processed.add('xsi:type')
+            self.extensiontype_ = value
+        super(AbstractConnection, self).buildAttributes(node, attrs, already_processed)
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        super(AbstractConnection, self).buildChildren(child_, node, nodeName_, True)
+        pass
+# end class AbstractConnection
+
+
+class AbstractTransformer(Transport):
+    subclass = None
+    superclass = Transport
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, extensiontype_=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(AbstractTransformer, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity, extensiontype_,  **kwargs_)
+        self.extensiontype_ = extensiontype_
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, AbstractTransformer)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if AbstractTransformer.subclass:
+            return AbstractTransformer.subclass(*args_, **kwargs_)
+        else:
+            return AbstractTransformer(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_extensiontype_(self): return self.extensiontype_
+    def set_extensiontype_(self, extensiontype_): self.extensiontype_ = extensiontype_
+    def hasContent_(self):
+        if (
+            super(AbstractTransformer, self).hasContent_()
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='AbstractTransformer', namespacedef_='', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('AbstractTransformer')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='AbstractTransformer')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='AbstractTransformer', pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='AbstractTransformer'):
+        super(AbstractTransformer, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='AbstractTransformer')
+        if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
+            already_processed.add('xsi:type')
+            outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
+            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='AbstractTransformer', fromsubclass_=False, pretty_print=True):
+        super(AbstractTransformer, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+    def to_etree(self, parent_element=None, name_='AbstractTransformer', mapping_=None):
+        element = super(AbstractTransformer, self).to_etree(parent_element, name_, mapping_)
+        if self.extensiontype_ is not None:
+            element.set('{http://www.w3.org/2001/XMLSchema-instance}type', self.extensiontype_)
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('xsi:type', node)
+        if value is not None and 'xsi:type' not in already_processed:
+            already_processed.add('xsi:type')
+            self.extensiontype_ = value
+        super(AbstractTransformer, self).buildAttributes(node, attrs, already_processed)
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        super(AbstractTransformer, self).buildChildren(child_, node, nodeName_, True)
+        pass
+# end class AbstractTransformer
+
+
+class AbstractSwitch(Transport):
+    subclass = None
+    superclass = Transport
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, extensiontype_=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(AbstractSwitch, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity, extensiontype_,  **kwargs_)
+        self.extensiontype_ = extensiontype_
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, AbstractSwitch)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if AbstractSwitch.subclass:
+            return AbstractSwitch.subclass(*args_, **kwargs_)
+        else:
+            return AbstractSwitch(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_extensiontype_(self): return self.extensiontype_
+    def set_extensiontype_(self, extensiontype_): self.extensiontype_ = extensiontype_
+    def hasContent_(self):
+        if (
+            super(AbstractSwitch, self).hasContent_()
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='AbstractSwitch', namespacedef_='', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('AbstractSwitch')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='AbstractSwitch')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='AbstractSwitch', pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='AbstractSwitch'):
+        super(AbstractSwitch, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='AbstractSwitch')
+        if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
+            already_processed.add('xsi:type')
+            outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
+            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='AbstractSwitch', fromsubclass_=False, pretty_print=True):
+        super(AbstractSwitch, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+    def to_etree(self, parent_element=None, name_='AbstractSwitch', mapping_=None):
+        element = super(AbstractSwitch, self).to_etree(parent_element, name_, mapping_)
+        if self.extensiontype_ is not None:
+            element.set('{http://www.w3.org/2001/XMLSchema-instance}type', self.extensiontype_)
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('xsi:type', node)
+        if value is not None and 'xsi:type' not in already_processed:
+            already_processed.add('xsi:type')
+            self.extensiontype_ = value
+        super(AbstractSwitch, self).buildAttributes(node, attrs, already_processed)
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        super(AbstractSwitch, self).buildChildren(child_, node, nodeName_, True)
+        pass
+# end class AbstractSwitch
+
+
+class AbstractConductor(Transport):
+    subclass = None
+    superclass = Transport
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, extensiontype_=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(AbstractConductor, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity, extensiontype_,  **kwargs_)
+        self.extensiontype_ = extensiontype_
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, AbstractConductor)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if AbstractConductor.subclass:
+            return AbstractConductor.subclass(*args_, **kwargs_)
+        else:
+            return AbstractConductor(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_extensiontype_(self): return self.extensiontype_
+    def set_extensiontype_(self, extensiontype_): self.extensiontype_ = extensiontype_
+    def hasContent_(self):
+        if (
+            super(AbstractConductor, self).hasContent_()
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='AbstractConductor', namespacedef_='', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('AbstractConductor')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='AbstractConductor')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='AbstractConductor', pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='AbstractConductor'):
+        super(AbstractConductor, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='AbstractConductor')
+        if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
+            already_processed.add('xsi:type')
+            outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
+            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='AbstractConductor', fromsubclass_=False, pretty_print=True):
+        super(AbstractConductor, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+    def to_etree(self, parent_element=None, name_='AbstractConductor', mapping_=None):
+        element = super(AbstractConductor, self).to_etree(parent_element, name_, mapping_)
+        if self.extensiontype_ is not None:
+            element.set('{http://www.w3.org/2001/XMLSchema-instance}type', self.extensiontype_)
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('xsi:type', node)
+        if value is not None and 'xsi:type' not in already_processed:
+            already_processed.add('xsi:type')
+            self.extensiontype_ = value
+        super(AbstractConductor, self).buildAttributes(node, attrs, already_processed)
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        super(AbstractConductor, self).buildChildren(child_, node, nodeName_, True)
+        pass
+# end class AbstractConductor
+
+
+class EnergyNetwork(Transport):
+    subclass = None
+    superclass = Transport
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(EnergyNetwork, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity,  **kwargs_)
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, EnergyNetwork)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if EnergyNetwork.subclass:
+            return EnergyNetwork.subclass(*args_, **kwargs_)
+        else:
+            return EnergyNetwork(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def hasContent_(self):
+        if (
+            super(EnergyNetwork, self).hasContent_()
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='EnergyNetwork', namespacedef_='', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('EnergyNetwork')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='EnergyNetwork')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='EnergyNetwork', pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='EnergyNetwork'):
+        super(EnergyNetwork, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='EnergyNetwork')
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='EnergyNetwork', fromsubclass_=False, pretty_print=True):
+        super(EnergyNetwork, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+    def to_etree(self, parent_element=None, name_='EnergyNetwork', mapping_=None):
+        element = super(EnergyNetwork, self).to_etree(parent_element, name_, mapping_)
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        super(EnergyNetwork, self).buildAttributes(node, attrs, already_processed)
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        super(EnergyNetwork, self).buildChildren(child_, node, nodeName_, True)
+        pass
+# end class EnergyNetwork
+
+
+class WaterToPower(Producer):
+    subclass = None
+    superclass = Producer
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, prodType='RENEWABLE', operationalHours=None, fullLoadHours=None, power=None, type_=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(WaterToPower, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, prodType, operationalHours, fullLoadHours, power,  **kwargs_)
+        self.type_ = _cast(None, type_)
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, WaterToPower)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if WaterToPower.subclass:
+            return WaterToPower.subclass(*args_, **kwargs_)
+        else:
+            return WaterToPower(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_type(self):
+        return self.type_
+    def set_type(self, type_):
+        self.type_ = type_
+    def hasContent_(self):
+        if (
+            super(WaterToPower, self).hasContent_()
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='WaterToPower', namespacedef_='', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('WaterToPower')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='WaterToPower')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='WaterToPower', pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='WaterToPower'):
+        super(WaterToPower, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='WaterToPower')
+        if self.type_ is not None and 'type_' not in already_processed:
+            already_processed.add('type_')
+            outfile.write(' type=%s' % (quote_attrib(self.type_), ))
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='WaterToPower', fromsubclass_=False, pretty_print=True):
+        super(WaterToPower, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+    def to_etree(self, parent_element=None, name_='WaterToPower', mapping_=None):
+        element = super(WaterToPower, self).to_etree(parent_element, name_, mapping_)
+        if self.type_ is not None:
+            element.set('type', self.type_)
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('type', node)
+        if value is not None and 'type' not in already_processed:
+            already_processed.add('type')
+            self.type_ = value
+        super(WaterToPower, self).buildAttributes(node, attrs, already_processed)
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        super(WaterToPower, self).buildChildren(child_, node, nodeName_, True)
+        pass
+# end class WaterToPower
+
+
+class CircuitBraker(AbstractSwitch):
+    subclass = None
+    superclass = AbstractSwitch
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(CircuitBraker, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity,  **kwargs_)
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, CircuitBraker)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if CircuitBraker.subclass:
+            return CircuitBraker.subclass(*args_, **kwargs_)
+        else:
+            return CircuitBraker(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def hasContent_(self):
+        if (
+            super(CircuitBraker, self).hasContent_()
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='CircuitBraker', namespacedef_='', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('CircuitBraker')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='CircuitBraker')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='CircuitBraker', pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='CircuitBraker'):
+        super(CircuitBraker, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='CircuitBraker')
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='CircuitBraker', fromsubclass_=False, pretty_print=True):
+        super(CircuitBraker, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+    def to_etree(self, parent_element=None, name_='CircuitBraker', mapping_=None):
+        element = super(CircuitBraker, self).to_etree(parent_element, name_, mapping_)
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        super(CircuitBraker, self).buildAttributes(node, attrs, already_processed)
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        super(CircuitBraker, self).buildChildren(child_, node, nodeName_, True)
+        pass
+# end class CircuitBraker
+
+
+class DrivenByProfile(ControlStrategy):
+    subclass = None
+    superclass = ControlStrategy
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, energyAsset=None, profile=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(DrivenByProfile, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, energyAsset,  **kwargs_)
+        self.profile = profile
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, DrivenByProfile)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if DrivenByProfile.subclass:
+            return DrivenByProfile.subclass(*args_, **kwargs_)
+        else:
+            return DrivenByProfile(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_profile(self):
+        return self.profile
+    def set_profile(self, profile):
+        self.profile = profile
+    def hasContent_(self):
+        if (
+            self.profile is not None or
+            super(DrivenByProfile, self).hasContent_()
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='DrivenByProfile', namespacedef_='', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('DrivenByProfile')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='DrivenByProfile')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='DrivenByProfile', pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='DrivenByProfile'):
+        super(DrivenByProfile, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='DrivenByProfile')
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='DrivenByProfile', fromsubclass_=False, pretty_print=True):
+        super(DrivenByProfile, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.profile is not None:
+            self.profile.export(outfile, level, namespaceprefix_, pretty_print=pretty_print)
+    def to_etree(self, parent_element=None, name_='DrivenByProfile', mapping_=None):
+        element = super(DrivenByProfile, self).to_etree(parent_element, name_, mapping_)
+        if self.profile is not None:
+            profile_ = self.profile
+            profile_.to_etree(element, name_='profile', mapping_=mapping_)
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        super(DrivenByProfile, self).buildAttributes(node, attrs, already_processed)
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        if nodeName_ == 'profile':
+            type_name_ = child_.attrib.get(
+                '{http://www.w3.org/2001/XMLSchema-instance}type')
+            if type_name_ is None:
+                type_name_ = child_.attrib.get('type')
+            if type_name_ is not None:
+                type_names_ = type_name_.split(':')
+                if len(type_names_) == 1:
+                    type_name_ = type_names_[0]
+                else:
+                    type_name_ = type_names_[1]
+                class_ = globals()[type_name_]
+                obj_ = class_.factory()
+                obj_.build(child_)
+            else:
+                raise NotImplementedError(
+                    'Class not implemented for <profile> element')
+            self.profile = obj_
+            obj_.original_tagname_ = 'profile'
+        super(DrivenByProfile, self).buildChildren(child_, node, nodeName_, True)
+# end class DrivenByProfile
+
+
+class DrivenBySupply(ControlStrategy):
+    subclass = None
+    superclass = ControlStrategy
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, energyAsset=None, inport=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(DrivenBySupply, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, energyAsset,  **kwargs_)
+        self.inport = _cast(None, inport)
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, DrivenBySupply)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if DrivenBySupply.subclass:
+            return DrivenBySupply.subclass(*args_, **kwargs_)
+        else:
+            return DrivenBySupply(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_inport(self):
+        return self.inport
+    def set_inport(self, inport):
+        self.inport = inport
+    def hasContent_(self):
+        if (
+            super(DrivenBySupply, self).hasContent_()
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='DrivenBySupply', namespacedef_='', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('DrivenBySupply')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='DrivenBySupply')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='DrivenBySupply', pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='DrivenBySupply'):
+        super(DrivenBySupply, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='DrivenBySupply')
+        if self.inport is not None and 'inport' not in already_processed:
+            already_processed.add('inport')
+            outfile.write(' inport=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.inport), input_name='inport')), ))
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='DrivenBySupply', fromsubclass_=False, pretty_print=True):
+        super(DrivenBySupply, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+    def to_etree(self, parent_element=None, name_='DrivenBySupply', mapping_=None):
+        element = super(DrivenBySupply, self).to_etree(parent_element, name_, mapping_)
+        if self.inport is not None:
+            element.set('inport', self.gds_format_string(self.inport))
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('inport', node)
+        if value is not None and 'inport' not in already_processed:
+            already_processed.add('inport')
+            self.inport = value
+        super(DrivenBySupply, self).buildAttributes(node, attrs, already_processed)
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        super(DrivenBySupply, self).buildChildren(child_, node, nodeName_, True)
+        pass
+# end class DrivenBySupply
+
+
+class GasConversion(Conversion):
+    subclass = None
+    superclass = Conversion
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, efficiency=None, operationalHours=None, fullLoadHours=None, power=None, type_=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(GasConversion, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, efficiency, operationalHours, fullLoadHours, power,  **kwargs_)
+        self.type_ = _cast(None, type_)
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, GasConversion)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if GasConversion.subclass:
+            return GasConversion.subclass(*args_, **kwargs_)
+        else:
+            return GasConversion(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_type(self):
+        return self.type_
+    def set_type(self, type_):
+        self.type_ = type_
+    def hasContent_(self):
+        if (
+            super(GasConversion, self).hasContent_()
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='GasConversion', namespacedef_='', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('GasConversion')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='GasConversion')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='GasConversion', pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='GasConversion'):
+        super(GasConversion, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='GasConversion')
+        if self.type_ is not None and 'type_' not in already_processed:
+            already_processed.add('type_')
+            outfile.write(' type=%s' % (quote_attrib(self.type_), ))
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='GasConversion', fromsubclass_=False, pretty_print=True):
+        super(GasConversion, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+    def to_etree(self, parent_element=None, name_='GasConversion', mapping_=None):
+        element = super(GasConversion, self).to_etree(parent_element, name_, mapping_)
+        if self.type_ is not None:
+            element.set('type', self.type_)
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('type', node)
+        if value is not None and 'type' not in already_processed:
+            already_processed.add('type')
+            self.type_ = value
+        super(GasConversion, self).buildAttributes(node, attrs, already_processed)
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        super(GasConversion, self).buildChildren(child_, node, nodeName_, True)
+        pass
+# end class GasConversion
+
+
 class DrivenByDemand(ControlStrategy):
     subclass = None
     superclass = ControlStrategy
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, energyAsset=None, outport=None, **kwargs_):
         self.original_tagname_ = None
-        super(DrivenByDemand, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(DrivenByDemand, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, energyAsset,  **kwargs_)
+        self.outport = _cast(None, outport)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -11866,6 +16851,10 @@ class DrivenByDemand(ControlStrategy):
         else:
             return DrivenByDemand(*args_, **kwargs_)
     factory = staticmethod(factory)
+    def get_outport(self):
+        return self.outport
+    def set_outport(self, outport):
+        self.outport = outport
     def hasContent_(self):
         if (
             super(DrivenByDemand, self).hasContent_()
@@ -11896,12 +16885,17 @@ class DrivenByDemand(ControlStrategy):
             outfile.write('/>%s' % (eol_, ))
     def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='DrivenByDemand'):
         super(DrivenByDemand, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='DrivenByDemand')
+        if self.outport is not None and 'outport' not in already_processed:
+            already_processed.add('outport')
+            outfile.write(' outport=%s' % (self.gds_encode(self.gds_format_string(quote_attrib(self.outport), input_name='outport')), ))
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='DrivenByDemand', fromsubclass_=False, pretty_print=True):
         super(DrivenByDemand, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='DrivenByDemand', mapping_=None):
         element = super(DrivenByDemand, self).to_etree(parent_element, name_, mapping_)
+        if self.outport is not None:
+            element.set('outport', self.gds_format_string(self.outport))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -11911,6 +16905,10 @@ class DrivenByDemand(ControlStrategy):
             self.buildChildren(child, node, nodeName_)
         return self
     def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('outport', node)
+        if value is not None and 'outport' not in already_processed:
+            already_processed.add('outport')
+            self.outport = value
         super(DrivenByDemand, self).buildAttributes(node, attrs, already_processed)
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         super(DrivenByDemand, self).buildChildren(child_, node, nodeName_, True)
@@ -11921,9 +16919,12 @@ class DrivenByDemand(ControlStrategy):
 class GasStorage(Storage):
     subclass = None
     superclass = Storage
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, efficiency=None, profile=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, chargeEfficiency=0.0, dischargeEfficiency=0.0, selfDischargeRate=0.0, fillLevel=None, maxChargeRate=0.0, maxDischargeRate=0.0, profile=None, minStoragePressure=None, maxStoragePressure=0.0, **kwargs_):
         self.original_tagname_ = None
-        super(GasStorage, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity, efficiency, profile, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(GasStorage, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity, chargeEfficiency, dischargeEfficiency, selfDischargeRate, fillLevel, maxChargeRate, maxDischargeRate, profile,  **kwargs_)
+        self.minStoragePressure = _cast(float, minStoragePressure)
+        self.maxStoragePressure = _cast(float, maxStoragePressure)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -11935,6 +16936,14 @@ class GasStorage(Storage):
         else:
             return GasStorage(*args_, **kwargs_)
     factory = staticmethod(factory)
+    def get_minStoragePressure(self):
+        return self.minStoragePressure
+    def set_minStoragePressure(self, minStoragePressure):
+        self.minStoragePressure = minStoragePressure
+    def get_maxStoragePressure(self):
+        return self.maxStoragePressure
+    def set_maxStoragePressure(self, maxStoragePressure):
+        self.maxStoragePressure = maxStoragePressure
     def hasContent_(self):
         if (
             super(GasStorage, self).hasContent_()
@@ -11965,12 +16974,22 @@ class GasStorage(Storage):
             outfile.write('/>%s' % (eol_, ))
     def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='GasStorage'):
         super(GasStorage, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='GasStorage')
+        if self.minStoragePressure is not None and 'minStoragePressure' not in already_processed:
+            already_processed.add('minStoragePressure')
+            outfile.write(' minStoragePressure="%s"' % self.gds_format_double(self.minStoragePressure, input_name='minStoragePressure'))
+        if self.maxStoragePressure != 0.0 and 'maxStoragePressure' not in already_processed:
+            already_processed.add('maxStoragePressure')
+            outfile.write(' maxStoragePressure="%s"' % self.gds_format_double(self.maxStoragePressure, input_name='maxStoragePressure'))
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='GasStorage', fromsubclass_=False, pretty_print=True):
         super(GasStorage, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='GasStorage', mapping_=None):
         element = super(GasStorage, self).to_etree(parent_element, name_, mapping_)
+        if self.minStoragePressure is not None:
+            element.set('minStoragePressure', self.gds_format_double(self.minStoragePressure))
+        if self.maxStoragePressure is not None:
+            element.set('maxStoragePressure', self.gds_format_double(self.maxStoragePressure))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -11980,6 +16999,20 @@ class GasStorage(Storage):
             self.buildChildren(child, node, nodeName_)
         return self
     def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('minStoragePressure', node)
+        if value is not None and 'minStoragePressure' not in already_processed:
+            already_processed.add('minStoragePressure')
+            try:
+                self.minStoragePressure = float(value)
+            except ValueError as exp:
+                raise ValueError('Bad float/double attribute (minStoragePressure): %s' % exp)
+        value = find_attr_value_('maxStoragePressure', node)
+        if value is not None and 'maxStoragePressure' not in already_processed:
+            already_processed.add('maxStoragePressure')
+            try:
+                self.maxStoragePressure = float(value)
+            except ValueError as exp:
+                raise ValueError('Bad float/double attribute (maxStoragePressure): %s' % exp)
         super(GasStorage, self).buildAttributes(node, attrs, already_processed)
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         super(GasStorage, self).buildChildren(child_, node, nodeName_, True)
@@ -11990,9 +17023,10 @@ class GasStorage(Storage):
 class MobilityDemand(Consumer):
     subclass = None
     superclass = Consumer
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, consType='PRIMARY', fuelType=None, distance=None, efficiency=None, type_=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, consType='PRIMARY', fuelType=None, distance=None, efficiency=None, type_=None, **kwargs_):
         self.original_tagname_ = None
-        super(MobilityDemand, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, consType, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(MobilityDemand, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, consType,  **kwargs_)
         self.fuelType = _cast(None, fuelType)
         self.distance = _cast(int, distance)
         self.efficiency = _cast(float, efficiency)
@@ -12011,17 +17045,30 @@ class MobilityDemand(Consumer):
         else:
             return MobilityDemand(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_type(self): return self.type_
-    def set_type(self, type_): self.type_ = type_
-    def add_type(self, value): self.type_.append(value)
-    def insert_type_at(self, index, value): self.type_.insert(index, value)
-    def replace_type_at(self, index, value): self.type_[index] = value
-    def get_fuelType(self): return self.fuelType
-    def set_fuelType(self, fuelType): self.fuelType = fuelType
-    def get_distance(self): return self.distance
-    def set_distance(self, distance): self.distance = distance
-    def get_efficiency(self): return self.efficiency
-    def set_efficiency(self, efficiency): self.efficiency = efficiency
+    def get_type(self):
+        return self.type_
+    def set_type(self, type_):
+        self.type_ = type_
+    def add_type(self, value):
+        self.type_.append(value)
+    def add_type(self, value):
+        self.type_.append(value)
+    def insert_type_at(self, index, value):
+        self.type_.insert(index, value)
+    def replace_type_at(self, index, value):
+        self.type_[index] = value
+    def get_fuelType(self):
+        return self.fuelType
+    def set_fuelType(self, fuelType):
+        self.fuelType = fuelType
+    def get_distance(self):
+        return self.distance
+    def set_distance(self, distance):
+        self.distance = distance
+    def get_efficiency(self):
+        return self.efficiency
+    def set_efficiency(self, efficiency):
+        self.efficiency = efficiency
     def validate_VehicleTypeEnum(self, value):
         # Validate type VehicleTypeEnum, a restriction on xsd:NCName.
         if value is not None and Validate_simpletypes_:
@@ -12093,7 +17140,7 @@ class MobilityDemand(Consumer):
         for type__ in self.type_:
             type__.to_etree(element, name_='type', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -12136,9 +17183,10 @@ class MobilityDemand(Consumer):
 class FermentationPlant(Conversion):
     subclass = None
     superclass = Conversion
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, efficiency=None, operationalHours=None, fullLoadHours=None, power=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, efficiency=None, operationalHours=None, fullLoadHours=None, power=None, **kwargs_):
         self.original_tagname_ = None
-        super(FermentationPlant, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, efficiency, operationalHours, fullLoadHours, power, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(FermentationPlant, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, efficiency, operationalHours, fullLoadHours, power,  **kwargs_)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -12185,7 +17233,7 @@ class FermentationPlant(Conversion):
     def to_etree(self, parent_element=None, name_='FermentationPlant', mapping_=None):
         element = super(FermentationPlant, self).to_etree(parent_element, name_, mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -12205,9 +17253,10 @@ class FermentationPlant(Conversion):
 class ResidualHeatSource(Producer):
     subclass = None
     superclass = Producer
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, prodType='RENEWABLE', operationalHours=None, fullLoadHours=None, type_=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, prodType='RENEWABLE', operationalHours=None, fullLoadHours=None, power=None, type_=None, **kwargs_):
         self.original_tagname_ = None
-        super(ResidualHeatSource, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, prodType, operationalHours, fullLoadHours, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(ResidualHeatSource, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, prodType, operationalHours, fullLoadHours, power,  **kwargs_)
         self.type_ = _cast(None, type_)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -12220,8 +17269,10 @@ class ResidualHeatSource(Producer):
         else:
             return ResidualHeatSource(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_type(self): return self.type_
-    def set_type(self, type_): self.type_ = type_
+    def get_type(self):
+        return self.type_
+    def set_type(self, type_):
+        self.type_ = type_
     def hasContent_(self):
         if (
             super(ResidualHeatSource, self).hasContent_()
@@ -12262,7 +17313,7 @@ class ResidualHeatSource(Producer):
         if self.type_ is not None:
             element.set('type', self.type_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -12286,9 +17337,11 @@ class ResidualHeatSource(Producer):
 class SolarCollector(Producer):
     subclass = None
     superclass = Producer
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, prodType='RENEWABLE', operationalHours=None, fullLoadHours=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, prodType='RENEWABLE', operationalHours=None, fullLoadHours=None, power=None, type_=None, **kwargs_):
         self.original_tagname_ = None
-        super(SolarCollector, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, prodType, operationalHours, fullLoadHours, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(SolarCollector, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, prodType, operationalHours, fullLoadHours, power,  **kwargs_)
+        self.type_ = _cast(None, type_)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -12300,6 +17353,10 @@ class SolarCollector(Producer):
         else:
             return SolarCollector(*args_, **kwargs_)
     factory = staticmethod(factory)
+    def get_type(self):
+        return self.type_
+    def set_type(self, type_):
+        self.type_ = type_
     def hasContent_(self):
         if (
             super(SolarCollector, self).hasContent_()
@@ -12330,12 +17387,17 @@ class SolarCollector(Producer):
             outfile.write('/>%s' % (eol_, ))
     def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='SolarCollector'):
         super(SolarCollector, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='SolarCollector')
+        if self.type_ is not None and 'type_' not in already_processed:
+            already_processed.add('type_')
+            outfile.write(' type=%s' % (quote_attrib(self.type_), ))
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='SolarCollector', fromsubclass_=False, pretty_print=True):
         super(SolarCollector, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='SolarCollector', mapping_=None):
         element = super(SolarCollector, self).to_etree(parent_element, name_, mapping_)
+        if self.type_ is not None:
+            element.set('type', self.type_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -12345,6 +17407,10 @@ class SolarCollector(Producer):
             self.buildChildren(child, node, nodeName_)
         return self
     def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('type', node)
+        if value is not None and 'type' not in already_processed:
+            already_processed.add('type')
+            self.type_ = value
         super(SolarCollector, self).buildAttributes(node, attrs, already_processed)
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         super(SolarCollector, self).buildChildren(child_, node, nodeName_, True)
@@ -12355,9 +17421,10 @@ class SolarCollector(Producer):
 class EnergyDemand(Consumer):
     subclass = None
     superclass = Consumer
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, consType='PRIMARY'):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, consType='PRIMARY', **kwargs_):
         self.original_tagname_ = None
-        super(EnergyDemand, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, consType, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(EnergyDemand, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, consType,  **kwargs_)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -12404,7 +17471,7 @@ class EnergyDemand(Consumer):
     def to_etree(self, parent_element=None, name_='EnergyDemand', mapping_=None):
         element = super(EnergyDemand, self).to_etree(parent_element, name_, mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -12421,81 +17488,13 @@ class EnergyDemand(Consumer):
 # end class EnergyDemand
 
 
-class EnergyNetwork(Transport):
-    subclass = None
-    superclass = Transport
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None):
-        self.original_tagname_ = None
-        super(EnergyNetwork, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity, )
-    def factory(*args_, **kwargs_):
-        if CurrentSubclassModule_ is not None:
-            subclass = getSubclassFromModule_(
-                CurrentSubclassModule_, EnergyNetwork)
-            if subclass is not None:
-                return subclass(*args_, **kwargs_)
-        if EnergyNetwork.subclass:
-            return EnergyNetwork.subclass(*args_, **kwargs_)
-        else:
-            return EnergyNetwork(*args_, **kwargs_)
-    factory = staticmethod(factory)
-    def hasContent_(self):
-        if (
-            super(EnergyNetwork, self).hasContent_()
-        ):
-            return True
-        else:
-            return False
-    def export(self, outfile, level, namespaceprefix_='esdl:', name_='EnergyNetwork', namespacedef_='', pretty_print=True):
-        imported_ns_def_ = GenerateDSNamespaceDefs_.get('EnergyNetwork')
-        if imported_ns_def_ is not None:
-            namespacedef_ = imported_ns_def_
-        if pretty_print:
-            eol_ = '\n'
-        else:
-            eol_ = ''
-        if self.original_tagname_ is not None:
-            name_ = self.original_tagname_
-        showIndent(outfile, level, pretty_print)
-        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
-        already_processed = set()
-        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='EnergyNetwork')
-        if self.hasContent_():
-            outfile.write('>%s' % (eol_, ))
-            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='EnergyNetwork', pretty_print=pretty_print)
-            showIndent(outfile, level, pretty_print)
-            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
-        else:
-            outfile.write('/>%s' % (eol_, ))
-    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='EnergyNetwork'):
-        super(EnergyNetwork, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='EnergyNetwork')
-    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='EnergyNetwork', fromsubclass_=False, pretty_print=True):
-        super(EnergyNetwork, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
-    def to_etree(self, parent_element=None, name_='EnergyNetwork', mapping_=None):
-        element = super(EnergyNetwork, self).to_etree(parent_element, name_, mapping_)
-        if mapping_ is not None:
-            mapping_[self] = element
-        return element
-    def build(self, node):
-        already_processed = set()
-        self.buildAttributes(node, node.attrib, already_processed)
-        for child in node:
-            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
-            self.buildChildren(child, node, nodeName_)
-        return self
-    def buildAttributes(self, node, attrs, already_processed):
-        super(EnergyNetwork, self).buildAttributes(node, attrs, already_processed)
-    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
-        super(EnergyNetwork, self).buildChildren(child_, node, nodeName_, True)
-        pass
-# end class EnergyNetwork
-
-
 class Airco(Conversion):
     subclass = None
     superclass = Conversion
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, efficiency=None, operationalHours=None, fullLoadHours=None, power=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, efficiency=None, operationalHours=None, fullLoadHours=None, power=None, **kwargs_):
         self.original_tagname_ = None
-        super(Airco, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, efficiency, operationalHours, fullLoadHours, power, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(Airco, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, efficiency, operationalHours, fullLoadHours, power,  **kwargs_)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -12542,7 +17541,7 @@ class Airco(Conversion):
     def to_etree(self, parent_element=None, name_='Airco', mapping_=None):
         element = super(Airco, self).to_etree(parent_element, name_, mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -12562,9 +17561,11 @@ class Airco(Conversion):
 class CoolingDemand(Consumer):
     subclass = None
     superclass = Consumer
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, consType='PRIMARY'):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, consType='PRIMARY', deviceType=None, **kwargs_):
         self.original_tagname_ = None
-        super(CoolingDemand, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, consType, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(CoolingDemand, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, consType,  **kwargs_)
+        self.deviceType = _cast(None, deviceType)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -12576,6 +17577,10 @@ class CoolingDemand(Consumer):
         else:
             return CoolingDemand(*args_, **kwargs_)
     factory = staticmethod(factory)
+    def get_deviceType(self):
+        return self.deviceType
+    def set_deviceType(self, deviceType):
+        self.deviceType = deviceType
     def hasContent_(self):
         if (
             super(CoolingDemand, self).hasContent_()
@@ -12606,12 +17611,17 @@ class CoolingDemand(Consumer):
             outfile.write('/>%s' % (eol_, ))
     def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='CoolingDemand'):
         super(CoolingDemand, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='CoolingDemand')
+        if self.deviceType is not None and 'deviceType' not in already_processed:
+            already_processed.add('deviceType')
+            outfile.write(' deviceType=%s' % (quote_attrib(self.deviceType), ))
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='CoolingDemand', fromsubclass_=False, pretty_print=True):
         super(CoolingDemand, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='CoolingDemand', mapping_=None):
         element = super(CoolingDemand, self).to_etree(parent_element, name_, mapping_)
+        if self.deviceType is not None:
+            element.set('deviceType', self.deviceType)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -12621,6 +17631,10 @@ class CoolingDemand(Consumer):
             self.buildChildren(child, node, nodeName_)
         return self
     def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('deviceType', node)
+        if value is not None and 'deviceType' not in already_processed:
+            already_processed.add('deviceType')
+            self.deviceType = value
         super(CoolingDemand, self).buildAttributes(node, attrs, already_processed)
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         super(CoolingDemand, self).buildChildren(child_, node, nodeName_, True)
@@ -12628,12 +17642,13 @@ class CoolingDemand(Consumer):
 # end class CoolingDemand
 
 
-class Valve(Transport):
+class Valve(AbstractSwitch):
     subclass = None
-    superclass = Transport
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None):
+    superclass = AbstractSwitch
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, **kwargs_):
         self.original_tagname_ = None
-        super(Valve, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(Valve, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity,  **kwargs_)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -12680,7 +17695,7 @@ class Valve(Transport):
     def to_etree(self, parent_element=None, name_='Valve', mapping_=None):
         element = super(Valve, self).to_etree(parent_element, name_, mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -12697,12 +17712,13 @@ class Valve(Transport):
 # end class Valve
 
 
-class Pump(Transport):
+class Pump(AbstractTransformer):
     subclass = None
-    superclass = Transport
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None):
+    superclass = AbstractTransformer
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, **kwargs_):
         self.original_tagname_ = None
-        super(Pump, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(Pump, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity,  **kwargs_)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -12749,7 +17765,7 @@ class Pump(Transport):
     def to_etree(self, parent_element=None, name_='Pump', mapping_=None):
         element = super(Pump, self).to_etree(parent_element, name_, mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -12769,9 +17785,10 @@ class Pump(Transport):
 class XToPower(Conversion):
     subclass = None
     superclass = Conversion
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, efficiency=None, operationalHours=None, fullLoadHours=None, power=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, efficiency=None, operationalHours=None, fullLoadHours=None, power=None, **kwargs_):
         self.original_tagname_ = None
-        super(XToPower, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, efficiency, operationalHours, fullLoadHours, power, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(XToPower, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, efficiency, operationalHours, fullLoadHours, power,  **kwargs_)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -12818,7 +17835,7 @@ class XToPower(Conversion):
     def to_etree(self, parent_element=None, name_='XToPower', mapping_=None):
         element = super(XToPower, self).to_etree(parent_element, name_, mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -12838,9 +17855,10 @@ class XToPower(Conversion):
 class CCS(Storage):
     subclass = None
     superclass = Storage
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, efficiency=None, profile=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, chargeEfficiency=0.0, dischargeEfficiency=0.0, selfDischargeRate=0.0, fillLevel=None, maxChargeRate=0.0, maxDischargeRate=0.0, profile=None, **kwargs_):
         self.original_tagname_ = None
-        super(CCS, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity, efficiency, profile, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(CCS, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity, chargeEfficiency, dischargeEfficiency, selfDischargeRate, fillLevel, maxChargeRate, maxDischargeRate, profile,  **kwargs_)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -12887,7 +17905,7 @@ class CCS(Storage):
     def to_etree(self, parent_element=None, name_='CCS', mapping_=None):
         element = super(CCS, self).to_etree(parent_element, name_, mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -12907,9 +17925,10 @@ class CCS(Storage):
 class PowerToX(Conversion):
     subclass = None
     superclass = Conversion
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, efficiency=None, operationalHours=None, fullLoadHours=None, power=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, efficiency=None, operationalHours=None, fullLoadHours=None, power=None, **kwargs_):
         self.original_tagname_ = None
-        super(PowerToX, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, efficiency, operationalHours, fullLoadHours, power, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(PowerToX, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, efficiency, operationalHours, fullLoadHours, power,  **kwargs_)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -12956,7 +17975,7 @@ class PowerToX(Conversion):
     def to_etree(self, parent_element=None, name_='PowerToX', mapping_=None):
         element = super(PowerToX, self).to_etree(parent_element, name_, mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -12976,9 +17995,10 @@ class PowerToX(Conversion):
 class Losses(Consumer):
     subclass = None
     superclass = Consumer
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, consType='PRIMARY'):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, consType='PRIMARY', **kwargs_):
         self.original_tagname_ = None
-        super(Losses, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, consType, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(Losses, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, consType,  **kwargs_)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -13025,7 +18045,7 @@ class Losses(Consumer):
     def to_etree(self, parent_element=None, name_='Losses', mapping_=None):
         element = super(Losses, self).to_etree(parent_element, name_, mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -13045,9 +18065,10 @@ class Losses(Consumer):
 class AggregatedBuilding(AbstractBuilding):
     subclass = None
     superclass = AbstractBuilding
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, energyLabel=None, energyIndex=None, asset=None, numberOfBuildings=None, aggregationOf=None, energyLabelDistribution=None, buildingYearDistribution=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, energyLabel=None, energyIndex=None, asset=None, numberOfBuildings=None, aggregationOf=None, energyLabelDistribution=None, buildingYearDistribution=None, **kwargs_):
         self.original_tagname_ = None
-        super(AggregatedBuilding, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, energyLabel, energyIndex, asset, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(AggregatedBuilding, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, energyLabel, energyIndex, asset,  **kwargs_)
         self.numberOfBuildings = _cast(int, numberOfBuildings)
         self.aggregationOf = _cast(None, aggregationOf)
         self.energyLabelDistribution = energyLabelDistribution
@@ -13063,14 +18084,22 @@ class AggregatedBuilding(AbstractBuilding):
         else:
             return AggregatedBuilding(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_energyLabelDistribution(self): return self.energyLabelDistribution
-    def set_energyLabelDistribution(self, energyLabelDistribution): self.energyLabelDistribution = energyLabelDistribution
-    def get_buildingYearDistribution(self): return self.buildingYearDistribution
-    def set_buildingYearDistribution(self, buildingYearDistribution): self.buildingYearDistribution = buildingYearDistribution
-    def get_numberOfBuildings(self): return self.numberOfBuildings
-    def set_numberOfBuildings(self, numberOfBuildings): self.numberOfBuildings = numberOfBuildings
-    def get_aggregationOf(self): return self.aggregationOf
-    def set_aggregationOf(self, aggregationOf): self.aggregationOf = aggregationOf
+    def get_energyLabelDistribution(self):
+        return self.energyLabelDistribution
+    def set_energyLabelDistribution(self, energyLabelDistribution):
+        self.energyLabelDistribution = energyLabelDistribution
+    def get_buildingYearDistribution(self):
+        return self.buildingYearDistribution
+    def set_buildingYearDistribution(self, buildingYearDistribution):
+        self.buildingYearDistribution = buildingYearDistribution
+    def get_numberOfBuildings(self):
+        return self.numberOfBuildings
+    def set_numberOfBuildings(self, numberOfBuildings):
+        self.numberOfBuildings = numberOfBuildings
+    def get_aggregationOf(self):
+        return self.aggregationOf
+    def set_aggregationOf(self, aggregationOf):
+        self.aggregationOf = aggregationOf
     def hasContent_(self):
         if (
             self.energyLabelDistribution is not None or
@@ -13132,7 +18161,7 @@ class AggregatedBuilding(AbstractBuilding):
             buildingYearDistribution_ = self.buildingYearDistribution
             buildingYearDistribution_.to_etree(element, name_='buildingYearDistribution', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -13156,12 +18185,12 @@ class AggregatedBuilding(AbstractBuilding):
         super(AggregatedBuilding, self).buildAttributes(node, attrs, already_processed)
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         if nodeName_ == 'energyLabelDistribution':
-            obj_ = EnergyLabelDistribution.factory()
+            obj_ = EnergyLabelDistribution.factory(parent_object_=self)
             obj_.build(child_)
             self.energyLabelDistribution = obj_
             obj_.original_tagname_ = 'energyLabelDistribution'
         elif nodeName_ == 'buildingYearDistribution':
-            obj_ = FromToDistribution.factory()
+            obj_ = FromToDistribution.factory(parent_object_=self)
             obj_.build(child_)
             self.buildingYearDistribution = obj_
             obj_.original_tagname_ = 'buildingYearDistribution'
@@ -13172,9 +18201,10 @@ class AggregatedBuilding(AbstractBuilding):
 class EVChargingStation(Consumer):
     subclass = None
     superclass = Consumer
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, consType='PRIMARY'):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, consType='PRIMARY', **kwargs_):
         self.original_tagname_ = None
-        super(EVChargingStation, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, consType, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(EVChargingStation, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, consType,  **kwargs_)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -13221,7 +18251,7 @@ class EVChargingStation(Consumer):
     def to_etree(self, parent_element=None, name_='EVChargingStation', mapping_=None):
         element = super(EVChargingStation, self).to_etree(parent_element, name_, mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -13241,9 +18271,10 @@ class EVChargingStation(Consumer):
 class PowerPlant(Conversion):
     subclass = None
     superclass = Conversion
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, efficiency=None, operationalHours=None, fullLoadHours=None, power=None, fuel=None, maxLoad=None, minLoad=None, effMaxLoad=None, effMinLoad=None, energyCarrier=None, mustRun=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, efficiency=None, operationalHours=None, fullLoadHours=None, power=None, fuel=None, maxLoad=None, minLoad=None, effMaxLoad=None, effMinLoad=None, energyCarrier=None, mustRun=None, **kwargs_):
         self.original_tagname_ = None
-        super(PowerPlant, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, efficiency, operationalHours, fullLoadHours, power, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(PowerPlant, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, efficiency, operationalHours, fullLoadHours, power,  **kwargs_)
         self.fuel = _cast(None, fuel)
         self.maxLoad = _cast(int, maxLoad)
         self.minLoad = _cast(int, minLoad)
@@ -13262,20 +18293,34 @@ class PowerPlant(Conversion):
         else:
             return PowerPlant(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_mustRun(self): return self.mustRun
-    def set_mustRun(self, mustRun): self.mustRun = mustRun
-    def get_fuel(self): return self.fuel
-    def set_fuel(self, fuel): self.fuel = fuel
-    def get_maxLoad(self): return self.maxLoad
-    def set_maxLoad(self, maxLoad): self.maxLoad = maxLoad
-    def get_minLoad(self): return self.minLoad
-    def set_minLoad(self, minLoad): self.minLoad = minLoad
-    def get_effMaxLoad(self): return self.effMaxLoad
-    def set_effMaxLoad(self, effMaxLoad): self.effMaxLoad = effMaxLoad
-    def get_effMinLoad(self): return self.effMinLoad
-    def set_effMinLoad(self, effMinLoad): self.effMinLoad = effMinLoad
-    def get_energyCarrier(self): return self.energyCarrier
-    def set_energyCarrier(self, energyCarrier): self.energyCarrier = energyCarrier
+    def get_mustRun(self):
+        return self.mustRun
+    def set_mustRun(self, mustRun):
+        self.mustRun = mustRun
+    def get_fuel(self):
+        return self.fuel
+    def set_fuel(self, fuel):
+        self.fuel = fuel
+    def get_maxLoad(self):
+        return self.maxLoad
+    def set_maxLoad(self, maxLoad):
+        self.maxLoad = maxLoad
+    def get_minLoad(self):
+        return self.minLoad
+    def set_minLoad(self, minLoad):
+        self.minLoad = minLoad
+    def get_effMaxLoad(self):
+        return self.effMaxLoad
+    def set_effMaxLoad(self, effMaxLoad):
+        self.effMaxLoad = effMaxLoad
+    def get_effMinLoad(self):
+        return self.effMinLoad
+    def set_effMinLoad(self, effMinLoad):
+        self.effMinLoad = effMinLoad
+    def get_energyCarrier(self):
+        return self.energyCarrier
+    def set_energyCarrier(self, energyCarrier):
+        self.energyCarrier = energyCarrier
     def hasContent_(self):
         if (
             self.mustRun is not None or
@@ -13332,7 +18377,7 @@ class PowerPlant(Conversion):
         else:
             eol_ = ''
         if self.mustRun is not None:
-            self.mustRun.export(outfile, level, namespaceprefix_, name_='mustRun', pretty_print=pretty_print)
+            self.mustRun.export(outfile, level, namespaceprefix_, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='PowerPlant', mapping_=None):
         element = super(PowerPlant, self).to_etree(parent_element, name_, mapping_)
         if self.fuel is not None:
@@ -13351,7 +18396,7 @@ class PowerPlant(Conversion):
             mustRun_ = self.mustRun
             mustRun_.to_etree(element, name_='mustRun', mapping_=mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -13400,20 +18445,35 @@ class PowerPlant(Conversion):
         super(PowerPlant, self).buildAttributes(node, attrs, already_processed)
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         if nodeName_ == 'mustRun':
-            obj_ = DateTimeProfile.factory()
-            obj_.build(child_)
+            type_name_ = child_.attrib.get(
+                '{http://www.w3.org/2001/XMLSchema-instance}type')
+            if type_name_ is None:
+                type_name_ = child_.attrib.get('type')
+            if type_name_ is not None:
+                type_names_ = type_name_.split(':')
+                if len(type_names_) == 1:
+                    type_name_ = type_names_[0]
+                else:
+                    type_name_ = type_names_[1]
+                class_ = globals()[type_name_]
+                obj_ = class_.factory()
+                obj_.build(child_)
+            else:
+                raise NotImplementedError(
+                    'Class not implemented for <mustRun> element')
             self.mustRun = obj_
             obj_.original_tagname_ = 'mustRun'
         super(PowerPlant, self).buildChildren(child_, node, nodeName_, True)
 # end class PowerPlant
 
 
-class GConnection(Transport):
+class GConnection(AbstractConnection):
     subclass = None
-    superclass = Transport
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None):
+    superclass = AbstractConnection
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, **kwargs_):
         self.original_tagname_ = None
-        super(GConnection, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(GConnection, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity,  **kwargs_)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -13460,7 +18520,7 @@ class GConnection(Transport):
     def to_etree(self, parent_element=None, name_='GConnection', mapping_=None):
         element = super(GConnection, self).to_etree(parent_element, name_, mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -13477,12 +18537,13 @@ class GConnection(Transport):
 # end class GConnection
 
 
-class HConnection(Transport):
+class HConnection(AbstractConnection):
     subclass = None
-    superclass = Transport
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None):
+    superclass = AbstractConnection
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, **kwargs_):
         self.original_tagname_ = None
-        super(HConnection, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(HConnection, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity,  **kwargs_)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -13529,7 +18590,7 @@ class HConnection(Transport):
     def to_etree(self, parent_element=None, name_='HConnection', mapping_=None):
         element = super(HConnection, self).to_etree(parent_element, name_, mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -13546,12 +18607,13 @@ class HConnection(Transport):
 # end class HConnection
 
 
-class EConnection(Transport):
+class EConnection(AbstractConnection):
     subclass = None
-    superclass = Transport
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, EANCode=None):
+    superclass = AbstractConnection
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, EANCode=None, **kwargs_):
         self.original_tagname_ = None
-        super(EConnection, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(EConnection, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity,  **kwargs_)
         self.EANCode = _cast(None, EANCode)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -13564,8 +18626,10 @@ class EConnection(Transport):
         else:
             return EConnection(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_EANCode(self): return self.EANCode
-    def set_EANCode(self, EANCode): self.EANCode = EANCode
+    def get_EANCode(self):
+        return self.EANCode
+    def set_EANCode(self, EANCode):
+        self.EANCode = EANCode
     def hasContent_(self):
         if (
             super(EConnection, self).hasContent_()
@@ -13606,7 +18670,7 @@ class EConnection(Transport):
         if self.EANCode is not None:
             element.set('EANCode', self.gds_format_string(self.EANCode))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -13627,12 +18691,13 @@ class EConnection(Transport):
 # end class EConnection
 
 
-class HeatExchange(Transport):
+class HeatExchange(AbstractTransformer):
     subclass = None
-    superclass = Transport
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None):
+    superclass = AbstractTransformer
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, **kwargs_):
         self.original_tagname_ = None
-        super(HeatExchange, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(HeatExchange, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity,  **kwargs_)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -13679,7 +18744,7 @@ class HeatExchange(Transport):
     def to_etree(self, parent_element=None, name_='HeatExchange', mapping_=None):
         element = super(HeatExchange, self).to_etree(parent_element, name_, mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -13696,12 +18761,13 @@ class HeatExchange(Transport):
 # end class HeatExchange
 
 
-class Transformer(Transport):
+class Transformer(AbstractTransformer):
     subclass = None
-    superclass = Transport
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, voltagePrimary=None, voltageSecundary=None):
+    superclass = AbstractTransformer
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, voltagePrimary=None, voltageSecundary=None, **kwargs_):
         self.original_tagname_ = None
-        super(Transformer, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(Transformer, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity,  **kwargs_)
         self.voltagePrimary = _cast(float, voltagePrimary)
         self.voltageSecundary = _cast(float, voltageSecundary)
     def factory(*args_, **kwargs_):
@@ -13715,10 +18781,14 @@ class Transformer(Transport):
         else:
             return Transformer(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_voltagePrimary(self): return self.voltagePrimary
-    def set_voltagePrimary(self, voltagePrimary): self.voltagePrimary = voltagePrimary
-    def get_voltageSecundary(self): return self.voltageSecundary
-    def set_voltageSecundary(self, voltageSecundary): self.voltageSecundary = voltageSecundary
+    def get_voltagePrimary(self):
+        return self.voltagePrimary
+    def set_voltagePrimary(self, voltagePrimary):
+        self.voltagePrimary = voltagePrimary
+    def get_voltageSecundary(self):
+        return self.voltageSecundary
+    def set_voltageSecundary(self, voltageSecundary):
+        self.voltageSecundary = voltageSecundary
     def hasContent_(self):
         if (
             super(Transformer, self).hasContent_()
@@ -13764,7 +18834,7 @@ class Transformer(Transport):
         if self.voltageSecundary is not None:
             element.set('voltageSecundary', self.gds_format_double(self.voltageSecundary))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -13798,9 +18868,10 @@ class Transformer(Transport):
 class GasDemand(Consumer):
     subclass = None
     superclass = Consumer
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, consType='PRIMARY'):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, consType='PRIMARY', **kwargs_):
         self.original_tagname_ = None
-        super(GasDemand, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, consType, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(GasDemand, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, consType,  **kwargs_)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -13847,7 +18918,7 @@ class GasDemand(Consumer):
     def to_etree(self, parent_element=None, name_='GasDemand', mapping_=None):
         element = super(GasDemand, self).to_etree(parent_element, name_, mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -13867,9 +18938,10 @@ class GasDemand(Consumer):
 class ElectricityDemand(Consumer):
     subclass = None
     superclass = Consumer
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, consType='PRIMARY'):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, consType='PRIMARY', **kwargs_):
         self.original_tagname_ = None
-        super(ElectricityDemand, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, consType, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(ElectricityDemand, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, consType,  **kwargs_)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -13916,7 +18988,7 @@ class ElectricityDemand(Consumer):
     def to_etree(self, parent_element=None, name_='ElectricityDemand', mapping_=None):
         element = super(ElectricityDemand, self).to_etree(parent_element, name_, mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -13936,10 +19008,12 @@ class ElectricityDemand(Consumer):
 class HeatingDemand(Consumer):
     subclass = None
     superclass = Consumer
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, consType='PRIMARY', type_=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, consType='PRIMARY', type_=None, deviceType=None, **kwargs_):
         self.original_tagname_ = None
-        super(HeatingDemand, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, consType, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(HeatingDemand, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, consType,  **kwargs_)
         self.type_ = _cast(None, type_)
+        self.deviceType = _cast(None, deviceType)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -13951,8 +19025,14 @@ class HeatingDemand(Consumer):
         else:
             return HeatingDemand(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_type(self): return self.type_
-    def set_type(self, type_): self.type_ = type_
+    def get_type(self):
+        return self.type_
+    def set_type(self, type_):
+        self.type_ = type_
+    def get_deviceType(self):
+        return self.deviceType
+    def set_deviceType(self, deviceType):
+        self.deviceType = deviceType
     def hasContent_(self):
         if (
             super(HeatingDemand, self).hasContent_()
@@ -13986,14 +19066,19 @@ class HeatingDemand(Consumer):
         if self.type_ is not None and 'type_' not in already_processed:
             already_processed.add('type_')
             outfile.write(' type=%s' % (quote_attrib(self.type_), ))
+        if self.deviceType is not None and 'deviceType' not in already_processed:
+            already_processed.add('deviceType')
+            outfile.write(' deviceType=%s' % (quote_attrib(self.deviceType), ))
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='HeatingDemand', fromsubclass_=False, pretty_print=True):
         super(HeatingDemand, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='HeatingDemand', mapping_=None):
         element = super(HeatingDemand, self).to_etree(parent_element, name_, mapping_)
         if self.type_ is not None:
             element.set('type', self.type_)
+        if self.deviceType is not None:
+            element.set('deviceType', self.deviceType)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -14007,6 +19092,10 @@ class HeatingDemand(Consumer):
         if value is not None and 'type' not in already_processed:
             already_processed.add('type')
             self.type_ = value
+        value = find_attr_value_('deviceType', node)
+        if value is not None and 'deviceType' not in already_processed:
+            already_processed.add('deviceType')
+            self.deviceType = value
         super(HeatingDemand, self).buildAttributes(node, attrs, already_processed)
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         super(HeatingDemand, self).buildChildren(child_, node, nodeName_, True)
@@ -14017,9 +19106,10 @@ class HeatingDemand(Consumer):
 class HeatPump(Conversion):
     subclass = None
     superclass = Conversion
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, efficiency=None, operationalHours=None, fullLoadHours=None, power=None, source=None, stages=1, COP=None, additionalHeatingSourceType=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, efficiency=None, operationalHours=None, fullLoadHours=None, power=None, source=None, stages=1, COP=None, additionalHeatingSourceType=None, **kwargs_):
         self.original_tagname_ = None
-        super(HeatPump, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, efficiency, operationalHours, fullLoadHours, power, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(HeatPump, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, efficiency, operationalHours, fullLoadHours, power,  **kwargs_)
         self.source = _cast(None, source)
         self.stages = _cast(int, stages)
         self.COP = _cast(float, COP)
@@ -14035,14 +19125,22 @@ class HeatPump(Conversion):
         else:
             return HeatPump(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_source(self): return self.source
-    def set_source(self, source): self.source = source
-    def get_stages(self): return self.stages
-    def set_stages(self, stages): self.stages = stages
-    def get_COP(self): return self.COP
-    def set_COP(self, COP): self.COP = COP
-    def get_additionalHeatingSourceType(self): return self.additionalHeatingSourceType
-    def set_additionalHeatingSourceType(self, additionalHeatingSourceType): self.additionalHeatingSourceType = additionalHeatingSourceType
+    def get_source(self):
+        return self.source
+    def set_source(self, source):
+        self.source = source
+    def get_stages(self):
+        return self.stages
+    def set_stages(self, stages):
+        self.stages = stages
+    def get_COP(self):
+        return self.COP
+    def set_COP(self, COP):
+        self.COP = COP
+    def get_additionalHeatingSourceType(self):
+        return self.additionalHeatingSourceType
+    def set_additionalHeatingSourceType(self, additionalHeatingSourceType):
+        self.additionalHeatingSourceType = additionalHeatingSourceType
     def hasContent_(self):
         if (
             super(HeatPump, self).hasContent_()
@@ -14098,7 +19196,7 @@ class HeatPump(Conversion):
         if self.additionalHeatingSourceType is not None:
             element.set('additionalHeatingSourceType', self.additionalHeatingSourceType)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -14140,9 +19238,10 @@ class HeatPump(Conversion):
 class CoGeneration(Conversion):
     subclass = None
     superclass = Conversion
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, efficiency=None, operationalHours=None, fullLoadHours=None, power=None, heatEfficiency=0.0, electricalEfficiency=0.0, HERatio=None, fuelType=None, leadCommodity=None, energyCarrier=None, extensiontype_=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, efficiency=None, operationalHours=None, fullLoadHours=None, power=None, heatEfficiency=0.0, electricalEfficiency=0.0, HERatio=None, fuelType=None, leadCommodity=None, energyCarrier=None, extensiontype_=None, **kwargs_):
         self.original_tagname_ = None
-        super(CoGeneration, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, efficiency, operationalHours, fullLoadHours, power, extensiontype_, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(CoGeneration, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, efficiency, operationalHours, fullLoadHours, power, extensiontype_,  **kwargs_)
         self.heatEfficiency = _cast(float, heatEfficiency)
         self.electricalEfficiency = _cast(float, electricalEfficiency)
         self.HERatio = _cast(float, HERatio)
@@ -14161,18 +19260,30 @@ class CoGeneration(Conversion):
         else:
             return CoGeneration(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_heatEfficiency(self): return self.heatEfficiency
-    def set_heatEfficiency(self, heatEfficiency): self.heatEfficiency = heatEfficiency
-    def get_electricalEfficiency(self): return self.electricalEfficiency
-    def set_electricalEfficiency(self, electricalEfficiency): self.electricalEfficiency = electricalEfficiency
-    def get_HERatio(self): return self.HERatio
-    def set_HERatio(self, HERatio): self.HERatio = HERatio
-    def get_fuelType(self): return self.fuelType
-    def set_fuelType(self, fuelType): self.fuelType = fuelType
-    def get_leadCommodity(self): return self.leadCommodity
-    def set_leadCommodity(self, leadCommodity): self.leadCommodity = leadCommodity
-    def get_energyCarrier(self): return self.energyCarrier
-    def set_energyCarrier(self, energyCarrier): self.energyCarrier = energyCarrier
+    def get_heatEfficiency(self):
+        return self.heatEfficiency
+    def set_heatEfficiency(self, heatEfficiency):
+        self.heatEfficiency = heatEfficiency
+    def get_electricalEfficiency(self):
+        return self.electricalEfficiency
+    def set_electricalEfficiency(self, electricalEfficiency):
+        self.electricalEfficiency = electricalEfficiency
+    def get_HERatio(self):
+        return self.HERatio
+    def set_HERatio(self, HERatio):
+        self.HERatio = HERatio
+    def get_fuelType(self):
+        return self.fuelType
+    def set_fuelType(self, fuelType):
+        self.fuelType = fuelType
+    def get_leadCommodity(self):
+        return self.leadCommodity
+    def set_leadCommodity(self, leadCommodity):
+        self.leadCommodity = leadCommodity
+    def get_energyCarrier(self):
+        return self.energyCarrier
+    def set_energyCarrier(self, energyCarrier):
+        self.energyCarrier = energyCarrier
     def get_extensiontype_(self): return self.extensiontype_
     def set_extensiontype_(self, extensiontype_): self.extensiontype_ = extensiontype_
     def hasContent_(self):
@@ -14226,7 +19337,7 @@ class CoGeneration(Conversion):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s"' % self.extensiontype_)
+            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='CoGeneration', fromsubclass_=False, pretty_print=True):
         super(CoGeneration, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='CoGeneration', mapping_=None):
@@ -14246,7 +19357,7 @@ class CoGeneration(Conversion):
         if self.energyCarrier is not None:
             element.set('energyCarrier', self.gds_format_string(self.energyCarrier))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -14303,15 +19414,15 @@ class CoGeneration(Conversion):
 class GeothermalSource(Producer):
     subclass = None
     superclass = Producer
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, prodType='RENEWABLE', operationalHours=None, fullLoadHours=None, wellDepth=None, geothermalSourceType=None, COP=None, aquiferTemperature=None, flowRate=None, outputPower=0.0, pumpPower=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, prodType='RENEWABLE', operationalHours=None, fullLoadHours=None, power=None, wellDepth=None, geothermalSourceType=None, COP=None, aquiferTemperature=None, flowRate=None, pumpPower=None, **kwargs_):
         self.original_tagname_ = None
-        super(GeothermalSource, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, prodType, operationalHours, fullLoadHours, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(GeothermalSource, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, prodType, operationalHours, fullLoadHours, power,  **kwargs_)
         self.wellDepth = _cast(float, wellDepth)
         self.geothermalSourceType = _cast(None, geothermalSourceType)
         self.COP = _cast(float, COP)
         self.aquiferTemperature = _cast(float, aquiferTemperature)
         self.flowRate = _cast(float, flowRate)
-        self.outputPower = _cast(float, outputPower)
         self.pumpPower = _cast(float, pumpPower)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -14324,20 +19435,30 @@ class GeothermalSource(Producer):
         else:
             return GeothermalSource(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_wellDepth(self): return self.wellDepth
-    def set_wellDepth(self, wellDepth): self.wellDepth = wellDepth
-    def get_geothermalSourceType(self): return self.geothermalSourceType
-    def set_geothermalSourceType(self, geothermalSourceType): self.geothermalSourceType = geothermalSourceType
-    def get_COP(self): return self.COP
-    def set_COP(self, COP): self.COP = COP
-    def get_aquiferTemperature(self): return self.aquiferTemperature
-    def set_aquiferTemperature(self, aquiferTemperature): self.aquiferTemperature = aquiferTemperature
-    def get_flowRate(self): return self.flowRate
-    def set_flowRate(self, flowRate): self.flowRate = flowRate
-    def get_outputPower(self): return self.outputPower
-    def set_outputPower(self, outputPower): self.outputPower = outputPower
-    def get_pumpPower(self): return self.pumpPower
-    def set_pumpPower(self, pumpPower): self.pumpPower = pumpPower
+    def get_wellDepth(self):
+        return self.wellDepth
+    def set_wellDepth(self, wellDepth):
+        self.wellDepth = wellDepth
+    def get_geothermalSourceType(self):
+        return self.geothermalSourceType
+    def set_geothermalSourceType(self, geothermalSourceType):
+        self.geothermalSourceType = geothermalSourceType
+    def get_COP(self):
+        return self.COP
+    def set_COP(self, COP):
+        self.COP = COP
+    def get_aquiferTemperature(self):
+        return self.aquiferTemperature
+    def set_aquiferTemperature(self, aquiferTemperature):
+        self.aquiferTemperature = aquiferTemperature
+    def get_flowRate(self):
+        return self.flowRate
+    def set_flowRate(self, flowRate):
+        self.flowRate = flowRate
+    def get_pumpPower(self):
+        return self.pumpPower
+    def set_pumpPower(self, pumpPower):
+        self.pumpPower = pumpPower
     def hasContent_(self):
         if (
             super(GeothermalSource, self).hasContent_()
@@ -14383,9 +19504,6 @@ class GeothermalSource(Producer):
         if self.flowRate is not None and 'flowRate' not in already_processed:
             already_processed.add('flowRate')
             outfile.write(' flowRate="%s"' % self.gds_format_double(self.flowRate, input_name='flowRate'))
-        if self.outputPower != 0.0 and 'outputPower' not in already_processed:
-            already_processed.add('outputPower')
-            outfile.write(' outputPower="%s"' % self.gds_format_double(self.outputPower, input_name='outputPower'))
         if self.pumpPower is not None and 'pumpPower' not in already_processed:
             already_processed.add('pumpPower')
             outfile.write(' pumpPower="%s"' % self.gds_format_double(self.pumpPower, input_name='pumpPower'))
@@ -14403,12 +19521,10 @@ class GeothermalSource(Producer):
             element.set('aquiferTemperature', self.gds_format_double(self.aquiferTemperature))
         if self.flowRate is not None:
             element.set('flowRate', self.gds_format_double(self.flowRate))
-        if self.outputPower is not None:
-            element.set('outputPower', self.gds_format_double(self.outputPower))
         if self.pumpPower is not None:
             element.set('pumpPower', self.gds_format_double(self.pumpPower))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -14450,13 +19566,6 @@ class GeothermalSource(Producer):
                 self.flowRate = float(value)
             except ValueError as exp:
                 raise ValueError('Bad float/double attribute (flowRate): %s' % exp)
-        value = find_attr_value_('outputPower', node)
-        if value is not None and 'outputPower' not in already_processed:
-            already_processed.add('outputPower')
-            try:
-                self.outputPower = float(value)
-            except ValueError as exp:
-                raise ValueError('Bad float/double attribute (outputPower): %s' % exp)
         value = find_attr_value_('pumpPower', node)
         if value is not None and 'pumpPower' not in already_processed:
             already_processed.add('pumpPower')
@@ -14471,12 +19580,13 @@ class GeothermalSource(Producer):
 # end class GeothermalSource
 
 
-class Pipe(Transport):
+class Pipe(AbstractConductor):
     subclass = None
-    superclass = Transport
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, diameter=None, length=None):
+    superclass = AbstractConductor
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, diameter=None, length=None, **kwargs_):
         self.original_tagname_ = None
-        super(Pipe, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(Pipe, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity,  **kwargs_)
         self.diameter = _cast(float, diameter)
         self.length = _cast(float, length)
     def factory(*args_, **kwargs_):
@@ -14490,10 +19600,14 @@ class Pipe(Transport):
         else:
             return Pipe(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_diameter(self): return self.diameter
-    def set_diameter(self, diameter): self.diameter = diameter
-    def get_length(self): return self.length
-    def set_length(self, length): self.length = length
+    def get_diameter(self):
+        return self.diameter
+    def set_diameter(self, diameter):
+        self.diameter = diameter
+    def get_length(self):
+        return self.length
+    def set_length(self, length):
+        self.length = length
     def hasContent_(self):
         if (
             super(Pipe, self).hasContent_()
@@ -14539,7 +19653,7 @@ class Pipe(Transport):
         if self.length is not None:
             element.set('length', self.gds_format_double(self.length))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -14573,9 +19687,10 @@ class Pipe(Transport):
 class SinkConsumer(Consumer):
     subclass = None
     superclass = Consumer
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, consType='PRIMARY'):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, consType='PRIMARY', **kwargs_):
         self.original_tagname_ = None
-        super(SinkConsumer, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, consType, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(SinkConsumer, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, consType,  **kwargs_)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -14622,7 +19737,7 @@ class SinkConsumer(Consumer):
     def to_etree(self, parent_element=None, name_='SinkConsumer', mapping_=None):
         element = super(SinkConsumer, self).to_etree(parent_element, name_, mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -14642,9 +19757,10 @@ class SinkConsumer(Consumer):
 class SourceProducer(Producer):
     subclass = None
     superclass = Producer
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, prodType='RENEWABLE', operationalHours=None, fullLoadHours=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, prodType='RENEWABLE', operationalHours=None, fullLoadHours=None, power=None, **kwargs_):
         self.original_tagname_ = None
-        super(SourceProducer, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, prodType, operationalHours, fullLoadHours, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(SourceProducer, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, prodType, operationalHours, fullLoadHours, power,  **kwargs_)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -14691,7 +19807,7 @@ class SourceProducer(Producer):
     def to_etree(self, parent_element=None, name_='SourceProducer', mapping_=None):
         element = super(SourceProducer, self).to_etree(parent_element, name_, mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -14708,12 +19824,13 @@ class SourceProducer(Producer):
 # end class SourceProducer
 
 
-class GasNetwork(Transport):
+class GasNetwork(EnergyNetwork):
     subclass = None
-    superclass = Transport
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, pressure=None):
+    superclass = EnergyNetwork
+    def __init__(self, pressure=None, **kwargs_):
         self.original_tagname_ = None
-        super(GasNetwork, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(GasNetwork, self).__init__( **kwargs_)
         self.pressure = _cast(float, pressure)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -14726,8 +19843,10 @@ class GasNetwork(Transport):
         else:
             return GasNetwork(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_pressure(self): return self.pressure
-    def set_pressure(self, pressure): self.pressure = pressure
+    def get_pressure(self):
+        return self.pressure
+    def set_pressure(self, pressure):
+        self.pressure = pressure
     def hasContent_(self):
         if (
             super(GasNetwork, self).hasContent_()
@@ -14752,7 +19871,6 @@ class GasNetwork(Transport):
         if self.hasContent_():
             outfile.write('>%s' % (eol_, ))
             self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='GasNetwork', pretty_print=pretty_print)
-            showIndent(outfile, level, pretty_print)
             outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
         else:
             outfile.write('/>%s' % (eol_, ))
@@ -14763,12 +19881,13 @@ class GasNetwork(Transport):
             outfile.write(' pressure="%s"' % self.gds_format_double(self.pressure, input_name='pressure'))
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='GasNetwork', fromsubclass_=False, pretty_print=True):
         super(GasNetwork, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+        pass
     def to_etree(self, parent_element=None, name_='GasNetwork', mapping_=None):
         element = super(GasNetwork, self).to_etree(parent_element, name_, mapping_)
         if self.pressure is not None:
             element.set('pressure', self.gds_format_double(self.pressure))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -14792,12 +19911,13 @@ class GasNetwork(Transport):
 # end class GasNetwork
 
 
-class HeatNetwork(Transport):
+class HeatNetwork(EnergyNetwork):
     subclass = None
-    superclass = Transport
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, temperature=None, temperatureMin=None, temperatureMax=None):
+    superclass = EnergyNetwork
+    def __init__(self, temperature=None, temperatureMin=None, temperatureMax=None, **kwargs_):
         self.original_tagname_ = None
-        super(HeatNetwork, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(HeatNetwork, self).__init__( **kwargs_)
         self.temperature = _cast(float, temperature)
         self.temperatureMin = _cast(float, temperatureMin)
         self.temperatureMax = _cast(float, temperatureMax)
@@ -14812,12 +19932,18 @@ class HeatNetwork(Transport):
         else:
             return HeatNetwork(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_temperature(self): return self.temperature
-    def set_temperature(self, temperature): self.temperature = temperature
-    def get_temperatureMin(self): return self.temperatureMin
-    def set_temperatureMin(self, temperatureMin): self.temperatureMin = temperatureMin
-    def get_temperatureMax(self): return self.temperatureMax
-    def set_temperatureMax(self, temperatureMax): self.temperatureMax = temperatureMax
+    def get_temperature(self):
+        return self.temperature
+    def set_temperature(self, temperature):
+        self.temperature = temperature
+    def get_temperatureMin(self):
+        return self.temperatureMin
+    def set_temperatureMin(self, temperatureMin):
+        self.temperatureMin = temperatureMin
+    def get_temperatureMax(self):
+        return self.temperatureMax
+    def set_temperatureMax(self, temperatureMax):
+        self.temperatureMax = temperatureMax
     def hasContent_(self):
         if (
             super(HeatNetwork, self).hasContent_()
@@ -14842,7 +19968,6 @@ class HeatNetwork(Transport):
         if self.hasContent_():
             outfile.write('>%s' % (eol_, ))
             self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='HeatNetwork', pretty_print=pretty_print)
-            showIndent(outfile, level, pretty_print)
             outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
         else:
             outfile.write('/>%s' % (eol_, ))
@@ -14859,6 +19984,7 @@ class HeatNetwork(Transport):
             outfile.write(' temperatureMax="%s"' % self.gds_format_double(self.temperatureMax, input_name='temperatureMax'))
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='HeatNetwork', fromsubclass_=False, pretty_print=True):
         super(HeatNetwork, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+        pass
     def to_etree(self, parent_element=None, name_='HeatNetwork', mapping_=None):
         element = super(HeatNetwork, self).to_etree(parent_element, name_, mapping_)
         if self.temperature is not None:
@@ -14868,7 +19994,7 @@ class HeatNetwork(Transport):
         if self.temperatureMax is not None:
             element.set('temperatureMax', self.gds_format_double(self.temperatureMax))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -14909,9 +20035,10 @@ class HeatNetwork(Transport):
 class GasHeater(Conversion):
     subclass = None
     superclass = Conversion
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, efficiency=None, operationalHours=None, fullLoadHours=None, power=None, minimumBurnRate=0.0, type_=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, efficiency=None, operationalHours=None, fullLoadHours=None, power=None, minimumBurnRate=0.0, type_=None, **kwargs_):
         self.original_tagname_ = None
-        super(GasHeater, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, efficiency, operationalHours, fullLoadHours, power, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(GasHeater, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, efficiency, operationalHours, fullLoadHours, power,  **kwargs_)
         self.minimumBurnRate = _cast(float, minimumBurnRate)
         self.type_ = _cast(None, type_)
     def factory(*args_, **kwargs_):
@@ -14925,10 +20052,14 @@ class GasHeater(Conversion):
         else:
             return GasHeater(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_minimumBurnRate(self): return self.minimumBurnRate
-    def set_minimumBurnRate(self, minimumBurnRate): self.minimumBurnRate = minimumBurnRate
-    def get_type(self): return self.type_
-    def set_type(self, type_): self.type_ = type_
+    def get_minimumBurnRate(self):
+        return self.minimumBurnRate
+    def set_minimumBurnRate(self, minimumBurnRate):
+        self.minimumBurnRate = minimumBurnRate
+    def get_type(self):
+        return self.type_
+    def set_type(self, type_):
+        self.type_ = type_
     def hasContent_(self):
         if (
             super(GasHeater, self).hasContent_()
@@ -14974,7 +20105,7 @@ class GasHeater(Conversion):
         if self.type_ is not None:
             element.set('type', self.type_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -15005,10 +20136,10 @@ class GasHeater(Conversion):
 class HeatStorage(Storage):
     subclass = None
     superclass = Storage
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, efficiency=None, profile=None, heatLoss=0.0, minStorageTemperature=None, maxStorageTemperature=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, chargeEfficiency=0.0, dischargeEfficiency=0.0, selfDischargeRate=0.0, fillLevel=None, maxChargeRate=0.0, maxDischargeRate=0.0, profile=None, minStorageTemperature=None, maxStorageTemperature=None, **kwargs_):
         self.original_tagname_ = None
-        super(HeatStorage, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity, efficiency, profile, )
-        self.heatLoss = _cast(float, heatLoss)
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(HeatStorage, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity, chargeEfficiency, dischargeEfficiency, selfDischargeRate, fillLevel, maxChargeRate, maxDischargeRate, profile,  **kwargs_)
         self.minStorageTemperature = _cast(float, minStorageTemperature)
         self.maxStorageTemperature = _cast(float, maxStorageTemperature)
     def factory(*args_, **kwargs_):
@@ -15022,12 +20153,14 @@ class HeatStorage(Storage):
         else:
             return HeatStorage(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_heatLoss(self): return self.heatLoss
-    def set_heatLoss(self, heatLoss): self.heatLoss = heatLoss
-    def get_minStorageTemperature(self): return self.minStorageTemperature
-    def set_minStorageTemperature(self, minStorageTemperature): self.minStorageTemperature = minStorageTemperature
-    def get_maxStorageTemperature(self): return self.maxStorageTemperature
-    def set_maxStorageTemperature(self, maxStorageTemperature): self.maxStorageTemperature = maxStorageTemperature
+    def get_minStorageTemperature(self):
+        return self.minStorageTemperature
+    def set_minStorageTemperature(self, minStorageTemperature):
+        self.minStorageTemperature = minStorageTemperature
+    def get_maxStorageTemperature(self):
+        return self.maxStorageTemperature
+    def set_maxStorageTemperature(self, maxStorageTemperature):
+        self.maxStorageTemperature = maxStorageTemperature
     def hasContent_(self):
         if (
             super(HeatStorage, self).hasContent_()
@@ -15058,9 +20191,6 @@ class HeatStorage(Storage):
             outfile.write('/>%s' % (eol_, ))
     def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='HeatStorage'):
         super(HeatStorage, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='HeatStorage')
-        if self.heatLoss != 0.0 and 'heatLoss' not in already_processed:
-            already_processed.add('heatLoss')
-            outfile.write(' heatLoss="%s"' % self.gds_format_double(self.heatLoss, input_name='heatLoss'))
         if self.minStorageTemperature is not None and 'minStorageTemperature' not in already_processed:
             already_processed.add('minStorageTemperature')
             outfile.write(' minStorageTemperature="%s"' % self.gds_format_double(self.minStorageTemperature, input_name='minStorageTemperature'))
@@ -15071,14 +20201,12 @@ class HeatStorage(Storage):
         super(HeatStorage, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='HeatStorage', mapping_=None):
         element = super(HeatStorage, self).to_etree(parent_element, name_, mapping_)
-        if self.heatLoss is not None:
-            element.set('heatLoss', self.gds_format_double(self.heatLoss))
         if self.minStorageTemperature is not None:
             element.set('minStorageTemperature', self.gds_format_double(self.minStorageTemperature))
         if self.maxStorageTemperature is not None:
             element.set('maxStorageTemperature', self.gds_format_double(self.maxStorageTemperature))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -15088,13 +20216,6 @@ class HeatStorage(Storage):
             self.buildChildren(child, node, nodeName_)
         return self
     def buildAttributes(self, node, attrs, already_processed):
-        value = find_attr_value_('heatLoss', node)
-        if value is not None and 'heatLoss' not in already_processed:
-            already_processed.add('heatLoss')
-            try:
-                self.heatLoss = float(value)
-            except ValueError as exp:
-                raise ValueError('Bad float/double attribute (heatLoss): %s' % exp)
         value = find_attr_value_('minStorageTemperature', node)
         if value is not None and 'minStorageTemperature' not in already_processed:
             already_processed.add('minStorageTemperature')
@@ -15119,9 +20240,10 @@ class HeatStorage(Storage):
 class AggregatedStorage(Storage):
     subclass = None
     superclass = Storage
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, efficiency=None, profile=None, aggregationOf=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, chargeEfficiency=0.0, dischargeEfficiency=0.0, selfDischargeRate=0.0, fillLevel=None, maxChargeRate=0.0, maxDischargeRate=0.0, profile=None, aggregationOf=None, **kwargs_):
         self.original_tagname_ = None
-        super(AggregatedStorage, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity, efficiency, profile, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(AggregatedStorage, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity, chargeEfficiency, dischargeEfficiency, selfDischargeRate, fillLevel, maxChargeRate, maxDischargeRate, profile,  **kwargs_)
         self.aggregationOf = _cast(None, aggregationOf)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -15134,8 +20256,10 @@ class AggregatedStorage(Storage):
         else:
             return AggregatedStorage(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_aggregationOf(self): return self.aggregationOf
-    def set_aggregationOf(self, aggregationOf): self.aggregationOf = aggregationOf
+    def get_aggregationOf(self):
+        return self.aggregationOf
+    def set_aggregationOf(self, aggregationOf):
+        self.aggregationOf = aggregationOf
     def hasContent_(self):
         if (
             super(AggregatedStorage, self).hasContent_()
@@ -15176,7 +20300,7 @@ class AggregatedStorage(Storage):
         if self.aggregationOf is not None:
             element.set('aggregationOf', self.gds_format_string(self.aggregationOf))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -15200,9 +20324,10 @@ class AggregatedStorage(Storage):
 class AggregatedConversion(Conversion):
     subclass = None
     superclass = Conversion
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, efficiency=None, operationalHours=None, fullLoadHours=None, power=None, aggregationOf=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, efficiency=None, operationalHours=None, fullLoadHours=None, power=None, aggregationOf=None, **kwargs_):
         self.original_tagname_ = None
-        super(AggregatedConversion, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, efficiency, operationalHours, fullLoadHours, power, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(AggregatedConversion, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, efficiency, operationalHours, fullLoadHours, power,  **kwargs_)
         self.aggregationOf = _cast(None, aggregationOf)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -15215,8 +20340,10 @@ class AggregatedConversion(Conversion):
         else:
             return AggregatedConversion(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_aggregationOf(self): return self.aggregationOf
-    def set_aggregationOf(self, aggregationOf): self.aggregationOf = aggregationOf
+    def get_aggregationOf(self):
+        return self.aggregationOf
+    def set_aggregationOf(self, aggregationOf):
+        self.aggregationOf = aggregationOf
     def hasContent_(self):
         if (
             super(AggregatedConversion, self).hasContent_()
@@ -15257,7 +20384,7 @@ class AggregatedConversion(Conversion):
         if self.aggregationOf is not None:
             element.set('aggregationOf', self.gds_format_string(self.aggregationOf))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -15281,9 +20408,10 @@ class AggregatedConversion(Conversion):
 class AggregatedTransport(Transport):
     subclass = None
     superclass = Transport
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, aggregationOf=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, aggregationOf=None, **kwargs_):
         self.original_tagname_ = None
-        super(AggregatedTransport, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(AggregatedTransport, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity,  **kwargs_)
         self.aggregationOf = _cast(None, aggregationOf)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -15296,8 +20424,10 @@ class AggregatedTransport(Transport):
         else:
             return AggregatedTransport(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_aggregationOf(self): return self.aggregationOf
-    def set_aggregationOf(self, aggregationOf): self.aggregationOf = aggregationOf
+    def get_aggregationOf(self):
+        return self.aggregationOf
+    def set_aggregationOf(self, aggregationOf):
+        self.aggregationOf = aggregationOf
     def hasContent_(self):
         if (
             super(AggregatedTransport, self).hasContent_()
@@ -15338,7 +20468,7 @@ class AggregatedTransport(Transport):
         if self.aggregationOf is not None:
             element.set('aggregationOf', self.gds_format_string(self.aggregationOf))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -15362,9 +20492,10 @@ class AggregatedTransport(Transport):
 class GenericConversion(Conversion):
     subclass = None
     superclass = Conversion
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, efficiency=None, operationalHours=None, fullLoadHours=None, power=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, efficiency=None, operationalHours=None, fullLoadHours=None, power=None, **kwargs_):
         self.original_tagname_ = None
-        super(GenericConversion, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, efficiency, operationalHours, fullLoadHours, power, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(GenericConversion, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, efficiency, operationalHours, fullLoadHours, power,  **kwargs_)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -15411,7 +20542,7 @@ class GenericConversion(Conversion):
     def to_etree(self, parent_element=None, name_='GenericConversion', mapping_=None):
         element = super(GenericConversion, self).to_etree(parent_element, name_, mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -15431,9 +20562,10 @@ class GenericConversion(Conversion):
 class GenericTransport(Transport):
     subclass = None
     superclass = Transport
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, **kwargs_):
         self.original_tagname_ = None
-        super(GenericTransport, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(GenericTransport, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity,  **kwargs_)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -15480,7 +20612,7 @@ class GenericTransport(Transport):
     def to_etree(self, parent_element=None, name_='GenericTransport', mapping_=None):
         element = super(GenericTransport, self).to_etree(parent_element, name_, mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -15500,9 +20632,10 @@ class GenericTransport(Transport):
 class GenericStorage(Storage):
     subclass = None
     superclass = Storage
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, efficiency=None, profile=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, chargeEfficiency=0.0, dischargeEfficiency=0.0, selfDischargeRate=0.0, fillLevel=None, maxChargeRate=0.0, maxDischargeRate=0.0, profile=None, **kwargs_):
         self.original_tagname_ = None
-        super(GenericStorage, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity, efficiency, profile, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(GenericStorage, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity, chargeEfficiency, dischargeEfficiency, selfDischargeRate, fillLevel, maxChargeRate, maxDischargeRate, profile,  **kwargs_)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -15549,7 +20682,7 @@ class GenericStorage(Storage):
     def to_etree(self, parent_element=None, name_='GenericStorage', mapping_=None):
         element = super(GenericStorage, self).to_etree(parent_element, name_, mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -15569,9 +20702,10 @@ class GenericStorage(Storage):
 class GenericProducer(Producer):
     subclass = None
     superclass = Producer
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, prodType='RENEWABLE', operationalHours=None, fullLoadHours=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, prodType='RENEWABLE', operationalHours=None, fullLoadHours=None, power=None, **kwargs_):
         self.original_tagname_ = None
-        super(GenericProducer, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, prodType, operationalHours, fullLoadHours, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(GenericProducer, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, prodType, operationalHours, fullLoadHours, power,  **kwargs_)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -15618,7 +20752,7 @@ class GenericProducer(Producer):
     def to_etree(self, parent_element=None, name_='GenericProducer', mapping_=None):
         element = super(GenericProducer, self).to_etree(parent_element, name_, mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -15638,9 +20772,10 @@ class GenericProducer(Producer):
 class GenericConsumer(Consumer):
     subclass = None
     superclass = Consumer
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, consType='PRIMARY'):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, consType='PRIMARY', **kwargs_):
         self.original_tagname_ = None
-        super(GenericConsumer, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, consType, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(GenericConsumer, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, consType,  **kwargs_)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -15687,7 +20822,7 @@ class GenericConsumer(Consumer):
     def to_etree(self, parent_element=None, name_='GenericConsumer', mapping_=None):
         element = super(GenericConsumer, self).to_etree(parent_element, name_, mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -15707,9 +20842,10 @@ class GenericConsumer(Consumer):
 class AggregatedProducer(Producer):
     subclass = None
     superclass = Producer
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, prodType='RENEWABLE', operationalHours=None, fullLoadHours=None, aggregationOf=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, prodType='RENEWABLE', operationalHours=None, fullLoadHours=None, power=None, aggregationOf=None, **kwargs_):
         self.original_tagname_ = None
-        super(AggregatedProducer, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, prodType, operationalHours, fullLoadHours, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(AggregatedProducer, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, prodType, operationalHours, fullLoadHours, power,  **kwargs_)
         self.aggregationOf = _cast(None, aggregationOf)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -15722,8 +20858,10 @@ class AggregatedProducer(Producer):
         else:
             return AggregatedProducer(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_aggregationOf(self): return self.aggregationOf
-    def set_aggregationOf(self, aggregationOf): self.aggregationOf = aggregationOf
+    def get_aggregationOf(self):
+        return self.aggregationOf
+    def set_aggregationOf(self, aggregationOf):
+        self.aggregationOf = aggregationOf
     def hasContent_(self):
         if (
             super(AggregatedProducer, self).hasContent_()
@@ -15764,7 +20902,7 @@ class AggregatedProducer(Producer):
         if self.aggregationOf is not None:
             element.set('aggregationOf', self.gds_format_string(self.aggregationOf))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -15788,9 +20926,10 @@ class AggregatedProducer(Producer):
 class AggregatedConsumer(Consumer):
     subclass = None
     superclass = Consumer
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, consType='PRIMARY', aggregationOf=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, consType='PRIMARY', aggregationOf=None, **kwargs_):
         self.original_tagname_ = None
-        super(AggregatedConsumer, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, consType, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(AggregatedConsumer, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, consType,  **kwargs_)
         self.aggregationOf = _cast(None, aggregationOf)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -15803,8 +20942,10 @@ class AggregatedConsumer(Consumer):
         else:
             return AggregatedConsumer(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_aggregationOf(self): return self.aggregationOf
-    def set_aggregationOf(self, aggregationOf): self.aggregationOf = aggregationOf
+    def get_aggregationOf(self):
+        return self.aggregationOf
+    def set_aggregationOf(self, aggregationOf):
+        self.aggregationOf = aggregationOf
     def hasContent_(self):
         if (
             super(AggregatedConsumer, self).hasContent_()
@@ -15845,7 +20986,7 @@ class AggregatedConsumer(Consumer):
         if self.aggregationOf is not None:
             element.set('aggregationOf', self.gds_format_string(self.aggregationOf))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -15866,12 +21007,13 @@ class AggregatedConsumer(Consumer):
 # end class AggregatedConsumer
 
 
-class ElectricityCable(Transport):
+class ElectricityCable(AbstractConductor):
     subclass = None
-    superclass = Transport
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, length=None):
+    superclass = AbstractConductor
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, length=None, **kwargs_):
         self.original_tagname_ = None
-        super(ElectricityCable, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(ElectricityCable, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity,  **kwargs_)
         self.length = _cast(float, length)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -15884,8 +21026,10 @@ class ElectricityCable(Transport):
         else:
             return ElectricityCable(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_length(self): return self.length
-    def set_length(self, length): self.length = length
+    def get_length(self):
+        return self.length
+    def set_length(self, length):
+        self.length = length
     def hasContent_(self):
         if (
             super(ElectricityCable, self).hasContent_()
@@ -15926,7 +21070,7 @@ class ElectricityCable(Transport):
         if self.length is not None:
             element.set('length', self.gds_format_double(self.length))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -15950,12 +21094,13 @@ class ElectricityCable(Transport):
 # end class ElectricityCable
 
 
-class ElectricityNetwork(Transport):
+class ElectricityNetwork(EnergyNetwork):
     subclass = None
-    superclass = Transport
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, voltage=None):
+    superclass = EnergyNetwork
+    def __init__(self, voltage=None, **kwargs_):
         self.original_tagname_ = None
-        super(ElectricityNetwork, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(ElectricityNetwork, self).__init__( **kwargs_)
         self.voltage = _cast(float, voltage)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -15968,8 +21113,10 @@ class ElectricityNetwork(Transport):
         else:
             return ElectricityNetwork(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_voltage(self): return self.voltage
-    def set_voltage(self, voltage): self.voltage = voltage
+    def get_voltage(self):
+        return self.voltage
+    def set_voltage(self, voltage):
+        self.voltage = voltage
     def hasContent_(self):
         if (
             super(ElectricityNetwork, self).hasContent_()
@@ -15994,7 +21141,6 @@ class ElectricityNetwork(Transport):
         if self.hasContent_():
             outfile.write('>%s' % (eol_, ))
             self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='ElectricityNetwork', pretty_print=pretty_print)
-            showIndent(outfile, level, pretty_print)
             outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
         else:
             outfile.write('/>%s' % (eol_, ))
@@ -16005,12 +21151,13 @@ class ElectricityNetwork(Transport):
             outfile.write(' voltage="%s"' % self.gds_format_double(self.voltage, input_name='voltage'))
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='ElectricityNetwork', fromsubclass_=False, pretty_print=True):
         super(ElectricityNetwork, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+        pass
     def to_etree(self, parent_element=None, name_='ElectricityNetwork', mapping_=None):
         element = super(ElectricityNetwork, self).to_etree(parent_element, name_, mapping_)
         if self.voltage is not None:
             element.set('voltage', self.gds_format_double(self.voltage))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -16037,15 +21184,11 @@ class ElectricityNetwork(Transport):
 class Battery(Storage):
     subclass = None
     superclass = Storage
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, efficiency=None, profile=None, selfDischarge=None, maxChargeDischargeCycli=None, chargeEfficiency=0.0, dischargeEfficiency=0.0, maxChargeRate=None, maxDischargeRate=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, capacity=None, chargeEfficiency=0.0, dischargeEfficiency=0.0, selfDischargeRate=0.0, fillLevel=None, maxChargeRate=0.0, maxDischargeRate=0.0, profile=None, maxChargeDischargeCycles=None, **kwargs_):
         self.original_tagname_ = None
-        super(Battery, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity, efficiency, profile, )
-        self.selfDischarge = _cast(float, selfDischarge)
-        self.maxChargeDischargeCycli = _cast(int, maxChargeDischargeCycli)
-        self.chargeEfficiency = _cast(float, chargeEfficiency)
-        self.dischargeEfficiency = _cast(float, dischargeEfficiency)
-        self.maxChargeRate = _cast(float, maxChargeRate)
-        self.maxDischargeRate = _cast(float, maxDischargeRate)
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(Battery, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, capacity, chargeEfficiency, dischargeEfficiency, selfDischargeRate, fillLevel, maxChargeRate, maxDischargeRate, profile,  **kwargs_)
+        self.maxChargeDischargeCycles = _cast(int, maxChargeDischargeCycles)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -16057,18 +21200,10 @@ class Battery(Storage):
         else:
             return Battery(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_selfDischarge(self): return self.selfDischarge
-    def set_selfDischarge(self, selfDischarge): self.selfDischarge = selfDischarge
-    def get_maxChargeDischargeCycli(self): return self.maxChargeDischargeCycli
-    def set_maxChargeDischargeCycli(self, maxChargeDischargeCycli): self.maxChargeDischargeCycli = maxChargeDischargeCycli
-    def get_chargeEfficiency(self): return self.chargeEfficiency
-    def set_chargeEfficiency(self, chargeEfficiency): self.chargeEfficiency = chargeEfficiency
-    def get_dischargeEfficiency(self): return self.dischargeEfficiency
-    def set_dischargeEfficiency(self, dischargeEfficiency): self.dischargeEfficiency = dischargeEfficiency
-    def get_maxChargeRate(self): return self.maxChargeRate
-    def set_maxChargeRate(self, maxChargeRate): self.maxChargeRate = maxChargeRate
-    def get_maxDischargeRate(self): return self.maxDischargeRate
-    def set_maxDischargeRate(self, maxDischargeRate): self.maxDischargeRate = maxDischargeRate
+    def get_maxChargeDischargeCycles(self):
+        return self.maxChargeDischargeCycles
+    def set_maxChargeDischargeCycles(self, maxChargeDischargeCycles):
+        self.maxChargeDischargeCycles = maxChargeDischargeCycles
     def hasContent_(self):
         if (
             super(Battery, self).hasContent_()
@@ -16099,42 +21234,17 @@ class Battery(Storage):
             outfile.write('/>%s' % (eol_, ))
     def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='Battery'):
         super(Battery, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='Battery')
-        if self.selfDischarge is not None and 'selfDischarge' not in already_processed:
-            already_processed.add('selfDischarge')
-            outfile.write(' selfDischarge="%s"' % self.gds_format_double(self.selfDischarge, input_name='selfDischarge'))
-        if self.maxChargeDischargeCycli is not None and 'maxChargeDischargeCycli' not in already_processed:
-            already_processed.add('maxChargeDischargeCycli')
-            outfile.write(' maxChargeDischargeCycli="%s"' % self.gds_format_integer(self.maxChargeDischargeCycli, input_name='maxChargeDischargeCycli'))
-        if self.chargeEfficiency != 0.0 and 'chargeEfficiency' not in already_processed:
-            already_processed.add('chargeEfficiency')
-            outfile.write(' chargeEfficiency="%s"' % self.gds_format_double(self.chargeEfficiency, input_name='chargeEfficiency'))
-        if self.dischargeEfficiency != 0.0 and 'dischargeEfficiency' not in already_processed:
-            already_processed.add('dischargeEfficiency')
-            outfile.write(' dischargeEfficiency="%s"' % self.gds_format_double(self.dischargeEfficiency, input_name='dischargeEfficiency'))
-        if self.maxChargeRate is not None and 'maxChargeRate' not in already_processed:
-            already_processed.add('maxChargeRate')
-            outfile.write(' maxChargeRate="%s"' % self.gds_format_double(self.maxChargeRate, input_name='maxChargeRate'))
-        if self.maxDischargeRate is not None and 'maxDischargeRate' not in already_processed:
-            already_processed.add('maxDischargeRate')
-            outfile.write(' maxDischargeRate="%s"' % self.gds_format_double(self.maxDischargeRate, input_name='maxDischargeRate'))
+        if self.maxChargeDischargeCycles is not None and 'maxChargeDischargeCycles' not in already_processed:
+            already_processed.add('maxChargeDischargeCycles')
+            outfile.write(' maxChargeDischargeCycles="%s"' % self.gds_format_integer(self.maxChargeDischargeCycles, input_name='maxChargeDischargeCycles'))
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='Battery', fromsubclass_=False, pretty_print=True):
         super(Battery, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='Battery', mapping_=None):
         element = super(Battery, self).to_etree(parent_element, name_, mapping_)
-        if self.selfDischarge is not None:
-            element.set('selfDischarge', self.gds_format_double(self.selfDischarge))
-        if self.maxChargeDischargeCycli is not None:
-            element.set('maxChargeDischargeCycli', self.gds_format_integer(self.maxChargeDischargeCycli))
-        if self.chargeEfficiency is not None:
-            element.set('chargeEfficiency', self.gds_format_double(self.chargeEfficiency))
-        if self.dischargeEfficiency is not None:
-            element.set('dischargeEfficiency', self.gds_format_double(self.dischargeEfficiency))
-        if self.maxChargeRate is not None:
-            element.set('maxChargeRate', self.gds_format_double(self.maxChargeRate))
-        if self.maxDischargeRate is not None:
-            element.set('maxDischargeRate', self.gds_format_double(self.maxDischargeRate))
+        if self.maxChargeDischargeCycles is not None:
+            element.set('maxChargeDischargeCycles', self.gds_format_integer(self.maxChargeDischargeCycles))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -16144,48 +21254,13 @@ class Battery(Storage):
             self.buildChildren(child, node, nodeName_)
         return self
     def buildAttributes(self, node, attrs, already_processed):
-        value = find_attr_value_('selfDischarge', node)
-        if value is not None and 'selfDischarge' not in already_processed:
-            already_processed.add('selfDischarge')
+        value = find_attr_value_('maxChargeDischargeCycles', node)
+        if value is not None and 'maxChargeDischargeCycles' not in already_processed:
+            already_processed.add('maxChargeDischargeCycles')
             try:
-                self.selfDischarge = float(value)
-            except ValueError as exp:
-                raise ValueError('Bad float/double attribute (selfDischarge): %s' % exp)
-        value = find_attr_value_('maxChargeDischargeCycli', node)
-        if value is not None and 'maxChargeDischargeCycli' not in already_processed:
-            already_processed.add('maxChargeDischargeCycli')
-            try:
-                self.maxChargeDischargeCycli = int(value)
+                self.maxChargeDischargeCycles = int(value)
             except ValueError as exp:
                 raise_parse_error(node, 'Bad integer attribute: %s' % exp)
-        value = find_attr_value_('chargeEfficiency', node)
-        if value is not None and 'chargeEfficiency' not in already_processed:
-            already_processed.add('chargeEfficiency')
-            try:
-                self.chargeEfficiency = float(value)
-            except ValueError as exp:
-                raise ValueError('Bad float/double attribute (chargeEfficiency): %s' % exp)
-        value = find_attr_value_('dischargeEfficiency', node)
-        if value is not None and 'dischargeEfficiency' not in already_processed:
-            already_processed.add('dischargeEfficiency')
-            try:
-                self.dischargeEfficiency = float(value)
-            except ValueError as exp:
-                raise ValueError('Bad float/double attribute (dischargeEfficiency): %s' % exp)
-        value = find_attr_value_('maxChargeRate', node)
-        if value is not None and 'maxChargeRate' not in already_processed:
-            already_processed.add('maxChargeRate')
-            try:
-                self.maxChargeRate = float(value)
-            except ValueError as exp:
-                raise ValueError('Bad float/double attribute (maxChargeRate): %s' % exp)
-        value = find_attr_value_('maxDischargeRate', node)
-        if value is not None and 'maxDischargeRate' not in already_processed:
-            already_processed.add('maxDischargeRate')
-            try:
-                self.maxDischargeRate = float(value)
-            except ValueError as exp:
-                raise ValueError('Bad float/double attribute (maxDischargeRate): %s' % exp)
         super(Battery, self).buildAttributes(node, attrs, already_processed)
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         super(Battery, self).buildChildren(child_, node, nodeName_, True)
@@ -16196,10 +21271,10 @@ class Battery(Storage):
 class PVPanel(Producer):
     subclass = None
     superclass = Producer
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, prodType='RENEWABLE', operationalHours=None, fullLoadHours=None, power=None, panelEfficiency=None, inverterEfficiency=None, angle=None, orientation=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, prodType='RENEWABLE', operationalHours=None, fullLoadHours=None, power=None, panelEfficiency=None, inverterEfficiency=None, angle=None, orientation=None, **kwargs_):
         self.original_tagname_ = None
-        super(PVPanel, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, prodType, operationalHours, fullLoadHours, )
-        self.power = _cast(float, power)
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(PVPanel, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, prodType, operationalHours, fullLoadHours, power,  **kwargs_)
         self.panelEfficiency = _cast(float, panelEfficiency)
         self.inverterEfficiency = _cast(float, inverterEfficiency)
         self.angle = _cast(int, angle)
@@ -16215,16 +21290,22 @@ class PVPanel(Producer):
         else:
             return PVPanel(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_power(self): return self.power
-    def set_power(self, power): self.power = power
-    def get_panelEfficiency(self): return self.panelEfficiency
-    def set_panelEfficiency(self, panelEfficiency): self.panelEfficiency = panelEfficiency
-    def get_inverterEfficiency(self): return self.inverterEfficiency
-    def set_inverterEfficiency(self, inverterEfficiency): self.inverterEfficiency = inverterEfficiency
-    def get_angle(self): return self.angle
-    def set_angle(self, angle): self.angle = angle
-    def get_orientation(self): return self.orientation
-    def set_orientation(self, orientation): self.orientation = orientation
+    def get_panelEfficiency(self):
+        return self.panelEfficiency
+    def set_panelEfficiency(self, panelEfficiency):
+        self.panelEfficiency = panelEfficiency
+    def get_inverterEfficiency(self):
+        return self.inverterEfficiency
+    def set_inverterEfficiency(self, inverterEfficiency):
+        self.inverterEfficiency = inverterEfficiency
+    def get_angle(self):
+        return self.angle
+    def set_angle(self, angle):
+        self.angle = angle
+    def get_orientation(self):
+        return self.orientation
+    def set_orientation(self, orientation):
+        self.orientation = orientation
     def hasContent_(self):
         if (
             super(PVPanel, self).hasContent_()
@@ -16255,9 +21336,6 @@ class PVPanel(Producer):
             outfile.write('/>%s' % (eol_, ))
     def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='PVPanel'):
         super(PVPanel, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='PVPanel')
-        if self.power is not None and 'power' not in already_processed:
-            already_processed.add('power')
-            outfile.write(' power="%s"' % self.gds_format_double(self.power, input_name='power'))
         if self.panelEfficiency is not None and 'panelEfficiency' not in already_processed:
             already_processed.add('panelEfficiency')
             outfile.write(' panelEfficiency="%s"' % self.gds_format_double(self.panelEfficiency, input_name='panelEfficiency'))
@@ -16274,8 +21352,6 @@ class PVPanel(Producer):
         super(PVPanel, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='PVPanel', mapping_=None):
         element = super(PVPanel, self).to_etree(parent_element, name_, mapping_)
-        if self.power is not None:
-            element.set('power', self.gds_format_double(self.power))
         if self.panelEfficiency is not None:
             element.set('panelEfficiency', self.gds_format_double(self.panelEfficiency))
         if self.inverterEfficiency is not None:
@@ -16285,7 +21361,7 @@ class PVPanel(Producer):
         if self.orientation is not None:
             element.set('orientation', self.gds_format_integer(self.orientation))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -16295,13 +21371,6 @@ class PVPanel(Producer):
             self.buildChildren(child, node, nodeName_)
         return self
     def buildAttributes(self, node, attrs, already_processed):
-        value = find_attr_value_('power', node)
-        if value is not None and 'power' not in already_processed:
-            already_processed.add('power')
-            try:
-                self.power = float(value)
-            except ValueError as exp:
-                raise ValueError('Bad float/double attribute (power): %s' % exp)
         value = find_attr_value_('panelEfficiency', node)
         if value is not None and 'panelEfficiency' not in already_processed:
             already_processed.add('panelEfficiency')
@@ -16340,12 +21409,13 @@ class PVPanel(Producer):
 class WindTurbine(Producer):
     subclass = None
     superclass = Producer
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, prodType='RENEWABLE', operationalHours=None, fullLoadHours=None, power=None, rotorDiameter=None, height=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, prodType='RENEWABLE', operationalHours=None, fullLoadHours=None, power=None, rotorDiameter=None, height=None, type_=None, **kwargs_):
         self.original_tagname_ = None
-        super(WindTurbine, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, prodType, operationalHours, fullLoadHours, )
-        self.power = _cast(float, power)
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(WindTurbine, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, prodType, operationalHours, fullLoadHours, power,  **kwargs_)
         self.rotorDiameter = _cast(float, rotorDiameter)
         self.height = _cast(float, height)
+        self.type_ = _cast(None, type_)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -16357,12 +21427,18 @@ class WindTurbine(Producer):
         else:
             return WindTurbine(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_power(self): return self.power
-    def set_power(self, power): self.power = power
-    def get_rotorDiameter(self): return self.rotorDiameter
-    def set_rotorDiameter(self, rotorDiameter): self.rotorDiameter = rotorDiameter
-    def get_height(self): return self.height
-    def set_height(self, height): self.height = height
+    def get_rotorDiameter(self):
+        return self.rotorDiameter
+    def set_rotorDiameter(self, rotorDiameter):
+        self.rotorDiameter = rotorDiameter
+    def get_height(self):
+        return self.height
+    def set_height(self, height):
+        self.height = height
+    def get_type(self):
+        return self.type_
+    def set_type(self, type_):
+        self.type_ = type_
     def hasContent_(self):
         if (
             super(WindTurbine, self).hasContent_()
@@ -16393,27 +21469,27 @@ class WindTurbine(Producer):
             outfile.write('/>%s' % (eol_, ))
     def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='WindTurbine'):
         super(WindTurbine, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='WindTurbine')
-        if self.power is not None and 'power' not in already_processed:
-            already_processed.add('power')
-            outfile.write(' power="%s"' % self.gds_format_double(self.power, input_name='power'))
         if self.rotorDiameter is not None and 'rotorDiameter' not in already_processed:
             already_processed.add('rotorDiameter')
             outfile.write(' rotorDiameter="%s"' % self.gds_format_double(self.rotorDiameter, input_name='rotorDiameter'))
         if self.height is not None and 'height' not in already_processed:
             already_processed.add('height')
             outfile.write(' height="%s"' % self.gds_format_double(self.height, input_name='height'))
+        if self.type_ is not None and 'type_' not in already_processed:
+            already_processed.add('type_')
+            outfile.write(' type=%s' % (quote_attrib(self.type_), ))
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='WindTurbine', fromsubclass_=False, pretty_print=True):
         super(WindTurbine, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='WindTurbine', mapping_=None):
         element = super(WindTurbine, self).to_etree(parent_element, name_, mapping_)
-        if self.power is not None:
-            element.set('power', self.gds_format_double(self.power))
         if self.rotorDiameter is not None:
             element.set('rotorDiameter', self.gds_format_double(self.rotorDiameter))
         if self.height is not None:
             element.set('height', self.gds_format_double(self.height))
+        if self.type_ is not None:
+            element.set('type', self.type_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -16423,13 +21499,6 @@ class WindTurbine(Producer):
             self.buildChildren(child, node, nodeName_)
         return self
     def buildAttributes(self, node, attrs, already_processed):
-        value = find_attr_value_('power', node)
-        if value is not None and 'power' not in already_processed:
-            already_processed.add('power')
-            try:
-                self.power = float(value)
-            except ValueError as exp:
-                raise ValueError('Bad float/double attribute (power): %s' % exp)
         value = find_attr_value_('rotorDiameter', node)
         if value is not None and 'rotorDiameter' not in already_processed:
             already_processed.add('rotorDiameter')
@@ -16444,6 +21513,10 @@ class WindTurbine(Producer):
                 self.height = float(value)
             except ValueError as exp:
                 raise ValueError('Bad float/double attribute (height): %s' % exp)
+        value = find_attr_value_('type', node)
+        if value is not None and 'type' not in already_processed:
+            already_processed.add('type')
+            self.type_ = value
         super(WindTurbine, self).buildAttributes(node, attrs, already_processed)
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         super(WindTurbine, self).buildChildren(child_, node, nodeName_, True)
@@ -16451,12 +21524,114 @@ class WindTurbine(Producer):
 # end class WindTurbine
 
 
+class PVInstallation(PVPanel):
+    subclass = None
+    superclass = PVPanel
+    def __init__(self, type_=None, numberOfPanels=None, **kwargs_):
+        self.original_tagname_ = None
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(PVInstallation, self).__init__( **kwargs_)
+        self.type_ = _cast(None, type_)
+        self.numberOfPanels = _cast(int, numberOfPanels)
+    def factory(*args_, **kwargs_):
+        if CurrentSubclassModule_ is not None:
+            subclass = getSubclassFromModule_(
+                CurrentSubclassModule_, PVInstallation)
+            if subclass is not None:
+                return subclass(*args_, **kwargs_)
+        if PVInstallation.subclass:
+            return PVInstallation.subclass(*args_, **kwargs_)
+        else:
+            return PVInstallation(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_type(self):
+        return self.type_
+    def set_type(self, type_):
+        self.type_ = type_
+    def get_numberOfPanels(self):
+        return self.numberOfPanels
+    def set_numberOfPanels(self, numberOfPanels):
+        self.numberOfPanels = numberOfPanels
+    def hasContent_(self):
+        if (
+            super(PVInstallation, self).hasContent_()
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespaceprefix_='esdl:', name_='PVInstallation', namespacedef_='', pretty_print=True):
+        imported_ns_def_ = GenerateDSNamespaceDefs_.get('PVInstallation')
+        if imported_ns_def_ is not None:
+            namespacedef_ = imported_ns_def_
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        if self.original_tagname_ is not None:
+            name_ = self.original_tagname_
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespaceprefix_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='PVInstallation')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespaceprefix_='esdl:', name_='PVInstallation', pretty_print=pretty_print)
+            outfile.write('</%s%s>%s' % (namespaceprefix_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='esdl:', name_='PVInstallation'):
+        super(PVInstallation, self).exportAttributes(outfile, level, already_processed, namespaceprefix_, name_='PVInstallation')
+        if self.type_ is not None and 'type_' not in already_processed:
+            already_processed.add('type_')
+            outfile.write(' type=%s' % (quote_attrib(self.type_), ))
+        if self.numberOfPanels is not None and 'numberOfPanels' not in already_processed:
+            already_processed.add('numberOfPanels')
+            outfile.write(' numberOfPanels="%s"' % self.gds_format_integer(self.numberOfPanels, input_name='numberOfPanels'))
+    def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='PVInstallation', fromsubclass_=False, pretty_print=True):
+        super(PVInstallation, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
+        pass
+    def to_etree(self, parent_element=None, name_='PVInstallation', mapping_=None):
+        element = super(PVInstallation, self).to_etree(parent_element, name_, mapping_)
+        if self.type_ is not None:
+            element.set('type', self.type_)
+        if self.numberOfPanels is not None:
+            element.set('numberOfPanels', self.gds_format_integer(self.numberOfPanels))
+        if mapping_ is not None:
+            mapping_[id(self)] = element
+        return element
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+        return self
+    def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('type', node)
+        if value is not None and 'type' not in already_processed:
+            already_processed.add('type')
+            self.type_ = value
+        value = find_attr_value_('numberOfPanels', node)
+        if value is not None and 'numberOfPanels' not in already_processed:
+            already_processed.add('numberOfPanels')
+            try:
+                self.numberOfPanels = int(value)
+            except ValueError as exp:
+                raise_parse_error(node, 'Bad integer attribute: %s' % exp)
+        super(PVInstallation, self).buildAttributes(node, attrs, already_processed)
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        super(PVInstallation, self).buildChildren(child_, node, nodeName_, True)
+        pass
+# end class PVInstallation
+
+
 class Electrolyzer(PowerToX):
     subclass = None
     superclass = PowerToX
-    def __init__(self):
+    def __init__(self, **kwargs_):
         self.original_tagname_ = None
-        super(Electrolyzer, self).__init__()
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(Electrolyzer, self).__init__( **kwargs_)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -16503,7 +21678,7 @@ class Electrolyzer(PowerToX):
     def to_etree(self, parent_element=None, name_='Electrolyzer', mapping_=None):
         element = super(Electrolyzer, self).to_etree(parent_element, name_, mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -16523,9 +21698,10 @@ class Electrolyzer(PowerToX):
 class CHP(CoGeneration):
     subclass = None
     superclass = CoGeneration
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, efficiency=None, operationalHours=None, fullLoadHours=None, power=None, heatEfficiency=0.0, electricalEfficiency=0.0, HERatio=None, fuelType=None, leadCommodity=None, energyCarrier=None, CHPType=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, efficiency=None, operationalHours=None, fullLoadHours=None, power=None, heatEfficiency=0.0, electricalEfficiency=0.0, HERatio=None, fuelType=None, leadCommodity=None, energyCarrier=None, CHPType=None, **kwargs_):
         self.original_tagname_ = None
-        super(CHP, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, efficiency, operationalHours, fullLoadHours, power, heatEfficiency, electricalEfficiency, HERatio, fuelType, leadCommodity, energyCarrier, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(CHP, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, efficiency, operationalHours, fullLoadHours, power, heatEfficiency, electricalEfficiency, HERatio, fuelType, leadCommodity, energyCarrier,  **kwargs_)
         self.CHPType = _cast(None, CHPType)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -16538,8 +21714,10 @@ class CHP(CoGeneration):
         else:
             return CHP(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_CHPType(self): return self.CHPType
-    def set_CHPType(self, CHPType): self.CHPType = CHPType
+    def get_CHPType(self):
+        return self.CHPType
+    def set_CHPType(self, CHPType):
+        self.CHPType = CHPType
     def hasContent_(self):
         if (
             super(CHP, self).hasContent_()
@@ -16580,7 +21758,7 @@ class CHP(CoGeneration):
         if self.CHPType is not None:
             element.set('CHPType', self.CHPType)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -16604,9 +21782,10 @@ class CHP(CoGeneration):
 class PVParc(PVPanel):
     subclass = None
     superclass = PVPanel
-    def __init__(self, numberOfPanels=None):
+    def __init__(self, numberOfPanels=None, **kwargs_):
         self.original_tagname_ = None
-        super(PVParc, self).__init__()
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(PVParc, self).__init__( **kwargs_)
         self.numberOfPanels = _cast(int, numberOfPanels)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -16619,8 +21798,10 @@ class PVParc(PVPanel):
         else:
             return PVParc(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_numberOfPanels(self): return self.numberOfPanels
-    def set_numberOfPanels(self, numberOfPanels): self.numberOfPanels = numberOfPanels
+    def get_numberOfPanels(self):
+        return self.numberOfPanels
+    def set_numberOfPanels(self, numberOfPanels):
+        self.numberOfPanels = numberOfPanels
     def hasContent_(self):
         if (
             super(PVParc, self).hasContent_()
@@ -16661,7 +21842,7 @@ class PVParc(PVPanel):
         if self.numberOfPanels is not None:
             element.set('numberOfPanels', self.gds_format_integer(self.numberOfPanels))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -16688,9 +21869,10 @@ class PVParc(PVPanel):
 class WindParc(WindTurbine):
     subclass = None
     superclass = WindTurbine
-    def __init__(self, numberOfTurbines=None):
+    def __init__(self, numberOfTurbines=None, **kwargs_):
         self.original_tagname_ = None
-        super(WindParc, self).__init__()
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(WindParc, self).__init__( **kwargs_)
         self.numberOfTurbines = _cast(int, numberOfTurbines)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -16703,8 +21885,10 @@ class WindParc(WindTurbine):
         else:
             return WindParc(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_numberOfTurbines(self): return self.numberOfTurbines
-    def set_numberOfTurbines(self, numberOfTurbines): self.numberOfTurbines = numberOfTurbines
+    def get_numberOfTurbines(self):
+        return self.numberOfTurbines
+    def set_numberOfTurbines(self, numberOfTurbines):
+        self.numberOfTurbines = numberOfTurbines
     def hasContent_(self):
         if (
             super(WindParc, self).hasContent_()
@@ -16745,7 +21929,7 @@ class WindParc(WindTurbine):
         if self.numberOfTurbines is not None:
             element.set('numberOfTurbines', self.gds_format_integer(self.numberOfTurbines))
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -16772,9 +21956,10 @@ class WindParc(WindTurbine):
 class FuelCell(CoGeneration):
     subclass = None
     superclass = CoGeneration
-    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, efficiency=None, operationalHours=None, fullLoadHours=None, power=None, heatEfficiency=0.0, electricalEfficiency=0.0, HERatio=None, fuelType=None, leadCommodity=None, energyCarrier=None):
+    def __init__(self, id=None, name=None, shortName=None, description=None, originalIdInSource=None, isOwnedBy=None, sector=None, dataSource=None, surfaceArea=None, commissioningDate=None, decommissioningDate=None, owner=None, technicalLifetime=None, area=None, containingBuilding=None, geometry=None, costInformation=None, port=None, efficiency=None, operationalHours=None, fullLoadHours=None, power=None, heatEfficiency=0.0, electricalEfficiency=0.0, HERatio=None, fuelType=None, leadCommodity=None, energyCarrier=None, **kwargs_):
         self.original_tagname_ = None
-        super(FuelCell, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, efficiency, operationalHours, fullLoadHours, power, heatEfficiency, electricalEfficiency, HERatio, fuelType, leadCommodity, energyCarrier, )
+        self.parent_object_ = kwargs_.get('parent_object_')
+        super(FuelCell, self).__init__(id, name, shortName, description, originalIdInSource, isOwnedBy, sector, dataSource, surfaceArea, commissioningDate, decommissioningDate, owner, technicalLifetime, area, containingBuilding, geometry, costInformation, port, efficiency, operationalHours, fullLoadHours, power, heatEfficiency, electricalEfficiency, HERatio, fuelType, leadCommodity, energyCarrier,  **kwargs_)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -16821,7 +22006,7 @@ class FuelCell(CoGeneration):
     def to_etree(self, parent_element=None, name_='FuelCell', mapping_=None):
         element = super(FuelCell, self).to_etree(parent_element, name_, mapping_)
         if mapping_ is not None:
-            mapping_[self] = element
+            mapping_[id(self)] = element
         return element
     def build(self, node):
         already_processed = set()
@@ -16850,11 +22035,16 @@ GDSClassesMapping = {
     'Area': Area,
     'AssymetricVariance': AssymetricVariance,
     'Battery': Battery,
+    'BiomassHeater': BiomassHeater,
+    'BiomassPotential': BiomassPotential,
+    'BiomassPotentials': BiomassPotentials,
+    'BooleanParameter': BooleanParameter,
     'Building': Building,
     'BuildingUnit': BuildingUnit,
     'CCS': CCS,
     'CHP': CHP,
     'Carriers': Carriers,
+    'CircuitBraker': CircuitBraker,
     'CoolingDemand': CoolingDemand,
     'CostInformation': CostInformation,
     'DataSource': DataSource,
@@ -16863,7 +22053,10 @@ GDSClassesMapping = {
     'DateTimeProfile': DateTimeProfile,
     'DemandResponseService': DemandResponseService,
     'DoubleAssymetricVariance': DoubleAssymetricVariance,
+    'DoubleParameter': DoubleParameter,
     'DrivenByDemand': DrivenByDemand,
+    'DrivenByProfile': DrivenByProfile,
+    'DrivenBySupply': DrivenBySupply,
     'Duration': Duration,
     'EConnection': EConnection,
     'EVChargingStation': EVChargingStation,
@@ -16878,6 +22071,7 @@ GDSClassesMapping = {
     'EnergyDemand': EnergyDemand,
     'EnergyLabelDistribution': EnergyLabelDistribution,
     'EnergyLabelPerc': EnergyLabelPerc,
+    'EnergyMarket': EnergyMarket,
     'EnergyNetwork': EnergyNetwork,
     'EnergySystem': EnergySystem,
     'EnergySystemInformation': EnergySystemInformation,
@@ -16887,6 +22081,7 @@ GDSClassesMapping = {
     'FuelCell': FuelCell,
     'GConnection': GConnection,
     'GasCommodity': GasCommodity,
+    'GasConversion': GasConversion,
     'GasDemand': GasDemand,
     'GasHeater': GasHeater,
     'GasNetwork': GasNetwork,
@@ -16896,7 +22091,9 @@ GDSClassesMapping = {
     'GenericProducer': GenericProducer,
     'GenericStorage': GenericStorage,
     'GenericTransport': GenericTransport,
+    'GeothermalEnergyPotential': GeothermalEnergyPotential,
     'GeothermalPotential': GeothermalPotential,
+    'GeothermalPotentials': GeothermalPotentials,
     'GeothermalSource': GeothermalSource,
     'HConnection': HConnection,
     'HeatCommodity': HeatCommodity,
@@ -16908,20 +22105,27 @@ GDSClassesMapping = {
     'InPort': InPort,
     'InfluxDBProfile': InfluxDBProfile,
     'Instance': Instance,
+    'InstanceDate': InstanceDate,
+    'InstancePeriod': InstancePeriod,
     'Insulation': Insulation,
+    'IntegerParameter': IntegerParameter,
     'KPI': KPI,
-    'KPIList': KPIList,
+    'KPIs': KPIs,
     'LegalArea': LegalArea,
+    'LegalAreas': LegalAreas,
     'Line': Line,
     'Losses': Losses,
     'Measures': Measures,
+    'MeasuresCollection': MeasuresCollection,
     'MobilityDemand': MobilityDemand,
     'MobilityFuelInformation': MobilityFuelInformation,
     'MobilityProperties': MobilityProperties,
+    'MultiLine': MultiLine,
     'MultiPolygon': MultiPolygon,
     'NumberOfVehicles': NumberOfVehicles,
     'OutPort': OutPort,
     'PItemStat': PItemStat,
+    'PVInstallation': PVInstallation,
     'PVPanel': PVPanel,
     'PVParc': PVParc,
     'Parties': Parties,
@@ -16938,30 +22142,40 @@ GDSClassesMapping = {
     'ProfileReference': ProfileReference,
     'Profiles': Profiles,
     'Pump': Pump,
-    'QuantityAndUnitList': QuantityAndUnitList,
     'QuantityAndUnitReference': QuantityAndUnitReference,
     'QuantityAndUnitType': QuantityAndUnitType,
+    'QuantityAndUnits': QuantityAndUnits,
     'Range': Range,
     'ResidualHeatSource': ResidualHeatSource,
     'ResidualHeatSourcePotential': ResidualHeatSourcePotential,
+    'ResidualHeatSourcePotentials': ResidualHeatSourcePotentials,
+    'RoomHeater': RoomHeater,
+    'Sector': Sector,
+    'Sectors': Sectors,
     'Services': Services,
     'SingleValue': SingleValue,
     'SinkConsumer': SinkConsumer,
     'SocialProperties': SocialProperties,
     'SolarCollector': SolarCollector,
     'SolarFieldPotential': SolarFieldPotential,
+    'SolarFieldPotentials': SolarFieldPotentials,
     'SourceProducer': SourceProducer,
     'StringLabelDistribution': StringLabelDistribution,
+    'StringParameter': StringParameter,
     'StringPerc': StringPerc,
     'SubPolygon': SubPolygon,
     'SymetricVariance': SymetricVariance,
     'Transformer': Transformer,
     'URIProfile': URIProfile,
+    'UTESPotential': UTESPotential,
+    'UTESPotentials': UTESPotentials,
     'Valve': Valve,
     'VehicleCount': VehicleCount,
     'VehicleFuelEfficiency': VehicleFuelEfficiency,
+    'WaterToPower': WaterToPower,
     'WindParc': WindParc,
     'WindPotential': WindPotential,
+    'WindPotentials': WindPotentials,
     'WindTurbine': WindTurbine,
     'XToPower': XToPower,
 }
@@ -17001,7 +22215,7 @@ def parse(inFileName, silence=False):
         sys.stdout.write('<?xml version="1.0" ?>\n')
         rootObj.export(
             sys.stdout, 0, name_=rootTag,
-            namespacedef_='xmlns:esdl="http://www.tno.nl/esdl/180901"',
+            namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"',
             pretty_print=True)
     return rootObj
 
@@ -17052,7 +22266,7 @@ def parseString(inString, silence=False):
         sys.stdout.write('<?xml version="1.0" ?>\n')
         rootObj.export(
             sys.stdout, 0, name_=rootTag,
-            namespacedef_='xmlns:esdl="http://www.tno.nl/esdl/180901"')
+            namespacedef_='xmlns:esdl="http://www.tno.nl/esdl"')
     return rootObj
 
 
@@ -17092,8 +22306,14 @@ if __name__ == '__main__':
 
 __all__ = [
     "AbstractBuilding",
+    "AbstractConductor",
+    "AbstractConnection",
     "AbstractDataSource",
+    "AbstractGTPotential",
+    "AbstractInstanceDate",
     "AbstractQuantityAndUnit",
+    "AbstractSwitch",
+    "AbstractTransformer",
     "AbstractVariance",
     "AggregatedBuilding",
     "AggregatedConsumer",
@@ -17104,15 +22324,22 @@ __all__ = [
     "AggregatorService",
     "Airco",
     "Area",
+    "AreaPotential",
     "Asset",
+    "AssetPotential",
     "AssymetricVariance",
     "Battery",
+    "BiomassHeater",
+    "BiomassPotential",
+    "BiomassPotentials",
+    "BooleanParameter",
     "Building",
     "BuildingUnit",
     "CCS",
     "CHP",
     "Carrier",
     "Carriers",
+    "CircuitBraker",
     "CoGeneration",
     "Commodity",
     "Consumer",
@@ -17127,7 +22354,10 @@ __all__ = [
     "DateTimeProfile",
     "DemandResponseService",
     "DoubleAssymetricVariance",
+    "DoubleParameter",
     "DrivenByDemand",
+    "DrivenByProfile",
+    "DrivenBySupply",
     "Duration",
     "EConnection",
     "EVChargingStation",
@@ -17143,6 +22373,7 @@ __all__ = [
     "EnergyDemand",
     "EnergyLabelDistribution",
     "EnergyLabelPerc",
+    "EnergyMarket",
     "EnergyNetwork",
     "EnergyService",
     "EnergySystem",
@@ -17154,6 +22385,7 @@ __all__ = [
     "FuelCell",
     "GConnection",
     "GasCommodity",
+    "GasConversion",
     "GasDemand",
     "GasHeater",
     "GasNetwork",
@@ -17166,7 +22398,9 @@ __all__ = [
     "GenericStorage",
     "GenericTransport",
     "Geometry",
+    "GeothermalEnergyPotential",
     "GeothermalPotential",
+    "GeothermalPotentials",
     "GeothermalSource",
     "HConnection",
     "HeatCommodity",
@@ -17178,24 +22412,32 @@ __all__ = [
     "InPort",
     "InfluxDBProfile",
     "Instance",
+    "InstanceDate",
+    "InstancePeriod",
     "Insulation",
+    "IntegerParameter",
     "Item",
     "KPI",
-    "KPIList",
+    "KPIs",
     "LabelDistribution",
     "LegalArea",
+    "LegalAreas",
     "Line",
     "Losses",
     "Measures",
+    "MeasuresCollection",
     "MobilityDemand",
     "MobilityFuelInformation",
     "MobilityProperties",
+    "MultiLine",
     "MultiPolygon",
     "NumberOfVehicles",
     "OutPort",
     "PItemStat",
+    "PVInstallation",
     "PVPanel",
     "PVParc",
+    "Parameters",
     "Parties",
     "Party",
     "Percentile",
@@ -17206,6 +22448,7 @@ __all__ = [
     "Port",
     "Potential",
     "Potentials",
+    "PotentialsType",
     "PowerPlant",
     "PowerToX",
     "Producer",
@@ -17213,12 +22456,16 @@ __all__ = [
     "ProfileReference",
     "Profiles",
     "Pump",
-    "QuantityAndUnitList",
     "QuantityAndUnitReference",
     "QuantityAndUnitType",
+    "QuantityAndUnits",
     "Range",
     "ResidualHeatSource",
     "ResidualHeatSourcePotential",
+    "ResidualHeatSourcePotentials",
+    "RoomHeater",
+    "Sector",
+    "Sectors",
     "Service",
     "Services",
     "SingleValue",
@@ -17226,21 +22473,27 @@ __all__ = [
     "SocialProperties",
     "SolarCollector",
     "SolarFieldPotential",
+    "SolarFieldPotentials",
     "SourceProducer",
     "StaticProfile",
     "Storage",
     "StringLabelDistribution",
+    "StringParameter",
     "StringPerc",
     "SubPolygon",
     "SymetricVariance",
     "Transformer",
     "Transport",
     "URIProfile",
+    "UTESPotential",
+    "UTESPotentials",
     "Valve",
     "VehicleCount",
     "VehicleFuelEfficiency",
+    "WaterToPower",
     "WindParc",
     "WindPotential",
+    "WindPotentials",
     "WindTurbine",
     "XToPower"
 ]
