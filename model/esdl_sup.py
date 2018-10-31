@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 #
-# Generated Sat Oct 27 22:25:21 2018 by generateDS.py version 2.30.1.
+# Generated Wed Oct 31 13:00:48 2018 by generateDS.py version 2.30.1.
 # Python 3.7.0 (v3.7.0:1bf9cc5093, Jun 27 2018, 04:59:51) [MSC v.1914 64 bit (AMD64)]
 #
 # Command line options:
@@ -15,7 +15,7 @@
 #   esdlXML.xsd
 #
 # Command line:
-#   C:/Users/matthijssenef/AppData/Local/Programs/Python/Python37/Scripts/generateDS.py -o "esdl_sup.py" -s "esdl_sub.py" --root-element="EnergySystem" --export="write etree" esdlXML.xsd
+#   C:\Users\matthijssenef\AppData\Local\Programs\Python\Python37\Scripts\generateDS.py -o "esdl_sup.py" -s "esdl_sub.py" --root-element="EnergySystem" --export="write etree" esdlXML.xsd
 #
 # Current working directory (os.getcwd()):
 #   model
@@ -743,6 +743,7 @@ class AreaScopeEnum(object):
     UNDEFINED='UNDEFINED'
     BUILDING='BUILDING'
     STREET='STREET'
+    ZIPCODE='ZIPCODE'
     NEIGHBOURHOOD='NEIGHBOURHOOD'
     DISTRICT='DISTRICT'
     VILLAGE='VILLAGE'
@@ -1938,7 +1939,10 @@ class Port(GeneratedsSuper):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            if namespaceprefix_ not in self.extensiontype_:
+                outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            else:
+                outfile.write(' xsi:type="%s"' % self.extensiontype_)
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='Port', fromsubclass_=False, pretty_print=True):
         if pretty_print:
             eol_ = '\n'
@@ -2585,7 +2589,10 @@ class Item(GeneratedsSuper):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            if namespaceprefix_ not in self.extensiontype_:
+                outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            else:
+                outfile.write(' xsi:type="%s"' % self.extensiontype_)
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='Item', fromsubclass_=False, pretty_print=True):
         if pretty_print:
             eol_ = '\n'
@@ -3063,7 +3070,10 @@ class Service(Item):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            if namespaceprefix_ not in self.extensiontype_:
+                outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            else:
+                outfile.write(' xsi:type="%s"' % self.extensiontype_)
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='Service', fromsubclass_=False, pretty_print=True):
         super(Service, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='Service', mapping_=None):
@@ -3185,7 +3195,10 @@ class Potential(GeneratedsSuper):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            if namespaceprefix_ not in self.extensiontype_:
+                outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            else:
+                outfile.write(' xsi:type="%s"' % self.extensiontype_)
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='Potential', fromsubclass_=False, pretty_print=True):
         if pretty_print:
             eol_ = '\n'
@@ -3825,7 +3838,10 @@ class GenericProfile(GeneratedsSuper):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            if namespaceprefix_ not in self.extensiontype_:
+                outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            else:
+                outfile.write(' xsi:type="%s"' % self.extensiontype_)
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='GenericProfile', fromsubclass_=False, pretty_print=True):
         if pretty_print:
             eol_ = '\n'
@@ -3980,7 +3996,10 @@ class StaticProfile(GenericProfile):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            if namespaceprefix_ not in self.extensiontype_:
+                outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            else:
+                outfile.write(' xsi:type="%s"' % self.extensiontype_)
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='StaticProfile', fromsubclass_=False, pretty_print=True):
         super(StaticProfile, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='StaticProfile', mapping_=None):
@@ -4305,7 +4324,10 @@ class ExternalProfile(GenericProfile):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            if namespaceprefix_ not in self.extensiontype_:
+                outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            else:
+                outfile.write(' xsi:type="%s"' % self.extensiontype_)
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='ExternalProfile', fromsubclass_=False, pretty_print=True):
         super(ExternalProfile, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='ExternalProfile', mapping_=None):
@@ -4494,7 +4516,10 @@ class GenericDistribution(GeneratedsSuper):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            if namespaceprefix_ not in self.extensiontype_:
+                outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            else:
+                outfile.write(' xsi:type="%s"' % self.extensiontype_)
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='GenericDistribution', fromsubclass_=False, pretty_print=True):
         pass
     def to_etree(self, parent_element=None, name_='GenericDistribution', mapping_=None):
@@ -4946,7 +4971,10 @@ class LabelDistribution(GenericDistribution):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            if namespaceprefix_ not in self.extensiontype_:
+                outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            else:
+                outfile.write(' xsi:type="%s"' % self.extensiontype_)
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='LabelDistribution', fromsubclass_=False, pretty_print=True):
         super(LabelDistribution, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
         pass
@@ -5743,7 +5771,10 @@ class AbstractVariance(GeneratedsSuper):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            if namespaceprefix_ not in self.extensiontype_:
+                outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            else:
+                outfile.write(' xsi:type="%s"' % self.extensiontype_)
         pass
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='AbstractVariance', fromsubclass_=False, pretty_print=True):
         pass
@@ -6429,7 +6460,10 @@ class DatabaseProfile(ExternalProfile):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            if namespaceprefix_ not in self.extensiontype_:
+                outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            else:
+                outfile.write(' xsi:type="%s"' % self.extensiontype_)
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='DatabaseProfile', fromsubclass_=False, pretty_print=True):
         super(DatabaseProfile, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='DatabaseProfile', mapping_=None):
@@ -6636,7 +6670,10 @@ class Geometry(GeneratedsSuper):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            if namespaceprefix_ not in self.extensiontype_:
+                outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            else:
+                outfile.write(' xsi:type="%s"' % self.extensiontype_)
         pass
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='Geometry', fromsubclass_=False, pretty_print=True):
         pass
@@ -6746,7 +6783,10 @@ class Carrier(GeneratedsSuper):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            if namespaceprefix_ not in self.extensiontype_:
+                outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            else:
+                outfile.write(' xsi:type="%s"' % self.extensiontype_)
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='Carrier', fromsubclass_=False, pretty_print=True):
         if pretty_print:
             eol_ = '\n'
@@ -8340,7 +8380,10 @@ class AbstractDataSource(GeneratedsSuper):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            if namespaceprefix_ not in self.extensiontype_:
+                outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            else:
+                outfile.write(' xsi:type="%s"' % self.extensiontype_)
         pass
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='AbstractDataSource', fromsubclass_=False, pretty_print=True):
         pass
@@ -8845,7 +8888,10 @@ class AbstractQuantityAndUnit(GeneratedsSuper):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            if namespaceprefix_ not in self.extensiontype_:
+                outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            else:
+                outfile.write(' xsi:type="%s"' % self.extensiontype_)
         pass
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='AbstractQuantityAndUnit', fromsubclass_=False, pretty_print=True):
         pass
@@ -8963,14 +9009,11 @@ class QuantityAndUnitReference(AbstractQuantityAndUnit):
 class Parameters(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, name=None, abstractquantityandunit=None, extensiontype_=None, **kwargs_):
+    def __init__(self, name=None, parameterUnit=None, extensiontype_=None, **kwargs_):
         self.original_tagname_ = None
         self.parent_object_ = kwargs_.get('parent_object_')
         self.name = _cast(None, name)
-        if abstractquantityandunit is None:
-            self.abstractquantityandunit = []
-        else:
-            self.abstractquantityandunit = abstractquantityandunit
+        self.parameterUnit = parameterUnit
         self.extensiontype_ = extensiontype_
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -8983,20 +9026,10 @@ class Parameters(GeneratedsSuper):
         else:
             return Parameters(*args_, **kwargs_)
     factory = staticmethod(factory)
-    def get_abstractquantityandunit(self):
-        return self.abstractquantityandunit
-    def set_abstractquantityandunit(self, abstractquantityandunit):
-        self.abstractquantityandunit = abstractquantityandunit
-    def add_abstractquantityandunit(self, value):
-        self.abstractquantityandunit.append(value)
-    def add_abstractquantityandunit_with_type(self, value):
-        self.abstractquantityandunit.append(value)
-        value.original_tagname_ = 'abstractquantityandunit'
-        value.extensiontype_ = value.__class__.__name__
-    def insert_abstractquantityandunit_at(self, index, value):
-        self.abstractquantityandunit.insert(index, value)
-    def replace_abstractquantityandunit_at(self, index, value):
-        self.abstractquantityandunit[index] = value
+    def get_parameterUnit(self):
+        return self.parameterUnit
+    def set_parameterUnit(self, parameterUnit):
+        self.parameterUnit = parameterUnit
     def get_name(self):
         return self.name
     def set_name(self, name):
@@ -9005,7 +9038,7 @@ class Parameters(GeneratedsSuper):
     def set_extensiontype_(self, extensiontype_): self.extensiontype_ = extensiontype_
     def hasContent_(self):
         if (
-            self.abstractquantityandunit
+            self.parameterUnit is not None
         ):
             return True
         else:
@@ -9038,14 +9071,17 @@ class Parameters(GeneratedsSuper):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            if namespaceprefix_ not in self.extensiontype_:
+                outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            else:
+                outfile.write(' xsi:type="%s"' % self.extensiontype_)
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='Parameters', fromsubclass_=False, pretty_print=True):
         if pretty_print:
             eol_ = '\n'
         else:
             eol_ = ''
-        for abstractquantityandunit_ in self.abstractquantityandunit:
-            abstractquantityandunit_.export(outfile, level, namespaceprefix_, pretty_print=pretty_print)
+        if self.parameterUnit is not None:
+            self.parameterUnit.export(outfile, level, namespaceprefix_, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='Parameters', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://www.tno.nl/esdl}' + name_)
@@ -9055,8 +9091,9 @@ class Parameters(GeneratedsSuper):
             element.set('{http://www.w3.org/2001/XMLSchema-instance}type', self.extensiontype_)
         if self.name is not None:
             element.set('name', self.gds_format_string(self.name))
-        for abstractquantityandunit_ in self.abstractquantityandunit:
-            abstractquantityandunit_.to_etree(element, name_='abstractquantityandunit', mapping_=mapping_)
+        if self.parameterUnit is not None:
+            parameterUnit_ = self.parameterUnit
+            parameterUnit_.to_etree(element, name_='parameterUnit', mapping_=mapping_)
         if mapping_ is not None:
             mapping_[id(self)] = element
         return element
@@ -9077,7 +9114,7 @@ class Parameters(GeneratedsSuper):
             already_processed.add('xsi:type')
             self.extensiontype_ = value
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
-        if nodeName_ == 'abstractquantityandunit':
+        if nodeName_ == 'parameterUnit':
             type_name_ = child_.attrib.get(
                 '{http://www.w3.org/2001/XMLSchema-instance}type')
             if type_name_ is None:
@@ -9093,19 +9130,19 @@ class Parameters(GeneratedsSuper):
                 obj_.build(child_)
             else:
                 raise NotImplementedError(
-                    'Class not implemented for <abstractquantityandunit> element')
-            self.abstractquantityandunit.append(obj_)
-            obj_.original_tagname_ = 'abstractquantityandunit'
+                    'Class not implemented for <parameterUnit> element')
+            self.parameterUnit = obj_
+            obj_.original_tagname_ = 'parameterUnit'
 # end class Parameters
 
 
 class StringParameter(Parameters):
     subclass = None
     superclass = Parameters
-    def __init__(self, name=None, abstractquantityandunit=None, value=None, **kwargs_):
+    def __init__(self, name=None, parameterUnit=None, value=None, **kwargs_):
         self.original_tagname_ = None
         self.parent_object_ = kwargs_.get('parent_object_')
-        super(StringParameter, self).__init__(name, abstractquantityandunit,  **kwargs_)
+        super(StringParameter, self).__init__(name, parameterUnit,  **kwargs_)
         self.value = _cast(None, value)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -9186,10 +9223,10 @@ class StringParameter(Parameters):
 class DoubleParameter(Parameters):
     subclass = None
     superclass = Parameters
-    def __init__(self, name=None, abstractquantityandunit=None, value=None, **kwargs_):
+    def __init__(self, name=None, parameterUnit=None, value=None, **kwargs_):
         self.original_tagname_ = None
         self.parent_object_ = kwargs_.get('parent_object_')
-        super(DoubleParameter, self).__init__(name, abstractquantityandunit,  **kwargs_)
+        super(DoubleParameter, self).__init__(name, parameterUnit,  **kwargs_)
         self.value = _cast(float, value)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -9273,10 +9310,10 @@ class DoubleParameter(Parameters):
 class IntegerParameter(Parameters):
     subclass = None
     superclass = Parameters
-    def __init__(self, name=None, abstractquantityandunit=None, value=None, **kwargs_):
+    def __init__(self, name=None, parameterUnit=None, value=None, **kwargs_):
         self.original_tagname_ = None
         self.parent_object_ = kwargs_.get('parent_object_')
-        super(IntegerParameter, self).__init__(name, abstractquantityandunit,  **kwargs_)
+        super(IntegerParameter, self).__init__(name, parameterUnit,  **kwargs_)
         self.value = _cast(int, value)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -9360,10 +9397,10 @@ class IntegerParameter(Parameters):
 class BooleanParameter(Parameters):
     subclass = None
     superclass = Parameters
-    def __init__(self, name=None, abstractquantityandunit=None, value=None, **kwargs_):
+    def __init__(self, name=None, parameterUnit=None, value=None, **kwargs_):
         self.original_tagname_ = None
         self.parent_object_ = kwargs_.get('parent_object_')
-        super(BooleanParameter, self).__init__(name, abstractquantityandunit,  **kwargs_)
+        super(BooleanParameter, self).__init__(name, parameterUnit,  **kwargs_)
         self.value = _cast(bool, value)
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -9733,7 +9770,10 @@ class PotentialsType(GeneratedsSuper):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            if namespaceprefix_ not in self.extensiontype_:
+                outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            else:
+                outfile.write(' xsi:type="%s"' % self.extensiontype_)
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='PotentialsType', fromsubclass_=False, pretty_print=True):
         if pretty_print:
             eol_ = '\n'
@@ -10404,7 +10444,10 @@ class AreaPotential(Potential):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            if namespaceprefix_ not in self.extensiontype_:
+                outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            else:
+                outfile.write(' xsi:type="%s"' % self.extensiontype_)
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='AreaPotential', fromsubclass_=False, pretty_print=True):
         super(AreaPotential, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='AreaPotential', mapping_=None):
@@ -10501,7 +10544,10 @@ class AssetPotential(Potential):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            if namespaceprefix_ not in self.extensiontype_:
+                outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            else:
+                outfile.write(' xsi:type="%s"' % self.extensiontype_)
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='AssetPotential', fromsubclass_=False, pretty_print=True):
         super(AssetPotential, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='AssetPotential', mapping_=None):
@@ -10973,7 +11019,10 @@ class AbstractGTPotential(AreaPotential):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            if namespaceprefix_ not in self.extensiontype_:
+                outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            else:
+                outfile.write(' xsi:type="%s"' % self.extensiontype_)
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='AbstractGTPotential', fromsubclass_=False, pretty_print=True):
         super(AbstractGTPotential, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='AbstractGTPotential', mapping_=None):
@@ -11253,7 +11302,10 @@ class AbstractInstanceDate(GeneratedsSuper):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            if namespaceprefix_ not in self.extensiontype_:
+                outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            else:
+                outfile.write(' xsi:type="%s"' % self.extensiontype_)
         pass
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='AbstractInstanceDate', fromsubclass_=False, pretty_print=True):
         pass
@@ -12444,7 +12496,10 @@ class Commodity(Carrier):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            if namespaceprefix_ not in self.extensiontype_:
+                outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            else:
+                outfile.write(' xsi:type="%s"' % self.extensiontype_)
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='Commodity', fromsubclass_=False, pretty_print=True):
         super(Commodity, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='Commodity', mapping_=None):
@@ -12925,7 +12980,10 @@ class EnergyService(Service):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            if namespaceprefix_ not in self.extensiontype_:
+                outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            else:
+                outfile.write(' xsi:type="%s"' % self.extensiontype_)
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='EnergyService', fromsubclass_=False, pretty_print=True):
         super(EnergyService, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='EnergyService', mapping_=None):
@@ -13511,7 +13569,10 @@ class Asset(Item):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            if namespaceprefix_ not in self.extensiontype_:
+                outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            else:
+                outfile.write(' xsi:type="%s"' % self.extensiontype_)
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='Asset', fromsubclass_=False, pretty_print=True):
         super(Asset, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
         if pretty_print:
@@ -13698,7 +13759,10 @@ class EnergyAsset(Asset):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            if namespaceprefix_ not in self.extensiontype_:
+                outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            else:
+                outfile.write(' xsi:type="%s"' % self.extensiontype_)
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='EnergyAsset', fromsubclass_=False, pretty_print=True):
         super(EnergyAsset, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
         if pretty_print:
@@ -13958,7 +14022,10 @@ class ControlStrategy(EnergyService):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            if namespaceprefix_ not in self.extensiontype_:
+                outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            else:
+                outfile.write(' xsi:type="%s"' % self.extensiontype_)
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='ControlStrategy', fromsubclass_=False, pretty_print=True):
         super(ControlStrategy, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='ControlStrategy', mapping_=None):
@@ -14483,7 +14550,10 @@ class AbstractBuilding(Asset):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            if namespaceprefix_ not in self.extensiontype_:
+                outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            else:
+                outfile.write(' xsi:type="%s"' % self.extensiontype_)
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='AbstractBuilding', fromsubclass_=False, pretty_print=True):
         super(AbstractBuilding, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
         if pretty_print:
@@ -15265,7 +15335,10 @@ class Transport(EnergyAsset):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            if namespaceprefix_ not in self.extensiontype_:
+                outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            else:
+                outfile.write(' xsi:type="%s"' % self.extensiontype_)
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='Transport', fromsubclass_=False, pretty_print=True):
         super(Transport, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='Transport', mapping_=None):
@@ -15390,7 +15463,10 @@ class Conversion(EnergyAsset):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            if namespaceprefix_ not in self.extensiontype_:
+                outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            else:
+                outfile.write(' xsi:type="%s"' % self.extensiontype_)
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='Conversion', fromsubclass_=False, pretty_print=True):
         super(Conversion, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='Conversion', mapping_=None):
@@ -15571,7 +15647,10 @@ class Storage(EnergyAsset):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            if namespaceprefix_ not in self.extensiontype_:
+                outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            else:
+                outfile.write(' xsi:type="%s"' % self.extensiontype_)
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='Storage', fromsubclass_=False, pretty_print=True):
         super(Storage, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
         if pretty_print:
@@ -15752,7 +15831,10 @@ class Consumer(EnergyAsset):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            if namespaceprefix_ not in self.extensiontype_:
+                outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            else:
+                outfile.write(' xsi:type="%s"' % self.extensiontype_)
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='Consumer', fromsubclass_=False, pretty_print=True):
         super(Consumer, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='Consumer', mapping_=None):
@@ -15873,7 +15955,10 @@ class Producer(EnergyAsset):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            if namespaceprefix_ not in self.extensiontype_:
+                outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            else:
+                outfile.write(' xsi:type="%s"' % self.extensiontype_)
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='Producer', fromsubclass_=False, pretty_print=True):
         super(Producer, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='Producer', mapping_=None):
@@ -16059,7 +16144,10 @@ class AbstractConnection(Transport):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            if namespaceprefix_ not in self.extensiontype_:
+                outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            else:
+                outfile.write(' xsi:type="%s"' % self.extensiontype_)
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='AbstractConnection', fromsubclass_=False, pretty_print=True):
         super(AbstractConnection, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='AbstractConnection', mapping_=None):
@@ -16142,7 +16230,10 @@ class AbstractTransformer(Transport):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            if namespaceprefix_ not in self.extensiontype_:
+                outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            else:
+                outfile.write(' xsi:type="%s"' % self.extensiontype_)
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='AbstractTransformer', fromsubclass_=False, pretty_print=True):
         super(AbstractTransformer, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='AbstractTransformer', mapping_=None):
@@ -16225,7 +16316,10 @@ class AbstractSwitch(Transport):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            if namespaceprefix_ not in self.extensiontype_:
+                outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            else:
+                outfile.write(' xsi:type="%s"' % self.extensiontype_)
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='AbstractSwitch', fromsubclass_=False, pretty_print=True):
         super(AbstractSwitch, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='AbstractSwitch', mapping_=None):
@@ -16308,7 +16402,10 @@ class AbstractConductor(Transport):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            if namespaceprefix_ not in self.extensiontype_:
+                outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            else:
+                outfile.write(' xsi:type="%s"' % self.extensiontype_)
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='AbstractConductor', fromsubclass_=False, pretty_print=True):
         super(AbstractConductor, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='AbstractConductor', mapping_=None):
@@ -19337,7 +19434,10 @@ class CoGeneration(Conversion):
         if self.extensiontype_ is not None and 'xsi:type' not in already_processed:
             already_processed.add('xsi:type')
             outfile.write(' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
-            outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            if namespaceprefix_ not in self.extensiontype_:
+                outfile.write(' xsi:type="%s%s"' % (namespaceprefix_, self.extensiontype_))
+            else:
+                outfile.write(' xsi:type="%s"' % self.extensiontype_)
     def exportChildren(self, outfile, level, namespaceprefix_='esdl:', name_='CoGeneration', fromsubclass_=False, pretty_print=True):
         super(CoGeneration, self).exportChildren(outfile, level, namespaceprefix_, name_, True, pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='CoGeneration', mapping_=None):

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 #
-# Generated Sat Oct 27 22:25:22 2018 by generateDS.py version 2.30.1.
+# Generated Wed Oct 31 13:00:49 2018 by generateDS.py version 2.30.1.
 # Python 3.7.0 (v3.7.0:1bf9cc5093, Jun 27 2018, 04:59:51) [MSC v.1914 64 bit (AMD64)]
 #
 # Command line options:
@@ -14,7 +14,7 @@
 #   esdlXML.xsd
 #
 # Command line:
-#   C:/Users/matthijssenef/AppData/Local/Programs/Python/Python37/Scripts/generateDS.py -o "esdl_sup.py" -s "esdl_sub.py" --root-element="EnergySystem" --export="write etree" esdlXML.xsd
+#   C:\Users\matthijssenef\AppData\Local\Programs\Python\Python37\Scripts\generateDS.py -o "esdl_sup.py" -s "esdl_sub.py" --root-element="EnergySystem" --export="write etree" esdlXML.xsd
 #
 # Current working directory (os.getcwd()):
 #   model
@@ -493,36 +493,36 @@ supermod.QuantityAndUnitReference.subclass = QuantityAndUnitReferenceSub
 
 
 class ParametersSub(supermod.Parameters):
-    def __init__(self, name=None, abstractquantityandunit=None, extensiontype_=None, **kwargs_):
-        super(ParametersSub, self).__init__(name, abstractquantityandunit, extensiontype_,  **kwargs_)
+    def __init__(self, name=None, parameterUnit=None, extensiontype_=None, **kwargs_):
+        super(ParametersSub, self).__init__(name, parameterUnit, extensiontype_,  **kwargs_)
 supermod.Parameters.subclass = ParametersSub
 # end class ParametersSub
 
 
 class StringParameterSub(supermod.StringParameter):
-    def __init__(self, name=None, abstractquantityandunit=None, value=None, **kwargs_):
-        super(StringParameterSub, self).__init__(name, abstractquantityandunit, value,  **kwargs_)
+    def __init__(self, name=None, parameterUnit=None, value=None, **kwargs_):
+        super(StringParameterSub, self).__init__(name, parameterUnit, value,  **kwargs_)
 supermod.StringParameter.subclass = StringParameterSub
 # end class StringParameterSub
 
 
 class DoubleParameterSub(supermod.DoubleParameter):
-    def __init__(self, name=None, abstractquantityandunit=None, value=None, **kwargs_):
-        super(DoubleParameterSub, self).__init__(name, abstractquantityandunit, value,  **kwargs_)
+    def __init__(self, name=None, parameterUnit=None, value=None, **kwargs_):
+        super(DoubleParameterSub, self).__init__(name, parameterUnit, value,  **kwargs_)
 supermod.DoubleParameter.subclass = DoubleParameterSub
 # end class DoubleParameterSub
 
 
 class IntegerParameterSub(supermod.IntegerParameter):
-    def __init__(self, name=None, abstractquantityandunit=None, value=None, **kwargs_):
-        super(IntegerParameterSub, self).__init__(name, abstractquantityandunit, value,  **kwargs_)
+    def __init__(self, name=None, parameterUnit=None, value=None, **kwargs_):
+        super(IntegerParameterSub, self).__init__(name, parameterUnit, value,  **kwargs_)
 supermod.IntegerParameter.subclass = IntegerParameterSub
 # end class IntegerParameterSub
 
 
 class BooleanParameterSub(supermod.BooleanParameter):
-    def __init__(self, name=None, abstractquantityandunit=None, value=None, **kwargs_):
-        super(BooleanParameterSub, self).__init__(name, abstractquantityandunit, value,  **kwargs_)
+    def __init__(self, name=None, parameterUnit=None, value=None, **kwargs_):
+        super(BooleanParameterSub, self).__init__(name, parameterUnit, value,  **kwargs_)
 supermod.BooleanParameter.subclass = BooleanParameterSub
 # end class BooleanParameterSub
 
